@@ -1,0 +1,432 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>ExMarkets | Markets</title>
+    <meta
+      name="description"
+      content="Explore ExMarkets market coverage across U.S. equities, global indexes, currencies, commodities and digital assets."
+    />
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="ExMarkets | Markets" />
+    <meta
+      property="og:description"
+      content="A clear, data-led view of global financial markets in a premium digital publication format."
+    />
+    <meta property="og:site_name" content="ExMarkets" />
+    <link rel="stylesheet" href="assets/css/style.css" />
+  </head>
+  <body>
+    <header class="site-nav" role="banner">
+      <div class="site-nav__inner">
+        <a class="site-nav__brand" href="index.html" aria-label="ExMarkets home">ExMarkets</a>
+
+        <button
+          class="site-nav__toggle btn btn--ghost btn--small"
+          type="button"
+          data-nav-toggle
+          aria-expanded="false"
+          aria-controls="site-navigation"
+          aria-label="Toggle navigation"
+        >
+          ☰
+        </button>
+
+        <ul class="site-nav__links" id="site-navigation" data-nav-menu>
+          <li><a class="site-nav__link" href="index.html">Home</a></li>
+          <li><a class="site-nav__link" href="markets.html" aria-current="page">Markets</a></li>
+          <li><a class="site-nav__link" href="#">Business</a></li>
+          <li><a class="site-nav__link" href="#">Technology</a></li>
+          <li><a class="site-nav__link" href="#">Economy</a></li>
+          <li><a class="site-nav__link" href="#">About</a></li>
+        </ul>
+
+        <div class="site-nav__actions">
+          <button class="btn btn--ghost btn--small theme-toggle" type="button" data-theme-toggle aria-pressed="false" aria-label="Switch to light theme">
+            <span class="theme-toggle__label">Dark theme</span>
+          </button>
+          <button class="btn btn--ghost btn--small" type="button" aria-label="Search">⌕</button>
+          <a class="btn btn--primary btn--small" href="#newsletter">Subscribe</a>
+        </div>
+      </div>
+    </header>
+
+    <main id="content">
+      <section class="container section" aria-labelledby="markets-page-title">
+        <div class="section__heading">
+          <p class="text-uppercase">Markets</p>
+          <h1 id="markets-page-title">Global markets at a glance</h1>
+          <p class="lead">
+            ExMarkets delivers a professional overview of major market movers across equities, currencies, commodities and digital assets.
+          </p>
+        </div>
+      </section>
+
+      <section class="container section" aria-labelledby="overview-title">
+        <div class="section__heading">
+          <p class="text-uppercase">Market Overview</p>
+          <h2 id="overview-title">Demo market snapshot</h2>
+          <p class="text-muted">Market values below are demonstration data only and are not live quotes.</p>
+        </div>
+
+        <div class="market-overview__grid">
+          <article class="market-card">
+            <div class="market-card__top">
+              <span class="market-card__name">S&amp;P 500</span>
+              <span class="market-card__chip market-card__chip--positive">▲ +0.42%</span>
+            </div>
+            <p class="market-card__symbol">SPX</p>
+            <p class="market-card__price">5,632.18</p>
+            <p class="market-card__meta">Demo price</p>
+            <div class="market-card__trend" aria-hidden="true">
+              <span></span><span></span><span></span>
+            </div>
+          </article>
+
+          <article class="market-card">
+            <div class="market-card__top">
+              <span class="market-card__name">Nasdaq Composite</span>
+              <span class="market-card__chip market-card__chip--positive">▲ +0.81%</span>
+            </div>
+            <p class="market-card__symbol">IXIC</p>
+            <p class="market-card__price">18,274.90</p>
+            <p class="market-card__meta">Demo price</p>
+            <div class="market-card__trend" aria-hidden="true">
+              <span></span><span></span><span></span>
+            </div>
+          </article>
+
+          <article class="market-card">
+            <div class="market-card__top">
+              <span class="market-card__name">Dow Jones</span>
+              <span class="market-card__chip market-card__chip--negative">▼ -0.11%</span>
+            </div>
+            <p class="market-card__symbol">DJIA</p>
+            <p class="market-card__price">39,928.00</p>
+            <p class="market-card__meta">Demo price</p>
+            <div class="market-card__trend market-card__trend--negative" aria-hidden="true">
+              <span></span><span></span><span></span>
+            </div>
+          </article>
+
+          <article class="market-card">
+            <div class="market-card__top">
+              <span class="market-card__name">Bitcoin</span>
+              <span class="market-card__chip market-card__chip--positive">▲ +2.34%</span>
+            </div>
+            <p class="market-card__symbol">BTC</p>
+            <p class="market-card__price">$68,402</p>
+            <p class="market-card__meta">Demo price</p>
+            <div class="market-card__trend" aria-hidden="true">
+              <span></span><span></span><span></span>
+            </div>
+          </article>
+
+          <article class="market-card">
+            <div class="market-card__top">
+              <span class="market-card__name">Gold</span>
+              <span class="market-card__chip market-card__chip--positive">▲ +0.73%</span>
+            </div>
+            <p class="market-card__symbol">XAU</p>
+            <p class="market-card__price">$2,349</p>
+            <p class="market-card__meta">Demo price</p>
+            <div class="market-card__trend" aria-hidden="true">
+              <span></span><span></span><span></span>
+            </div>
+          </article>
+
+          <article class="market-card">
+            <div class="market-card__top">
+              <span class="market-card__name">USD/ZAR</span>
+              <span class="market-card__chip market-card__chip--negative">▼ -0.06%</span>
+            </div>
+            <p class="market-card__symbol">USDZAR</p>
+            <p class="market-card__price">17.89</p>
+            <p class="market-card__meta">Demo price</p>
+            <div class="market-card__trend market-card__trend--negative" aria-hidden="true">
+              <span></span><span></span><span></span>
+            </div>
+          </article>
+        </div>
+      </section>
+
+      <section class="container section" aria-labelledby="us-markets-title">
+        <div class="section__heading">
+          <p class="text-uppercase">US Markets</p>
+          <h2 id="us-markets-title">Major U.S. benchmarks</h2>
+        </div>
+
+        <div class="table-shell">
+          <table class="table">
+            <thead>
+              <tr>
+                <th scope="col">Index</th>
+                <th scope="col">Symbol</th>
+                <th scope="col">Price</th>
+                <th scope="col">Change</th>
+                <th scope="col">Change %</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>S&amp;P 500</td>
+                <td>SPX</td>
+                <td>5,632.18</td>
+                <td>+24.10</td>
+                <td>+0.42%</td>
+              </tr>
+              <tr>
+                <td>Nasdaq Composite</td>
+                <td>IXIC</td>
+                <td>18,274.90</td>
+                <td>+146.82</td>
+                <td>+0.81%</td>
+              </tr>
+              <tr>
+                <td>Dow Jones</td>
+                <td>DJIA</td>
+                <td>39,928.00</td>
+                <td>-44.20</td>
+                <td>-0.11%</td>
+              </tr>
+              <tr>
+                <td>Russell 2000</td>
+                <td>RUT</td>
+                <td>2,320.15</td>
+                <td>+8.40</td>
+                <td>+0.36%</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <section class="container section" aria-labelledby="global-markets-title">
+        <div class="section__heading">
+          <p class="text-uppercase">Global Markets</p>
+          <h2 id="global-markets-title">Regional market snapshots</h2>
+        </div>
+
+        <div class="global-markets__grid">
+          <article class="card">
+            <p class="card__eyebrow">Europe</p>
+            <ul class="market-list">
+              <li><strong>FTSE 100</strong><span>8,321.40</span></li>
+              <li><strong>DAX</strong><span>18,760.20</span></li>
+              <li><strong>CAC 40</strong><span>7,806.10</span></li>
+            </ul>
+          </article>
+
+          <article class="card">
+            <p class="card__eyebrow">Asia</p>
+            <ul class="market-list">
+              <li><strong>Nikkei 225</strong><span>39,860.15</span></li>
+              <li><strong>Hang Seng</strong><span>18,007.44</span></li>
+              <li><strong>Shanghai Composite</strong><span>3,021.80</span></li>
+            </ul>
+          </article>
+
+          <article class="card">
+            <p class="card__eyebrow">Africa</p>
+            <ul class="market-list">
+              <li><strong>JSE All Share</strong><span>81,350.42</span></li>
+              <li><strong>Top 40</strong><span>75,111.90</span></li>
+              <li><strong>FTSE/JSE Africa</strong><span>13,520.65</span></li>
+            </ul>
+          </article>
+        </div>
+      </section>
+
+      <section class="container section" aria-labelledby="currencies-title">
+        <div class="section__heading">
+          <p class="text-uppercase">Currencies</p>
+          <h2 id="currencies-title">FX crosses and major pairs</h2>
+        </div>
+
+        <div class="table-shell">
+          <table class="table">
+            <thead>
+              <tr>
+                <th scope="col">Pair</th>
+                <th scope="col">Rate</th>
+                <th scope="col">Change</th>
+                <th scope="col">Change %</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>EUR/USD</td>
+                <td>1.0894</td>
+                <td>-0.0012</td>
+                <td>-0.11%</td>
+              </tr>
+              <tr>
+                <td>GBP/USD</td>
+                <td>1.2756</td>
+                <td>+0.0023</td>
+                <td>+0.18%</td>
+              </tr>
+              <tr>
+                <td>USD/JPY</td>
+                <td>154.20</td>
+                <td>+0.14</td>
+                <td>+0.09%</td>
+              </tr>
+              <tr>
+                <td>USD/ZAR</td>
+                <td>17.89</td>
+                <td>-0.11</td>
+                <td>-0.61%</td>
+              </tr>
+              <tr>
+                <td>EUR/ZAR</td>
+                <td>19.47</td>
+                <td>+0.08</td>
+                <td>+0.41%</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <section class="container section" aria-labelledby="commodities-title">
+        <div class="section__heading">
+          <p class="text-uppercase">Commodities</p>
+          <h2 id="commodities-title">Energy and precious metals</h2>
+        </div>
+
+        <div class="market-overview__grid">
+          <article class="market-card">
+            <div class="market-card__top">
+              <span class="market-card__name">Gold</span>
+              <span class="market-card__chip market-card__chip--positive">▲ +0.73%</span>
+            </div>
+            <p class="market-card__price">$2,349</p>
+            <p class="market-card__meta">Demo value</p>
+          </article>
+
+          <article class="market-card">
+            <div class="market-card__top">
+              <span class="market-card__name">Silver</span>
+              <span class="market-card__chip market-card__chip--negative">▼ -0.28%</span>
+            </div>
+            <p class="market-card__price">$29.15</p>
+            <p class="market-card__meta">Demo value</p>
+          </article>
+
+          <article class="market-card">
+            <div class="market-card__top">
+              <span class="market-card__name">Brent Crude</span>
+              <span class="market-card__chip market-card__chip--positive">▲ +1.12%</span>
+            </div>
+            <p class="market-card__price">$85.20</p>
+            <p class="market-card__meta">Demo value</p>
+          </article>
+
+          <article class="market-card">
+            <div class="market-card__top">
+              <span class="market-card__name">WTI Crude</span>
+              <span class="market-card__chip market-card__chip--negative">▼ -0.54%</span>
+            </div>
+            <p class="market-card__price">$80.37</p>
+            <p class="market-card__meta">Demo value</p>
+          </article>
+        </div>
+      </section>
+
+      <section class="container section" aria-labelledby="crypto-title">
+        <div class="section__heading">
+          <p class="text-uppercase">Crypto</p>
+          <h2 id="crypto-title">Digital asset overview</h2>
+        </div>
+
+        <div class="market-overview__grid">
+          <article class="market-card">
+            <div class="market-card__top">
+              <span class="market-card__name">Bitcoin</span>
+              <span class="market-card__chip market-card__chip--positive">▲ +2.34%</span>
+            </div>
+            <p class="market-card__price">$68,402</p>
+            <p class="market-card__meta">Demo value</p>
+          </article>
+
+          <article class="market-card">
+            <div class="market-card__top">
+              <span class="market-card__name">Ethereum</span>
+              <span class="market-card__chip market-card__chip--positive">▲ +1.16%</span>
+            </div>
+            <p class="market-card__price">$3,612</p>
+            <p class="market-card__meta">Demo value</p>
+          </article>
+
+          <article class="market-card">
+            <div class="market-card__top">
+              <span class="market-card__name">Solana</span>
+              <span class="market-card__chip market-card__chip--negative">▼ -0.74%</span>
+            </div>
+            <p class="market-card__price">$170.31</p>
+            <p class="market-card__meta">Demo value</p>
+          </article>
+
+          <article class="market-card">
+            <div class="market-card__top">
+              <span class="market-card__name">XRP</span>
+              <span class="market-card__chip market-card__chip--positive">▲ +0.58%</span>
+            </div>
+            <p class="market-card__price">$0.62</p>
+            <p class="market-card__meta">Demo value</p>
+          </article>
+        </div>
+      </section>
+
+      <section class="container section" aria-labelledby="disclaimer-title">
+        <div class="card card--elevated">
+          <p class="card__eyebrow">Disclaimer</p>
+          <h2 id="disclaimer-title">Demo market information</h2>
+          <p class="lead">
+            Market information displayed on this page is for demonstration purposes only and does not constitute financial advice. Live market data will be integrated in a future version.
+          </p>
+        </div>
+      </section>
+    </main>
+
+    <footer class="footer">
+      <div class="container footer__grid">
+        <div>
+          <a class="site-nav__brand" href="index.html">ExMarkets</a>
+          <p class="text-muted">Premium financial journalism for professionals seeking clarity, context and disciplined analysis.</p>
+        </div>
+
+        <div>
+          <h3 class="h3">Company</h3>
+          <ul class="footer__links">
+            <li><a href="#">About</a></li>
+            <li><a href="markets.html">Markets</a></li>
+            <li><a href="#">Contact</a></li>
+          </ul>
+        </div>
+
+        <div>
+          <h3 class="h3">Resources</h3>
+          <ul class="footer__links">
+            <li><a href="#">Privacy</a></li>
+            <li><a href="#">Terms</a></li>
+            <li><a href="#newsletter">Subscribe</a></li>
+          </ul>
+        </div>
+
+        <div>
+          <h3 class="h3">Markets</h3>
+          <ul class="footer__links">
+            <li><a href="#">Indices</a></li>
+            <li><a href="#">Currencies</a></li>
+            <li><a href="#">Commodities</a></li>
+          </ul>
+        </div>
+      </div>
+    </footer>
+
+    <script src="assets/js/main.js" defer></script>
+  </body>
+</html>

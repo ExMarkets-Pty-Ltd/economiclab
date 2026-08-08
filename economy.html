@@ -1,0 +1,497 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>ExMarkets | Economy</title>
+    <meta
+      name="description"
+      content="Explore ExMarkets coverage of inflation, interest rates, growth, employment and the economic forces shaping global markets."
+    />
+    <meta name="canonical" content="https://example.com/economy.html" />
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="ExMarkets | Economy" />
+    <meta
+      property="og:description"
+      content="A professional view of macroeconomic themes, central-bank developments and regional growth trends in a premium newsroom format."
+    />
+    <meta property="og:site_name" content="ExMarkets" />
+    <link rel="stylesheet" href="assets/css/style.css" />
+  </head>
+  <body>
+    <header class="site-nav" role="banner">
+      <div class="site-nav__inner">
+        <a class="site-nav__brand" href="index.html" aria-label="ExMarkets home">ExMarkets</a>
+
+        <button
+          class="site-nav__toggle btn btn--ghost btn--small"
+          type="button"
+          data-nav-toggle
+          aria-expanded="false"
+          aria-controls="site-navigation"
+          aria-label="Toggle navigation"
+        >
+          ☰
+        </button>
+
+        <ul class="site-nav__links" id="site-navigation" data-nav-menu>
+          <li><a class="site-nav__link" href="index.html">Home</a></li>
+          <li><a class="site-nav__link" href="markets.html">Markets</a></li>
+          <li><a class="site-nav__link" href="news.html">News</a></li>
+          <li><a class="site-nav__link" href="companies.html">Business</a></li>
+          <li><a class="site-nav__link" href="companies.html">Technology</a></li>
+          <li><a class="site-nav__link" href="economy.html" aria-current="page">Economy</a></li>
+          <li><a class="site-nav__link" href="companies.html">Companies</a></li>
+          <li><a class="site-nav__link" href="about.html">About</a></li>
+        </ul>
+
+        <div class="site-nav__actions">
+          <button class="btn btn--ghost btn--small theme-toggle" type="button" data-theme-toggle aria-pressed="false" aria-label="Switch to light theme">
+            <span class="theme-toggle__label">Dark theme</span>
+          </button>
+          <button class="btn btn--ghost btn--small" type="button" aria-label="Search">⌕</button>
+          <a class="btn btn--primary btn--small" href="#newsletter">Subscribe</a>
+        </div>
+      </div>
+    </header>
+
+    <main id="content">
+      <section class="container section" aria-labelledby="economy-title">
+        <div class="section__heading">
+          <p class="text-uppercase">Economy</p>
+          <h1 id="economy-title">ECONOMY</h1>
+          <p class="lead">
+            Tracking inflation, interest rates, growth, employment and the economic forces shaping global markets.
+          </p>
+        </div>
+      </section>
+
+      <section class="container section" aria-labelledby="featured-economy-title">
+        <div class="card card--feature news-feature">
+          <div class="news-feature__media" role="img" aria-label="Placeholder illustration for featured economic coverage"></div>
+          <div class="news-feature__content">
+            <p class="card__eyebrow">Economy</p>
+            <h2 id="featured-economy-title">Global Growth Outlook Remains in Focus as Policymakers Balance Inflation and Expansion</h2>
+            <p class="lead">
+              Analysts continue to monitor how central banks, labor markets and consumer demand influence the broader economic outlook across major regions.
+            </p>
+            <div class="cluster article-meta-row">
+              <span class="article__meta">By ExMarkets Editorial Team</span>
+              <span class="article__meta">08 Aug 2026 · 8 min read</span>
+            </div>
+            <a class="btn btn--primary" href="articles/article-template.html">Read Story</a>
+          </div>
+        </div>
+      </section>
+
+      <section class="container section" aria-labelledby="indicators-title">
+        <div class="section__heading">
+          <p class="text-uppercase">Economic Indicators</p>
+          <h2 id="indicators-title">DEMO DATA · Illustrative economic dashboard</h2>
+          <p class="text-muted">These values are for layout and editorial demonstration only and are not live economic data.</p>
+        </div>
+
+        <div class="market-overview__grid">
+          <article class="market-card">
+            <div class="market-card__top">
+              <span class="market-card__name">GDP Growth</span>
+              <span class="market-card__chip market-card__chip--positive">▲ +1.2%</span>
+            </div>
+            <p class="market-card__symbol">Demo value</p>
+            <p class="market-card__price">1.2%</p>
+            <p class="market-card__meta">Illustrative quarterly pace</p>
+          </article>
+
+          <article class="market-card">
+            <div class="market-card__top">
+              <span class="market-card__name">Inflation</span>
+              <span class="market-card__chip market-card__chip--negative">▼ -0.1%</span>
+            </div>
+            <p class="market-card__symbol">Demo value</p>
+            <p class="market-card__price">3.1%</p>
+            <p class="market-card__meta">Illustrative consumer-price trend</p>
+          </article>
+
+          <article class="market-card">
+            <div class="market-card__top">
+              <span class="market-card__name">Interest Rate</span>
+              <span class="market-card__chip market-card__chip--neutral">• Stable</span>
+            </div>
+            <p class="market-card__symbol">Demo value</p>
+            <p class="market-card__price">5.25%</p>
+            <p class="market-card__meta">Illustrative policy benchmark</p>
+          </article>
+
+          <article class="market-card">
+            <div class="market-card__top">
+              <span class="market-card__name">Unemployment</span>
+              <span class="market-card__chip market-card__chip--positive">▲ +0.2%</span>
+            </div>
+            <p class="market-card__symbol">Demo value</p>
+            <p class="market-card__price">4.3%</p>
+            <p class="market-card__meta">Illustrative labor-market reading</p>
+          </article>
+
+          <article class="market-card">
+            <div class="market-card__top">
+              <span class="market-card__name">Consumer Confidence</span>
+              <span class="market-card__chip market-card__chip--positive">▲ +1.4</span>
+            </div>
+            <p class="market-card__symbol">Demo value</p>
+            <p class="market-card__price">102.4</p>
+            <p class="market-card__meta">Illustrative sentiment index</p>
+          </article>
+
+          <article class="market-card">
+            <div class="market-card__top">
+              <span class="market-card__name">Manufacturing Activity</span>
+              <span class="market-card__chip market-card__chip--neutral">• Neutral</span>
+            </div>
+            <p class="market-card__symbol">Demo value</p>
+            <p class="market-card__price">50.8</p>
+            <p class="market-card__meta">Illustrative activity measure</p>
+          </article>
+        </div>
+      </section>
+
+      <section class="container section" aria-labelledby="central-banks-title">
+        <div class="section__heading">
+          <p class="text-uppercase">Central Banks</p>
+          <h2 id="central-banks-title">DEMO CONTENT · Policy focus and outlook</h2>
+        </div>
+
+        <div class="news-grid">
+          <article class="card">
+            <p class="card__eyebrow">Federal Reserve</p>
+            <h3 class="card__title">Policy focus</h3>
+            <p class="card__meta">Demo policy status: Balanced and data-dependent.</p>
+            <p class="text-muted">Illustrative explanation for a future editorial feature on rate decisions and inflation conditions.</p>
+          </article>
+
+          <article class="card">
+            <p class="card__eyebrow">European Central Bank</p>
+            <h3 class="card__title">Policy focus</h3>
+            <p class="card__meta">Demo policy status: Carefully measured.</p>
+            <p class="text-muted">Illustrative explanation for a European growth and price-stability outlook.</p>
+          </article>
+
+          <article class="card">
+            <p class="card__eyebrow">Bank of England</p>
+            <h3 class="card__title">Policy focus</h3>
+            <p class="card__meta">Demo policy status: Watchful.</p>
+            <p class="text-muted">Illustrative explanation for a UK growth and wages discussion.</p>
+          </article>
+
+          <article class="card">
+            <p class="card__eyebrow">Bank of Japan</p>
+            <h3 class="card__title">Policy focus</h3>
+            <p class="card__meta">Demo policy status: Cautious.</p>
+            <p class="text-muted">Illustrative explanation for a Japan policy and inflation narrative.</p>
+          </article>
+
+          <article class="card">
+            <p class="card__eyebrow">South African Reserve Bank</p>
+            <h3 class="card__title">Policy focus</h3>
+            <p class="card__meta">Demo policy status: Stabilizing.</p>
+            <p class="text-muted">Illustrative explanation for an African monetary-policy and currency perspective.</p>
+          </article>
+        </div>
+      </section>
+
+      <section class="container section" aria-labelledby="global-economy-title">
+        <div class="section__heading">
+          <p class="text-uppercase">Global Economy</p>
+          <h2 id="global-economy-title">Regional economic themes and editorial summaries</h2>
+        </div>
+
+        <div class="market-news-grid">
+          <article class="card">
+            <p class="card__eyebrow">North America</p>
+            <p class="card__meta">Demonstration overview of resilient activity, labor-market dynamics and tighter policy expectations.</p>
+            <div class="stack">
+              <div>
+                <h3 class="card__title">Regional update</h3>
+                <p class="text-muted">Policy and growth themes remain central to the regional outlook.</p>
+              </div>
+              <a class="link" href="articles/article-template.html">Read More</a>
+            </div>
+          </article>
+
+          <article class="card">
+            <p class="card__eyebrow">Europe</p>
+            <p class="card__meta">Demonstration overview of slower growth momentum and careful consumption patterns.</p>
+            <div class="stack">
+              <div>
+                <h3 class="card__title">Regional update</h3>
+                <p class="text-muted">Inflation and policy signals continue to shape the regional narrative.</p>
+              </div>
+              <a class="link" href="articles/article-template.html">Read More</a>
+            </div>
+          </article>
+
+          <article class="card">
+            <p class="card__eyebrow">Asia-Pacific</p>
+            <p class="card__meta">Demonstration overview of export demand, industrial activity and shifting consumer trends.</p>
+            <div class="stack">
+              <div>
+                <h3 class="card__title">Regional update</h3>
+                <p class="text-muted">The region remains a key source of global growth and manufacturing momentum.</p>
+              </div>
+              <a class="link" href="articles/article-template.html">Read More</a>
+            </div>
+          </article>
+
+          <article class="card">
+            <p class="card__eyebrow">Africa</p>
+            <p class="card__meta">Demonstration overview of trade, investment and currency-market developments.</p>
+            <div class="stack">
+              <div>
+                <h3 class="card__title">Regional update</h3>
+                <p class="text-muted">Growth and reform stories remain important for the broader emerging-markets picture.</p>
+              </div>
+              <a class="link" href="articles/article-template.html">Read More</a>
+            </div>
+          </article>
+
+          <article class="card">
+            <p class="card__eyebrow">Latin America</p>
+            <p class="card__meta">Demonstration overview of commodity exposure, fiscal balance and consumer demand.</p>
+            <div class="stack">
+              <div>
+                <h3 class="card__title">Regional update</h3>
+                <p class="text-muted">The region remains shaped by commodity cycles and policy adjustments.</p>
+              </div>
+              <a class="link" href="articles/article-template.html">Read More</a>
+            </div>
+          </article>
+        </div>
+      </section>
+
+      <section class="container section" aria-labelledby="inflation-rates-title">
+        <div class="section__heading">
+          <p class="text-uppercase">Inflation &amp; Interest Rates</p>
+          <h2 id="inflation-rates-title">Editorial coverage of the economy’s central themes</h2>
+        </div>
+
+        <div class="news-grid">
+          <article class="news-card">
+            <div class="news-card__media" role="img" aria-label="Placeholder graphic for inflation coverage"></div>
+            <p class="card__eyebrow">Inflation</p>
+            <h3 class="news-card__title">Inflation expectations remain a key driver of sentiment and policy discussion</h3>
+            <p class="news-card__summary">Demonstration editorial overview of price pressures, consumer behavior and policy response.</p>
+            <p class="article__meta">08 Aug 2026 · 5 min read</p>
+            <a class="btn btn--secondary btn--small" href="articles/article-template.html">Read Story</a>
+          </article>
+
+          <article class="news-card">
+            <div class="news-card__media" role="img" aria-label="Placeholder graphic for interest rates coverage"></div>
+            <p class="card__eyebrow">Interest Rates</p>
+            <h3 class="news-card__title">Rate expectations continue to shape the tone across equities and fixed income</h3>
+            <p class="news-card__summary">Demonstration editorial context for policy outlook and investor positioning.</p>
+            <p class="article__meta">08 Aug 2026 · 4 min read</p>
+            <a class="btn btn--secondary btn--small" href="articles/article-template.html">Read Story</a>
+          </article>
+
+          <article class="news-card">
+            <div class="news-card__media" role="img" aria-label="Placeholder graphic for monetary policy coverage"></div>
+            <p class="card__eyebrow">Monetary Policy</p>
+            <h3 class="news-card__title">Central-bank communication remains a major force in market reaction</h3>
+            <p class="news-card__summary">Demonstration editorial content focused on guidance, balance-sheet decisions and market interpretation.</p>
+            <p class="article__meta">07 Aug 2026 · 6 min read</p>
+            <a class="btn btn--secondary btn--small" href="articles/article-template.html">Read Story</a>
+          </article>
+
+          <article class="news-card">
+            <div class="news-card__media" role="img" aria-label="Placeholder graphic for cost of living coverage"></div>
+            <p class="card__eyebrow">Cost of Living</p>
+            <h3 class="news-card__title">Household budgets remain a central theme for policymakers and consumers</h3>
+            <p class="news-card__summary">Demonstration editorial commentary on spending, income and the broader economic backdrop.</p>
+            <p class="article__meta">07 Aug 2026 · 4 min read</p>
+            <a class="btn btn--secondary btn--small" href="articles/article-template.html">Read Story</a>
+          </article>
+        </div>
+      </section>
+
+      <section class="container section" aria-labelledby="emerging-markets-title">
+        <div class="section__heading">
+          <p class="text-uppercase">Africa &amp; Emerging Markets</p>
+          <h2 id="emerging-markets-title">Demonstration coverage of trade, investment and currency themes</h2>
+        </div>
+
+        <div class="news-grid">
+          <article class="news-card">
+            <div class="news-card__media" role="img" aria-label="Placeholder graphic for African economies coverage"></div>
+            <p class="card__eyebrow">African Economies</p>
+            <h3 class="news-card__title">African economies remain a focus for trade, reform and infrastructure investment</h3>
+            <p class="news-card__summary">Demonstration editorial content on regional growth and market opportunity.</p>
+            <p class="article__meta">06 Aug 2026 · 4 min read</p>
+            <a class="btn btn--secondary btn--small" href="articles/article-template.html">Read Story</a>
+          </article>
+
+          <article class="news-card">
+            <div class="news-card__media" role="img" aria-label="Placeholder graphic for emerging markets coverage"></div>
+            <p class="card__eyebrow">Emerging Markets</p>
+            <h3 class="news-card__title">Emerging-market investors continue to watch currency and capital-flow trends</h3>
+            <p class="news-card__summary">Demonstration editorial content focusing on portfolio positioning and macro conditions.</p>
+            <p class="article__meta">06 Aug 2026 · 5 min read</p>
+            <a class="btn btn--secondary btn--small" href="articles/article-template.html">Read Story</a>
+          </article>
+
+          <article class="news-card">
+            <div class="news-card__media" role="img" aria-label="Placeholder graphic for trade coverage"></div>
+            <p class="card__eyebrow">Trade</p>
+            <h3 class="news-card__title">Trade corridors remain important as global supply chains continue to evolve</h3>
+            <p class="news-card__summary">Demonstration editorial context on regional commerce and cross-border investment.</p>
+            <p class="article__meta">05 Aug 2026 · 4 min read</p>
+            <a class="btn btn--secondary btn--small" href="articles/article-template.html">Read Story</a>
+          </article>
+
+          <article class="news-card">
+            <div class="news-card__media" role="img" aria-label="Placeholder graphic for currency markets coverage"></div>
+            <p class="card__eyebrow">Currency Markets</p>
+            <h3 class="news-card__title">Currency moves remain a critical part of emerging-market analysis</h3>
+            <p class="news-card__summary">Demonstration editorial content on exchange-rate sensitivity and policy response.</p>
+            <p class="article__meta">05 Aug 2026 · 4 min read</p>
+            <a class="btn btn--secondary btn--small" href="articles/article-template.html">Read Story</a>
+          </article>
+        </div>
+      </section>
+
+      <section class="container section" aria-labelledby="calendar-title">
+        <div class="section__heading">
+          <p class="text-uppercase">Economic Calendar</p>
+          <h2 id="calendar-title">ECONOMIC CALENDAR</h2>
+          <p class="text-muted">DEMO DATA — Live economic calendar data will be integrated in a future version.</p>
+        </div>
+
+        <div class="table-shell">
+          <table class="table">
+            <thead>
+              <tr>
+                <th scope="col">Date</th>
+                <th scope="col">Event</th>
+                <th scope="col">Region</th>
+                <th scope="col">Importance</th>
+                <th scope="col">Expected</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>12 Aug 2026</td>
+                <td>Consumer Price Index</td>
+                <td>US</td>
+                <td>High</td>
+                <td>Demo update</td>
+              </tr>
+              <tr>
+                <td>14 Aug 2026</td>
+                <td>Retail Sales</td>
+                <td>Eurozone</td>
+                <td>Medium</td>
+                <td>Demo update</td>
+              </tr>
+              <tr>
+                <td>17 Aug 2026</td>
+                <td>Employment Report</td>
+                <td>UK</td>
+                <td>High</td>
+                <td>Demo update</td>
+              </tr>
+              <tr>
+                <td>19 Aug 2026</td>
+                <td>Purchasing Managers’ Index</td>
+                <td>Global</td>
+                <td>Medium</td>
+                <td>Demo update</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <section class="container section" aria-labelledby="analysis-title">
+        <div class="section__heading">
+          <p class="text-uppercase">ExMarkets Economic Analysis</p>
+          <h2 id="analysis-title">Longer-form analysis and market context</h2>
+        </div>
+
+        <div class="analysis-grid">
+          <article class="card card--elevated">
+            <p class="card__eyebrow">Analysis</p>
+            <h3 class="card__title">How inflation trends could influence the next phase of policy guidance</h3>
+            <p class="card__meta">By Maya Chen · 08 Aug 2026</p>
+            <a class="btn btn--secondary btn--small" href="articles/article-template.html">Read Analysis</a>
+          </article>
+
+          <article class="card card--elevated">
+            <p class="card__eyebrow">Analysis</p>
+            <h3 class="card__title">Why labor-market resilience matters as much as price data</h3>
+            <p class="card__meta">By Daniel Brooks · 08 Aug 2026</p>
+            <a class="btn btn--secondary btn--small" href="articles/article-template.html">Read Analysis</a>
+          </article>
+
+          <article class="card card--elevated">
+            <p class="card__eyebrow">Analysis</p>
+            <h3 class="card__title">What shifting growth expectations could mean for investors</h3>
+            <p class="card__meta">By Nina Patel · 08 Aug 2026</p>
+            <a class="btn btn--secondary btn--small" href="articles/article-template.html">Read Analysis</a>
+          </article>
+        </div>
+      </section>
+
+      <section class="container section" id="newsletter" aria-labelledby="newsletter-title">
+        <div class="newsletter card card--elevated">
+          <p class="card__eyebrow">Newsletter</p>
+          <h2 id="newsletter-title">Stay Ahead of the Markets</h2>
+          <p class="lead">
+            Receive curated market briefings, economic analysis and rapid commentary delivered in a concise format.
+          </p>
+          <form class="newsletter__form">
+            <label class="sr-only" for="email">Email address</label>
+            <input id="email" name="email" type="email" placeholder="Enter your email address" />
+            <button class="btn btn--primary" type="submit">Subscribe</button>
+          </form>
+          <p class="text-muted">No spam. Just timely market intelligence and practical context.</p>
+        </div>
+      </section>
+    </main>
+
+    <footer class="footer">
+      <div class="container footer__grid">
+        <div>
+          <a class="site-nav__brand" href="index.html">ExMarkets</a>
+          <p class="text-muted">Premium financial journalism for professionals seeking clarity, context and disciplined analysis.</p>
+        </div>
+
+        <div>
+          <h3 class="h3">Company</h3>
+          <ul class="footer__links">
+            <li><a href="about.html">About</a></li>
+            <li><a href="markets.html">Markets</a></li>
+            <li><a href="news.html">News</a></li>
+          </ul>
+        </div>
+
+        <div>
+          <h3 class="h3">Resources</h3>
+          <ul class="footer__links">
+            <li><a href="#">Privacy</a></li>
+            <li><a href="#">Terms</a></li>
+            <li><a href="#newsletter">Subscribe</a></li>
+          </ul>
+        </div>
+
+        <div>
+          <h3 class="h3">Markets</h3>
+          <ul class="footer__links">
+            <li><a href="markets.html">Indices</a></li>
+            <li><a href="news.html">Currencies</a></li>
+            <li><a href="news.html">Commodities</a></li>
+          </ul>
+        </div>
+      </div>
+    </footer>
+
+    <script src="assets/js/main.js" defer></script>
+  </body>
+</html>

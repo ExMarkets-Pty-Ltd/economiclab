@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Contact ExMarkets | Financial News & Market Information</title>
+    <meta
+      name="description"
+      content="Contact ExMarkets for general enquiries, editorial matters, business partnerships, media enquiries and other opportunities."
+    />
+    <meta name="canonical" content="https://example.com/contact.html" />
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="Contact ExMarkets | Financial News & Market Information" />
+    <meta
+      property="og:description"
+      content="Get in touch with ExMarkets for general enquiries, editorial matters, business partnerships and media opportunities."
+    />
+    <meta property="og:site_name" content="ExMarkets" />
+    <link rel="stylesheet" href="assets/css/style.css" />
+  </head>
+  <body>
+    <header class="site-nav" role="banner">
+      <div class="site-nav__inner">
+        <a class="site-nav__brand" href="index.html" aria-label="ExMarkets home">ExMarkets</a>
+
+        <button
+          class="site-nav__toggle btn btn--ghost btn--small"
+          type="button"
+          data-nav-toggle
+          aria-expanded="false"
+          aria-controls="site-navigation"
+          aria-label="Toggle navigation"
+        >
+          ☰
+        </button>
+
+        <ul class="site-nav__links" id="site-navigation" data-nav-menu>
+          <li><a class="site-nav__link" href="index.html">Home</a></li>
+          <li><a class="site-nav__link" href="markets.html">Markets</a></li>
+          <li><a class="site-nav__link" href="news.html">News</a></li>
+          <li><a class="site-nav__link" href="companies.html">Business</a></li>
+          <li><a class="site-nav__link" href="technology.html">Technology</a></li>
+          <li><a class="site-nav__link" href="economy.html">Economy</a></li>
+          <li><a class="site-nav__link" href="companies.html">Companies</a></li>
+          <li><a class="site-nav__link" href="about.html">About</a></li>
+        </ul>
+
+        <div class="site-nav__actions">
+          <button class="btn btn--ghost btn--small theme-toggle" type="button" data-theme-toggle aria-pressed="false" aria-label="Switch to light theme">
+            <span class="theme-toggle__label">Dark theme</span>
+          </button>
+          <button class="btn btn--ghost btn--small" type="button" aria-label="Search">⌕</button>
+          <a class="btn btn--primary btn--small" href="#newsletter">Subscribe</a>
+        </div>
+      </div>
+    </header>
+
+    <main id="content">
+      <section class="container section" aria-labelledby="contact-title">
+        <div class="section__heading">
+          <p class="text-uppercase">Contact</p>
+          <h1 id="contact-title">CONTACT EXMARKETS</h1>
+          <p class="lead">
+            Get in touch with the ExMarkets team.
+          </p>
+          <p>
+            Visitors can contact ExMarkets for general enquiries, editorial matters, business opportunities and partnerships.
+          </p>
+        </div>
+      </section>
+
+      <section class="container section" aria-labelledby="contact-categories-title">
+        <div class="section__heading">
+          <p class="text-uppercase">Contact Categories</p>
+          <h2 id="contact-categories-title">How to get in touch</h2>
+        </div>
+
+        <div class="market-news-grid">
+          <article class="card">
+            <p class="card__eyebrow">General Enquiries</p>
+            <h3 class="card__title">For general questions about ExMarkets and its services.</h3>
+            <p class="card__meta">Email placeholder: contact@yourdomain.com</p>
+            <p class="text-muted"><!-- Replace this placeholder address before publication. --></p>
+          </article>
+
+          <article class="card">
+            <p class="card__eyebrow">Editorial</p>
+            <h3 class="card__title">For news tips, corrections, story suggestions and editorial enquiries.</h3>
+            <p class="card__meta">Email placeholder: contact@yourdomain.com</p>
+            <p class="text-muted"><!-- Replace this placeholder address before publication. --></p>
+          </article>
+
+          <article class="card">
+            <p class="card__eyebrow">Business &amp; Partnerships</p>
+            <h3 class="card__title">For business enquiries, partnerships, advertising and commercial opportunities.</h3>
+            <p class="card__meta">Email placeholder: contact@yourdomain.com</p>
+            <p class="text-muted"><!-- Replace this placeholder address before publication. --></p>
+          </article>
+
+          <article class="card">
+            <p class="card__eyebrow">Media</p>
+            <h3 class="card__title">For journalists, media enquiries and interview requests.</h3>
+            <p class="card__meta">Email placeholder: contact@yourdomain.com</p>
+            <p class="text-muted"><!-- Replace this placeholder address before publication. --></p>
+          </article>
+        </div>
+      </section>
+
+      <section class="container section" aria-labelledby="contact-form-title">
+        <div class="section__heading">
+          <p class="text-uppercase">Contact Form</p>
+          <h2 id="contact-form-title">Send a message</h2>
+          <p class="text-muted">This form is for demonstration purposes only and does not submit data anywhere yet.</p>
+        </div>
+
+        <div class="card card--elevated">
+          <form class="stack" id="contact-form" novalidate>
+            <div class="grid grid--2">
+              <div class="stack">
+                <label for="full-name">Full Name</label>
+                <input id="full-name" name="fullName" type="text" autocomplete="name" required />
+              </div>
+              <div class="stack">
+                <label for="email">Email Address</label>
+                <input id="email" name="email" type="email" autocomplete="email" required />
+              </div>
+            </div>
+
+            <div class="stack">
+              <label for="subject">Subject</label>
+              <input id="subject" name="subject" type="text" required />
+            </div>
+
+            <div class="stack">
+              <label for="enquiry-type">Enquiry Type</label>
+              <select id="enquiry-type" name="enquiryType" required>
+                <option value="">Select an option</option>
+                <option value="General Enquiry">General Enquiry</option>
+                <option value="Editorial">Editorial</option>
+                <option value="Business & Partnership">Business &amp; Partnership</option>
+                <option value="Media">Media</option>
+              </select>
+            </div>
+
+            <div class="stack">
+              <label for="message">Message</label>
+              <textarea id="message" name="message" rows="6" required></textarea>
+            </div>
+
+            <div id="form-status" class="text-muted" role="status" aria-live="polite"></div>
+
+            <button class="btn btn--primary" type="submit">Send Message</button>
+          </form>
+        </div>
+      </section>
+
+      <section class="container section" aria-labelledby="company-info-title">
+        <div class="section__heading">
+          <p class="text-uppercase">Founder &amp; Company Information</p>
+          <h2 id="company-info-title">ExMarkets Group</h2>
+        </div>
+
+        <div class="card card--elevated">
+          <p class="card__eyebrow">Founder &amp; Owner</p>
+          <h3 class="card__title">Lulama Lupin Makondo</h3>
+          <p class="card__meta">Also known as Lupin Khuvutlu</p>
+          <p>
+            ExMarkets Group is presented here as a broader digital financial media and information platform. More details about the company’s purpose and vision can be found in the <a class="link" href="about.html">About ExMarkets</a> page.
+          </p>
+        </div>
+      </section>
+
+      <section class="container section" aria-labelledby="business-enquiries-title">
+        <div class="card card--feature">
+          <p class="card__eyebrow">Business Enquiries</p>
+          <h2 id="business-enquiries-title">Businesses and potential partners can contact ExMarkets regarding partnerships, advertising, sponsorship, financial media opportunities, technology partnerships and content collaborations.</h2>
+          <p class="lead">
+            ExMarkets welcomes professional conversations around commercial collaboration and editorial partnerships.
+          </p>
+        </div>
+      </section>
+
+      <section class="container section" id="newsletter" aria-labelledby="newsletter-title">
+        <div class="newsletter card card--elevated">
+          <p class="card__eyebrow">Newsletter</p>
+          <h2 id="newsletter-title">Stay Ahead of the Markets</h2>
+          <p class="lead">
+            Receive curated market briefings, economic analysis and rapid commentary delivered in a concise format.
+          </p>
+          <form class="newsletter__form">
+            <label class="sr-only" for="newsletter-email">Email address</label>
+            <input id="newsletter-email" name="newsletterEmail" type="email" placeholder="Enter your email address" autocomplete="email" />
+            <button class="btn btn--primary" type="submit">Subscribe</button>
+          </form>
+          <p class="text-muted">No spam. Just timely market intelligence and practical context.</p>
+        </div>
+      </section>
+    </main>
+
+    <footer class="footer">
+      <div class="container footer__grid">
+        <div>
+          <a class="site-nav__brand" href="index.html">ExMarkets</a>
+          <p class="text-muted">Premium financial journalism for professionals seeking clarity, context and disciplined analysis.</p>
+        </div>
+
+        <div>
+          <h3 class="h3">Company</h3>
+          <ul class="footer__links">
+            <li><a href="about.html">About</a></li>
+            <li><a href="markets.html">Markets</a></li>
+            <li><a href="news.html">News</a></li>
+          </ul>
+        </div>
+
+        <div>
+          <h3 class="h3">Resources</h3>
+          <ul class="footer__links">
+            <li><a href="#">Privacy</a></li>
+            <li><a href="#">Terms</a></li>
+            <li><a href="#newsletter">Subscribe</a></li>
+          </ul>
+        </div>
+
+        <div>
+          <h3 class="h3">Markets</h3>
+          <ul class="footer__links">
+            <li><a href="markets.html">Indices</a></li>
+            <li><a href="news.html">Currencies</a></li>
+            <li><a href="news.html">Commodities</a></li>
+          </ul>
+        </div>
+      </div>
+    </footer>
+
+    <script src="assets/js/main.js" defer></script>
+    <script>
+      document.addEventListener('DOMContentLoaded', function () {
+        const form = document.getElementById('contact-form');
+        const status = document.getElementById('form-status');
+
+        if (!form || !status) return;
+
+        form.addEventListener('submit', function (event) {
+          event.preventDefault();
+
+          const formData = new FormData(form);
+          const values = {
+            fullName: String(formData.get('fullName') || '').trim(),
+            email: String(formData.get('email') || '').trim(),
+            subject: String(formData.get('subject') || '').trim(),
+            enquiryType: String(formData.get('enquiryType') || '').trim(),
+            message: String(formData.get('message') || '').trim()
+          };
+
+          const errors = [];
+
+          if (!values.fullName) errors.push('Please enter your full name.');
+          if (!values.email) errors.push('Please enter your email address.');
+          else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(values.email)) errors.push('Please enter a valid email address.');
+          if (!values.subject) errors.push('Please enter a subject.');
+          if (!values.enquiryType) errors.push('Please select an enquiry type.');
+          if (!values.message || values.message.length < 20) errors.push('Please enter a message of at least 20 characters.');
+
+          if (errors.length) {
+            status.textContent = errors.join(' ');
+            status.style.color = 'var(--color-danger)';
+            return;
+          }
+
+          status.textContent = 'Your message has been validated. Form submission will be connected to the ExMarkets contact service before launch.';
+          status.style.color = 'var(--color-accent)';
+          form.reset();
+        });
+      });
+    </script>
+  </body>
+</html>

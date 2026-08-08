@@ -1,0 +1,294 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>ExMarkets | Premium Financial News and Market Analysis</title>
+    <meta
+      name="description"
+      content="ExMarkets delivers authoritative financial journalism, market analysis and economic insights for modern investors."
+    />
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="ExMarkets | Premium Financial News and Market Analysis" />
+    <meta
+      property="og:description"
+      content="Follow the markets with premium coverage, data-led analysis and concise economic reporting."
+    />
+    <meta property="og:site_name" content="ExMarkets" />
+    <link rel="stylesheet" href="assets/css/style.css" />
+  </head>
+  <body>
+    <header class="site-nav" role="banner">
+      <div class="site-nav__inner">
+        <a class="site-nav__brand" href="index.html" aria-label="ExMarkets home">ExMarkets</a>
+
+        <button
+          class="site-nav__toggle btn btn--ghost btn--small"
+          type="button"
+          data-nav-toggle
+          aria-expanded="false"
+          aria-controls="site-navigation"
+          aria-label="Toggle navigation"
+        >
+          ☰
+        </button>
+
+        <ul class="site-nav__links" id="site-navigation" data-nav-menu>
+          <li><a class="site-nav__link" href="#news">News</a></li>
+          <li><a class="site-nav__link" href="#markets">Markets</a></li>
+          <li><a class="site-nav__link" href="#economy">Economy</a></li>
+          <li><a class="site-nav__link" href="#companies">Companies</a></li>
+          <li><a class="site-nav__link" href="#analysis">Analysis</a></li>
+          <li><a class="site-nav__link" href="#crypto">Crypto</a></li>
+        </ul>
+
+        <div class="site-nav__actions">
+          <button class="btn btn--ghost btn--small" type="button" aria-label="Search">⌕</button>
+          <a class="btn btn--primary btn--small" href="#newsletter">Subscribe</a>
+        </div>
+      </div>
+    </header>
+
+    <div class="ticker" aria-label="Breaking news">
+      <div class="container">
+        <p>
+          <span class="ticker__label">Breaking</span>
+          <a href="#news">Central banks signal cautious easing as inflation cools across major economies.</a>
+        </p>
+      </div>
+    </div>
+
+    <main id="content">
+      <section class="hero container" aria-labelledby="hero-title">
+        <div class="hero__content">
+          <p class="text-uppercase">Featured Story</p>
+          <h1 id="hero-title">Global Markets Navigate a New Era of Economic Uncertainty</h1>
+          <p class="lead">
+            Investors assess shifting interest rates, economic growth and corporate earnings as markets respond to a rapidly changing global environment.
+          </p>
+          <div class="cluster">
+            <a class="btn btn--primary" href="#news">Read Story</a>
+            <span class="article__meta">Published 08:42 ET · 08 Aug 2026</span>
+          </div>
+        </div>
+
+        <div class="hero__media" role="img" aria-label="Placeholder illustration for featured market coverage"></div>
+      </section>
+
+      <section class="container section" id="markets" aria-labelledby="market-snapshot-title">
+        <div class="section__heading">
+          <p class="text-uppercase">Market Snapshot</p>
+          <h2 id="market-snapshot-title">Demonstration market indicators</h2>
+          <p class="text-muted">
+            These values are illustrative placeholders for the homepage layout and are not live market data.
+          </p>
+        </div>
+
+        <div class="market-grid">
+          <article class="market-panel">
+            <div class="market-panel__header">
+              <span class="market-panel__label">S&amp;P 500</span>
+              <span class="market-panel__delta market-panel__delta--positive">+0.42%</span>
+            </div>
+            <div class="market-panel__value">5,632.18</div>
+          </article>
+
+          <article class="market-panel">
+            <div class="market-panel__header">
+              <span class="market-panel__label">Nasdaq</span>
+              <span class="market-panel__delta market-panel__delta--positive">+0.81%</span>
+            </div>
+            <div class="market-panel__value">18,274.90</div>
+          </article>
+
+          <article class="market-panel">
+            <div class="market-panel__header">
+              <span class="market-panel__label">Dow Jones</span>
+              <span class="market-panel__delta market-panel__delta--negative">-0.11%</span>
+            </div>
+            <div class="market-panel__value">39,928.00</div>
+          </article>
+
+          <article class="market-panel">
+            <div class="market-panel__header">
+              <span class="market-panel__label">Bitcoin</span>
+              <span class="market-panel__delta market-panel__delta--positive">+2.34%</span>
+            </div>
+            <div class="market-panel__value">$68,402</div>
+          </article>
+
+          <article class="market-panel">
+            <div class="market-panel__header">
+              <span class="market-panel__label">EUR/USD</span>
+              <span class="market-panel__delta market-panel__delta--negative">-0.06%</span>
+            </div>
+            <div class="market-panel__value">1.0894</div>
+          </article>
+
+          <article class="market-panel">
+            <div class="market-panel__header">
+              <span class="market-panel__label">Gold</span>
+              <span class="market-panel__delta market-panel__delta--positive">+0.73%</span>
+            </div>
+            <div class="market-panel__value">$2,349</div>
+          </article>
+        </div>
+      </section>
+
+      <section class="container section" id="news" aria-labelledby="latest-news-title">
+        <div class="section__heading">
+          <p class="text-uppercase">Latest News</p>
+          <h2 id="latest-news-title">Reporting the stories shaping global finance</h2>
+        </div>
+
+        <div class="news-grid">
+          <article class="news-card">
+            <div class="news-card__media" role="img" aria-label="Placeholder graphic for market news"></div>
+            <p class="card__eyebrow">Markets</p>
+            <h3 class="news-card__title">Rate-cut expectations lift sentiment across major indices</h3>
+            <p class="news-card__summary">Analysts weigh policy signals against resilient earnings and persistent inflation risks.</p>
+            <p class="article__meta">12 min ago · Markets Desk</p>
+          </article>
+
+          <article class="news-card">
+            <div class="news-card__media" role="img" aria-label="Placeholder graphic for economic policy news"></div>
+            <p class="card__eyebrow">Economy</p>
+            <h3 class="news-card__title">Consumer spending stabilizes as labor market cools gradually</h3>
+            <p class="news-card__summary">New data suggests households remain resilient even as borrowing costs stay elevated.</p>
+            <p class="article__meta">24 min ago · Economics</p>
+          </article>
+
+          <article class="news-card">
+            <div class="news-card__media" role="img" aria-label="Placeholder graphic for company earnings coverage"></div>
+            <p class="card__eyebrow">Companies</p>
+            <h3 class="news-card__title">Technology leaders push capital discipline despite AI demand</h3>
+            <p class="news-card__summary">Executives emphasize efficiency and margin protection as investment remains focused on scalable growth.</p>
+            <p class="article__meta">41 min ago · Corporate</p>
+          </article>
+
+          <article class="news-card">
+            <div class="news-card__media" role="img" aria-label="Placeholder graphic for technology sector coverage"></div>
+            <p class="card__eyebrow">Technology</p>
+            <h3 class="news-card__title">Semiconductor suppliers expand capacity amid data-center buildout</h3>
+            <p class="news-card__summary">The sector remains central to the next wave of AI infrastructure spending and enterprise demand.</p>
+            <p class="article__meta">1 hr ago · Technology</p>
+          </article>
+
+          <article class="news-card">
+            <div class="news-card__media" role="img" aria-label="Placeholder graphic for crypto market coverage"></div>
+            <p class="card__eyebrow">Crypto</p>
+            <h3 class="news-card__title">Institutional demand supports a steadier tone for digital assets</h3>
+            <p class="news-card__summary">Crypto-linked products continue to attract attention as investors search for diversification.</p>
+            <p class="article__meta">1 hr ago · Crypto Desk</p>
+          </article>
+
+          <article class="news-card">
+            <div class="news-card__media" role="img" aria-label="Placeholder graphic for commodities coverage"></div>
+            <p class="card__eyebrow">Commodities</p>
+            <h3 class="news-card__title">Energy markets brace for another volatile shipping season</h3>
+            <p class="news-card__summary">Supply concerns and seasonal demand shifts keep traders alert across oil and gas contracts.</p>
+            <p class="article__meta">2 hrs ago · Commodities</p>
+          </article>
+        </div>
+      </section>
+
+      <section class="container section section--feature" id="analysis" aria-labelledby="analysis-title">
+        <div class="card card--feature">
+          <p class="card__eyebrow">Market Analysis</p>
+          <h2 id="analysis-title">What the next earnings season could reveal about the broader cycle</h2>
+          <p class="lead">
+            A closer look at margin resilience, consumer demand and valuation discipline across the largest U.S. companies.
+          </p>
+          <div class="cluster">
+            <span class="article__meta">By Maya Chen</span>
+            <span class="article__meta">Updated 07:10 ET</span>
+          </div>
+          <a class="btn btn--secondary" href="#newsletter">Read Analysis</a>
+        </div>
+      </section>
+
+      <section class="container section" id="economy" aria-labelledby="business-economy-title">
+        <div class="section__heading">
+          <p class="text-uppercase">Business &amp; Economy</p>
+          <h2 id="business-economy-title">Coverage across the forces moving markets</h2>
+        </div>
+
+        <div class="grid grid--3">
+          <article class="card" id="companies">
+            <p class="card__eyebrow">Global Economy</p>
+            <h3 class="card__title">Central banks navigate a narrow path between growth and inflation</h3>
+            <p class="card__meta">Policy debate intensifies as leaders seek stability without stalling momentum.</p>
+          </article>
+
+          <article class="card" id="technology">
+            <p class="card__eyebrow">Companies</p>
+            <h3 class="card__title">Corporate leaders keep a tighter focus on efficiency and cash flow</h3>
+            <p class="card__meta">Investors reward disciplined execution amid a more selective capital environment.</p>
+          </article>
+
+          <article class="card" id="crypto">
+            <p class="card__eyebrow">Technology</p>
+            <h3 class="card__title">Innovation in infrastructure continues to shape the next technology cycle</h3>
+            <p class="card__meta">Cloud, AI and advanced networking remain central to long-term growth expectations.</p>
+          </article>
+        </div>
+      </section>
+
+      <section class="container section" id="newsletter" aria-labelledby="newsletter-title">
+        <div class="newsletter card card--elevated">
+          <p class="card__eyebrow">Newsletter</p>
+          <h2 id="newsletter-title">Stay Ahead of the Markets</h2>
+          <p class="lead">
+            Receive curated market briefings, economic analysis and rapid commentary delivered in a concise format.
+          </p>
+          <form class="newsletter__form">
+            <label class="sr-only" for="email">Email address</label>
+            <input id="email" name="email" type="email" placeholder="Enter your email address" />
+            <button class="btn btn--primary" type="submit">Subscribe</button>
+          </form>
+          <p class="text-muted">No spam. Just timely market intelligence and practical context.</p>
+        </div>
+      </section>
+    </main>
+
+    <footer class="footer">
+      <div class="container footer__grid">
+        <div>
+          <a class="site-nav__brand" href="index.html">ExMarkets</a>
+          <p class="text-muted">
+            Premium financial journalism for professionals seeking clarity, context and disciplined analysis.
+          </p>
+        </div>
+
+        <div>
+          <h3 class="h3">Navigation</h3>
+          <ul class="footer__links">
+            <li><a href="#news">News</a></li>
+            <li><a href="#markets">Markets</a></li>
+            <li><a href="#analysis">Analysis</a></li>
+          </ul>
+        </div>
+
+        <div>
+          <h3 class="h3">Markets</h3>
+          <ul class="footer__links">
+            <li><a href="#markets">Indices</a></li>
+            <li><a href="#crypto">Crypto</a></li>
+            <li><a href="#economy">Economy</a></li>
+          </ul>
+        </div>
+
+        <div>
+          <h3 class="h3">Company</h3>
+          <ul class="footer__links">
+            <li><a href="#companies">Corporate coverage</a></li>
+            <li><a href="#technology">Technology</a></li>
+            <li><a href="#newsletter">Subscribe</a></li>
+          </ul>
+        </div>
+      </div>
+    </footer>
+
+    <script src="assets/js/main.js" defer></script>
+  </body>
+</html>

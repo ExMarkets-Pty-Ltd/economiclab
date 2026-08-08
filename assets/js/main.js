@@ -12,8 +12,9 @@
   if (navToggle && navMenu) {
     navToggle.addEventListener('click', function () {
       const expanded = this.getAttribute('aria-expanded') === 'true';
-      this.setAttribute('aria-expanded', String(!expanded));
-      navMenu.hidden = expanded;
+      const nextExpanded = !expanded;
+      this.setAttribute('aria-expanded', String(nextExpanded));
+      navMenu.classList.toggle('is-open', nextExpanded);
     });
   }
 

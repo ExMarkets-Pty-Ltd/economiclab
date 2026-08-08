@@ -1,0 +1,298 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>ExMarkets | News</title>
+    <meta
+      name="description"
+      content="Explore ExMarkets news coverage across markets, business, economy, technology and global financial developments."
+    />
+    <meta name="canonical" content="https://example.com/news.html" />
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="ExMarkets | News" />
+    <meta
+      property="og:description"
+      content="A premium newsroom experience for market updates, business reporting and structured analysis."
+    />
+    <meta property="og:site_name" content="ExMarkets" />
+    <link rel="stylesheet" href="assets/css/style.css" />
+  </head>
+  <body>
+    <header class="site-nav" role="banner">
+      <div class="site-nav__inner">
+        <a class="site-nav__brand" href="index.html" aria-label="ExMarkets home">ExMarkets</a>
+
+        <button
+          class="site-nav__toggle btn btn--ghost btn--small"
+          type="button"
+          data-nav-toggle
+          aria-expanded="false"
+          aria-controls="site-navigation"
+          aria-label="Toggle navigation"
+        >
+          ☰
+        </button>
+
+        <ul class="site-nav__links" id="site-navigation" data-nav-menu>
+          <li><a class="site-nav__link" href="index.html">Home</a></li>
+          <li><a class="site-nav__link" href="markets.html">Markets</a></li>
+          <li><a class="site-nav__link" href="news.html" aria-current="page">News</a></li>
+          <li><a class="site-nav__link" href="news.html">Business</a></li>
+          <li><a class="site-nav__link" href="news.html">Technology</a></li>
+          <li><a class="site-nav__link" href="news.html">Economy</a></li>
+          <li><a class="site-nav__link" href="about.html">About</a></li>
+        </ul>
+
+        <div class="site-nav__actions">
+          <button class="btn btn--ghost btn--small theme-toggle" type="button" data-theme-toggle aria-pressed="false" aria-label="Switch to light theme">
+            <span class="theme-toggle__label">Dark theme</span>
+          </button>
+          <button class="btn btn--ghost btn--small" type="button" aria-label="Search">⌕</button>
+          <a class="btn btn--primary btn--small" href="#newsletter">Subscribe</a>
+        </div>
+      </div>
+    </header>
+
+    <main id="content">
+      <section class="container section" aria-labelledby="news-title">
+        <div class="section__heading">
+          <p class="text-uppercase">Latest News</p>
+          <h1 id="news-title">Breaking stories, market updates and analysis from around the world.</h1>
+          <p class="lead">
+            ExMarkets brings together market reporting, economic context and editorial analysis in a single professional newsroom experience.
+          </p>
+        </div>
+      </section>
+
+      <section class="container section section--feature" aria-label="News categories">
+        <nav class="news-categories" aria-label="News categories">
+          <a class="news-category is-active" href="news.html">All</a>
+          <a class="news-category" href="news.html">Markets</a>
+          <a class="news-category" href="news.html">Business</a>
+          <a class="news-category" href="news.html">Economy</a>
+          <a class="news-category" href="news.html">Companies</a>
+          <a class="news-category" href="news.html">Technology</a>
+          <a class="news-category" href="news.html">Crypto</a>
+          <a class="news-category" href="news.html">Commodities</a>
+        </nav>
+      </section>
+
+      <section class="container section" aria-labelledby="featured-story-title">
+        <div class="card card--feature news-feature">
+          <div class="news-feature__media" role="img" aria-label="Placeholder illustration for featured news coverage"></div>
+          <div class="news-feature__content">
+            <p class="card__eyebrow">Markets</p>
+            <h2 id="featured-story-title">Global Markets Navigate a New Era of Economic Uncertainty</h2>
+            <p class="lead">
+              Investors assess shifting interest rates, economic growth and corporate earnings as markets respond to a rapidly changing global environment.
+            </p>
+            <div class="cluster article-meta-row">
+              <span class="article__meta">By ExMarkets Editorial Team</span>
+              <span class="article__meta">08 Aug 2026 · 8 min read</span>
+            </div>
+            <a class="btn btn--primary" href="articles/article-template.html">Read Story</a>
+          </div>
+        </div>
+      </section>
+
+      <section class="container section" aria-labelledby="latest-stories-title">
+        <div class="section__heading">
+          <p class="text-uppercase">Latest Stories</p>
+          <h2 id="latest-stories-title">Demonstration newsroom coverage</h2>
+        </div>
+
+        <div class="news-grid">
+          <article class="news-card">
+            <div class="news-card__media" role="img" aria-label="Placeholder graphic for market news"></div>
+            <p class="card__eyebrow">Markets</p>
+            <h3 class="news-card__title">Rate-cut expectations continue to influence major indices</h3>
+            <p class="news-card__summary">A closer look at sentiment, liquidity and the latest policy signals.</p>
+            <p class="article__meta">By Alex Grant · 12 min ago</p>
+          </article>
+
+          <article class="news-card">
+            <div class="news-card__media" role="img" aria-label="Placeholder graphic for business news"></div>
+            <p class="card__eyebrow">Business</p>
+            <h3 class="news-card__title">Corporate leaders balance expansion plans against tighter capital discipline</h3>
+            <p class="news-card__summary">Management teams emphasize resilience, margin strength and cash flow discipline.</p>
+            <p class="article__meta">By Nina Patel · 26 min ago</p>
+          </article>
+
+          <article class="news-card">
+            <div class="news-card__media" role="img" aria-label="Placeholder graphic for economy news"></div>
+            <p class="card__eyebrow">Economy</p>
+            <h3 class="news-card__title">Employment data points to a moderating but still resilient labor market</h3>
+            <p class="news-card__summary">Economic commentary remains focused on growth durability and policy balance.</p>
+            <p class="article__meta">By Daniel Brooks · 41 min ago</p>
+          </article>
+
+          <article class="news-card">
+            <div class="news-card__media" role="img" aria-label="Placeholder graphic for technology news"></div>
+            <p class="card__eyebrow">Technology</p>
+            <h3 class="news-card__title">Semiconductor manufacturers expand capacity for next-generation infrastructure</h3>
+            <p class="news-card__summary">Investors continue to watch spending trends in cloud, AI and enterprise hardware.</p>
+            <p class="article__meta">By Rina Collins · 1 hr ago</p>
+          </article>
+
+          <article class="news-card">
+            <div class="news-card__media" role="img" aria-label="Placeholder graphic for company news"></div>
+            <p class="card__eyebrow">Companies</p>
+            <h3 class="news-card__title">Major firms refine operating models to support sustainable growth</h3>
+            <p class="news-card__summary">Cost controls and strategic capital deployment remain central to earnings narratives.</p>
+            <p class="article__meta">By Soren Kim · 1 hr ago</p>
+          </article>
+
+          <article class="news-card">
+            <div class="news-card__media" role="img" aria-label="Placeholder graphic for crypto news"></div>
+            <p class="card__eyebrow">Crypto</p>
+            <h3 class="news-card__title">Digital asset demand remains selective as institutions assess risk</h3>
+            <p class="news-card__summary">The market tone is more structured, with capital staying active but disciplined.</p>
+            <p class="article__meta">By Lena Ortiz · 2 hrs ago</p>
+          </article>
+
+          <article class="news-card">
+            <div class="news-card__media" role="img" aria-label="Placeholder graphic for commodities news"></div>
+            <p class="card__eyebrow">Commodities</p>
+            <h3 class="news-card__title">Energy markets remain sensitive to inventory and shipping conditions</h3>
+            <p class="news-card__summary">Seasonal demand and transport disruptions continue to shape trading patterns.</p>
+            <p class="article__meta">By Marcus Bell · 2 hrs ago</p>
+          </article>
+
+          <article class="news-card">
+            <div class="news-card__media" role="img" aria-label="Placeholder graphic for market outlook"></div>
+            <p class="card__eyebrow">Markets</p>
+            <h3 class="news-card__title">Regional equity markets adjust as global growth expectations evolve</h3>
+            <p class="news-card__summary">Investors continue to balance optimism with caution across key global benchmarks.</p>
+            <p class="article__meta">By Katie Moore · 3 hrs ago</p>
+          </article>
+
+          <article class="news-card">
+            <div class="news-card__media" role="img" aria-label="Placeholder graphic for economic policy"></div>
+            <p class="card__eyebrow">Economy</p>
+            <h3 class="news-card__title">Policy communication remains a key driver of market confidence</h3>
+            <p class="news-card__summary">The tone of central-bank messaging continues to influence broad investor sentiment.</p>
+            <p class="article__meta">By Joel Rivera · 4 hrs ago</p>
+          </article>
+        </div>
+      </section>
+
+      <section class="container section" aria-labelledby="market-news-title">
+        <div class="section__heading">
+          <p class="text-uppercase">Market News</p>
+          <h2 id="market-news-title">Quick updates across the main asset classes</h2>
+        </div>
+
+        <div class="market-news-grid">
+          <article class="card">
+            <p class="card__eyebrow">Stocks</p>
+            <h3 class="card__title">Equity benchmarks hold firm as earnings season approaches</h3>
+            <p class="card__meta">Demo market commentary for the latest trading environment.</p>
+          </article>
+
+          <article class="card">
+            <p class="card__eyebrow">Currencies</p>
+            <h3 class="card__title">FX trading remains focused on policy divergence and rate outlook</h3>
+            <p class="card__meta">A concise update on cross-currency movement and macro positioning.</p>
+          </article>
+
+          <article class="card">
+            <p class="card__eyebrow">Commodities</p>
+            <h3 class="card__title">Energy and metals markets stay alert to inventory shifts</h3>
+            <p class="card__meta">Supply questions continue to influence short-term pricing trends.</p>
+          </article>
+
+          <article class="card">
+            <p class="card__eyebrow">Crypto</p>
+            <h3 class="card__title">Digital assets continue to attract selective institutional attention</h3>
+            <p class="card__meta">The latest market tone remains measured and data-led.</p>
+          </article>
+        </div>
+      </section>
+
+      <section class="container section" aria-labelledby="analysis-title">
+        <div class="section__heading">
+          <p class="text-uppercase">ExMarkets Analysis</p>
+          <h2 id="analysis-title">Perspective and context for the week ahead</h2>
+        </div>
+
+        <div class="analysis-grid">
+          <article class="card card--elevated">
+            <p class="card__eyebrow">Analysis</p>
+            <h3 class="card__title">Why disciplined positioning may matter more than headline momentum</h3>
+            <p class="card__meta">By Maya Chen · 08 Aug 2026</p>
+            <a class="btn btn--secondary btn--small" href="articles/article-template.html">Read Analysis</a>
+          </article>
+
+          <article class="card card--elevated">
+            <p class="card__eyebrow">Analysis</p>
+            <h3 class="card__title">How inflation and rate expectations continue to shape market behavior</h3>
+            <p class="card__meta">By Daniel Brooks · 08 Aug 2026</p>
+            <a class="btn btn--secondary btn--small" href="articles/article-template.html">Read Analysis</a>
+          </article>
+
+          <article class="card card--elevated">
+            <p class="card__eyebrow">Analysis</p>
+            <h3 class="card__title">What changing earnings sentiment could reveal about the next phase</h3>
+            <p class="card__meta">By Nina Patel · 08 Aug 2026</p>
+            <a class="btn btn--secondary btn--small" href="articles/article-template.html">Read Analysis</a>
+          </article>
+        </div>
+      </section>
+
+      <section class="container section" id="newsletter" aria-labelledby="newsletter-title">
+        <div class="newsletter card card--elevated">
+          <p class="card__eyebrow">Newsletter</p>
+          <h2 id="newsletter-title">Stay Ahead of the Markets</h2>
+          <p class="lead">
+            Receive curated market briefings, economic analysis and rapid commentary delivered in a concise format.
+          </p>
+          <form class="newsletter__form">
+            <label class="sr-only" for="email">Email address</label>
+            <input id="email" name="email" type="email" placeholder="Enter your email address" />
+            <button class="btn btn--primary" type="submit">Subscribe</button>
+          </form>
+          <p class="text-muted">No spam. Just timely market intelligence and practical context.</p>
+        </div>
+      </section>
+    </main>
+
+    <footer class="footer">
+      <div class="container footer__grid">
+        <div>
+          <a class="site-nav__brand" href="index.html">ExMarkets</a>
+          <p class="text-muted">Premium financial journalism for professionals seeking clarity, context and disciplined analysis.</p>
+        </div>
+
+        <div>
+          <h3 class="h3">Company</h3>
+          <ul class="footer__links">
+            <li><a href="about.html">About</a></li>
+            <li><a href="markets.html">Markets</a></li>
+            <li><a href="news.html">News</a></li>
+          </ul>
+        </div>
+
+        <div>
+          <h3 class="h3">Resources</h3>
+          <ul class="footer__links">
+            <li><a href="#">Privacy</a></li>
+            <li><a href="#">Terms</a></li>
+            <li><a href="#newsletter">Subscribe</a></li>
+          </ul>
+        </div>
+
+        <div>
+          <h3 class="h3">Markets</h3>
+          <ul class="footer__links">
+            <li><a href="markets.html">Indices</a></li>
+            <li><a href="news.html">Currencies</a></li>
+            <li><a href="news.html">Commodities</a></li>
+          </ul>
+        </div>
+      </div>
+    </footer>
+
+    <script src="assets/js/main.js" defer></script>
+  </body>
+</html>

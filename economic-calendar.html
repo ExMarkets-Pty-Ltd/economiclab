@@ -45,7 +45,14 @@
           <li><a class="site-nav__link" href="news.html">News</a></li>
           <li><a class="site-nav__link" href="companies.html">Business</a></li>
           <li><a class="site-nav__link" href="technology.html">Technology</a></li>
-          <li><a class="site-nav__link" href="tools.html" aria-current="page">Tools</a></li>
+          <li class="has-submenu">
+            <a class="site-nav__link" href="tools.html" aria-current="page">Tools ▾</a>
+            <ul class="submenu">
+              <li><a class="site-nav__link" href="economic-calendar.html">Economic calendar</a></li>
+              <li><a class="site-nav__link" href="tradingview.html">TradingView charts</a></li>
+              <li><a class="site-nav__link" href="brokers.html">Broker comparison</a></li>
+            </ul>
+          </li>
           <li><a class="site-nav__link" href="economy.html">Economy</a></li>
           <li><a class="site-nav__link" href="companies.html">Companies</a></li>
           <li><a class="site-nav__link" href="about.html">About</a></li>
@@ -85,6 +92,13 @@
             </div>
           </div>
         </div>
+          <div class="container" style="margin-top:var(--space-6)">
+            <h3 class="h3">Economic calendar (preview)</h3>
+            <p class="text-muted">Use the full calendar for regional filters and event impact. The embedded calendar links to external providers.</p>
+            <div style="width:100%; height:700px; border:1px solid var(--color-border);">
+              <iframe src="https://tradingeconomics.com/calendar" style="width:100%; height:100%; border:0;" title="Economic calendar"></iframe>
+            </div>
+          </div>
       </section>
     </main>
 

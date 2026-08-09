@@ -45,7 +45,14 @@
           <li><a class="site-nav__link" href="news.html">News</a></li>
           <li><a class="site-nav__link" href="companies.html">Business</a></li>
           <li><a class="site-nav__link" href="technology.html">Technology</a></li>
-          <li><a class="site-nav__link" href="tools.html" aria-current="page">Tools</a></li>
+          <li class="has-submenu">
+            <a class="site-nav__link" href="tools.html" aria-current="page">Tools ▾</a>
+            <ul class="submenu">
+              <li><a class="site-nav__link" href="economic-calendar.html">Economic calendar</a></li>
+              <li><a class="site-nav__link" href="tradingview.html">TradingView charts</a></li>
+              <li><a class="site-nav__link" href="brokers.html">Broker comparison</a></li>
+            </ul>
+          </li>
           <li><a class="site-nav__link" href="economy.html">Economy</a></li>
           <li><a class="site-nav__link" href="companies.html">Companies</a></li>
           <li><a class="site-nav__link" href="about.html">About</a></li>
@@ -84,6 +91,31 @@
               <a class="btn btn--primary" href="tools.html">Back to tools</a>
             </div>
           </div>
+        </div>
+        <div class="container" style="margin-top:var(--space-6)">
+          <h3 class="h3">Interactive chart</h3>
+          <div id="tradingview_widget" style="width:100%; height:600px;">
+            <!-- TradingView widget will load here -->
+          </div>
+          <script src="https://s3.tradingview.com/tv.js"></script>
+          <script>
+            (function() {
+              var theme = document.documentElement.getAttribute('data-theme') === 'light' ? 'Light' : 'Dark';
+              if (window.TradingView) {
+                new TradingView.widget({
+                  "width": "100%",
+                  "height": 600,
+                  "symbol": "NASDAQ:QQQ",
+                  "interval": "D",
+                  "timezone": "Etc/UTC",
+                  "theme": theme.toLowerCase(),
+                  "style": "1",
+                  "locale": "en",
+                  "container_id": "tradingview_widget"
+                });
+              }
+            })();
+          </script>
         </div>
       </section>
     </main>

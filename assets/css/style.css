@@ -408,13 +408,16 @@ p {
   width: auto;
 }
 
-.site-nav__brand img.logo-light,
+.site-nav__brand img.logo-light {
+  display: block;
+}
+
 .site-nav__brand img.logo-dark {
   display: none;
 }
 
-html[data-theme="light"] .site-nav__brand img.logo-light {
-  display: block;
+html[data-theme="dark"] .site-nav__brand img.logo-light {
+  display: none;
 }
 
 html[data-theme="dark"] .site-nav__brand img.logo-dark {

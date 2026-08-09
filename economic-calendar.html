@@ -94,9 +94,27 @@
         </div>
           <div class="container" style="margin-top:var(--space-6)">
             <h3 class="h3">Economic calendar (preview)</h3>
-            <p class="text-muted">Use the full calendar for regional filters and event impact. The embedded calendar links to external providers.</p>
+            <p class="text-muted">Interactive economic calendar powered by TradingView — use the filters inside the widget to adjust region and impact.</p>
             <div style="width:100%; height:700px; border:1px solid var(--color-border);">
-              <iframe src="https://tradingeconomics.com/calendar" style="width:100%; height:100%; border:0;" title="Economic calendar"></iframe>
+              <div id="tv-calendar-container" style="width:100%; height:100%;"></div>
+              <script>
+                (function(){
+                  var theme = document.documentElement.getAttribute('data-theme') === 'light' ? 'light' : 'dark';
+                  var cfg = {
+                    "width": "100%",
+                    "height": 700,
+                    "locale": "en",
+                    "isTransparent": false,
+                    "colorTheme": theme,
+                    "importanceFilter": "-1,0,1"
+                  };
+                  var s = document.createElement('script');
+                  s.src = 'https://s3.tradingview.com/external-embedding/embed-widget-events.js';
+                  s.async = true;
+                  s.innerHTML = JSON.stringify(cfg);
+                  document.getElementById('tv-calendar-container').appendChild(s);
+                })();
+              </script>
             </div>
           </div>
       </section>

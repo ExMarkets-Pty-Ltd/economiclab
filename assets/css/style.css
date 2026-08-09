@@ -392,11 +392,33 @@ p {
 }
 
 .site-nav__brand {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.75rem;
   font-family: var(--font-display);
   font-size: 1.1rem;
   font-weight: var(--weight-bold);
   letter-spacing: 0.04em;
   text-transform: uppercase;
+}
+
+.site-nav__brand img.logo {
+  display: block;
+  max-height: 2rem;
+  width: auto;
+}
+
+.site-nav__brand img.logo-light,
+.site-nav__brand img.logo-dark {
+  display: none;
+}
+
+html[data-theme="light"] .site-nav__brand img.logo-light {
+  display: block;
+}
+
+html[data-theme="dark"] .site-nav__brand img.logo-dark {
+  display: block;
 }
 
 .site-nav__links {

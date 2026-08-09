@@ -168,8 +168,8 @@ button {
 .container {
   width: 100%;
   max-width: none;
-  padding-left: 25px;
-  padding-right: 25px;
+  padding-left: 20px;
+  padding-right: 20px;
   box-sizing: border-box;
   margin-inline: auto;
 }
@@ -393,8 +393,8 @@ p {
   min-height: 4.25rem;
   width: 100%;
   max-width: none;
-  padding-left: 25px;
-  padding-right: 25px;
+  padding-left: 20px;
+  padding-right: 20px;
   box-sizing: border-box;
   margin-inline: auto;
 }

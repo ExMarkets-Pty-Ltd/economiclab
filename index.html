@@ -101,83 +101,23 @@
         <div class="section__heading">
           <p class="text-uppercase">Market Data</p>
           <h2 id="demo-market-data-title">Market snapshot</h2>
-          <p class="text-muted">Live market prices and daily movements for selected global financial instruments (powered by TradingView).</p>
+          <p class="text-muted">Latest available market prices and daily movements for selected global financial instruments.</p>
         </div>
 
         <div class="market-grid" id="live-market-grid">
-          <!-- Market cards will be injected here -->
-          <article class="market-panel" data-symbol="OANDA:EURUSD" data-title="EUR/USD"></article>
-          <article class="market-panel" data-symbol="OANDA:USDJPY" data-title="USD/JPY"></article>
-          <article class="market-panel" data-symbol="FX_IDC:USDZAR" data-title="USD/ZAR"></article>
-          <article class="market-panel" data-symbol="OANDA:XAUUSD" data-title="Gold (XAU/USD)"></article>
-          <article class="market-panel" data-symbol="NYMEX:CL1!" data-title="WTI Crude (NYMEX CL)"></article>
-          <article class="market-panel" data-symbol="INDEX:NDX" data-title="NASDAQ 100"></article>
-          <article class="market-panel" data-symbol="COINBASE:BTCUSD" data-title="Bitcoin (BTC/USD)"></article>
+          <!-- ExMarkets market cards (populated by assets/js/market-data.js) -->
+          <article class="market-panel" data-id="EURUSD"></article>
+          <article class="market-panel" data-id="USDJPY"></article>
+          <article class="market-panel" data-id="USDZAR"></article>
+          <article class="market-panel" data-id="XAUUSD"></article>
+          <article class="market-panel" data-id="OIL"></article>
+          <article class="market-panel" data-id="NDX"></article>
+          <article class="market-panel" data-id="BTCUSD"></article>
         </div>
 
-        <script>
-          (function(){
-            var theme = document.documentElement.getAttribute('data-theme') === 'light' ? 'light' : 'dark';
-            var panels = document.querySelectorAll('#live-market-grid .market-panel');
-            panels.forEach(function(panel){
-              var symbol = panel.getAttribute('data-symbol');
-              var title = panel.getAttribute('data-title');
+        <p class="text-muted" id="market-disclosure">Market data provided via ExMarkets. Prices may be delayed depending on the data source and licensing.</p>
 
-              // Build heading area
-              var header = document.createElement('div');
-              header.className = 'market-panel__header';
-              var label = document.createElement('span');
-              label.className = 'market-panel__label';
-              label.textContent = title;
-              header.appendChild(label);
-              panel.appendChild(header);
-
-              // Create container for TradingView widget
-              var widgetHolder = document.createElement('div');
-              widgetHolder.style.width = '100%';
-              widgetHolder.style.minHeight = '54px';
-              panel.appendChild(widgetHolder);
-
-              // Loading state
-              var loading = document.createElement('div');
-              loading.className = 'market-panel__meta';
-              loading.textContent = 'Loading market data...';
-              panel.appendChild(loading);
-
-              // Inject TradingView market overview widget for this single symbol
-              var s = document.createElement('script');
-              s.src = 'https://s3.tradingview.com/external-embedding/embed-widget-market-overview.js';
-              s.async = true;
-              var cfg = {
-                "colorTheme": theme,
-                "dateRange": "12M",
-                "showChart": false,
-                "locale": "en",
-                "width": "100%",
-                "height": "80",
-                "largeChartUrl": "",
-                "isTransparent": true,
-                "plots": [],
-                "charts": [],
-                "symbolsGroups": [
-                  {
-                    "name": title,
-                    "symbols": [
-                      {"name": symbol, "displayName": title}
-                    ]
-                  }
-                ]
-              };
-              s.innerHTML = JSON.stringify(cfg);
-              widgetHolder.appendChild(s);
-
-              // When widget loads it will replace the holder; remove loading after brief delay
-              setTimeout(function(){
-                if (loading && loading.parentNode) loading.parentNode.removeChild(loading);
-              }, 2000);
-            });
-          })();
-        </script>
+        <script src="assets/js/market-data.js" defer></script>
       </section>
 
       <section class="container section" id="latest-news" aria-labelledby="latest-news-title">

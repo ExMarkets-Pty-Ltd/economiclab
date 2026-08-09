@@ -166,7 +166,11 @@ button {
 
 /* Utility layout */
 .container {
-  width: min(100% - 2rem, var(--container-width));
+  width: 100%;
+  max-width: none;
+  padding-left: 25px;
+  padding-right: 25px;
+  box-sizing: border-box;
   margin-inline: auto;
 }
 
@@ -387,7 +391,11 @@ p {
   justify-content: space-between;
   gap: var(--space-4);
   min-height: 4.25rem;
-  width: min(100% - 2rem, var(--container-width));
+  width: 100%;
+  max-width: none;
+  padding-left: 25px;
+  padding-right: 25px;
+  box-sizing: border-box;
   margin-inline: auto;
 }
 
@@ -1171,7 +1179,10 @@ html[data-theme="dark"] .site-nav__brand img.logo-dark {
   .container,
   .container--narrow,
   .site-nav__inner {
-    width: min(100% - 1.25rem, var(--container-width));
+    width: 100%;
+    max-width: none;
+    padding-left: 10px;
+    padding-right: 10px;
   }
 
   .card,

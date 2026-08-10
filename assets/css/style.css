@@ -5,24 +5,24 @@
 
 :root {
   /* Brand palette */
-  --color-background: #d3caca;
-  --color-surface: #222222;
-  --color-surface-2: #222222;
-  --color-surface-3: #161616;
-  --color-text: #d3d3d3;
-  --color-text-muted: #fafafa;
-  --color-text-subtle: #046d9e;
-  --color-border: rgba(255, 255, 255, 0.12);
-  --color-primary: #3b82f6;
-  --color-primary-strong: #2563eb;
-  --color-accent: #0381a0;
-  --color-success: #0095c2;
+  --color-background: #111111;
+  --color-surface: #33333;
+  --color-surface-2: #333333;
+  --color-surface-3: #111111;
+  --color-text: rgb(219, 216, 216);
+  --color-text-muted: #ffffff;
+  --color-text-subtle: #00c5b5;
+  --color-border: rgba(0, 199, 182, 0.12);
+  --color-primary: #1a1a1a;
+  --color-primary-strong: #00a5ce;
+  --color-accent: #00c5b5;
+  --color-success: #393a3a;
   --color-warning: #f5b84b;
   --color-danger: #ef6b73;
   --color-shadow: rgba(10, 10, 10, 0.32);
   --color-nav-background: rgba(19, 19, 19, 0.92);
-  --color-ticker-background: rgba(17, 17, 17, 0.04);
-  --card-background: linear-gradient(180deg, rgba(15, 15, 15, 0.035), rgba(255,255,255,0.018));
+  --color-ticker-background: rgba(15, 15, 15, 0.911);
+  --card-background: linear-gradient(180deg, rgba(22, 22, 22, 0.842), rgb(14, 14, 14));
 
   /* Typography */
   --font-sans: "Inter", "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;

@@ -1128,6 +1128,10 @@ html[data-theme="dark"] .site-nav__brand img.logo-dark {
     grid-template-columns: 1fr;
   }
 
+  .site-nav__brand img.logo {
+    max-height: 4.275rem;
+  }
+
   .site-nav__inner {
     flex-wrap: wrap;
     padding: var(--space-3) 0;

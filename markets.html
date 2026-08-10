@@ -82,89 +82,23 @@
       <section class="container section" aria-labelledby="overview-title">
         <div class="section__heading">
           <p class="text-uppercase">Market Overview</p>
-          <h2 id="overview-title">Demo market snapshot</h2>
-          <p class="text-muted">Market values below are demonstration data only and are not live quotes.</p>
+          <h2 id="overview-title">Live market snapshot</h2>
+          <p class="text-muted">Market values below are pulled from ExMarkets live market data via a secure proxy.</p>
         </div>
 
-        <div class="market-overview__grid">
-          <article class="market-card">
-            <div class="market-card__top">
-              <span class="market-card__name">S&amp;P 500</span>
-              <span class="market-card__chip market-card__chip--positive">▲ +0.42%</span>
-            </div>
-            <p class="market-card__symbol">SPX</p>
-            <p class="market-card__price">5,632.18</p>
-            <p class="market-card__meta">Demo price</p>
-            <div class="market-card__trend" aria-hidden="true">
-              <span></span><span></span><span></span>
-            </div>
-          </article>
-
-          <article class="market-card">
-            <div class="market-card__top">
-              <span class="market-card__name">Nasdaq Composite</span>
-              <span class="market-card__chip market-card__chip--positive">▲ +0.81%</span>
-            </div>
-            <p class="market-card__symbol">IXIC</p>
-            <p class="market-card__price">18,274.90</p>
-            <p class="market-card__meta">Demo price</p>
-            <div class="market-card__trend" aria-hidden="true">
-              <span></span><span></span><span></span>
-            </div>
-          </article>
-
-          <article class="market-card">
-            <div class="market-card__top">
-              <span class="market-card__name">Dow Jones</span>
-              <span class="market-card__chip market-card__chip--negative">▼ -0.11%</span>
-            </div>
-            <p class="market-card__symbol">DJIA</p>
-            <p class="market-card__price">39,928.00</p>
-            <p class="market-card__meta">Demo price</p>
-            <div class="market-card__trend market-card__trend--negative" aria-hidden="true">
-              <span></span><span></span><span></span>
-            </div>
-          </article>
-
-          <article class="market-card">
-            <div class="market-card__top">
-              <span class="market-card__name">Bitcoin</span>
-              <span class="market-card__chip market-card__chip--positive">▲ +2.34%</span>
-            </div>
-            <p class="market-card__symbol">BTC</p>
-            <p class="market-card__price">$68,402</p>
-            <p class="market-card__meta">Demo price</p>
-            <div class="market-card__trend" aria-hidden="true">
-              <span></span><span></span><span></span>
-            </div>
-          </article>
-
-          <article class="market-card">
-            <div class="market-card__top">
-              <span class="market-card__name">Gold</span>
-              <span class="market-card__chip market-card__chip--positive">▲ +0.73%</span>
-            </div>
-            <p class="market-card__symbol">XAU</p>
-            <p class="market-card__price">$2,349</p>
-            <p class="market-card__meta">Demo price</p>
-            <div class="market-card__trend" aria-hidden="true">
-              <span></span><span></span><span></span>
-            </div>
-          </article>
-
-          <article class="market-card">
-            <div class="market-card__top">
-              <span class="market-card__name">USD/ZAR</span>
-              <span class="market-card__chip market-card__chip--negative">▼ -0.06%</span>
-            </div>
-            <p class="market-card__symbol">USDZAR</p>
-            <p class="market-card__price">17.89</p>
-            <p class="market-card__meta">Demo price</p>
-            <div class="market-card__trend market-card__trend--negative" aria-hidden="true">
-              <span></span><span></span><span></span>
-            </div>
-          </article>
+        <div class="market-grid" id="live-market-grid">
+          <article class="market-panel" data-id="EURUSD"></article>
+          <article class="market-panel" data-id="USDJPY"></article>
+          <article class="market-panel" data-id="USDZAR"></article>
+          <article class="market-panel" data-id="XAUUSD"></article>
+          <article class="market-panel" data-id="OIL"></article>
+          <article class="market-panel" data-id="NDX"></article>
+          <article class="market-panel" data-id="BTCUSD"></article>
         </div>
+
+        <p class="text-muted" id="market-disclosure">Market data provided via ExMarkets. Prices may be delayed depending on the data source and licensing.</p>
+
+        <script src="assets/js/market-data.js" defer></script>
       </section>
 
       <section class="container section" aria-labelledby="us-markets-title">

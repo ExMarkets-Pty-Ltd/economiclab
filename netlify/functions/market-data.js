@@ -3,7 +3,7 @@
 // Resolves provider symbols via symbol_search and caches mappings.
 
 const { MarketDataApi, CreateConfig } = require('@twelvedata/twelvedata-node');
-const fetchFn = globalThis.fetch || require('node-fetch');
+const fetchFn = globalThis.fetch ? globalThis.fetch.bind(globalThis) : null;
 
 const SYMBOL_SEARCH_URL = process.env.TWELVEDATA_API_URL_SYMBOL_SEARCH || 'https://api.twelvedata.com/symbol_search';
 
@@ -22,6 +22,14 @@ const quoteCache = { value: {}, ttl: 20 * 1000 };
 let marketDataApi = null;
 
 function now() { return Date.now(); }
+
+function jsonHeaders(extra = {}) {
+  return {
+    'Content-Type': 'application/json',
+    'Access-Control-Allow-Origin': '*',
+    ...extra
+  };
+}
 
 function getMarketDataApi(apiKey) {
   if (!marketDataApi) {
@@ -99,7 +107,13 @@ function normalizeQuoteRecord(id, providerSym, r) {
 
 exports.handler = async function(event) {
   const apiKey = process.env.TWELVEDATA_API_KEY;
-  if (!apiKey) return { statusCode: 500, body: 'Twelve Data API key not configured (TWELVEDATA_API_KEY)' };
+  if (!apiKey) {
+    return {
+      statusCode: 500,
+      headers: jsonHeaders(),
+      body: JSON.stringify({ error: 'Twelve Data API key not configured (TWELVEDATA_API_KEY)' })
+    };
+  }
 
   const qs = event.queryStringParameters || {};
   const symbolsParam = qs.symbols || '';
@@ -139,6 +153,10 @@ exports.handler = async function(event) {
     return { statusCode: 200, headers: { 'Content-Type': 'application/json', 'Access-Control-Allow-Origin': '*' }, body: JSON.stringify(normalized) };
   } catch (e) {
     console.error('market-data error', e);
-    return { statusCode: 500, headers: { 'Access-Control-Allow-Origin': '*' }, body: 'Server error' };
+    return {
+      statusCode: 500,
+      headers: jsonHeaders(),
+      body: JSON.stringify({ error: 'Market data provider request failed.' })
+    };
   }
 };

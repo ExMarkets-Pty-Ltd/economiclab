@@ -5,13 +5,13 @@
 
 :root {
   /* Brand palette */
-  --color-background: #222222;
+  --color-background: #d3caca;
   --color-surface: #f3eded;
   --color-surface-2: #b9b9b9;
   --color-surface-3: #f0eded;
-  --color-text: #2d2e2e;
-  --color-text-muted: #8f9eb3;
-  --color-text-subtle: #6f7d93;
+  --color-text: #131212;
+  --color-text-muted: #006891;
+  --color-text-subtle: #046d9e;
   --color-border: rgba(255, 255, 255, 0.12);
   --color-primary: #3b82f6;
   --color-primary-strong: #2563eb;
@@ -19,7 +19,7 @@
   --color-success: #0095c2;
   --color-warning: #f5b84b;
   --color-danger: #ef6b73;
-  --color-shadow: rgba(27, 27, 27, 0.32);
+  --color-shadow: rgba(10, 10, 10, 0.32);
   --color-nav-background: rgba(34, 34, 34, 0.92);
   --color-ticker-background: rgba(221, 216, 216, 0.04);
   --card-background: linear-gradient(180deg, rgba(255,255,255,0.035), rgba(255,255,255,0.018));

@@ -6,10 +6,10 @@
 :root {
   /* Brand palette */
   --color-background: #d3caca;
-  --color-surface: #f3eded;
-  --color-surface-2: #b9b9b9;
-  --color-surface-3: #f0eded;
-  --color-text: #131212;
+  --color-surface: #222222;
+  --color-surface-2: #222222;
+  --color-surface-3: #161616;
+  --color-text: #d3d3d3;
   --color-text-muted: #fafafa;
   --color-text-subtle: #046d9e;
   --color-border: rgba(255, 255, 255, 0.12);
@@ -20,9 +20,9 @@
   --color-warning: #f5b84b;
   --color-danger: #ef6b73;
   --color-shadow: rgba(10, 10, 10, 0.32);
-  --color-nav-background: rgba(34, 34, 34, 0.92);
-  --color-ticker-background: rgba(221, 216, 216, 0.04);
-  --card-background: linear-gradient(180deg, rgba(255,255,255,0.035), rgba(255,255,255,0.018));
+  --color-nav-background: rgba(19, 19, 19, 0.92);
+  --color-ticker-background: rgba(17, 17, 17, 0.04);
+  --card-background: linear-gradient(180deg, rgba(15, 15, 15, 0.035), rgba(255,255,255,0.018));
 
   /* Typography */
   --font-sans: "Inter", "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;

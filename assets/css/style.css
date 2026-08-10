@@ -1133,10 +1133,32 @@ html[data-theme="dark"] .site-nav__brand img.logo-dark {
   }
 
   .site-nav__inner {
-    flex-wrap: wrap;
+    flex-wrap: nowrap;
+    min-width: 0;
     padding: var(--space-3) 0;
     padding-left: 10px;
     padding-right: 10px;
+  }
+
+  .site-nav__brand {
+    flex-shrink: 1;
+    min-width: 0;
+  }
+
+  .site-nav__brand img.logo {
+    flex-shrink: 1;
+    max-height: 0.837216rem;
+    width: auto;
+  }
+
+  .site-nav__actions {
+    display: flex;
+    flex-wrap: nowrap;
+    align-items: center;
+    flex-shrink: 0;
+    margin-left: auto;
+    white-space: nowrap;
+    gap: var(--space-3);
   }
 
   .site-nav__toggle {

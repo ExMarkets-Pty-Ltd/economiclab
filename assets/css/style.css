@@ -421,6 +421,14 @@ p {
   width: auto;
 }
 
+header.site-nav .site-nav__brand img.logo {
+  max-height: 5.7rem;
+}
+
+footer .site-nav__brand img.logo {
+  max-height: 3rem;
+}
+
 .site-nav__brand img.logo-light {
   display: block;
 }

@@ -6,7 +6,7 @@
 :root {
   /* Brand palette */
   --color-background: #222222;
-  --color-surface: #1d1c1c;
+  --color-surface: #f3eded;
   --color-surface-2: #b9b9b9;
   --color-surface-3: #f0eded;
   --color-text: #2d2e2e;
@@ -19,9 +19,9 @@
   --color-success: #0095c2;
   --color-warning: #f5b84b;
   --color-danger: #ef6b73;
-  --color-shadow: rgba(2, 6, 23, 0.32);
-  --color-nav-background: rgba(8, 8, 8, 0.92);
-  --color-ticker-background: rgba(255, 255, 255, 0.04);
+  --color-shadow: rgba(27, 27, 27, 0.32);
+  --color-nav-background: rgba(34, 34, 34, 0.92);
+  --color-ticker-background: rgba(221, 216, 216, 0.04);
   --card-background: linear-gradient(180deg, rgba(255,255,255,0.035), rgba(255,255,255,0.018));
 
   /* Typography */

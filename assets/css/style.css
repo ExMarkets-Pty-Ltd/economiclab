@@ -1123,10 +1123,16 @@ html[data-theme="dark"] .site-nav__brand img.logo-dark {
   .site-nav__inner {
     flex-wrap: wrap;
     padding: var(--space-3) 0;
+    padding-left: 10px;
+    padding-right: 10px;
   }
 
   .site-nav__toggle {
     display: inline-flex;
+    order: 3;
+    min-height: 3.12rem;
+    padding: 0.78rem 1.235rem;
+    font-size: 0.975rem;
   }
 
   .site-nav__links {
@@ -1142,7 +1148,39 @@ html[data-theme="dark"] .site-nav__brand img.logo-dark {
   }
 
   .site-nav__actions {
+    order: 2;
+    width: auto;
+    justify-content: flex-end;
+    gap: var(--space-3);
+    margin-left: auto;
+  }
+
+  .site-nav__actions > *:not(.theme-toggle) {
+    display: none;
+  }
+
+  .site-nav__links.is-open + .site-nav__actions > *:not(.theme-toggle) {
+    display: inline-flex;
+  }
+
+  .site-nav__links .has-submenu .submenu {
+    display: block;
+    position: static;
+    box-shadow: none;
+    border: 0;
+    padding-left: 1rem;
+  }
+
+  .site-nav__links .has-submenu:hover > .submenu,
+  .site-nav__links .has-submenu:focus-within > .submenu {
+    display: block;
+  }
+
+  .site-nav__actions > *:not(.theme-toggle) {
     width: 100%;
+  }
+
+  .site-nav__actions > .btn {
     justify-content: center;
   }
 

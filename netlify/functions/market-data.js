@@ -6,6 +6,7 @@ const { MarketDataApi, CreateConfig } = require('@twelvedata/twelvedata-node');
 const fetchFn = globalThis.fetch ? globalThis.fetch.bind(globalThis) : null;
 
 const SYMBOL_SEARCH_URL = process.env.TWELVEDATA_API_URL_SYMBOL_SEARCH || 'https://api.twelvedata.com/symbol_search';
+const QUOTE_URL = process.env.TWELVEDATA_API_URL_QUOTE || 'https://api.twelvedata.com/quote';
 
 const SYMBOL_MAP_PREF = {
   EURUSD: ['EUR/USD', 'EURUSD'],
@@ -73,6 +74,19 @@ async function resolveProviderSymbol(id, apiKey) {
   return fallback;
 }
 
+function normalizeMarketId(value) {
+  if (value == null) return '';
+  const text = String(value).trim();
+  const compact = text.toUpperCase().replace(/[^A-Z0-9]/g, '');
+  if (!compact) return '';
+
+  for (const [id, candidates] of Object.entries(SYMBOL_MAP_PREF)) {
+    const known = [id, ...(candidates || [])].map(s => String(s).toUpperCase().replace(/[^A-Z0-9]/g, ''));
+    if (known.includes(compact)) return id;
+  }
+  return compact;
+}
+
 function prettyName(id) {
   switch (id) {
     case 'EURUSD': return 'EUR/USD';
@@ -116,8 +130,50 @@ exports.handler = async function(event) {
   }
 
   const qs = event.queryStringParameters || {};
+  const directSymbol = qs.symbol ? String(qs.symbol).trim() : '';
+  const isDirectQuoteRequest = !!directSymbol && (directSymbol.includes('/') || !!normalizeMarketId(directSymbol));
+
+  if (isDirectQuoteRequest) {
+    const id = normalizeMarketId(directSymbol) || directSymbol.toUpperCase();
+    const providerSym = directSymbol.includes('/') ? directSymbol : await resolveProviderSymbol(id, apiKey);
+    const quoteUrl = `${QUOTE_URL}?symbol=${encodeURIComponent(providerSym)}&apikey=${encodeURIComponent(apiKey)}`;
+
+    try {
+      const response = await fetchFn(quoteUrl, { headers: { Accept: 'application/json' } });
+      if (!response.ok) {
+        const errorJson = await response.text().catch(() => '');
+        console.error('Twelve Data quote request failed', response.status, errorJson);
+        return {
+          statusCode: response.status >= 500 ? 502 : 400,
+          headers: jsonHeaders(),
+          body: JSON.stringify({ error: 'Twelve Data quote request failed.' })
+        };
+      }
+
+      const payload = await response.json();
+      const raw = Array.isArray(payload) ? payload[0] : (payload && payload.data ? payload.data : payload);
+      if (!raw || (payload && payload.code)) {
+        return {
+          statusCode: 404,
+          headers: jsonHeaders(),
+          body: JSON.stringify({ error: 'No quote available for the requested symbol.' })
+        };
+      }
+
+      const normalized = [normalizeQuoteRecord(id, providerSym, raw)];
+      return { statusCode: 200, headers: jsonHeaders(), body: JSON.stringify(normalized) };
+    } catch (e) {
+      console.error('market-data direct quote error', e);
+      return {
+        statusCode: 502,
+        headers: jsonHeaders(),
+        body: JSON.stringify({ error: 'Market data quote request failed.' })
+      };
+    }
+  }
+
   const symbolsParam = qs.symbols || '';
-  const ids = symbolsParam ? symbolsParam.split(',').map(s => s.trim().toUpperCase()) : Object.keys(SYMBOL_MAP_PREF);
+  const ids = symbolsParam ? symbolsParam.split(',').map(s => normalizeMarketId(s) || s.trim().toUpperCase()) : Object.keys(SYMBOL_MAP_PREF);
 
   const providerSymbols = [];
   const idToProvider = {};

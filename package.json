@@ -1,0 +1,9 @@
+{
+  "name": "exmarkets",
+  "private": true,
+  "type": "commonjs",
+  "dependencies": {
+    "@twelvedata/twelvedata-node": "^1.2.7",
+    "node-fetch": "^3.4.0"
+  }
+}

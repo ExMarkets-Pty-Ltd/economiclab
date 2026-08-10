@@ -2,10 +2,10 @@
 // Uses Twelve Data via server-side environment variable TWELVEDATA_API_KEY.
 // Resolves provider symbols via symbol_search and caches mappings.
 
+const { MarketDataApi, CreateConfig } = require('@twelvedata/twelvedata-node');
 const fetchFn = globalThis.fetch || require('node-fetch');
 
 const SYMBOL_SEARCH_URL = process.env.TWELVEDATA_API_URL_SYMBOL_SEARCH || 'https://api.twelvedata.com/symbol_search';
-const QUOTE_URL = process.env.TWELVEDATA_API_URL_QUOTE || 'https://api.twelvedata.com/quote';
 
 const SYMBOL_MAP_PREF = {
   EURUSD: ['EUR/USD', 'EURUSD'],
@@ -19,8 +19,17 @@ const SYMBOL_MAP_PREF = {
 
 const symbolCache = { value: {}, ttl: 24 * 3600 * 1000 };
 const quoteCache = { value: {}, ttl: 20 * 1000 };
+let marketDataApi = null;
 
 function now() { return Date.now(); }
+
+function getMarketDataApi(apiKey) {
+  if (!marketDataApi) {
+    const config = CreateConfig(apiKey);
+    marketDataApi = new MarketDataApi(config);
+  }
+  return marketDataApi;
+}
 
 async function resolveProviderSymbol(id, apiKey) {
   const key = id.toUpperCase();
@@ -114,11 +123,8 @@ exports.handler = async function(event) {
   }
 
   try {
-    const url = `${QUOTE_URL}?symbol=${encodeURIComponent(providerSymbols.join(','))}&apikey=${encodeURIComponent(apiKey)}`;
-    const res = await fetchFn(url, { headers: { Accept: 'application/json' } });
-    if (res.status === 429) return { statusCode: 429, headers: { 'Access-Control-Allow-Origin': '*' }, body: 'Rate limited' };
-    if (!res.ok) return { statusCode: res.status, headers: { 'Access-Control-Allow-Origin': '*' }, body: 'Provider error' };
-    const raw = await res.json();
+    const api = getMarketDataApi(apiKey);
+    const raw = await api.getQuote({ symbol: providerSymbols.join(',') });
 
     const rawMap = {};
     if (Array.isArray(raw)) {

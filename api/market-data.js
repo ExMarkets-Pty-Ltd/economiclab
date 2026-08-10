@@ -1,10 +1,10 @@
 // Vercel Serverless Function: api/market-data.js
 // Uses TWELVEDATA_API_KEY env variable. Resolves provider symbols via symbol_search and caches mappings.
 
+const { MarketDataApi, CreateConfig } = require('@twelvedata/twelvedata-node');
 const fetchFn = globalThis.fetch || require('node-fetch');
 
 const SYMBOL_SEARCH_URL = process.env.TWELVEDATA_API_URL_SYMBOL_SEARCH || 'https://api.twelvedata.com/symbol_search';
-const QUOTE_URL = process.env.TWELVEDATA_API_URL_QUOTE || 'https://api.twelvedata.com/quote';
 
 const SYMBOL_MAP_PREF = {
   EURUSD: ['EUR/USD', 'EURUSD'],
@@ -18,8 +18,17 @@ const SYMBOL_MAP_PREF = {
 
 const symbolCache = { value: {}, ttl: 24 * 3600 * 1000 };
 const quoteCache = { value: {}, ttl: 20 * 1000 };
+let marketDataApi = null;
 
 function now() { return Date.now(); }
+
+function getMarketDataApi(apiKey) {
+  if (!marketDataApi) {
+    const config = CreateConfig(apiKey);
+    marketDataApi = new MarketDataApi(config);
+  }
+  return marketDataApi;
+}
 
 async function resolveProviderSymbol(id, apiKey) {
   const key = id.toUpperCase();
@@ -113,11 +122,8 @@ module.exports = async (req, res) => {
   }
 
   try {
-    const url = `${QUOTE_URL}?symbol=${encodeURIComponent(providerSymbols.join(','))}&apikey=${encodeURIComponent(apiKey)}`;
-    const resp = await fetchFn(url, { headers: { Accept: 'application/json' } });
-    if (resp.status === 429) return res.status(429).send('Rate limited');
-    if (!resp.ok) return res.status(resp.status).send('Provider error');
-    const raw = await resp.json();
+    const api = getMarketDataApi(apiKey);
+    const raw = await api.getQuote({ symbol: providerSymbols.join(',') });
 
     const rawMap = {};
     if (Array.isArray(raw)) raw.forEach(r => { if (r && r.symbol) rawMap[r.symbol] = r; });

@@ -7,6 +7,8 @@ const fetchFn = globalThis.fetch ? globalThis.fetch.bind(globalThis) : null;
 
 const SYMBOL_SEARCH_URL = process.env.TWELVEDATA_API_URL_SYMBOL_SEARCH || 'https://api.twelvedata.com/symbol_search';
 const QUOTE_URL = process.env.TWELVEDATA_API_URL_QUOTE || 'https://api.twelvedata.com/quote';
+const PRICE_URL = process.env.TWELVEDATA_API_URL_PRICE || 'https://api.twelvedata.com/price';
+const EXCHANGE_RATE_URL = process.env.TWELVEDATA_API_URL_EXCHANGE_RATE || 'https://api.twelvedata.com/exchange_rate';
 
 const SYMBOL_MAP_PREF = {
   EURUSD: ['EUR/USD', 'EURUSD'],
@@ -119,6 +121,98 @@ function normalizeQuoteRecord(id, providerSym, r) {
   };
 }
 
+function getNestedValue(obj, keys) {
+  if (!obj || typeof obj !== 'object') return null;
+  for (const key of keys) {
+    if (obj[key] != null && obj[key] !== '') return obj[key];
+  }
+  return null;
+}
+
+function isForexSymbol(symbol) {
+  return typeof symbol === 'string' && /^[A-Z]{3}\/[A-Z]{3}$/.test(symbol.toUpperCase());
+}
+
+function getNumericPrice(value) {
+  if (value == null || value === '') return null;
+  const parsed = Number(value);
+  return Number.isFinite(parsed) ? parsed : null;
+}
+
+function coerceQuotePayload(payload) {
+  if (!payload) return null;
+  if (Array.isArray(payload)) return payload[0] || null;
+  if (payload.data && typeof payload.data === 'object') {
+    const data = payload.data;
+    if (Array.isArray(data)) return data[0] || null;
+    return data;
+  }
+  return payload;
+}
+
+async function fetchQuoteWithForexFallback(apiKey, symbol) {
+  const quoteSymbol = String(symbol || '').trim();
+  if (!quoteSymbol) return null;
+
+  const quoteUrl = `${QUOTE_URL}?symbol=${encodeURIComponent(quoteSymbol)}&apikey=${encodeURIComponent(apiKey)}`;
+  try {
+    const response = await fetchFn(quoteUrl, { headers: { Accept: 'application/json' } });
+    if (!response || !response.ok) {
+      const detail = response && typeof response.text === 'function' ? await response.text().catch(() => '') : '';
+      console.warn('Twelve Data quote request failed', { status: response ? response.status : 'unknown', symbol: quoteSymbol, detail: detail ? String(detail).slice(0, 200) : '' });
+      return null;
+    }
+
+    const payload = await response.json();
+    const primary = coerceQuotePayload(payload);
+    const primaryPrice = getNumericPrice(getNestedValue(primary, ['price', 'last', 'close', 'rate']));
+    if (primaryPrice != null) {
+      return primary;
+    }
+
+    if (!isForexSymbol(quoteSymbol)) {
+      return primary;
+    }
+
+    const fallbackUrls = [
+      `${PRICE_URL}?symbol=${encodeURIComponent(quoteSymbol)}&apikey=${encodeURIComponent(apiKey)}`,
+      `${EXCHANGE_RATE_URL}?symbol=${encodeURIComponent(quoteSymbol)}&apikey=${encodeURIComponent(apiKey)}`
+    ];
+
+    for (const fallbackUrl of fallbackUrls) {
+      try {
+        const fallbackResponse = await fetchFn(fallbackUrl, { headers: { Accept: 'application/json' } });
+        if (!fallbackResponse || !fallbackResponse.ok) {
+          const fallbackText = fallbackResponse && typeof fallbackResponse.text === 'function' ? await fallbackResponse.text().catch(() => '') : '';
+          console.warn('Twelve Data forex fallback failed', { status: fallbackResponse ? fallbackResponse.status : 'unknown', symbol: quoteSymbol, detail: fallbackText ? String(fallbackText).slice(0, 200) : '' });
+          continue;
+        }
+
+        const fallbackPayload = await fallbackResponse.json();
+        const fallbackRaw = coerceQuotePayload(fallbackPayload);
+        const fallbackPrice = getNumericPrice(getNestedValue(fallbackRaw, ['price', 'rate', 'last', 'close', 'value']));
+        if (fallbackPrice != null) {
+          const merged = {
+            ...(fallbackRaw || {}),
+            price: fallbackPrice,
+            previous_close: getNestedValue(fallbackRaw, ['previous_close', 'previousClose', 'close']) ?? getNestedValue(primary, ['previous_close', 'previousClose', 'close']) ?? null,
+            datetime: getNestedValue(fallbackRaw, ['datetime', 'timestamp', 'date']) ?? getNestedValue(primary, ['datetime', 'timestamp', 'date']) ?? null,
+            status: getNestedValue(fallbackRaw, ['status']) ?? getNestedValue(primary, ['status']) ?? 'OPEN'
+          };
+          return merged;
+        }
+      } catch (e) {
+        console.warn('Twelve Data forex fallback error', { symbol: quoteSymbol, message: e && e.message ? String(e.message).slice(0, 200) : 'unknown error' });
+      }
+    }
+
+    return primary;
+  } catch (e) {
+    console.warn('Twelve Data quote request error', { symbol: quoteSymbol, message: e && e.message ? String(e.message).slice(0, 200) : 'unknown error' });
+    return null;
+  }
+}
+
 exports.handler = async function(event) {
   const apiKey = process.env.TWELVEDATA_API_KEY;
   if (!apiKey) {
@@ -136,23 +230,10 @@ exports.handler = async function(event) {
   if (isDirectQuoteRequest) {
     const id = normalizeMarketId(directSymbol) || directSymbol.toUpperCase();
     const providerSym = directSymbol.includes('/') ? directSymbol : await resolveProviderSymbol(id, apiKey);
-    const quoteUrl = `${QUOTE_URL}?symbol=${encodeURIComponent(providerSym)}&apikey=${encodeURIComponent(apiKey)}`;
 
     try {
-      const response = await fetchFn(quoteUrl, { headers: { Accept: 'application/json' } });
-      if (!response.ok) {
-        const errorJson = await response.text().catch(() => '');
-        console.error('Twelve Data quote request failed', response.status, errorJson);
-        return {
-          statusCode: response.status >= 500 ? 502 : 400,
-          headers: jsonHeaders(),
-          body: JSON.stringify({ error: 'Twelve Data quote request failed.' })
-        };
-      }
-
-      const payload = await response.json();
-      const raw = Array.isArray(payload) ? payload[0] : (payload && payload.data ? payload.data : payload);
-      if (!raw || (payload && payload.code)) {
+      const raw = await fetchQuoteWithForexFallback(apiKey, providerSym);
+      if (!raw || (raw && raw.code)) {
         return {
           statusCode: 404,
           headers: jsonHeaders(),
@@ -202,6 +283,20 @@ exports.handler = async function(event) {
     } else if (raw && typeof raw === 'object') {
       Object.keys(raw).forEach(k => { rawMap[k] = raw[k]; });
       if (raw.symbol && !rawMap[raw.symbol]) rawMap[raw.symbol] = raw;
+    }
+
+    for (const id of ids) {
+      const providerSym = idToProvider[id];
+      if (!providerSym || !isForexSymbol(providerSym)) continue;
+      const quoteRecord = rawMap[providerSym] || rawMap[id];
+      const numericPrice = getNumericPrice(getNestedValue(quoteRecord, ['price', 'last', 'close', 'rate']));
+      if (numericPrice == null) {
+        const fallbackQuote = await fetchQuoteWithForexFallback(apiKey, providerSym);
+        if (fallbackQuote) {
+          rawMap[providerSym] = fallbackQuote;
+          rawMap[id] = fallbackQuote;
+        }
+      }
     }
 
     quoteCache.value[cacheKey] = { data: rawMap, ts: now() };

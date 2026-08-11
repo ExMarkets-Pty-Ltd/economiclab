@@ -154,21 +154,30 @@
     });
   }
 
+  function normalizeMarketKey(value){
+    if (!value && value !== 0) return '';
+    return String(value).toUpperCase().replace(/[^A-Z0-9]/g, '');
+  }
+
   function applyData(markets){
     // markets: array of normalized objects
     lastSuccessfulFetchAt = Date.now();
     var map = {};
-    markets.forEach(function(m){ map[(m.symbol || m.id).toUpperCase()] = m; });
+    markets.forEach(function(m){
+      var key = normalizeMarketKey((m && (m.id || m.symbol)) || '');
+      if (key) map[key] = m;
+    });
 
     var panels = grid.querySelectorAll('.market-panel');
     panels.forEach(function(p){
       var id = p.getAttribute('data-id');
-      var market = map[id.toUpperCase()];
+      var normalizedId = normalizeMarketKey(id);
+      var market = map[normalizedId];
       var cfg = MARKETS.find(function(m){ return m.id === id; });
       if (market){
-        // ensure fields like symbol/id/name set
-        market.id = id;
-        market.symbol = id;
+        // preserve the normalized backend payload while filling any missing client-side fields
+        market.id = market.id || id;
+        market.symbol = market.symbol || id;
         market.name = market.name || (cfg ? cfg.display : id);
         renderMarketCard(p, market);
       } else {

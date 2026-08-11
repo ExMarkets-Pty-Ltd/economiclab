@@ -38,6 +38,9 @@
     { id: 'BTCUSD', display: 'Bitcoin' }
   ];
 
+  // Only request these verified symbols from the backend to avoid provider batch failures.
+  var SUPPORTED_IDS = ['EURUSD', 'USDJPY', 'USDZAR', 'XAUUSD'];
+
   var grid = document.getElementById('live-market-grid');
   var disclosure = document.getElementById('market-disclosure');
   var lastSuccessfulFetchAt = null;
@@ -352,7 +355,11 @@
     if (disclosure){
       disclosure.textContent = 'Market data provided via ExMarkets · Market data temporarily unavailable';
     }
-    renderAllErrors();
+    // If we have previously displayed successful data, do not overwrite all panels with an error.
+    // Only show global error state; keep existing cards intact so one failed request doesn't blank the UI.
+    if (!lastSuccessfulFetchAt){
+      renderAllErrors();
+    }
   }
 
   function scheduleRefreshWithBackoff(){
@@ -370,8 +377,8 @@
 
     renderAllLoading();
 
-    // Build query: send comma separated list of ids
-    var ids = MARKETS.map(function(m){ return m.id; }).join(',');
+    // Build query: send comma separated list of supported ids (avoid unsupported symbols that trigger provider failures)
+    var ids = (Array.isArray(SUPPORTED_IDS) && SUPPORTED_IDS.length) ? SUPPORTED_IDS.join(',') : MARKETS.map(function(m){ return m.id; }).join(',');
     var url = MARKET_DATA_ENDPOINT + (MARKET_DATA_ENDPOINT.indexOf('?') === -1 ? '?' : '&') + 'symbols=' + encodeURIComponent(ids);
 
     fetch(url, {headers: {'Accept': 'application/json'}}).then(function(res){

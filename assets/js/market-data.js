@@ -218,7 +218,7 @@
   }
 
   function handleFetchError(err, status){
-    console.warn('Market data fetch error', err, status);
+    console.error('Market data fetch error', err, status);
     if (status === 429){
       backoffMultiplier = Math.min(backoffMultiplier * 2, 16);
       scheduleRefreshWithBackoff();
@@ -226,6 +226,7 @@
     if (disclosure){
       disclosure.textContent = 'Market data provided via ExMarkets · Market data temporarily unavailable';
     }
+    renderAllErrors();
   }
 
   function scheduleRefreshWithBackoff(){

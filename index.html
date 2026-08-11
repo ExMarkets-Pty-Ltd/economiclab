@@ -3,16 +3,16 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>ExMarkets | Financial News, Markets & Analysis</title>
+    <title>ExMarkets | Market Intelligence, Data & Live Pricing</title>
     <meta
       name="description"
-      content="ExMarkets delivers financial news, market information, business coverage, economic analysis and technology news from South Africa and around the world."
+      content="ExMarkets delivers live market pricing, data dashboards and global market intelligence for currencies, commodities, indices and crypto."
     />
     <meta property="og:type" content="website" />
-    <meta property="og:title" content="ExMarkets | Financial News, Markets & Analysis" />
+    <meta property="og:title" content="ExMarkets | Market Intelligence, Data & Live Pricing" />
     <meta
       property="og:description"
-      content="ExMarkets delivers financial news, market information, business coverage, economic analysis and technology news from South Africa and around the world."
+      content="ExMarkets delivers live market pricing, data dashboards and global market intelligence for currencies, commodities, indices and crypto."
     />
     <meta property="og:site_name" content="ExMarkets" />
     <meta property="og:url" content="https://exmarkets.co.za/" />
@@ -70,12 +70,12 @@
       </div>
     </header>
 
-    <div class="ticker" aria-label="Breaking news demo">
+    <div class="ticker" aria-label="Live market update">
       <div class="container">
         <p>
-          <span class="ticker__label">Breaking</span>
-          <span class="ticker__note">Demo coverage</span>
-          <a href="news.html">Global markets remain focused on economic growth, inflation and central-bank policy.</a>
+          <span class="ticker__label">Live</span>
+          <span class="ticker__note">Market pricing and indices updated in real time</span>
+          <a href="markets.html">View live currency, commodities and equity market data.</a>
         </p>
       </div>
     </div>
@@ -83,29 +83,41 @@
     <main id="content">
       <section class="hero container" aria-labelledby="hero-title">
         <div class="hero__content">
-          <p class="text-uppercase">Markets</p>
-          <h1 id="hero-title">Global Markets Assess Growth, Inflation and the Path Ahead</h1>
+          <p class="text-uppercase">Market Intelligence</p>
+          <h1 id="hero-title">Track the markets. Understand the moves.</h1>
           <p class="lead">
-            A demonstration overview of how major indexes, currencies and economic indicators are shaping investor sentiment across the globe.
+            Live market data for currencies, commodities, indices and crypto with the analytics traders and investors need to stay informed.
           </p>
-          <div class="cluster">
-            <span class="article__meta">08 Aug 2026 · ExMarkets Editorial Team · 7 min read</span>
-            <a class="btn btn--primary" href="articles/article-template.html">Read Story</a>
+          <div class="hero__actions">
+            <a class="btn btn--primary" href="markets.html">Explore Markets</a>
+            <a class="btn btn--secondary" href="#global-market-overview">Market Data</a>
           </div>
         </div>
 
-        <div class="hero__media" role="img" aria-label="Placeholder image for the homepage lead story"></div>
+        <div class="hero__media hero-dashboard" role="img" aria-label="Live market data dashboard"><div class="hero-dashboard__panel">
+            <div class="hero-dashboard__row">
+              <div>
+                <p class="hero-dashboard__label">EUR/USD</p>
+                <p class="hero-dashboard__value">1.09452</p>
+              </div>
+              <span class="hero-dashboard__pill hero-dashboard__pill--positive">+0.14%</span>
+            </div>
+            <div class="hero-dashboard__chart"></div>
+            <div class="hero-dashboard__footer">
+              <span>Forex · Data updated live</span>
+              <span>Market status: DATA AVAILABLE</span>
+            </div>
+          </div></div>
       </section>
 
-      <section class="container section" id="demo-market-data" aria-labelledby="demo-market-data-title">
+      <section class="container section" id="global-market-overview" aria-labelledby="global-market-overview-title">
         <div class="section__heading">
-          <p class="text-uppercase">Market Data</p>
-          <h2 id="demo-market-data-title">Market snapshot</h2>
-          <p class="text-muted">Latest available market prices and daily movements for selected global financial instruments.</p>
+          <p class="text-uppercase">Global Market Overview</p>
+          <h2 id="global-market-overview-title">Live prices for major markets</h2>
+          <p class="text-muted">Monitor the most important market instruments across FX, commodities, equities and crypto.</p>
         </div>
 
         <div class="market-grid" id="live-market-grid">
-          <!-- ExMarkets market cards (populated by assets/js/market-data.js) -->
           <article class="market-panel" data-id="EURUSD"></article>
           <article class="market-panel" data-id="USDJPY"></article>
           <article class="market-panel" data-id="USDZAR"></article>
@@ -116,321 +128,140 @@
         </div>
 
         <p class="text-muted" id="market-disclosure">Market data provided via ExMarkets. Prices may be delayed depending on the data source and licensing.</p>
-
-        <script src="assets/js/market-data.js" defer></script>
       </section>
 
-      <section class="container section" id="latest-news" aria-labelledby="latest-news-title">
+      <section class="container section" id="forex" aria-labelledby="forex-title">
         <div class="section__heading">
-          <p class="text-uppercase">Latest News</p>
-          <h2 id="latest-news-title">Reporting the stories shaping global finance</h2>
+          <p class="text-uppercase">Forex</p>
+          <h2 id="forex-title">Major currency pairs</h2>
+          <p class="text-muted">Live foreign exchange pricing from the markets that matter most.</p>
+        </div>
+
+        <div class="card card--panel">
+          <div class="table-responsive">
+            <table class="table">
+              <thead>
+                <tr>
+                  <th>Pair</th>
+                  <th>Price</th>
+                  <th>Change</th>
+                  <th>Change %</th>
+                  <th>Status</th>
+                </tr>
+              </thead>
+              <tbody id="forex-table-body"></tbody>
+            </table>
+          </div>
+        </div>
+        <div class="section-actions"><a class="link" href="markets.html">View All Markets →</a></div>
+      </section>
+
+      <section class="container section" id="indices" aria-labelledby="indices-title">
+        <div class="section__heading">
+          <p class="text-uppercase">Global Indices</p>
+          <h2 id="indices-title">Benchmark index pricing</h2>
+          <p class="text-muted">Coverage of major equity benchmarks and market sentiment indicators.</p>
+        </div>
+
+        <div class="grid grid--3">
+          <article class="market-panel" data-id="NDX"></article>
+          <article class="market-panel" data-id="SPX"></article>
+          <article class="market-panel" data-id="DJI"></article>
+        </div>
+      </section>
+
+      <section class="container section" id="commodities" aria-labelledby="commodities-title">
+        <div class="section__heading">
+          <p class="text-uppercase">Commodities</p>
+          <h2 id="commodities-title">Energy and precious metals</h2>
+          <p class="text-muted">Live commodity pricing to track oil and gold market movement.</p>
+        </div>
+
+        <div class="grid grid--2">
+          <article class="market-panel" data-id="XAUUSD"></article>
+          <article class="market-panel" data-id="OIL"></article>
+        </div>
+      </section>
+
+      <section class="container section" id="crypto" aria-labelledby="crypto-title">
+        <div class="section__heading">
+          <p class="text-uppercase">Crypto</p>
+          <h2 id="crypto-title">Digital asset pricing</h2>
+          <p class="text-muted">Real-time crypto pricing with an emphasis on Bitcoin and supported digital markets.</p>
+        </div>
+
+        <div class="market-grid">
+          <article class="market-panel" data-id="BTCUSD"></article>
+        </div>
+      </section>
+
+      <section class="container section" id="market-movers" aria-labelledby="market-movers-title">
+        <div class="section__heading">
+          <p class="text-uppercase">Market Movers</p>
+          <h2 id="market-movers-title">Top gainers and losers</h2>
+          <p class="text-muted">Live daily movers calculated from available market data.</p>
+        </div>
+
+        <div class="grid grid--2">
+          <div class="card card--panel">
+            <h3 class="card__title">Top Gainers</h3>
+            <ul class="market-movers-list" id="movers-gainers"></ul>
+          </div>
+          <div class="card card--panel">
+            <h3 class="card__title">Top Losers</h3>
+            <ul class="market-movers-list" id="movers-losers"></ul>
+          </div>
+        </div>
+      </section>
+
+      <section class="container section" id="market-status" aria-labelledby="market-status-title">
+        <div class="section__heading">
+          <p class="text-uppercase">Market Status</p>
+          <h2 id="market-status-title">Global market coverage</h2>
+          <p class="text-muted">Live status indicators for FX, U.S. equity markets, commodities and crypto.</p>
+        </div>
+
+        <div class="grid grid--4 status-grid">
+          <div class="card card--panel status-card"><span>Forex</span><strong id="status-forex">DATA AVAILABLE</strong></div>
+          <div class="card card--panel status-card"><span>U.S. Markets</span><strong id="status-us">DATA AVAILABLE</strong></div>
+          <div class="card card--panel status-card"><span>Commodities</span><strong id="status-commodities">DATA AVAILABLE</strong></div>
+          <div class="card card--panel status-card"><span>Crypto</span><strong id="status-crypto">DATA AVAILABLE</strong></div>
+        </div>
+      </section>
+
+      <section class="container section" id="market-news" aria-labelledby="market-news-title">
+        <div class="section__heading">
+          <p class="text-uppercase">Market News</p>
+          <h2 id="market-news-title">Key financial stories shaping markets</h2>
+          <p class="text-muted">Selected articles and analysis grounded in market impact.</p>
         </div>
 
         <div class="news-grid">
           <article class="news-card">
-            <div class="news-card__media" role="img" aria-label="Placeholder graphic for market news"></div>
-            <p class="card__eyebrow">Markets</p>
-            <h3 class="news-card__title">Rate-cut expectations lift sentiment across major indices</h3>
-            <p class="news-card__summary">Analysts weigh policy signals against resilient earnings and persistent inflation risks.</p>
-            <p class="article__meta">12 min ago · 6 min read</p>
-            <a class="btn btn--secondary btn--small" href="articles/article-template.html">Read Story</a>
+            <div class="news-card__media" role="img" aria-label="Market news coverage"></div>
+            <p class="card__eyebrow">Macro</p>
+            <h3 class="news-card__title">Central-bank signals keep traders focused on policy timing</h3>
+            <p class="news-card__summary">Markets continue to price the path for interest rates as economic data arrives.</p>
+            <p class="article__meta">Updated 12 min ago</p>
+            <a class="btn btn--secondary btn--small" href="news.html">Read Story</a>
           </article>
 
           <article class="news-card">
-            <div class="news-card__media" role="img" aria-label="Placeholder graphic for business news"></div>
-            <p class="card__eyebrow">Business</p>
-            <h3 class="news-card__title">Corporate strategy shifts as firms balance growth and discipline</h3>
-            <p class="news-card__summary">Executives are recalibrating plans in response to a more cautious earnings backdrop.</p>
-            <p class="article__meta">18 min ago · 7 min read</p>
-            <a class="btn btn--secondary btn--small" href="articles/article-template.html">Read Story</a>
+            <div class="news-card__media" role="img" aria-label="Business news coverage"></div>
+            <p class="card__eyebrow">Equities</p>
+            <h3 class="news-card__title">Equity benchmarks hold gains ahead of corporate earnings</h3>
+            <p class="news-card__summary">Investors watch results and sentiment for signs of sustainable momentum.</p>
+            <p class="article__meta">Updated 18 min ago</p>
+            <a class="btn btn--secondary btn--small" href="news.html">Read Story</a>
           </article>
 
           <article class="news-card">
-            <div class="news-card__media" role="img" aria-label="Placeholder graphic for economy coverage"></div>
-            <p class="card__eyebrow">Economy</p>
-            <h3 class="news-card__title">Inflation readings keep central-bank guidance in focus</h3>
-            <p class="news-card__summary">Economic data continues to influence investor expectations for policy direction.</p>
-            <p class="article__meta">24 min ago · 6 min read</p>
-            <a class="btn btn--secondary btn--small" href="articles/article-template.html">Read Story</a>
-          </article>
-
-          <article class="news-card">
-            <div class="news-card__media" role="img" aria-label="Placeholder graphic for company news"></div>
-            <p class="card__eyebrow">Companies</p>
-            <h3 class="news-card__title">Mergers and board moves reshape leadership setups</h3>
-            <p class="news-card__summary">Corporate governance and deal activity remain active themes for investors.</p>
-            <p class="article__meta">35 min ago · 6 min read</p>
-            <a class="btn btn--secondary btn--small" href="articles/article-template.html">Read Story</a>
-          </article>
-
-          <article class="news-card">
-            <div class="news-card__media" role="img" aria-label="Placeholder graphic for technology coverage"></div>
-            <p class="card__eyebrow">Technology</p>
-            <h3 class="news-card__title">AI and cloud investments remain a priority for corporate budgets</h3>
-            <p class="news-card__summary">Technology spending is being evaluated through productivity and efficiency lenses.</p>
-            <p class="article__meta">46 min ago · 7 min read</p>
-            <a class="btn btn--secondary btn--small" href="articles/article-template.html">Read Story</a>
-          </article>
-
-          <article class="news-card">
-            <div class="news-card__media" role="img" aria-label="Placeholder graphic for Africa coverage"></div>
-            <p class="card__eyebrow">Africa</p>
-            <h3 class="news-card__title">South African markets gain attention as regional trends shift</h3>
-            <p class="news-card__summary">The region's equities and local currencies are moving with global demand and policy signals.</p>
-            <p class="article__meta">58 min ago · 6 min read</p>
-            <a class="btn btn--secondary btn--small" href="articles/article-template.html">Read Story</a>
-          </article>
-
-          <article class="news-card">
-            <div class="news-card__media" role="img" aria-label="Placeholder graphic for commodities coverage"></div>
+            <div class="news-card__media" role="img" aria-label="Commodities news coverage"></div>
             <p class="card__eyebrow">Commodities</p>
-            <h3 class="news-card__title">Raw-material prices reflect supply, demand and geopolitical cues</h3>
-            <p class="news-card__summary">Demonstration coverage of energy and metals as market participants look ahead.</p>
-            <p class="article__meta">2 hrs ago · 7 min read</p>
-            <a class="btn btn--secondary btn--small" href="articles/article-template.html">Read Story</a>
-          </article>
-
-          <article class="news-card">
-            <div class="news-card__media" role="img" aria-label="Placeholder graphic for global news coverage"></div>
-            <p class="card__eyebrow">Global</p>
-            <h3 class="news-card__title">International markets adjust to a more cautious growth outlook</h3>
-            <p class="news-card__summary">Global sentiment is shaped by macro data, trade developments and policy comments.</p>
-            <p class="article__meta">3 hrs ago · 8 min read</p>
-            <a class="btn btn--secondary btn--small" href="articles/article-template.html">Read Story</a>
-          </article>
-        </div>
-      </section>
-
-      <section class="container section" id="market-news" aria-labelledby="markets-section-title">
-        <div class="section__heading">
-          <p class="text-uppercase">Markets</p>
-          <h2 id="markets-section-title">Market news across equities, bonds, currencies and commodities</h2>
-        </div>
-
-        <div class="market-news-grid">
-          <article class="card">
-            <p class="card__eyebrow">Global Equities</p>
-            <h3 class="card__title">Major equity markets digest growth signals ahead of key data</h3>
-            <p class="card__meta">By ExMarkets · 06:30 ET</p>
-            <a class="btn btn--secondary btn--small" href="articles/article-template.html">Read Story</a>
-          </article>
-
-          <article class="card">
-            <p class="card__eyebrow">Bonds</p>
-            <h3 class="card__title">Fixed-income markets remain focused on inflation expectations</h3>
-            <p class="card__meta">By ExMarkets · 06:15 ET</p>
-            <a class="btn btn--secondary btn--small" href="articles/article-template.html">Read Story</a>
-          </article>
-
-          <article class="card">
-            <p class="card__eyebrow">Currencies</p>
-            <h3 class="card__title">Currency corridors reflect differing central-bank paths</h3>
-            <p class="card__meta">By ExMarkets · 05:50 ET</p>
-            <a class="btn btn--secondary btn--small" href="articles/article-template.html">Read Story</a>
-          </article>
-
-          <article class="card">
-            <p class="card__eyebrow">Commodities</p>
-            <h3 class="card__title">Raw-material prices respond to supply and demand signals</h3>
-            <p class="card__meta">By ExMarkets · 05:20 ET</p>
-            <a class="btn btn--secondary btn--small" href="articles/article-template.html">Read Story</a>
-          </article>
-        </div>
-
-        <div class="cluster">
-          <a class="link" href="markets.html">View All Markets →</a>
-        </div>
-      </section>
-
-      <section class="container section" id="business" aria-labelledby="business-section-title">
-        <div class="section__heading">
-          <p class="text-uppercase">Business</p>
-          <h2 id="business-section-title">Corporate strategy, transactions and leadership coverage</h2>
-        </div>
-
-        <div class="market-news-grid">
-          <article class="card">
-            <p class="card__eyebrow">Corporate Earnings</p>
-            <h3 class="card__title">Earnings season highlights the divide between growth and value names</h3>
-            <p class="card__meta">By ExMarkets · 05 Aug 2026</p>
-            <a class="btn btn--secondary btn--small" href="articles/article-template.html">Read Story</a>
-          </article>
-
-          <article class="card">
-            <p class="card__eyebrow">Mergers &amp; Acquisitions</p>
-            <h3 class="card__title">Select deals are moving forward as companies reshape portfolios</h3>
-            <p class="card__meta">By ExMarkets · 04 Aug 2026</p>
-            <a class="btn btn--secondary btn--small" href="articles/article-template.html">Read Story</a>
-          </article>
-
-          <article class="card">
-            <p class="card__eyebrow">Leadership</p>
-            <h3 class="card__title">Boards and executives adjust strategy in a more cautious market</h3>
-            <p class="card__meta">By ExMarkets · 03 Aug 2026</p>
-            <a class="btn btn--secondary btn--small" href="articles/article-template.html">Read Story</a>
-          </article>
-
-          <article class="card">
-            <p class="card__eyebrow">Business Strategy</p>
-            <h3 class="card__title">Companies are refining plans to improve resilience and margin performance</h3>
-            <p class="card__meta">By ExMarkets · 02 Aug 2026</p>
-            <a class="btn btn--secondary btn--small" href="articles/article-template.html">Read Story</a>
-          </article>
-        </div>
-
-        <div class="cluster">
-          <a class="link" href="companies.html">View Business →</a>
-        </div>
-      </section>
-
-      <section class="container section" id="economy" aria-labelledby="economy-section-title">
-        <div class="section__heading">
-          <p class="text-uppercase">Economy</p>
-          <h2 id="economy-section-title">Economic trends and policy coverage for a changing environment</h2>
-        </div>
-
-        <div class="market-news-grid">
-          <article class="card">
-            <p class="card__eyebrow">Inflation</p>
-            <h3 class="card__title">Inflation readings continue to shape market expectations</h3>
-            <p class="card__meta">By ExMarkets · 08 Aug 2026</p>
-            <a class="btn btn--secondary btn--small" href="articles/article-template.html">Read Story</a>
-          </article>
-
-          <article class="card">
-            <p class="card__eyebrow">Interest Rates</p>
-            <h3 class="card__title">Policy decisions remain central to the outlook for borrowing costs</h3>
-            <p class="card__meta">By ExMarkets · 07 Aug 2026</p>
-            <a class="btn btn--secondary btn--small" href="articles/article-template.html">Read Story</a>
-          </article>
-
-          <article class="card">
-            <p class="card__eyebrow">GDP</p>
-            <h3 class="card__title">Growth momentum varies by region as activity readings diverge</h3>
-            <p class="card__meta">By ExMarkets · 06 Aug 2026</p>
-            <a class="btn btn--secondary btn--small" href="articles/article-template.html">Read Story</a>
-          </article>
-
-          <article class="card">
-            <p class="card__eyebrow">Employment</p>
-            <h3 class="card__title">Labor-market developments remain a key focus for investors</h3>
-            <p class="card__meta">By ExMarkets · 05 Aug 2026</p>
-            <a class="btn btn--secondary btn--small" href="articles/article-template.html">Read Story</a>
-          </article>
-        </div>
-
-        <div class="cluster">
-          <a class="link" href="economy.html">View Economy →</a>
-        </div>
-      </section>
-
-      <section class="container section" id="technology" aria-labelledby="technology-section-title">
-        <div class="section__heading">
-          <p class="text-uppercase">Technology</p>
-          <h2 id="technology-section-title">Tech themes shaping markets and corporate strategy</h2>
-        </div>
-
-        <div class="market-news-grid">
-          <article class="card">
-            <p class="card__eyebrow">Artificial Intelligence</p>
-            <h3 class="card__title">AI investment continues to drive new use cases across industries</h3>
-            <p class="card__meta">By ExMarkets · 08 Aug 2026</p>
-            <a class="btn btn--secondary btn--small" href="articles/article-template.html">Read Story</a>
-          </article>
-
-          <article class="card">
-            <p class="card__eyebrow">Semiconductors</p>
-            <h3 class="card__title">Chipmakers plan capacity for the next wave of data-center demand</h3>
-            <p class="card__meta">By ExMarkets · 07 Aug 2026</p>
-            <a class="btn btn--secondary btn--small" href="articles/article-template.html">Read Story</a>
-          </article>
-
-          <article class="card">
-            <p class="card__eyebrow">Fintech</p>
-            <h3 class="card__title">Financial technology is expanding digital services in banking and payments</h3>
-            <p class="card__meta">By ExMarkets · 06 Aug 2026</p>
-            <a class="btn btn--secondary btn--small" href="articles/article-template.html">Read Story</a>
-          </article>
-
-          <article class="card">
-            <p class="card__eyebrow">Cloud Computing</p>
-            <h3 class="card__title">Cloud platforms remain central to enterprise modernization plans</h3>
-            <p class="card__meta">By ExMarkets · 05 Aug 2026</p>
-            <a class="btn btn--secondary btn--small" href="articles/article-template.html">Read Story</a>
-          </article>
-        </div>
-
-        <div class="cluster">
-          <a class="link" href="technology.html">View Technology →</a>
-        </div>
-      </section>
-
-      <section class="container section" id="africa" aria-labelledby="africa-section-title">
-        <div class="section__heading">
-          <p class="text-uppercase">Africa</p>
-          <h2 id="africa-section-title">Dedicated coverage of African markets, economies, businesses and technology</h2>
-        </div>
-
-        <div class="market-news-grid">
-          <article class="card">
-            <p class="card__eyebrow">South African Markets</p>
-            <h3 class="card__title">JSE-listed sectors reflect local economic and global demand signals</h3>
-            <p class="card__meta">By ExMarkets · 08 Aug 2026</p>
-            <a class="btn btn--secondary btn--small" href="articles/article-template.html">Read Story</a>
-          </article>
-
-          <article class="card">
-            <p class="card__eyebrow">African Economies</p>
-            <h3 class="card__title">Regional growth narratives continue to influence investment interest</h3>
-            <p class="card__meta">By ExMarkets · 07 Aug 2026</p>
-            <a class="btn btn--secondary btn--small" href="articles/article-template.html">Read Story</a>
-          </article>
-
-          <article class="card">
-            <p class="card__eyebrow">African Businesses</p>
-            <h3 class="card__title">Local companies pursue expansion across consumer and infrastructure markets</h3>
-            <p class="card__meta">By ExMarkets · 06 Aug 2026</p>
-            <a class="btn btn--secondary btn--small" href="articles/article-template.html">Read Story</a>
-          </article>
-
-          <article class="card">
-            <p class="card__eyebrow">Technology in Africa</p>
-            <h3 class="card__title">Digital infrastructure investment is supporting the region's tech ecosystem</h3>
-            <p class="card__meta">By ExMarkets · 05 Aug 2026</p>
-            <a class="btn btn--secondary btn--small" href="articles/article-template.html">Read Story</a>
-          </article>
-        </div>
-      </section>
-
-      <section class="container section" id="analysis" aria-labelledby="analysis-title">
-        <div class="section__heading">
-          <p class="text-uppercase">ExMarkets Analysis</p>
-          <h2 id="analysis-title">In-depth analysis for market professionals</h2>
-        </div>
-
-        <div class="analysis-grid">
-          <article class="card card--feature">
-            <p class="card__eyebrow">Analysis</p>
-            <h3 class="card__title">How central-bank policy is being priced across global markets</h3>
-            <p class="card__meta">By ExMarkets · 08 Aug 2026 · 8 min read</p>
-            <p class="lead">A demonstration review of the ways market participants interpret policy communication and economic data.</p>
-            <a class="btn btn--secondary" href="articles/article-template.html">Read Analysis</a>
-          </article>
-
-          <article class="card card--feature">
-            <p class="card__eyebrow">Analysis</p>
-            <h3 class="card__title">The outlook for emerging-market currencies in a higher-rate world</h3>
-            <p class="card__meta">By ExMarkets · 07 Aug 2026 · 7 min read</p>
-            <p class="lead">A demonstration examination of currency valuation, capital flows and policy divergence.</p>
-            <a class="btn btn--secondary" href="articles/article-template.html">Read Analysis</a>
-          </article>
-
-          <article class="card card--feature">
-            <p class="card__eyebrow">Analysis</p>
-            <h3 class="card__title">Corporate strategy shifts as earnings outlook meets macro uncertainty</h3>
-            <p class="card__meta">By ExMarkets · 06 Aug 2026 · 8 min read</p>
-            <p class="lead">A demonstration view of how boards and executives are positioning for evolving market conditions.</p>
-            <a class="btn btn--secondary" href="articles/article-template.html">Read Analysis</a>
+            <h3 class="news-card__title">Oil and metals react to supply, demand and macro developments</h3>
+            <p class="news-card__summary">Price action in energy and precious metals reflects broader market dynamics.</p>
+            <p class="article__meta">Updated 28 min ago</p>
+            <a class="btn btn--secondary btn--small" href="news.html">Read Story</a>
           </article>
         </div>
       </section>
@@ -438,16 +269,16 @@
       <section class="container section" id="newsletter" aria-labelledby="newsletter-title">
         <div class="newsletter card card--elevated">
           <p class="card__eyebrow">Newsletter</p>
-          <h2 id="newsletter-title">Stay Ahead of the Markets</h2>
+          <h2 id="newsletter-title">Stay ahead of the markets</h2>
           <p class="lead">
-            Receive curated market briefings, economic analysis and rapid commentary delivered in a concise format.
+            Get timely market updates, economic briefs and ExMarkets insights delivered to your inbox.
           </p>
           <form class="newsletter__form">
             <label class="sr-only" for="email">Email address</label>
             <input id="email" name="email" type="email" placeholder="Enter your email address" />
             <button class="btn btn--primary" type="submit">Subscribe</button>
           </form>
-          <p class="text-muted">No spam. Just timely market intelligence and practical context.</p>
+          <p class="text-muted">No spam. Just market intelligence and timely updates.</p>
         </div>
       </section>
     </main>
@@ -495,6 +326,7 @@
       <p class="footer__copyright text-muted">© 2026 ExMarkets Group.</p>
 </footer>
 
+    <script src="assets/js/market-data.js" defer></script>
     <script src="assets/js/main.js" defer></script>
   </body>
 </html>

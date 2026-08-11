@@ -35,6 +35,8 @@
     { id: 'XAUUSD', display: 'Gold' },
     { id: 'OIL', display: 'Oil' },
     { id: 'NDX', display: 'NASDAQ 100' },
+    { id: 'SPX', display: 'S&P 500' },
+    { id: 'DJI', display: 'Dow Jones' },
     { id: 'BTCUSD', display: 'Bitcoin' }
   ];
 
@@ -215,6 +217,132 @@
     if (disclosure){
       disclosure.textContent = (disclosure.textContent.split('·')[0] || 'Market data provided via ExMarkets') + ' · Market data updated: ' + new Date(lastSuccessfulFetchAt).toUTCString().replace('GMT','UTC');
     }
+
+    renderForexTable(map);
+    renderMarketMovers(map);
+    renderMarketStatus(map);
+  }
+
+  function renderForexTable(map){
+    var body = document.getElementById('forex-table-body');
+    if (!body) return;
+    var ids = ['EURUSD','USDJPY','USDZAR'];
+    body.innerHTML = '';
+
+    ids.forEach(function(id){
+      var market = map[id];
+      var row = document.createElement('tr');
+      var pair = document.createElement('td'); pair.textContent = market ? market.name || id : id.replace(/USD$/, '/USD');
+      var price = document.createElement('td');
+      price.textContent = market ? formatNumberForInstrument(id, market.price) : '-';
+      var change = document.createElement('td');
+      var changePercent = document.createElement('td');
+      var status = document.createElement('td');
+
+      if (market){
+        var delta = market.change;
+        var deltaPct = market.changePercent;
+        if ((delta === undefined || delta === null) && market.price != null && market.previousClose != null){
+          delta = market.price - market.previousClose;
+        }
+        if ((deltaPct === undefined || deltaPct === null) && delta != null && market.previousClose != null && market.previousClose !== 0){
+          deltaPct = (delta / market.previousClose) * 100;
+        }
+
+        change.textContent = delta != null ? (delta > 0 ? '+' : (delta < 0 ? '−' : '')) + Math.abs(delta).toFixed(id === 'USDJPY' ? 3 : 5) : '-';
+        change.classList.toggle('market-panel__stat--positive', delta > 0);
+        change.classList.toggle('market-panel__stat--negative', delta < 0);
+
+        changePercent.textContent = deltaPct != null ? (deltaPct > 0 ? '+' : (deltaPct < 0 ? '−' : '')) + Math.abs(deltaPct).toFixed(2) + '%' : '-';
+        changePercent.classList.toggle('market-panel__stat--positive', deltaPct > 0);
+        changePercent.classList.toggle('market-panel__stat--negative', deltaPct < 0);
+
+        status.textContent = market.marketStatus || 'N/A';
+      } else {
+        change.textContent = '-';
+        changePercent.textContent = '-';
+        status.textContent = 'N/A';
+      }
+
+      row.appendChild(pair);
+      row.appendChild(price);
+      row.appendChild(change);
+      row.appendChild(changePercent);
+      row.appendChild(status);
+      body.appendChild(row);
+    });
+  }
+
+  function renderMarketStatus(map){
+    var categories = {
+      'status-forex': ['EURUSD','USDJPY','USDZAR'],
+      'status-us': ['NDX','SPX','DJI'],
+      'status-commodities': ['XAUUSD','OIL'],
+      'status-crypto': ['BTCUSD']
+    };
+
+    Object.keys(categories).forEach(function(sectionId){
+      var element = document.getElementById(sectionId);
+      if (!element) return;
+      var markets = categories[sectionId].map(function(id){ return map[id]; }).filter(Boolean);
+      if (!markets.length){
+        element.textContent = 'DATA UNAVAILABLE';
+        return;
+      }
+
+      if (markets.some(function(m){ return String(m.marketStatus || '').toUpperCase() === 'OPEN'; })){
+        element.textContent = 'OPEN';
+      } else if (markets.some(function(m){ return String(m.marketStatus || '').toUpperCase() === 'CLOSED'; })){
+        element.textContent = 'CLOSED';
+      } else {
+        element.textContent = 'DATA AVAILABLE';
+      }
+    });
+  }
+
+  function renderMarketMovers(map){
+    var markets = Object.keys(map).map(function(key){ return map[key]; }).filter(function(m){ return m && m.price != null; });
+    var valid = markets.map(function(m){
+      var deltaPct = m.changePercent;
+      var delta = m.change;
+      if ((deltaPct === undefined || deltaPct === null) && delta != null && m.previousClose != null && m.previousClose !== 0){
+        deltaPct = (delta / m.previousClose) * 100;
+      }
+      if ((deltaPct === undefined || deltaPct === null) && m.price != null && m.previousClose != null && m.previousClose !== 0){
+        deltaPct = ((m.price - m.previousClose) / m.previousClose) * 100;
+      }
+      return Object.assign({}, m, { changePercent: deltaPct });
+    }).filter(function(m){ return m.changePercent != null && !isNaN(m.changePercent); });
+
+    var gainers = valid.slice().sort(function(a,b){ return b.changePercent - a.changePercent; }).slice(0, 4);
+    var losers = valid.slice().sort(function(a,b){ return a.changePercent - b.changePercent; }).slice(0, 4);
+
+    function renderList(elementId, items, emptyText){
+      var container = document.getElementById(elementId);
+      if (!container) return;
+      container.innerHTML = '';
+      if (!items.length){
+        var li = document.createElement('li');
+        li.textContent = emptyText;
+        container.appendChild(li);
+        return;
+      }
+      items.forEach(function(m){
+        var li = document.createElement('li');
+        var label = document.createElement('strong');
+        label.textContent = m.name || m.symbol || '';
+        var value = document.createElement('span');
+        var sign = m.changePercent > 0 ? '+' : (m.changePercent < 0 ? '−' : '');
+        value.textContent = sign + Math.abs(m.changePercent).toFixed(2) + '%';
+        value.className = m.changePercent > 0 ? 'market-panel__stat--positive' : (m.changePercent < 0 ? 'market-panel__stat--negative' : '');
+        li.appendChild(label);
+        li.appendChild(value);
+        container.appendChild(li);
+      });
+    }
+
+    renderList('movers-gainers', gainers, 'Not enough data to identify gainers');
+    renderList('movers-losers', losers, 'Not enough data to identify losers');
   }
 
   function handleFetchError(err, status){

@@ -35,8 +35,6 @@
     { id: 'XAUUSD', display: 'Gold' },
     { id: 'OIL', display: 'Oil' },
     { id: 'NDX', display: 'NASDAQ 100' },
-    { id: 'SPX', display: 'S&P 500' },
-    { id: 'DJI', display: 'Dow Jones' },
     { id: 'BTCUSD', display: 'Bitcoin' }
   ];
 
@@ -276,7 +274,7 @@
   function renderMarketStatus(map){
     var categories = {
       'status-forex': ['EURUSD','USDJPY','USDZAR'],
-      'status-us': ['NDX','SPX','DJI'],
+      'status-us': ['NDX'],
       'status-commodities': ['XAUUSD','OIL'],
       'status-crypto': ['BTCUSD']
     };

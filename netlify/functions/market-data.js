@@ -102,9 +102,32 @@ function prettyName(id) {
   }
 }
 
+function getCurrentPriceFromRecord(r) {
+  if (!r || typeof r !== 'object') return null;
+
+  const candidates = [
+    r.price,
+    r.rate,
+    r.last,
+    r.close,
+    r.value,
+    r.data && r.data.price,
+    r.data && r.data.rate,
+    r.data && r.data.last,
+    r.data && r.data.close,
+    r.data && r.data.value
+  ];
+
+  for (const value of candidates) {
+    const numeric = getNumericPrice(value);
+    if (numeric != null) return numeric;
+  }
+  return null;
+}
+
 function normalizeQuoteRecord(id, providerSym, r) {
   if (!r) return { id, symbol: providerSym, name: prettyName(id) };
-  const price = r.price != null ? parseFloat(r.price) : null;
+  const price = getCurrentPriceFromRecord(r);
   const previousClose = r.previous_close != null ? parseFloat(r.previous_close) : null;
   const change = (price != null && previousClose != null) ? (price - previousClose) : (r.change != null ? parseFloat(r.change) : null);
   const changePercent = r.percent_change != null ? parseFloat(r.percent_change) : (previousClose ? (change / previousClose) * 100 : null);
@@ -190,7 +213,7 @@ async function fetchQuoteWithForexFallback(apiKey, symbol) {
 
         const fallbackPayload = await fallbackResponse.json();
         const fallbackRaw = coerceQuotePayload(fallbackPayload);
-        const fallbackPrice = getNumericPrice(getNestedValue(fallbackRaw, ['price', 'rate', 'last', 'close', 'value']));
+        const fallbackPrice = getCurrentPriceFromRecord(fallbackRaw);
         if (fallbackPrice != null) {
           const merged = {
             ...(fallbackRaw || {}),

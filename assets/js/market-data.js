@@ -25,7 +25,7 @@
 
   // Configuration
   var MARKET_REFRESH_INTERVAL = 5 * 60 * 1000; // 5 minutes
-  var MARKET_DATA_ENDPOINT = '/.netlify/functions/market-data'; // serverless proxy endpoint
+  var MARKET_DATA_ENDPOINT = 'https://exmarkets.netlify.app/.netlify/functions/market-data'; // serverless proxy endpoint
 
   // Internal market list (internal IDs only). Provider symbol mapping happens server-side.
   var MARKETS = [

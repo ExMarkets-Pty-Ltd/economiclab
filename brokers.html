@@ -73,9 +73,9 @@
       <section class="container section" aria-labelledby="brokers-title">
         <div class="section__heading">
           <p class="text-uppercase">Broker comparison</p>
-          <h1 id="brokers-title">Compare brokers, fees and account options</h1>
+          <h1 id="brokers-title">Compare Forex Brokers</h1>
           <p class="lead">
-            Find a broker that fits your trading strategy, account size and regulatory preferences with ExMarkets broker insights.
+            Compare selected forex brokers by trading costs, account requirements, regulation and platform availability before choosing where to trade.
           </p>
         </div>
 
@@ -95,41 +95,92 @@
         <div class="container" style="margin-top:var(--space-6)">
           <h3 class="h3">Broker comparison</h3>
           <p class="text-muted">A quick comparison of broker features to help you get started. Verify details on broker websites before opening accounts.</p>
-          <div class="card" style="overflow:auto;">
-            <table style="width:100%; border-collapse:collapse;">
-              <thead>
-                <tr>
-                  <th style="text-align:left; padding:0.5rem; border-bottom:1px solid var(--color-border);">Broker</th>
-                  <th style="text-align:left; padding:0.5rem; border-bottom:1px solid var(--color-border);">Regulation</th>
-                  <th style="text-align:left; padding:0.5rem; border-bottom:1px solid var(--color-border);">Fees</th>
-                  <th style="text-align:left; padding:0.5rem; border-bottom:1px solid var(--color-border);">Min deposit</th>
-                  <th style="text-align:left; padding:0.5rem; border-bottom:1px solid var(--color-border);">Link</th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr>
-                  <td style="padding:0.5rem; border-bottom:1px solid var(--color-border);">ExampleBroker A</td>
-                  <td style="padding:0.5rem; border-bottom:1px solid var(--color-border);">FCA / CySEC</td>
-                  <td style="padding:0.5rem; border-bottom:1px solid var(--color-border);">Low spreads, commission on FX</td>
-                  <td style="padding:0.5rem; border-bottom:1px solid var(--color-border);">$100</td>
-                  <td style="padding:0.5rem; border-bottom:1px solid var(--color-border);"><a href="#">Visit</a></td>
-                </tr>
-                <tr>
-                  <td style="padding:0.5rem; border-bottom:1px solid var(--color-border);">ExampleBroker B</td>
-                  <td style="padding:0.5rem; border-bottom:1px solid var(--color-border);">ASIC / FSCA</td>
-                  <td style="padding:0.5rem; border-bottom:1px solid var(--color-border);">Commission-free, wider spreads</td>
-                  <td style="padding:0.5rem; border-bottom:1px solid var(--color-border);">$50</td>
-                  <td style="padding:0.5rem; border-bottom:1px solid var(--color-border);"><a href="#">Visit</a></td>
-                </tr>
-                <tr>
-                  <td style="padding:0.5rem;">ExampleBroker C</td>
-                  <td style="padding:0.5rem;">Unregulated</td>
-                  <td style="padding:0.5rem;">Variable fees</td>
-                  <td style="padding:0.5rem;">$0</td>
-                  <td style="padding:0.5rem;"><a href="#">Visit</a></td>
-                </tr>
-              </tbody>
-            </table>
+          <div class="broker-table-card card">
+            <div class="broker-table-wrapper">
+              <table class="broker-table" role="table">
+                <thead>
+                  <tr>
+                    <th scope="col">Broker</th>
+                    <th scope="col">Featured account</th>
+                    <th scope="col">Spreads from</th>
+                    <th scope="col">Commission</th>
+                    <th scope="col">Minimum deposit</th>
+                    <th scope="col">South Africa regulation</th>
+                    <th scope="col">Action</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>
+                      <div class="broker-cell">
+                        <div class="broker-logo">
+                          <img class="logo logo-light" src="assets/images/fpmarkets black logo.png" alt="FP Markets logo" />
+                          <img class="logo logo-dark" src="assets/images/fpmarkets white logo.png" alt="FP Markets logo" />
+                        </div>
+                        <div>
+                          <strong>FP Markets</strong>
+                        </div>
+                      </div>
+                    </td>
+                    <td>Standard</td>
+                    <td>From 1.0 pips — Standard account</td>
+                    <td>Zero</td>
+                    <td>$100 AUD or equivalent</td>
+                    <td>FSCA, FSP Number: 50926</td>
+                    <td>
+                      <a class="btn btn--primary btn--small" href="https://www.fpmarkets.com/switch-to-fp-markets/?fpm-affiliate-utm-source=IB&fpm-affiliate-agt=64822" target="_blank" rel="noopener noreferrer">Visit FP Markets</a>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>
+                      <div class="broker-cell">
+                        <div class="broker-logo">
+                          <img class="logo logo-light" src="assets/images/hfmarkets black logo.png" alt="HFM logo" />
+                          <img class="logo logo-dark" src="assets/images/hfmarkets white logo.png" alt="HFM logo" />
+                        </div>
+                        <div>
+                          <strong>HFM</strong>
+                          <div class="text-muted">HF Markets</div>
+                        </div>
+                      </div>
+                    </td>
+                    <td>Pro</td>
+                    <td>From 0.6 pip — Pro account</td>
+                    <td>Zero</td>
+                    <td>$100</td>
+                    <td>FSCA, FSP Number: 46632</td>
+                    <td>
+                      <a class="btn btn--primary btn--small" href="https://www.hfm.com/za/en/?refid=30554002" target="_blank" rel="noopener noreferrer">Visit HFM</a>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>
+                      <div class="broker-cell">
+                        <div class="broker-logo">
+                          <img class="logo logo-light" src="assets/images/xm black logo.png" alt="XM logo" />
+                          <img class="logo logo-dark" src="assets/images/xm white logo.png" alt="XM logo" />
+                        </div>
+                        <div>
+                          <strong>XM</strong>
+                        </div>
+                      </div>
+                    </td>
+                    <td>Ultra Low</td>
+                    <td>From 0.8 — Ultra Low account</td>
+                    <td>Zero</td>
+                    <td>$5</td>
+                    <td>FSCA, FSP Number: 49976</td>
+                    <td>
+                      <a class="btn btn--primary btn--small" href="https://www.xmza.com/referral?token=T0jxFOzgLP0PUO8vsXtpiA" target="_blank" rel="noopener noreferrer">Visit XM</a>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <div class="disclosure">
+              <p><strong>Affiliate disclosure:</strong> ExMarkets may receive compensation when you visit or open an account with some brokers through links on this page. This does not affect our comparison or editorial judgment. Trading leveraged products involves significant risk and may not be suitable for all investors.</p>
+              <p><strong>Risk warning:</strong> Forex and CFD trading involves significant risk of loss and may not be suitable for all investors. Trading conditions, spreads, commissions, leverage and minimum deposits can change. Verify the latest terms directly with the broker before opening an account.</p>
+            </div>
           </div>
         </div>
       </section>

@@ -90,11 +90,9 @@
     var label = document.createElement('span'); label.className = 'market-panel__label'; label.textContent = market.name || market.symbol || '';
     header.appendChild(label);
 
-    // symbol
     var symSpan = document.createElement('span'); symSpan.className = 'market-panel__symbol'; symSpan.textContent = (market.providerSymbol || market.symbol || '').replace(/:/g,' ');
     header.appendChild(symSpan);
 
-    // change indicator
     var delta = document.createElement('span'); delta.className = 'market-panel__delta';
     var change = market.change;
     var changePercent = market.changePercent;
@@ -106,7 +104,7 @@
     }
     if (change != null){
       var sign = change > 0 ? '+' : (change < 0 ? '−' : '');
-      delta.textContent = sign + (Math.abs(changePercent) != null ? (Math.abs(changePercent).toFixed(2) + '%') : (change.toFixed(2)));
+      delta.textContent = sign + (changePercent != null ? (Math.abs(changePercent).toFixed(2) + '%') : (Math.abs(change).toFixed(2)));
       if (change > 0) delta.classList.add('market-panel__delta--positive');
       else if (change < 0) delta.classList.add('market-panel__delta--negative');
     }
@@ -117,6 +115,34 @@
     var val = document.createElement('div'); val.className = 'market-panel__value';
     val.textContent = market.price != null ? formatNumberForInstrument(market.symbol || market.id, market.price) : '-';
     container.appendChild(val);
+
+    var detailRow = document.createElement('div'); detailRow.className = 'market-panel__details';
+    var prevClose = document.createElement('span'); prevClose.className = 'market-panel__stat';
+    prevClose.textContent = 'Prev ' + (market.previousClose != null ? formatNumberForInstrument(market.symbol || market.id, market.previousClose) : '-');
+    detailRow.appendChild(prevClose);
+
+    var changeValue = document.createElement('span'); changeValue.className = 'market-panel__stat';
+    if (change != null){
+      var signed = change > 0 ? '+' : (change < 0 ? '−' : '');
+      changeValue.textContent = 'Δ ' + signed + Math.abs(change).toFixed(change > 0 && (market.symbol || market.id) === 'USDJPY' ? 3 : 2);
+      changeValue.classList.toggle('market-panel__stat--positive', change > 0);
+      changeValue.classList.toggle('market-panel__stat--negative', change < 0);
+    } else {
+      changeValue.textContent = 'Δ -';
+    }
+    detailRow.appendChild(changeValue);
+
+    var pctValue = document.createElement('span'); pctValue.className = 'market-panel__stat';
+    if (changePercent != null){
+      var signedPercent = changePercent > 0 ? '+' : (changePercent < 0 ? '−' : '');
+      pctValue.textContent = 'Chg ' + signedPercent + Math.abs(changePercent).toFixed(2) + '%';
+      pctValue.classList.toggle('market-panel__stat--positive', changePercent > 0);
+      pctValue.classList.toggle('market-panel__stat--negative', changePercent < 0);
+    } else {
+      pctValue.textContent = 'Chg -';
+    }
+    detailRow.appendChild(pctValue);
+    container.appendChild(detailRow);
 
     var meta = document.createElement('p'); meta.className = 'market-panel__meta';
     var tsText = '';
@@ -197,7 +223,9 @@
       backoffMultiplier = Math.min(backoffMultiplier * 2, 16);
       scheduleRefreshWithBackoff();
     }
-    renderAllErrors();
+    if (disclosure){
+      disclosure.textContent = 'Market data provided via ExMarkets · Market data temporarily unavailable';
+    }
   }
 
   function scheduleRefreshWithBackoff(){

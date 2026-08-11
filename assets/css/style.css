@@ -1091,11 +1091,42 @@ html[data-theme="dark"] .site-nav__brand img.logo-dark {
   justify-content: space-between;
   gap: var(--space-4);
   margin-bottom: var(--space-3);
+  align-items: center;
 }
 
 .market-panel__label {
   color: var(--color-text-muted);
   font-size: var(--text-sm);
+}
+
+.market-panel__symbol {
+  color: var(--color-text-subtle);
+  font-size: var(--text-xs);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.market-panel__details {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem 0.75rem;
+  margin: 0.4rem 0 0.65rem;
+  color: var(--color-text-muted);
+  font-size: var(--text-xs);
+}
+
+.market-panel__stat {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.2rem;
+}
+
+.market-panel__stat--positive {
+  color: var(--color-success);
+}
+
+.market-panel__stat--negative {
+  color: var(--color-danger);
 }
 
 .market-panel__meta {

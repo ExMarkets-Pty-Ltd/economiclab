@@ -1596,11 +1596,20 @@ html[data-theme="dark"] .broker-logo img.logo-dark {
     padding: 0;
   }
 
-  .site-nav__links > li > a,
-  .site-nav__links > li > .site-nav__parent {
+  .site-nav__links > li > a {
     display: block;
     padding: var(--space-3) var(--space-4);
     border-bottom: 1px solid var(--color-border);
+  }
+
+  .site-nav__links > li > .site-nav__parent {
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+    align-items: center;
+    gap: 0;
+    padding: 0;
+    border-bottom: none;
   }
 
   .site-nav__links > li:first-child > a,

@@ -3,17 +3,17 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>TradingView Charts | ExMarkets Tools</title>
+    <title>Blog | ExMarkets Market Analysis</title>
     <meta
       name="description"
-      content="View interactive market charts with overlays and technical indicators through ExMarkets' TradingView resource page."
+      content="Explore the ExMarkets blog for market analysis, investment insights and financial commentary on business, technology and global economy trends."
     />
-    <meta name="canonical" content="https://YOUR-DOMAIN/tradingview.html" />
+    <meta name="canonical" content="https://YOUR-DOMAIN/blog.html" />
     <meta property="og:type" content="website" />
-    <meta property="og:title" content="TradingView Charts | ExMarkets Tools" />
+    <meta property="og:title" content="Blog | ExMarkets Market Analysis" />
     <meta
       property="og:description"
-      content="View interactive market charts with overlays and technical indicators through ExMarkets' TradingView resource page."
+      content="Explore the ExMarkets blog for market analysis, investment insights and financial commentary on business, technology and global economy trends."
     />
     <meta property="og:site_name" content="ExMarkets" />
     <link rel="stylesheet" href="assets/css/style.css" />
@@ -79,52 +79,59 @@
     </header>
 
     <main id="content">
-      <section class="container section" aria-labelledby="tradingview-title">
-        <div class="section__heading">
-          <p class="text-uppercase">TradingView charts</p>
-          <h1 id="tradingview-title">Open interactive market charts</h1>
+      <section class="hero container" aria-labelledby="blog-title">
+        <div class="hero__content">
+          <p class="text-uppercase">Blog</p>
+          <h1 id="blog-title">Market commentary, analysis and trading insights</h1>
           <p class="lead">
-            Review live price action for indices, currencies and commodities with technical overlays and timeframes designed for traders.
+            Read the latest ExMarkets blog posts on markets, economics, business and technology from a practical trading perspective.
+          </p>
+        </div>
+      </section>
+
+      <section class="container section" aria-labelledby="blog-posts-title">
+        <div class="section__heading">
+          <p class="text-uppercase">Latest posts</p>
+          <h2 id="blog-posts-title">Featured market analysis</h2>
+          <p class="text-muted">
+            Explore ExMarkets commentary on key trends, investment themes and market-moving news.
           </p>
         </div>
 
+        <div class="grid grid--3">
+          <article class="card">
+            <p class="card__eyebrow">Markets</p>
+            <h3 class="card__title">Global indices set the tone for earnings season</h3>
+            <p class="text-muted">An overview of the forces driving equity markets as corporate results and macro data converge.</p>
+            <a class="btn btn--secondary" href="news.html">Read article</a>
+          </article>
+
+          <article class="card">
+            <p class="card__eyebrow">Economy</p>
+            <h3 class="card__title">Central bank policy and the outlook for rates</h3>
+            <p class="text-muted">A breakdown of the latest rate guidance from global central banks and market implications.</p>
+            <a class="btn btn--secondary" href="economy.html">Read article</a>
+          </article>
+
+          <article class="card">
+            <p class="card__eyebrow">Technology</p>
+            <h3 class="card__title">Tech earnings, AI spending and the next market cycle</h3>
+            <p class="text-muted">How artificial intelligence investment is shaping tech sector performance and investor sentiment.</p>
+            <a class="btn btn--secondary" href="technology.html">Read article</a>
+          </article>
+        </div>
+      </section>
+
+      <section class="container section" aria-labelledby="blog-subscribe-title">
         <div class="card card--elevated">
           <div class="stack">
-            <div class="news-feature__media" role="img" aria-label="Placeholder illustration for TradingView chart tools"></div>
             <div>
-              <p class="card__eyebrow">Charting tools</p>
-              <h2>Access live charts with technical analysis built in</h2>
-              <p>
-                TradingView-style charts give you flexible indicators, drawing tools and symbol search for market-ready analysis.
-              </p>
-              <a class="btn btn--primary" href="tools.html">Back to tools</a>
+              <p class="card__eyebrow">Stay informed</p>
+              <h2 id="blog-subscribe-title">Get blog updates in your inbox</h2>
+              <p class="text-muted">Subscribe for commentary, market updates and expert insight delivered directly to your email.</p>
+              <a class="btn btn--primary" href="#newsletter">Subscribe</a>
             </div>
           </div>
-        </div>
-        <div class="container" style="margin-top:var(--space-6)">
-          <h3 class="h3">Interactive chart</h3>
-          <div id="tradingview_widget" style="width:100%; height:600px;">
-            <!-- TradingView widget will load here -->
-          </div>
-          <script src="https://s3.tradingview.com/tv.js"></script>
-          <script>
-            (function() {
-              var theme = document.documentElement.getAttribute('data-theme') === 'light' ? 'Light' : 'Dark';
-              if (window.TradingView) {
-                new TradingView.widget({
-                  "width": "100%",
-                  "height": 600,
-                  "symbol": "NASDAQ:QQQ",
-                  "interval": "D",
-                  "timezone": "Etc/UTC",
-                  "theme": theme.toLowerCase(),
-                  "style": "1",
-                  "locale": "en",
-                  "container_id": "tradingview_widget"
-                });
-              }
-            })();
-          </script>
         </div>
       </section>
     </main>
@@ -137,40 +144,38 @@
             <img class="logo logo-dark" src="assets/images/ExMarkets White Transparent logo.png" alt="ExMarkets" />
             <span class="sr-only">ExMarkets</span>
           </a>
-          <p class="text-muted">
-            Premium financial journalism for professionals seeking clarity, context and disciplined analysis.
-          </p>
+          <p class="text-muted">Premium financial journalism for professionals seeking clarity, context and disciplined analysis.</p>
         </div>
 
         <div>
-          <h3 class="h3">Navigation</h3>
+          <h3 class="h3">Insights</h3>
           <ul class="footer__links">
-            <li><a href="news.html">News</a></li>
             <li><a href="markets.html">Markets</a></li>
-            <li><a href="tools.html">Tools</a></li>
+            <li><a href="companies.html">Business</a></li>
+            <li><a href="economy.html">Economy</a></li>
           </ul>
         </div>
 
         <div>
-          <h3 class="h3">Markets</h3>
+          <h3 class="h3">Resources</h3>
           <ul class="footer__links">
-            <li><a href="markets.html">Indices</a></li>
-            <li><a href="technology.html">Technology</a></li>
-            <li><a href="economy.html">Economy</a></li>
+            <li><a href="economic-calendar.html">Economic Calendar</a></li>
+            <li><a href="tradingview.html">Charts</a></li>
+            <li><a href="brokers.html">Broker Comparison</a></li>
           </ul>
         </div>
 
         <div>
           <h3 class="h3">Company</h3>
           <ul class="footer__links">
-            <li><a href="companies.html">Corporate coverage</a></li>
-            <li><a href="technology.html">Technology</a></li>
-            <li><a href="#newsletter">Subscribe</a></li>
+            <li><a href="about.html">About ExMarkets</a></li>
+            <li><a href="contact.html">Contact</a></li>
+            <li><a href="blog.html">Blog</a></li>
           </ul>
         </div>
       </div>
       <p class="footer__copyright text-muted">© 2026 ExMarkets Group.</p>
-</footer>
+    </footer>
 
     <script src="assets/js/main.js" defer></script>
   </body>

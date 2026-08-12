@@ -511,16 +511,6 @@ html[data-theme="dark"] .site-nav__brand img.logo-dark {
   outline: none;
 }
 
-.site-nav__dropdown-btn::after {
-  content: '›';
-  font-size: 1.25rem;
-  line-height: 1;
-}
-
-.site-nav__dropdown-btn[aria-expanded="true"]::after {
-  content: '‹';
-}
-
 .site-nav__mobile-divider {
   display: none;
   list-style: none;
@@ -1598,6 +1588,7 @@ html[data-theme="dark"] .broker-logo img.logo-dark {
     padding-right: var(--space-4);
     margin: 0;
     box-sizing: border-box;
+    background: var(--color-background);
   }
 
   .site-nav__links li {
@@ -1624,6 +1615,7 @@ html[data-theme="dark"] .broker-logo img.logo-dark {
     width: 100%;
     justify-content: space-between;
     align-items: center;
+    gap: 0;
   }
 
   .site-nav__parent a {
@@ -1635,16 +1627,8 @@ html[data-theme="dark"] .broker-logo img.logo-dark {
   }
 
   .site-nav__parent .site-nav__dropdown-btn {
-    padding: var(--space-3) var(--space-4);
     border-bottom: 1px solid var(--color-border);
     border-left: none;
-    display: inline-flex;
-    background: none;
-    border: none;
-    cursor: pointer;
-    flex-shrink: 0;
-    font-size: var(--text-sm);
-    color: var(--color-text-muted);
   }
 
   .site-nav__parent .site-nav__dropdown-btn:hover,
@@ -1654,23 +1638,37 @@ html[data-theme="dark"] .broker-logo img.logo-dark {
 
   .site-nav__dropdown-btn {
     display: inline-flex;
-  }
-
-  .site-nav__dropdown-btn::after {
-    content: '⌄';
-    font-size: 1rem;
+    align-items: center;
+    justify-content: center;
+    min-width: 48px;
+    min-height: 48px;
+    width: 48px;
+    height: 48px;
+    padding: 0;
+    flex-shrink: 0;
+    border: none;
+    background-color: transparent;
+    cursor: pointer;
+    color: var(--color-text-muted);
+    transition: transform 180ms ease, color 180ms ease;
+    font-size: 28px;
     line-height: 1;
+    font-weight: 300;
   }
 
-  .site-nav__dropdown-btn[aria-expanded="true"]::after {
-    content: '⌃';
+  .site-nav__dropdown-btn::before {
+    content: '\2304';
+  }
+
+  .site-nav__dropdown-btn[aria-expanded="true"] {
+    transform: rotate(180deg);
   }
 
   /* Submenu styling for mobile overlay */
-  .site-nav__links .submenu {
+  .site-nav__links .has-submenu .submenu {
     display: none;
     position: static;
-    background: transparent;
+    background: var(--color-surface-2);
     border: none;
     box-shadow: none;
     min-width: auto;
@@ -1680,18 +1678,18 @@ html[data-theme="dark"] .broker-logo img.logo-dark {
     top: auto;
   }
 
-  .site-nav__links .submenu.is-open {
+  .site-nav__links .has-submenu .submenu.is-open {
     display: block;
     background: var(--color-surface-2);
   }
 
-  .site-nav__links .submenu li {
+  .site-nav__links .has-submenu .submenu li {
     list-style: none;
     margin: 0;
     padding: 0;
   }
 
-  .site-nav__links .submenu li a {
+  .site-nav__links .has-submenu .submenu li a {
     display: block;
     padding: var(--space-2) var(--space-4) var(--space-2) calc(var(--space-4) * 1.5);
     color: var(--color-text-muted);
@@ -1699,7 +1697,7 @@ html[data-theme="dark"] .broker-logo img.logo-dark {
     border-bottom: 1px solid var(--color-border);
   }
 
-  .site-nav__links .submenu li a:last-child {
+  .site-nav__links .has-submenu .submenu li a:last-child {
     border-bottom: none;
   }
 

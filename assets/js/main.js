@@ -10,6 +10,7 @@
   const root = document.documentElement;
   const navToggle = document.querySelector('[data-nav-toggle]');
   const navMenu = document.querySelector('[data-nav-menu]');
+  const navInner = document.querySelector('.site-nav__inner');
   const themeToggle = document.querySelector('[data-theme-toggle]');
   const themeLabel = themeToggle ? themeToggle.querySelector('.theme-toggle__label') : null;
 
@@ -32,14 +33,71 @@
   const initialTheme = savedTheme === 'light' ? 'light' : 'dark';
   applyTheme(initialTheme);
 
+  // Mobile navigation toggle
   if (navToggle && navMenu) {
     navToggle.addEventListener('click', function () {
       const expanded = this.getAttribute('aria-expanded') === 'true';
       const nextExpanded = !expanded;
       this.setAttribute('aria-expanded', String(nextExpanded));
+      this.setAttribute('aria-label', nextExpanded ? 'Close navigation menu' : 'Open navigation menu');
+      this.textContent = nextExpanded ? '✕' : '☰';
       navMenu.classList.toggle('is-open', nextExpanded);
+      if (navInner) {
+        navInner.classList.toggle('is-menu-open', nextExpanded);
+      }
+      // Disable/enable page scrolling
+      if (nextExpanded) {
+        document.body.classList.add('menu-open');
+      } else {
+        document.body.classList.remove('menu-open');
+      }
     });
   }
+
+  // Mobile dropdown buttons
+  document.querySelectorAll('.site-nav__dropdown-btn').forEach(function (btn) {
+    btn.addEventListener('click', function (event) {
+      event.preventDefault();
+      const submenu = this.parentElement.nextElementSibling;
+      
+      if (submenu && submenu.classList.contains('submenu')) {
+        const isOpen = submenu.classList.contains('is-open');
+        this.setAttribute('aria-expanded', String(!isOpen));
+        submenu.classList.toggle('is-open', !isOpen);
+      }
+    });
+  });
+
+  // Close menu when clicking a navigation link
+  if (navMenu) {
+    navMenu.querySelectorAll('a[href]:not([href=""])').forEach(function (link) {
+      link.addEventListener('click', function () {
+        navToggle.setAttribute('aria-expanded', 'false');
+        navToggle.setAttribute('aria-label', 'Open navigation menu');
+        navToggle.textContent = '☰';
+        navMenu.classList.remove('is-open');
+        if (navInner) {
+          navInner.classList.remove('is-menu-open');
+        }
+        document.body.classList.remove('menu-open');
+        
+        // Close any open dropdowns
+        navMenu.querySelectorAll('.submenu.is-open').forEach(function (submenu) {
+          submenu.classList.remove('is-open');
+        });
+        navMenu.querySelectorAll('.site-nav__dropdown-btn').forEach(function (btn) {
+          btn.setAttribute('aria-expanded', 'false');
+        });
+      });
+    });
+  }
+
+  // Prevent default on parent links
+  document.querySelectorAll('.site-nav__parent a[href=""]').forEach(function (link) {
+    link.addEventListener('click', function (event) {
+      event.preventDefault();
+    });
+  });
 
   if (themeToggle) {
     themeToggle.addEventListener('click', function () {

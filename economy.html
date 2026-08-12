@@ -40,15 +40,32 @@
         </button>
 
         <ul class="site-nav__links" id="site-navigation" data-nav-menu>
-          <li><a class="site-nav__link" href="index.html">Home</a></li>
-          <li><a class="site-nav__link" href="markets.html">Markets</a></li>
-          <li><a class="site-nav__link" href="news.html">News</a></li>
-          <li><a class="site-nav__link" href="companies.html">Business</a></li>
-          <li><a class="site-nav__link" href="technology.html">Technology</a></li>
-          <li><a class="site-nav__link" href="economy.html" aria-current="page">Economy</a></li>
+          <li class="has-submenu">
+            <a class="site-nav__link" href="markets.html">Insights ▾</a>
+            <ul class="submenu">
+              <li><a class="site-nav__link" href="markets.html">Markets</a></li>
+              <li><a class="site-nav__link" href="companies.html">Business</a></li>
+              <li><a class="site-nav__link" href="technology.html">Technology</a></li>
+              <li><a class="site-nav__link" href="economy.html">Economy</a></li>
+            </ul>
+          </li>
+          <li class="has-submenu">
+            <a class="site-nav__link" href="tools.html">Resources ▾</a>
+            <ul class="submenu">
+              <li><a class="site-nav__link" href="economic-calendar.html">Economic Calendar</a></li>
+              <li><a class="site-nav__link" href="tradingview.html">Charts</a></li>
+              <li><a class="site-nav__link" href="brokers.html">Broker Comparison</a></li>
+            </ul>
+          </li>
           <li><a class="site-nav__link" href="companies.html">Companies</a></li>
-          <li><a class="site-nav__link" href="about.html">About</a></li>
-          <li><a class="site-nav__link" href="contact.html">Contact</a></li>
+          <li><a class="site-nav__link" href="blog.html">Blog</a></li>
+          <li class="has-submenu">
+            <a class="site-nav__link" href="about.html">About ▾</a>
+            <ul class="submenu">
+              <li><a class="site-nav__link" href="about.html">About ExMarkets</a></li>
+              <li><a class="site-nav__link" href="contact.html">Contact</a></li>
+            </ul>
+          </li>
         </ul>
 
         <div class="site-nav__actions">

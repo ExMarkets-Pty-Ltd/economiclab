@@ -296,12 +296,15 @@ p {
   border: 1px solid transparent;
   font-size: var(--text-sm);
   font-weight: var(--weight-semibold);
+  background: #00e8f6;
   transition: transform 180ms ease, box-shadow 180ms ease, background-color 180ms ease, border-color 180ms ease;
 }
 
 .btn:hover,
-.btn:focus-visible {
+.btn:focus-visible,
+.btn:active {
   transform: translateY(-1px);
+  background: #00e8f6;
 }
 
 .btn:active {
@@ -309,21 +312,21 @@ p {
 }
 
 .btn--primary {
-  background: linear-gradient(135deg, var(--color-primary), var(--color-accent));
+  background: #00e8f6;
   color: var(--color-text);
   box-shadow: var(--shadow-sm);
 }
 
 .btn--secondary {
-  background: var(--color-surface-2);
+  background: #00e8f6;
   color: var(--color-text);
-  border-color: var(--color-border);
+  border-color: #00e8f6;
 }
 
 .btn--ghost {
-  background: transparent;
+  background: #00e8f6;
   color: var(--color-text-muted);
-  border-color: transparent;
+  border-color: #00e8f6;
 }
 
 .btn--small {

@@ -11,22 +11,22 @@
   const navToggle = document.querySelector('[data-nav-toggle]');
   const navMenu = document.querySelector('[data-nav-menu]');
   const navInner = document.querySelector('.site-nav__inner');
-  const themeToggle = document.querySelector('[data-theme-toggle]');
-  const themeLabel = themeToggle ? themeToggle.querySelector('.theme-toggle__label') : null;
+  const themeToggles = document.querySelectorAll('[data-theme-toggle]');
 
   function applyTheme(themeName) {
     root.setAttribute('data-theme', themeName);
     localStorage.setItem(STORAGE_KEY, themeName);
 
-    if (themeToggle) {
+    themeToggles.forEach(function (toggle) {
       const isLight = themeName === 'light';
-      themeToggle.setAttribute('aria-pressed', String(isLight));
-      themeToggle.setAttribute('aria-label', isLight ? 'Switch to dark theme' : 'Switch to light theme');
+      toggle.setAttribute('aria-pressed', String(isLight));
+      toggle.setAttribute('aria-label', isLight ? 'Switch to dark theme' : 'Switch to light theme');
 
-      if (themeLabel) {
-        themeLabel.textContent = isLight ? 'Light theme' : 'Dark theme';
+      const label = toggle.querySelector('.theme-toggle__label');
+      if (label) {
+        label.textContent = isLight ? 'Light theme' : 'Dark theme';
       }
-    }
+    });
   }
 
   const savedTheme = localStorage.getItem(STORAGE_KEY);
@@ -99,10 +99,12 @@
     });
   });
 
-  if (themeToggle) {
-    themeToggle.addEventListener('click', function () {
-      const nextTheme = root.getAttribute('data-theme') === 'light' ? 'dark' : 'light';
-      applyTheme(nextTheme);
+  if (themeToggles.length > 0) {
+    themeToggles.forEach(function (toggle) {
+      toggle.addEventListener('click', function () {
+        const nextTheme = root.getAttribute('data-theme') === 'light' ? 'dark' : 'light';
+        applyTheme(nextTheme);
+      });
     });
   }
 

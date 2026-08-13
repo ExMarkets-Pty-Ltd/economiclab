@@ -30,7 +30,7 @@
   }
 
   const savedTheme = localStorage.getItem(STORAGE_KEY);
-  const initialTheme = savedTheme === 'light' ? 'light' : 'dark';
+  const initialTheme = savedTheme === 'dark' ? 'dark' : 'light';
   applyTheme(initialTheme);
 
   // Mobile navigation toggle

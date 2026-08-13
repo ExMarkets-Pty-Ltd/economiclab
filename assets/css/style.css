@@ -739,17 +739,14 @@ html[data-theme="dark"] .site-nav__brand img.logo-dark {
   border: 1px solid rgba(255, 255, 255, 0.08);
   position: relative;
   overflow: hidden;
+  display: block;
+  width: 100%;
+  height: 10rem;
 }
 
-.hero-dashboard__chart::before {
-  content: '';
-  position: absolute;
-  inset: 1rem;
-  background:
-    linear-gradient(180deg, transparent 0%, rgba(255, 255, 255, 0.08) 25%, transparent 48%),
-    radial-gradient(circle at 15% 25%, rgba(79, 209, 197, 0.18), transparent 18%),
-    radial-gradient(circle at 85% 60%, rgba(79, 140, 255, 0.18), transparent 18%);
-  opacity: 0.6;
+html[data-theme="light"] .hero-dashboard__chart {
+  background: linear-gradient(180deg, rgba(79, 140, 255, 0.08), rgba(200, 210, 240, 0.1));
+  border-color: rgba(0, 0, 0, 0.06);
 }
 
 .hero-dashboard__footer {

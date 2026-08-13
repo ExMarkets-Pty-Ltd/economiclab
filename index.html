@@ -119,15 +119,15 @@
         <div class="hero__media hero-dashboard" role="img" aria-label="Live market data dashboard"><div class="hero-dashboard__panel">
             <div class="hero-dashboard__row">
               <div>
-                <p class="hero-dashboard__label">EUR/USD</p>
-                <p class="hero-dashboard__value">1.09452</p>
+                <p class="hero-dashboard__label">AUD/USD</p>
+                <p class="hero-dashboard__value" id="hero-price">Loading...</p>
               </div>
-              <span class="hero-dashboard__pill hero-dashboard__pill--positive">+0.14%</span>
+              <span class="hero-dashboard__pill" id="hero-change">–</span>
             </div>
-            <div class="hero-dashboard__chart"></div>
+            <canvas id="hero-chart" class="hero-dashboard__chart"></canvas>
             <div class="hero-dashboard__footer">
               <span>Forex · Data updated live</span>
-              <span>Market status: DATA AVAILABLE</span>
+              <span id="hero-status">Market status: DATA AVAILABLE</span>
             </div>
           </div></div>
       </section>
@@ -350,5 +350,6 @@
 
     <script src="assets/js/market-data.js" defer></script>
     <script src="assets/js/main.js" defer></script>
+    <script src="assets/js/hero-dashboard.js" defer></script>
   </body>
 </html>

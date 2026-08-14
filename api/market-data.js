@@ -16,8 +16,8 @@ const SYMBOL_MAP_PREF = {
   USDCAD: ['USD/CAD', 'USDCAD'],
   USDZAR: ['USD/ZAR', 'USDZAR'],
   XAUUSD: ['XAU/USD', 'XAUUSD'],
-  OIL: ['WTI', 'CL', 'BRENT', 'OIL'],
-  NDX: ['NDX', 'NAS100', 'NASDAQ:NDX'],
+  USOIL: ['CL', 'WTI', 'OIL', 'USOIL'],
+  USDIndex: ['DXY', 'USD', 'USDINDEX'],
   BTCUSD: ['BTC/USD', 'BTCUSD']
 };
 
@@ -80,8 +80,8 @@ function prettyName(id) {
     case 'USDCAD': return 'USD/CAD';
     case 'USDZAR': return 'USD/ZAR';
     case 'XAUUSD': return 'Gold';
-    case 'OIL': return 'Oil';
-    case 'NDX': return 'NASDAQ 100';
+    case 'USOIL': return 'USOIL';
+    case 'USDIndex': return 'USDIndex';
     case 'BTCUSD': return 'Bitcoin';
     default: return id;
   }

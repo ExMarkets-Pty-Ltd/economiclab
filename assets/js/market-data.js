@@ -38,13 +38,13 @@
     { id: 'USDCAD', display: 'USD/CAD' },
     { id: 'USDZAR', display: 'USD/ZAR' },
     { id: 'XAUUSD', display: 'Gold' },
-    { id: 'OIL', display: 'Oil' },
-    { id: 'NDX', display: 'NASDAQ 100' },
+    { id: 'USOIL', display: 'USOIL' },
+    { id: 'USDIndex', display: 'USDIndex' },
     { id: 'BTCUSD', display: 'Bitcoin' }
   ];
 
   // Only request these verified symbols from the backend to avoid provider batch failures.
-  var SUPPORTED_IDS = ['EURUSD', 'GBPUSD', 'AUDUSD', 'NZDUSD', 'USDJPY', 'USDCHF', 'USDCAD', 'XAUUSD'];
+  var SUPPORTED_IDS = ['EURUSD', 'GBPUSD', 'AUDUSD', 'NZDUSD', 'USDJPY', 'USDCHF', 'USDCAD', 'XAUUSD', 'USOIL', 'USDIndex', 'BTCUSD'];
 
   var grid = document.getElementById('live-market-grid');
   var disclosure = document.getElementById('market-disclosure');
@@ -67,10 +67,10 @@
         return value.toFixed(3);
       case 'XAUUSD':
         return value.toFixed(2);
-      case 'OIL':
+      case 'USOIL':
         return value.toFixed(2);
-      case 'NDX':
-        return Math.round(value).toLocaleString();
+      case 'USDIndex':
+        return value.toFixed(2);
       case 'BTCUSD':
         if (value >= 1000) return value.toLocaleString(undefined, {maximumFractionDigits:2});
         return value.toLocaleString(undefined, {maximumFractionDigits:2});

@@ -30,7 +30,12 @@
   // Internal market list (internal IDs only). Provider symbol mapping happens server-side.
   var MARKETS = [
     { id: 'EURUSD', display: 'EUR/USD' },
+    { id: 'GBPUSD', display: 'GBP/USD' },
+    { id: 'AUDUSD', display: 'AUD/USD' },
+    { id: 'NZDUSD', display: 'NZD/USD' },
     { id: 'USDJPY', display: 'USD/JPY' },
+    { id: 'USDCHF', display: 'USD/CHF' },
+    { id: 'USDCAD', display: 'USD/CAD' },
     { id: 'USDZAR', display: 'USD/ZAR' },
     { id: 'XAUUSD', display: 'Gold' },
     { id: 'OIL', display: 'Oil' },
@@ -39,7 +44,7 @@
   ];
 
   // Only request these verified symbols from the backend to avoid provider batch failures.
-  var SUPPORTED_IDS = ['EURUSD', 'USDJPY', 'USDZAR', 'XAUUSD'];
+  var SUPPORTED_IDS = ['EURUSD', 'GBPUSD', 'AUDUSD', 'NZDUSD', 'USDJPY', 'USDCHF', 'USDCAD', 'XAUUSD'];
 
   var grid = document.getElementById('live-market-grid');
   var disclosure = document.getElementById('market-disclosure');
@@ -51,6 +56,11 @@
     if (value === null || value === undefined || isNaN(value)) return '-';
     switch(id){
       case 'EURUSD':
+      case 'GBPUSD':
+      case 'AUDUSD':
+      case 'NZDUSD':
+      case 'USDCHF':
+      case 'USDCAD':
       case 'USDZAR':
         return value.toFixed(5);
       case 'USDJPY':
@@ -227,7 +237,7 @@
   function renderForexTable(map){
     var body = document.getElementById('forex-table-body');
     if (!body) return;
-    var ids = ['EURUSD','USDJPY','USDZAR'];
+    var ids = ['EURUSD','GBPUSD','AUDUSD','NZDUSD','USDJPY','USDCHF','USDCAD'];
     body.innerHTML = '';
 
     ids.forEach(function(id){
@@ -276,7 +286,7 @@
 
   function renderMarketStatus(map){
     var categories = {
-      'status-forex': ['EURUSD','USDJPY','USDZAR'],
+      'status-forex': ['EURUSD','GBPUSD','AUDUSD','NZDUSD','USDJPY','USDCHF','USDCAD'],
       'status-us': ['NDX'],
       'status-commodities': ['XAUUSD','OIL'],
       'status-crypto': ['BTCUSD']

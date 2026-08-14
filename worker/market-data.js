@@ -6,7 +6,12 @@ const QUOTE_URL = 'https://api.twelvedata.com/quote';
 
 const SYMBOL_MAP_PREF = {
   EURUSD: ['EUR/USD', 'EURUSD'],
+  GBPUSD: ['GBP/USD', 'GBPUSD'],
+  AUDUSD: ['AUD/USD', 'AUDUSD'],
+  NZDUSD: ['NZD/USD', 'NZDUSD'],
   USDJPY: ['USD/JPY', 'USDJPY'],
+  USDCHF: ['USD/CHF', 'USDCHF'],
+  USDCAD: ['USD/CAD', 'USDCAD'],
   USDZAR: ['USD/ZAR', 'USDZAR'],
   XAUUSD: ['XAU/USD', 'XAUUSD'],
   OIL: ['WTI', 'CL', 'BRENT', 'OIL'],
@@ -22,7 +27,12 @@ function now() { return Date.now(); }
 function prettyName(id) {
   switch (id) {
     case 'EURUSD': return 'EUR/USD';
+    case 'GBPUSD': return 'GBP/USD';
+    case 'AUDUSD': return 'AUD/USD';
+    case 'NZDUSD': return 'NZD/USD';
     case 'USDJPY': return 'USD/JPY';
+    case 'USDCHF': return 'USD/CHF';
+    case 'USDCAD': return 'USD/CAD';
     case 'USDZAR': return 'USD/ZAR';
     case 'XAUUSD': return 'Gold';
     case 'OIL': return 'Oil';

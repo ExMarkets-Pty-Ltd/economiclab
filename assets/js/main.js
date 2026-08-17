@@ -121,4 +121,26 @@
       target.scrollIntoView({ behavior: 'smooth', block: 'start' });
     });
   });
+
+  // Footer accordion functionality
+  document.querySelectorAll('.footer__accordion-button').forEach(function (button) {
+    button.addEventListener('click', function () {
+      const isExpanded = this.getAttribute('aria-expanded') === 'true';
+      const nextExpanded = !isExpanded;
+      
+      this.setAttribute('aria-expanded', String(nextExpanded));
+      
+      const contentId = this.getAttribute('aria-controls');
+      const content = document.getElementById(contentId);
+      
+      if (content) {
+        if (nextExpanded) {
+          // Calculate height for smooth animation
+          content.style.maxHeight = content.scrollHeight + 'px';
+        } else {
+          content.style.maxHeight = '0px';
+        }
+      }
+    });
+  });
 })();

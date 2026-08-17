@@ -1111,6 +1111,11 @@ html[data-theme="light"] .hero-dashboard__chart {
     margin-top: var(--space-6);
   }
 
+  .footer__mobile .footer__chevron {
+    width: 2rem;
+    height: 2rem;
+  }
+
   .footer__grid {
     grid-template-columns: 1fr;
   }

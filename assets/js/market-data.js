@@ -44,7 +44,7 @@
   ];
 
   // Only request these verified symbols from the backend to avoid provider batch failures.
-  var SUPPORTED_IDS = ['EURUSD', 'GBPUSD', 'AUDUSD', 'NZDUSD', 'USDJPY', 'USDCHF', 'USDCAD', 'XAUUSD', 'USOIL', 'USDIndex', 'BTCUSD'];
+  var SUPPORTED_IDS = ['EURUSD', 'GBPUSD', 'AUDUSD', 'NZDUSD', 'USDJPY', 'USDCHF', 'USDCAD', 'USDZAR', 'XAUUSD', 'USOIL', 'USDIndex', 'BTCUSD'];
 
   var grid = document.getElementById('live-market-grid');
   var disclosure = document.getElementById('market-disclosure');

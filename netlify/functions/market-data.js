@@ -2,7 +2,6 @@
 // Uses Twelve Data via server-side environment variable TWELVEDATA_API_KEY.
 // Resolves provider symbols via symbol_search and caches mappings.
 
-const { MarketDataApi, CreateConfig } = require('@twelvedata/twelvedata-node');
 const fetchFn = globalThis.fetch ? globalThis.fetch.bind(globalThis) : null;
 
 const SYMBOL_SEARCH_URL = process.env.TWELVEDATA_API_URL_SYMBOL_SEARCH || 'https://api.twelvedata.com/symbol_search';
@@ -27,8 +26,6 @@ const SYMBOL_MAP_PREF = {
 
 const symbolCache = { value: {}, ttl: 24 * 3600 * 1000 };
 const quoteCache = { value: {}, ttl: 20 * 1000 };
-let marketDataApi = null;
-
 function now() { return Date.now(); }
 
 function jsonHeaders(extra = {}) {
@@ -37,14 +34,6 @@ function jsonHeaders(extra = {}) {
     'Access-Control-Allow-Origin': '*',
     ...extra
   };
-}
-
-function getMarketDataApi(apiKey) {
-  if (!marketDataApi) {
-    const config = CreateConfig(apiKey);
-    marketDataApi = new MarketDataApi(config);
-  }
-  return marketDataApi;
 }
 
 async function resolveProviderSymbol(id, apiKey) {
@@ -307,29 +296,23 @@ exports.handler = async function(event) {
   }
 
   try {
-    const api = getMarketDataApi(apiKey);
-    const raw = await api.getQuote({ symbol: providerSymbols.join(',') });
-
     const rawMap = {};
-    if (Array.isArray(raw)) {
-      raw.forEach(r => { if (r && r.symbol) rawMap[r.symbol] = r; });
-    } else if (raw && typeof raw === 'object') {
-      Object.keys(raw).forEach(k => { rawMap[k] = raw[k]; });
-      if (raw.symbol && !rawMap[raw.symbol]) rawMap[raw.symbol] = raw;
+    let successfulQuotes = 0;
+
+    for (const providerSym of providerSymbols) {
+      const quoteRecord = await fetchQuoteWithForexFallback(apiKey, providerSym);
+      if (quoteRecord) {
+        rawMap[providerSym] = quoteRecord;
+        successfulQuotes += 1;
+      }
     }
 
-    for (const id of ids) {
-      const providerSym = idToProvider[id];
-      if (!providerSym || !isForexSymbol(providerSym)) continue;
-      const quoteRecord = rawMap[providerSym] || rawMap[id];
-      const numericPrice = getNumericPrice(getNestedValue(quoteRecord, ['price', 'last', 'close', 'rate']));
-      if (numericPrice == null) {
-        const fallbackQuote = await fetchQuoteWithForexFallback(apiKey, providerSym);
-        if (fallbackQuote) {
-          rawMap[providerSym] = fallbackQuote;
-          rawMap[id] = fallbackQuote;
-        }
-      }
+    if (!successfulQuotes) {
+      return {
+        statusCode: 502,
+        headers: jsonHeaders(),
+        body: JSON.stringify({ error: 'Market data provider returned no usable quotes.' })
+      };
     }
 
     quoteCache.value[cacheKey] = { data: rawMap, ts: now() };

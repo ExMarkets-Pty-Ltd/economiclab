@@ -24,9 +24,9 @@
   --color-ticker-background: rgba(15, 15, 15, 0.911);
   --card-background: linear-gradient(180deg, rgba(22, 22, 22, 0.842), rgb(14, 14, 14));
 
-  /* Typography */
-  --font-sans: "Inter", "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
-  --font-display: "Iowan Old Style", "Palatino Linotype", "Book Antiqua", Georgia, serif;
+  /* Typography — Bloomberg-inspired */
+  --font-sans: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  --font-display: "Helvetica Neue", Helvetica, Arial, sans-serif;
   --font-mono: "SFMono-Regular", Consolas, "Liberation Mono", monospace;
 
   /* Type scale */

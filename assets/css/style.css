@@ -952,17 +952,34 @@ html[data-theme="light"] .hero-dashboard__chart {
 /* Desktop Footer Layout */
 .footer__desktop {
   display: grid;
-  grid-template-columns: 1.2fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
+  grid-template-columns: 1fr;
+  gap: var(--space-5);
+}
+
+.footer__row {
+  display: grid;
+  grid-template-columns: repeat(5, minmax(0, 1fr));
   gap: var(--space-6);
 }
 
+.footer__row--branding {
+  grid-template-columns: 1fr;
+}
+
 .footer__brand-section {
-  grid-column: 1;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-4);
+  max-width: 44rem;
 }
 
 .footer__column {
   display: flex;
   flex-direction: column;
+}
+
+.footer__column--empty {
+  min-height: 1px;
 }
 
 .footer__heading {
@@ -975,7 +992,7 @@ html[data-theme="light"] .hero-dashboard__chart {
 }
 
 .footer__description {
-  margin: var(--space-4) 0 0 0;
+  margin: 0;
   font-size: var(--text-small);
   line-height: 1.6;
 }

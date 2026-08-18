@@ -2,6 +2,11 @@
   publish = "."
   functions = "netlify/functions"
 
+[[redirects]]
+  from = "/about/cookies-policy"
+  to = "/about/cookies-policy/index.html"
+  status = 200
+
 [dev]
   framework = "#static"
   targetPort = 8000

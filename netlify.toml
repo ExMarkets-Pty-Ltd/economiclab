@@ -6,6 +6,25 @@
   from = "/about/cookies-policy"
   to = "/about/cookies-policy/index.html"
   status = 200
+  force = true
+
+[[redirects]]
+  from = "/about/cookies-policy/"
+  to = "/about/cookies-policy/index.html"
+  status = 200
+  force = true
+
+[[redirects]]
+  from = "/about/privacy-policy"
+  to = "/about/privacy-policy/index.html"
+  status = 200
+  force = true
+
+[[redirects]]
+  from = "/about/privacy-policy/"
+  to = "/about/privacy-policy/index.html"
+  status = 200
+  force = true
 
 [dev]
   framework = "#static"

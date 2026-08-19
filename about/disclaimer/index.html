@@ -3,16 +3,18 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Markets | Financial Markets Research & Insights | ExMarkets</title>
+    <base href="../../" />
+    <title>Disclaimer | exMarkets</title>
     <meta
       name="description"
-      content="Explore global financial markets through market data, research and analytical insights across forex, commodities, indices, equities and digital assets."
+      content="Read the exMarkets Disclaimer covering financial-market information, research, commentary, educational content, market data, investment risks and limitations of liability."
     />
+    <meta name="canonical" content="https://exmarkets.co.za/about/disclaimer/" />
     <meta property="og:type" content="website" />
-    <meta property="og:title" content="Markets | Financial Markets Research & Insights | ExMarkets" />
+    <meta property="og:title" content="Disclaimer | exMarkets" />
     <meta
       property="og:description"
-      content="Explore global financial markets through market data, research and analytical insights across forex, commodities, indices, equities and digital assets."
+      content="Read the exMarkets Disclaimer covering financial-market information, research, commentary, educational content, market data, investment risks and limitations of liability."
     />
     <meta property="og:site_name" content="exMarkets" />
     <link rel="stylesheet" href="assets/css/style.css" />
@@ -101,279 +103,88 @@
     </header>
 
     <main id="content">
-      <section class="container section" aria-labelledby="markets-page-title">
-        <div class="section__heading">
-          <p class="text-uppercase">Markets</p>
-          <h1 id="markets-page-title">Explore global financial markets through market data and research.</h1>
-          <p class="lead">
-            ExMarkets delivers market intelligence and analytical context across major currencies, commodities, indices, equities and digital assets.
-          </p>
-        </div>
-      </section>
-
-      <section class="container section" aria-labelledby="overview-title">
-        <div class="section__heading">
-          <p class="text-uppercase">Market Overview</p>
-          <h2 id="overview-title">Live market snapshot</h2>
-          <p class="text-muted">Market values below are pulled from ExMarkets live market data via a secure proxy.</p>
-        </div>
-
-        <div class="market-grid" id="live-market-grid">
-          <article class="market-panel" data-id="EURUSD"></article>
-          <article class="market-panel" data-id="USDJPY"></article>
-          <article class="market-panel" data-id="USDZAR"></article>
-          <article class="market-panel" data-id="XAUUSD"></article>
-          <article class="market-panel" data-id="OIL"></article>
-          <article class="market-panel" data-id="NDX"></article>
-          <article class="market-panel" data-id="BTCUSD"></article>
-        </div>
-
-        <p class="text-muted" id="market-disclosure">Market data provided via ExMarkets. Prices may be delayed depending on the data source and licensing.</p>
-
-        <script src="assets/js/market-data.js" defer></script>
-      </section>
-
-      <section class="container section" aria-labelledby="us-markets-title">
-        <div class="section__heading">
-          <p class="text-uppercase">US Markets</p>
-          <h2 id="us-markets-title">Major U.S. benchmarks</h2>
-        </div>
-
-        <div class="table-shell">
-          <table class="table">
-            <thead>
-              <tr>
-                <th scope="col">Index</th>
-                <th scope="col">Symbol</th>
-                <th scope="col">Price</th>
-                <th scope="col">Change</th>
-                <th scope="col">Change %</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <td>S&amp;P 500</td>
-                <td>SPX</td>
-                <td>5,632.18</td>
-                <td>+24.10</td>
-                <td>+0.42%</td>
-              </tr>
-              <tr>
-                <td>Nasdaq Composite</td>
-                <td>IXIC</td>
-                <td>18,274.90</td>
-                <td>+146.82</td>
-                <td>+0.81%</td>
-              </tr>
-              <tr>
-                <td>Dow Jones</td>
-                <td>DJIA</td>
-                <td>39,928.00</td>
-                <td>-44.20</td>
-                <td>-0.11%</td>
-              </tr>
-              <tr>
-                <td>Russell 2000</td>
-                <td>RUT</td>
-                <td>2,320.15</td>
-                <td>+8.40</td>
-                <td>+0.36%</td>
-              </tr>
-            </tbody>
-          </table>
-        </div>
-      </section>
-
-      <section class="container section" aria-labelledby="global-markets-title">
-        <div class="section__heading">
-          <p class="text-uppercase">Global Markets</p>
-          <h2 id="global-markets-title">Regional market snapshots</h2>
-        </div>
-
-        <div class="global-markets__grid">
-          <article class="card">
-            <p class="card__eyebrow">Europe</p>
-            <ul class="market-list">
-              <li><strong>FTSE 100</strong><span>8,321.40</span></li>
-              <li><strong>DAX</strong><span>18,760.20</span></li>
-              <li><strong>CAC 40</strong><span>7,806.10</span></li>
-            </ul>
-          </article>
-
-          <article class="card">
-            <p class="card__eyebrow">Asia</p>
-            <ul class="market-list">
-              <li><strong>Nikkei 225</strong><span>39,860.15</span></li>
-              <li><strong>Hang Seng</strong><span>18,007.44</span></li>
-              <li><strong>Shanghai Composite</strong><span>3,021.80</span></li>
-            </ul>
-          </article>
-
-          <article class="card">
-            <p class="card__eyebrow">Africa</p>
-            <ul class="market-list">
-              <li><strong>JSE All Share</strong><span>81,350.42</span></li>
-              <li><strong>Top 40</strong><span>75,111.90</span></li>
-              <li><strong>FTSE/JSE Africa</strong><span>13,520.65</span></li>
-            </ul>
-          </article>
-        </div>
-      </section>
-
-      <section class="container section" aria-labelledby="currencies-title">
-        <div class="section__heading">
-          <p class="text-uppercase">Currencies</p>
-          <h2 id="currencies-title">FX crosses and major pairs</h2>
-        </div>
-
-        <div class="table-shell">
-          <table class="table">
-            <thead>
-              <tr>
-                <th scope="col">Pair</th>
-                <th scope="col">Rate</th>
-                <th scope="col">Change</th>
-                <th scope="col">Change %</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <td>EUR/USD</td>
-                <td>1.0894</td>
-                <td>-0.0012</td>
-                <td>-0.11%</td>
-              </tr>
-              <tr>
-                <td>GBP/USD</td>
-                <td>1.2756</td>
-                <td>+0.0023</td>
-                <td>+0.18%</td>
-              </tr>
-              <tr>
-                <td>USD/JPY</td>
-                <td>154.20</td>
-                <td>+0.14</td>
-                <td>+0.09%</td>
-              </tr>
-              <tr>
-                <td>USD/ZAR</td>
-                <td>17.89</td>
-                <td>-0.11</td>
-                <td>-0.61%</td>
-              </tr>
-              <tr>
-                <td>EUR/ZAR</td>
-                <td>19.47</td>
-                <td>+0.08</td>
-                <td>+0.41%</td>
-              </tr>
-            </tbody>
-          </table>
-        </div>
-      </section>
-
-      <section class="container section" aria-labelledby="commodities-title">
-        <div class="section__heading">
-          <p class="text-uppercase">Commodities</p>
-          <h2 id="commodities-title">Energy and precious metals</h2>
-        </div>
-
-        <div class="market-overview__grid">
-          <article class="market-card">
-            <div class="market-card__top">
-              <span class="market-card__name">Gold</span>
-              <span class="market-card__chip market-card__chip--positive">▲ +0.73%</span>
-            </div>
-            <p class="market-card__price">$2,349</p>
-            <p class="market-card__meta">Demo value</p>
-          </article>
-
-          <article class="market-card">
-            <div class="market-card__top">
-              <span class="market-card__name">Silver</span>
-              <span class="market-card__chip market-card__chip--negative">▼ -0.28%</span>
-            </div>
-            <p class="market-card__price">$29.15</p>
-            <p class="market-card__meta">Demo value</p>
-          </article>
-
-          <article class="market-card">
-            <div class="market-card__top">
-              <span class="market-card__name">Brent Crude</span>
-              <span class="market-card__chip market-card__chip--positive">▲ +1.12%</span>
-            </div>
-            <p class="market-card__price">$85.20</p>
-            <p class="market-card__meta">Demo value</p>
-          </article>
-
-          <article class="market-card">
-            <div class="market-card__top">
-              <span class="market-card__name">WTI Crude</span>
-              <span class="market-card__chip market-card__chip--negative">▼ -0.54%</span>
-            </div>
-            <p class="market-card__price">$80.37</p>
-            <p class="market-card__meta">Demo value</p>
-          </article>
-        </div>
-      </section>
-
-      <section class="container section" aria-labelledby="crypto-title">
-        <div class="section__heading">
-          <p class="text-uppercase">Crypto</p>
-          <h2 id="crypto-title">Digital asset overview</h2>
-        </div>
-
-        <div class="market-overview__grid">
-          <article class="market-card">
-            <div class="market-card__top">
-              <span class="market-card__name">Bitcoin</span>
-              <span class="market-card__chip market-card__chip--positive">▲ +2.34%</span>
-            </div>
-            <p class="market-card__price">$68,402</p>
-            <p class="market-card__meta">Demo value</p>
-          </article>
-
-          <article class="market-card">
-            <div class="market-card__top">
-              <span class="market-card__name">Ethereum</span>
-              <span class="market-card__chip market-card__chip--positive">▲ +1.16%</span>
-            </div>
-            <p class="market-card__price">$3,612</p>
-            <p class="market-card__meta">Demo value</p>
-          </article>
-
-          <article class="market-card">
-            <div class="market-card__top">
-              <span class="market-card__name">Solana</span>
-              <span class="market-card__chip market-card__chip--negative">▼ -0.74%</span>
-            </div>
-            <p class="market-card__price">$170.31</p>
-            <p class="market-card__meta">Demo value</p>
-          </article>
-
-          <article class="market-card">
-            <div class="market-card__top">
-              <span class="market-card__name">XRP</span>
-              <span class="market-card__chip market-card__chip--positive">▲ +0.58%</span>
-            </div>
-            <p class="market-card__price">$0.62</p>
-            <p class="market-card__meta">Demo value</p>
-          </article>
-        </div>
-      </section>
-
       <section class="container section" aria-labelledby="disclaimer-title">
-        <div class="card card--elevated">
-          <p class="card__eyebrow">Disclaimer</p>
-          <h2 id="disclaimer-title">Demo market information</h2>
-          <p class="lead">
-            Market information displayed on this page is for demonstration purposes only and does not constitute financial advice. Live market data will be integrated in a future version.
-          </p>
+        <div class="section__heading">
+          <p class="text-uppercase">Policies &amp; Security</p>
+          <h1 id="disclaimer-title">DISCLAIMER</h1>
+          <p class="lead">This Disclaimer explains the nature and limits of the information published by exMarkets.</p>
+          <p>exMarkets is a financial markets research and insights platform providing market information, economic data, financial-market research, analysis, commentary and educational content relating to global financial markets.</p>
+        </div>
+      </section>
+
+      <section class="container section" aria-labelledby="disclaimer-introduction-title">
+        <div class="section__heading">
+          <h2 id="disclaimer-introduction-title">1. Introduction</h2>
+          <p>ExMarkets publishes information and educational and research content about financial markets. This Disclaimer should be read together with the <a class="link" href="about/privacy-policy/">Privacy Policy</a> and <a class="link" href="about/cookies-policy/">Cookies Policy</a>.</p>
+          <h2>2. Purpose of This Disclaimer</h2>
+          <p>The purpose of this Disclaimer is to explain what users may and may not reasonably rely on when using the website. It applies to the website, its pages, market information, research, commentary, educational material and associated digital services.</p>
+          <h2>3. General Information Only</h2>
+          <p>Website content is provided for general informational and educational purposes only. It is not prepared for the particular circumstances, objectives, risk tolerance or financial position of any individual user.</p>
+          <h2>4. No Financial or Investment Advice</h2>
+          <p>ExMarkets does not provide individualized investment advice, financial advice, trading advice or portfolio management advice. Content should not be treated as a recommendation, solicitation or offer to buy or sell any financial instrument. Users should obtain advice from appropriately qualified professionals where appropriate.</p>
+          <h2>5. No Legal or Tax Advice</h2>
+          <p>ExMarkets does not provide individualized legal, tax or accounting advice. Laws and tax outcomes vary by jurisdiction and personal circumstances. Users should consult appropriately qualified legal, tax or accounting professionals before relying on information for those purposes.</p>
+          <h2>6. Investment and Trading Risks</h2>
+          <p>Financial markets involve risk, and users may lose some or all of their invested capital. Forex, CFDs, equities, indices, commodities, digital assets and cryptocurrencies, interest-rate-sensitive instruments and other financial instruments may be volatile or leveraged. ExMarkets does not state that it offers or recommends any particular financial product, strategy or service, and no strategy guarantees positive returns.</p>
+        </div>
+      </section>
+
+      <section class="container section" aria-labelledby="disclaimer-market-title">
+        <div class="section__heading">
+          <h2 id="disclaimer-market-title">7. Market Data and Information</h2>
+          <p>Market prices, economic indicators, financial data and other market information may be delayed, indicative, subject to revision, incomplete, supplied by third-party providers or temporarily unavailable. Information may differ from prices available through a broker, exchange or other source.</p>
+          <h2>8. Accuracy and Completeness of Information</h2>
+          <p>ExMarkets aims to present information carefully but does not guarantee that content is accurate, complete, current or suitable for a particular purpose. Users should independently verify information before relying on it.</p>
+          <h2>9. Third-Party Information and Sources</h2>
+          <p>ExMarkets may reference financial institutions, central banks, exchanges, data providers, brokers, companies, government institutions and other sources. Users should consult the relevant original source where important decisions depend on the information.</p>
+          <h2>10. Delayed or Indicative Market Data</h2>
+          <p>Market data displayed on the website is not represented as guaranteed real-time data. Data may be delayed, indicative or unavailable, and technical, provider, exchange or connectivity conditions may affect its presentation.</p>
+          <h2>11. Past Performance</h2>
+          <p>Past performance is not necessarily indicative of future results. Historical prices, returns, market movements or strategy discussions do not guarantee future outcomes and should not be treated as a promise of performance.</p>
+          <h2>12. Forward-Looking Statements</h2>
+          <p>Forecasts, expectations, projections, market outlooks and other forward-looking commentary are inherently uncertain. They are opinions or estimates based on information available at the time, may change without notice and are not guaranteed outcomes.</p>
+          <h2>13. Independent Research and Due Diligence</h2>
+          <p>Users are responsible for conducting their own research and due diligence, checking primary sources and considering the risks, costs and terms of any decision. ExMarkets content should form only one part of that process.</p>
+        </div>
+      </section>
+
+      <section class="container section" aria-labelledby="disclaimer-responsibility-title">
+        <div class="section__heading">
+          <h2 id="disclaimer-responsibility-title">14. No Guarantee of Results</h2>
+          <p>ExMarkets makes no promise or guarantee of profit, performance, financial outcome or suitability. Any decision made after using the website remains the user&apos;s decision and responsibility.</p>
+          <h2>15. Third-Party Websites and Services</h2>
+          <p>The website may link to or reference external websites and services. ExMarkets does not control those websites and is not responsible for their content, availability, privacy policies, security or practices. Users should review the relevant third-party terms.</p>
+          <h2>16. Advertising, Affiliate Links and Commercial Relationships</h2>
+          <p>Some pages may contain advertising, promotional or affiliate links. The broker comparison page states that ExMarkets may receive compensation when users visit or open an account with some brokers through links on that page. Compensation does not automatically mean that a product or service is suitable for a particular user, and users should evaluate it independently.</p>
+          <h2>17. Educational Content</h2>
+          <p>Educational content is intended to explain concepts, market developments and research themes in accessible language. It is not a substitute for personalised professional advice or a complete assessment of any financial product.</p>
+          <h2>18. User Responsibility</h2>
+          <p>Users are responsible for conducting their own research, verifying information, assessing their financial circumstances, understanding market risks, obtaining professional advice where appropriate and making their own investment and trading decisions.</p>
+          <h2>19. Limitation of Liability</h2>
+          <p>To the maximum extent permitted by applicable law, ExMarkets does not guarantee the accuracy, completeness, availability or timeliness of website information and is not responsible for losses arising from reliance on website content. Nothing in this Disclaimer excludes or limits liability that cannot lawfully be excluded or limited.</p>
+          <h2>20. No Professional Relationship</h2>
+          <p>Accessing or using the ExMarkets website does not create a client, adviser, fiduciary, broker or other professional advisory relationship between ExMarkets and the user.</p>
+        </div>
+      </section>
+
+      <section class="container section" aria-labelledby="disclaimer-status-title">
+        <div class="section__heading">
+          <h2 id="disclaimer-status-title">21. Regulatory Status</h2>
+          <p>ExMarkets is a financial markets research and insights platform. This Disclaimer does not state or imply that ExMarkets is a licensed financial adviser, broker, investment manager, bank, securities dealer or regulated investment firm. Users should independently verify the regulatory status of any service provider they consider using.</p>
+          <h2>22. Changes to This Disclaimer</h2>
+          <p>This Disclaimer may be updated when the website, services, content or applicable legal requirements change. The latest version will be posted at this URL with the applicable last-updated date.</p>
+          <h2>23. Contact Information</h2>
+          <p>For questions about this Disclaimer, please use the existing <a class="link" href="contact.html">ExMarkets Contact page</a>. No separate legal or regulatory contact is represented by this page.</p>
+          <h2>24. Effective Date / Last Updated</h2>
+          <p><strong>Effective Date:</strong> 19 August 2026</p>
+          <p><strong>Last Updated:</strong> 19 August 2026</p>
+          <p>This Disclaimer is intended as general website information and should be read with applicable South African law, including where relevant the Protection of Personal Information Act 4 of 2013 and Electronic Communications and Transactions Act 25 of 2002, as well as other laws that may apply based on a user&apos;s location and circumstances.</p>
         </div>
       </section>
     </main>
+
     <footer class="footer">
-            <div class="container footer__grid footer__desktop">
+                  <div class="container footer__grid footer__desktop">
         <div class="footer__row footer__row--branding">
           <div class="footer__brand-section">
             <a class="site-nav__brand" href="index.html" aria-label="exMarkets home">

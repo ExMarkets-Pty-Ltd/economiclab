@@ -26,6 +26,18 @@
   status = 200
   force = true
 
+[[redirects]]
+  from = "/about/disclaimer"
+  to = "/about/disclaimer/index.html"
+  status = 200
+  force = true
+
+[[redirects]]
+  from = "/about/disclaimer/"
+  to = "/about/disclaimer/index.html"
+  status = 200
+  force = true
+
 [dev]
   framework = "#static"
   targetPort = 8000

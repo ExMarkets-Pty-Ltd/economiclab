@@ -38,6 +38,18 @@
   status = 200
   force = true
 
+[[redirects]]
+  from = "/about/terms-of-use"
+  to = "/about/terms-of-use/index.html"
+  status = 200
+  force = true
+
+[[redirects]]
+  from = "/about/terms-of-use/"
+  to = "/about/terms-of-use/index.html"
+  status = 200
+  force = true
+
 [dev]
   framework = "#static"
   targetPort = 8000

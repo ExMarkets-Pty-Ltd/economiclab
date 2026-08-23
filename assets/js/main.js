@@ -48,6 +48,12 @@
   const navInner = document.querySelector('.site-nav__inner');
   const themeToggles = document.querySelectorAll('[data-theme-toggle]');
 
+  document.querySelectorAll('a').forEach(function (link) {
+    if (link.textContent.trim() === 'Dividends' && link.getAttribute('href') === '/calendars/economics/') {
+      link.setAttribute('href', '/calendars/dividends/');
+    }
+  });
+
   const socialLinks = [
     { label: 'Facebook', href: 'https://www.facebook.com/exmarketsofficial?utm_source=chatgpt.com', icon: '<path d="M13.5 8.5h-2V7.2c0-.6.4-.9 1-.9h1V3.9l-1.7-.1c-2 0-3.3 1.2-3.3 3.4v1.3H7v2.6h1.5v5h3v-5h2l.4-2.6Z"/>' },
     { label: 'Instagram', href: 'https://www.instagram.com/exmarketsofficial?utm_source=chatgpt.com', icon: '<rect x="4" y="4" width="12" height="12" rx="3"/><circle cx="10" cy="10" r="3"/><circle cx="14.5" cy="5.7" r=".8" fill="currentColor" stroke="none"/>' },

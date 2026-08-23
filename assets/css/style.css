@@ -1405,6 +1405,7 @@ html[data-theme="dark"] .broker-logo img.logo-dark {
 .broker-directory-card__logo .logo { width: auto; max-width: min(100%, 11rem); height: 2.25rem; object-fit: contain; }
 .broker-directory-card__logo .logo-light { display: block; }
 .broker-directory-card__logo .logo-dark { display: none; }
+.brokers-page .broker-card__icon { display: none; }
 html[data-theme="dark"] .broker-directory-card__logo .logo-light { display: none; }
 html[data-theme="dark"] .broker-directory-card__logo .logo-dark { display: block; }
 .broker-directory-card h3 { margin: 0; font-size: var(--text-xl); }
@@ -1423,6 +1424,116 @@ html[data-theme="dark"] .broker-directory-card__logo .logo-dark { display: block
 @media (max-width: 48rem) { .brokers-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
 @media (max-width: 48rem) { .brokers-explore__links { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
 @media (max-width: 30rem) { .brokers-grid, .brokers-explore__links { grid-template-columns: 1fr; } .broker-facts div { grid-template-columns: 1fr; gap: var(--space-1); } .broker-directory-card .btn { width: 100%; } }
+
+@media (max-width: 48rem) {
+  .brokers-page .brokers-grid {
+    gap: var(--space-5);
+  }
+
+  .brokers-page .broker-directory-card {
+    gap: var(--space-4);
+    padding: var(--space-5);
+    border-radius: 1.25rem;
+    box-shadow: var(--shadow-sm);
+  }
+
+  .brokers-page .broker-card__identity {
+    display: grid;
+    grid-template-columns: 3.75rem minmax(0, 1fr);
+    gap: var(--space-3);
+    align-items: center;
+  }
+
+  .brokers-page .broker-directory-card__logo {
+    display: none;
+  }
+
+  .brokers-page .broker-card__icon {
+    display: flex;
+    width: 3.75rem;
+    height: 3.75rem;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid var(--color-border);
+    border-radius: 0.8rem;
+    background: var(--color-surface-3);
+  }
+
+  .brokers-page .broker-card__icon .logo {
+    display: block;
+    width: 2.7rem;
+    height: 2.7rem;
+    object-fit: contain;
+  }
+
+  .brokers-page .broker-card__icon .logo-dark {
+    display: none;
+  }
+
+  html[data-theme="dark"] .brokers-page .broker-card__icon .logo-light {
+    display: none;
+  }
+
+  html[data-theme="dark"] .brokers-page .broker-card__icon .logo-dark {
+    display: block;
+  }
+
+  .brokers-page .broker-directory-card__heading .card__eyebrow {
+    margin-bottom: var(--space-1);
+    font-size: 0.68rem;
+  }
+
+  .brokers-page .broker-directory-card h3 {
+    font-size: 1.2rem;
+    line-height: 1.2;
+  }
+
+  .brokers-page .broker-directory-card > p {
+    font-size: 0.9rem;
+    line-height: 1.45;
+  }
+
+  .brokers-page .broker-facts {
+    gap: 0;
+    padding-top: var(--space-3);
+  }
+
+  .brokers-page .broker-facts div {
+    grid-template-columns: minmax(7.5rem, 0.8fr) minmax(0, 1.2fr);
+    gap: var(--space-2);
+    padding: 0.55rem 0;
+    border-bottom: 1px solid var(--color-border);
+  }
+
+  .brokers-page .broker-facts div:last-child {
+    border-bottom: 0;
+  }
+
+  .brokers-page .broker-facts dt,
+  .brokers-page .broker-facts dd {
+    font-size: 0.78rem;
+    line-height: 1.4;
+  }
+
+  .brokers-page .broker-directory-card .btn {
+    width: 100%;
+    min-height: 2.75rem;
+    justify-content: center;
+    border-radius: 0.7rem;
+    font-size: 0.85rem;
+  }
+}
+
+@media (max-width: 30rem) {
+  .brokers-page .broker-directory-card {
+    padding: 1.15rem;
+  }
+
+  .brokers-page .broker-facts div {
+    grid-template-columns: 1fr;
+    gap: 0.15rem;
+  }
+}
 
 .news-category {
   display: inline-flex;

@@ -8,6 +8,35 @@
 
   const STORAGE_KEY = 'exmarkets-theme';
   const root = document.documentElement;
+  const savedTheme = localStorage.getItem(STORAGE_KEY);
+  const initialTheme = savedTheme === 'dark' ? 'dark' : 'light';
+  root.setAttribute('data-theme', initialTheme);
+  const preloader = document.createElement('div');
+  preloader.className = 'site-preloader';
+  preloader.setAttribute('role', 'status');
+  preloader.setAttribute('aria-label', 'Loading');
+  preloader.innerHTML = '<div class="site-preloader__content"><div class="site-preloader__logo" aria-hidden="true"><img class="site-preloader__logo-light" src="/assets/images/ExMarkets Premium Transparent Black logo.png" alt="" /><img class="site-preloader__logo-dark" src="/assets/images/ExMarkets White Transparent logo.png" alt="" /></div><span class="site-preloader__label">Loading</span><div class="site-preloader__track" aria-hidden="true"><span class="site-preloader__progress"></span></div></div>';
+  document.body.insertBefore(preloader, document.body.firstChild);
+  document.body.classList.add('preloader-active');
+
+  let preloaderClosed = false;
+  function closePreloader() {
+    if (preloaderClosed) {
+      return;
+    }
+    preloaderClosed = true;
+    preloader.classList.add('is-complete');
+    window.setTimeout(function () {
+      preloader.remove();
+      document.body.classList.remove('preloader-active');
+    }, 500);
+  }
+
+  window.addEventListener('load', function () {
+    window.requestAnimationFrame(closePreloader);
+  }, { once: true });
+  window.setTimeout(closePreloader, 9000);
+
   const navToggle = document.querySelector('[data-nav-toggle]');
   const navMenu = document.querySelector('[data-nav-menu]');
   const navInner = document.querySelector('.site-nav__inner');
@@ -29,8 +58,6 @@
     });
   }
 
-  const savedTheme = localStorage.getItem(STORAGE_KEY);
-  const initialTheme = savedTheme === 'dark' ? 'dark' : 'light';
   applyTheme(initialTheme);
 
   // Mobile navigation toggle

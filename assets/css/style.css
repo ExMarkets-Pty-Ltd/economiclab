@@ -154,6 +154,106 @@ button {
   cursor: pointer;
 }
 
+body.preloader-active {
+  overflow: hidden;
+}
+
+.site-preloader {
+  position: fixed;
+  z-index: 2147483647;
+  inset: 0;
+  display: grid;
+  place-items: center;
+  background: var(--color-background);
+  color: var(--color-text);
+  opacity: 1;
+  pointer-events: auto;
+  transition: opacity 450ms ease, visibility 450ms ease;
+}
+
+.site-preloader.is-complete {
+  opacity: 0;
+  pointer-events: none;
+  visibility: hidden;
+}
+
+.site-preloader__content {
+  display: flex;
+  width: min(78vw, 18rem);
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+  animation: site-preloader-enter 550ms ease both;
+}
+
+.site-preloader__logo {
+  position: relative;
+  display: grid;
+  width: min(68vw, 13rem);
+  min-height: 3.25rem;
+  place-items: center;
+}
+
+.site-preloader__logo img {
+  grid-area: 1 / 1;
+  width: 100%;
+  height: auto;
+  object-fit: contain;
+}
+
+.site-preloader__logo-light { display: block; }
+.site-preloader__logo-dark { display: none; }
+html[data-theme="dark"] .site-preloader__logo-light { display: none; }
+html[data-theme="dark"] .site-preloader__logo-dark { display: block; }
+
+.site-preloader__label {
+  color: var(--color-text-muted);
+  font-family: var(--font-mono);
+  font-size: 0.68rem;
+  font-weight: var(--weight-semibold);
+  letter-spacing: 0.24em;
+  line-height: 1;
+  text-transform: uppercase;
+}
+
+.site-preloader__track {
+  position: relative;
+  width: 100%;
+  height: 2px;
+  overflow: hidden;
+  background: var(--color-border);
+}
+
+.site-preloader__progress {
+  display: block;
+  width: 38%;
+  height: 100%;
+  background: var(--color-primary-strong);
+  box-shadow: 0 0 12px rgba(0, 232, 246, 0.45);
+  animation: site-preloader-progress 1.15s ease-in-out infinite;
+}
+
+@keyframes site-preloader-enter {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes site-preloader-progress {
+  from { transform: translateX(-110%); }
+  to { transform: translateX(285%); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .site-preloader__content,
+  .site-preloader__progress {
+    animation: none;
+  }
+
+  .site-preloader__content {
+    opacity: 1;
+  }
+}
+
 :focus-visible {
   outline: 3px solid rgba(79, 209, 197, 0.85);
   outline-offset: 2px;

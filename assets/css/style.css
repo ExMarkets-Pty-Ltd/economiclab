@@ -2625,6 +2625,51 @@ html[data-theme="dark"] .broker-directory-card__logo .logo-dark { display: block
   }
 }
 
+@media (min-width: 64rem) {
+  .brokers-page .brokers-grid {
+    gap: var(--space-5);
+  }
+
+  .brokers-page .broker-directory-card {
+    gap: var(--space-4);
+    min-height: 24rem;
+    padding: var(--space-5);
+    border-radius: 1.25rem;
+    box-shadow: var(--shadow-sm);
+  }
+
+  .brokers-page .broker-card__identity {
+    grid-template-columns: 4.5rem minmax(0, 1fr);
+  }
+
+  .brokers-page .broker-card__icon {
+    width: 4.5rem;
+    height: 4.5rem;
+    border-radius: 0.8rem;
+  }
+
+  .brokers-page .broker-directory-card h3 {
+    font-size: 1.2rem;
+    line-height: 1.2;
+  }
+
+  .brokers-page .broker-card__assets {
+    font-size: 0.75rem;
+  }
+
+  .brokers-page .broker-card__metrics {
+    display: grid;
+    margin-top: 0;
+    padding-top: var(--space-3);
+  }
+
+  .brokers-page .broker-card__actions .btn {
+    min-height: 2.7rem;
+    border-radius: 0.7rem;
+    font-size: 0.85rem;
+  }
+}
+
 @media (prefers-reduced-motion: reduce) {
   *,
   *::before,

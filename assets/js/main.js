@@ -32,9 +32,15 @@
     }, 500);
   }
 
-  window.addEventListener('load', function () {
-    window.requestAnimationFrame(closePreloader);
-  }, { once: true });
+  function finishWhenReady() {
+    closePreloader();
+  }
+
+  if (document.readyState === 'complete') {
+    finishWhenReady();
+  } else {
+    window.addEventListener('load', finishWhenReady, { once: true });
+  }
   window.setTimeout(closePreloader, 9000);
 
   const navToggle = document.querySelector('[data-nav-toggle]');

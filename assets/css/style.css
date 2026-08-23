@@ -2737,6 +2737,23 @@ html[data-theme="dark"] .broker-directory-card__logo .logo-dark { display: block
 }
 
 @media (min-width: 64rem) {
+  .footer__row--sections {
+    padding-top: var(--space-5);
+  }
+
+  .footer__row--bottom {
+    grid-template-columns: minmax(0, 2fr) minmax(12rem, 1fr);
+  }
+
+  .footer__row--bottom .footer__column:first-child,
+  .footer__row--bottom .footer__column--empty {
+    display: none;
+  }
+
+  .footer__row--bottom .footer__column:nth-child(3) {
+    display: flex;
+  }
+
   .brokers-page .brokers-grid {
     gap: var(--space-5);
   }

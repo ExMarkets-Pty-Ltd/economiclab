@@ -48,6 +48,26 @@
   const navInner = document.querySelector('.site-nav__inner');
   const themeToggles = document.querySelectorAll('[data-theme-toggle]');
 
+  const socialLinks = [
+    { label: 'Facebook', href: 'https://www.facebook.com/exmarketsofficial?utm_source=chatgpt.com', icon: '<path d="M13.5 8.5h-2V7.2c0-.6.4-.9 1-.9h1V3.9l-1.7-.1c-2 0-3.3 1.2-3.3 3.4v1.3H7v2.6h1.5v5h3v-5h2l.4-2.6Z"/>' },
+    { label: 'Instagram', href: 'https://www.instagram.com/exmarketsofficial?utm_source=chatgpt.com', icon: '<rect x="4" y="4" width="12" height="12" rx="3"/><circle cx="10" cy="10" r="3"/><circle cx="14.5" cy="5.7" r=".8" fill="currentColor" stroke="none"/>' },
+    { label: 'X', href: 'https://x.com/exmarkets_za?utm_source=chatgpt.com', icon: '<path d="m4 4 4.7 6.3L4.3 16h2.2l3.2-3.8 2.8 3.8H16l-4.9-6.6L15.6 4h-2.2l-3 3.6L7.8 4H4Zm3.6 1.6h.9l4.2 8.8h-.9L7.6 5.6Z"/>' },
+    { label: 'YouTube', href: 'https://youtube.com/@exmarketsofficial?utm_source=chatgpt.com', icon: '<path d="M16.8 6.2a2 2 0 0 0-1.4-1.4C14.2 4.5 10 4.5 10 4.5s-4.2 0-5.4.3a2 2 0 0 0-1.4 1.4C3 7.4 3 10 3 10s0 2.6.2 3.8a2 2 0 0 0 1.4 1.4c1.2.3 5.4.3 5.4.3s4.2 0 5.4-.3a2 2 0 0 0 1.4-1.4C17 12.6 17 10 17 10s0-2.6-.2-3.8ZM8.8 12.7V7.3l4.5 2.7-4.5 2.7Z"/>' },
+    { label: 'TikTok', href: 'https://www.tiktok.com/@exmarketsofficial?utm_source=chatgpt.com', icon: '<path d="M12.5 3h2.1c.2 1.4 1 2.4 2.4 2.8v2.1a6.3 6.3 0 0 1-2.4-.7v4.4a4.4 4.4 0 1 1-3.8-4.4v2.2a2.2 2.2 0 1 0 1.7 2.2V3Z"/>' }
+  ];
+
+  document.querySelectorAll('.footer').forEach(function (footer) {
+    const desktop = footer.querySelector('.footer__desktop');
+    const socialMarkup = '<div class="footer__social container"><p class="footer__social-title">Feel connected anytime, anywhere.</p><div class="footer__social-links">' + socialLinks.map(function (social) {
+      return '<a class="footer__social-link" href="' + social.href + '" target="_blank" rel="noopener noreferrer" aria-label="' + social.label + '"><svg viewBox="0 0 20 20" aria-hidden="true" focusable="false">' + social.icon + '</svg></a>';
+    }).join('') + '</div></div>';
+
+    if (desktop && !footer.querySelector('.footer__social')) {
+      footer.insertAdjacentHTML('afterbegin', socialMarkup);
+      desktop.insertAdjacentHTML('beforeend', '<nav class="footer__legal" aria-label="Legal links"><a href="/about/privacy-policy/">Privacy Policy</a><a href="/about/cookies-policy/">Cookie Policy</a><a href="/about/terms-of-use/">Terms of Use</a><a href="/about/disclaimer/">Disclaimer</a></nav>');
+    }
+  });
+
   function applyTheme(themeName) {
     root.setAttribute('data-theme', themeName);
     localStorage.setItem(STORAGE_KEY, themeName);

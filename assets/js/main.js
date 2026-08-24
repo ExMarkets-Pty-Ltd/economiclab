@@ -43,6 +43,69 @@
   }
   window.setTimeout(closePreloader, 9000);
 
+  function createSubmenu(id, label, items) {
+    return '<li class="has-submenu"><div class="site-nav__parent"><a class="site-nav__link" href="">' + label + '</a><button class="site-nav__dropdown-btn" type="button" aria-expanded="false" aria-haspopup="true" aria-controls="' + id + '" aria-label="Toggle ' + label + ' submenu"></button></div><ul class="submenu" id="' + id + '">' + items.map(function (item) {
+      return '<li><a class="site-nav__link" href="' + item.href + '">' + item.label + '</a></li>';
+    }).join('') + '</ul></li>';
+  }
+
+  function renderCanonicalNavigation() {
+    let header = document.querySelector('.site-nav');
+    if (!header) {
+      header = document.createElement('header');
+      header.className = 'site-nav';
+      header.setAttribute('role', 'banner');
+      document.body.insertBefore(header, document.body.firstChild);
+    }
+
+    const insights = [
+      { label: 'Markets', href: '/markets.html' },
+      { label: 'Business', href: '/companies.html' },
+      { label: 'Technology', href: '/technology.html' },
+      { label: 'Economy', href: '/economy.html' }
+    ];
+    const resources = [
+      { label: 'Economic Calendar', href: '/calendars/economics/' },
+      { label: 'Earnings', href: '/calendars/earnings/' },
+      { label: 'Dividends', href: '/calendars/dividends/' },
+      { label: 'Charts', href: '/tradingview.html' },
+      { label: 'Broker Comparison', href: '/trading/broker-comparison/' }
+    ];
+    const trading = [
+      { label: 'Trading Overview', href: '/trading/overview/' },
+      { label: 'Forex', href: '/trading/forex/' },
+      { label: 'Gold & Commodities', href: '/trading/gold-commodities/' },
+      { label: 'Indices', href: '/trading/indices/' },
+      { label: 'Stocks', href: '/trading/stocks/' },
+      { label: 'Cryptocurrencies', href: '/trading/cryptocurrencies/' },
+      { label: 'Brokers', href: '/trading/brokers/' },
+      { label: 'Broker Comparison', href: '/trading/broker-comparison/' },
+      { label: 'Platforms', href: '/trading/platforms/' },
+      { label: 'Strategies', href: '/trading/strategies/' },
+      { label: 'Risk Management', href: '/trading/risk-management/' }
+    ];
+    const about = [
+      { label: 'Who We Are', href: '/about.html' },
+      { label: 'Contact', href: '/contact.html' }
+    ];
+
+    header.innerHTML = '<div class="site-nav__inner"><a class="site-nav__brand" href="/" aria-label="exMarkets home"><img class="logo logo-light" src="/assets/images/ExMarkets Premium Transparent Black logo.png" alt="exMarkets" /><img class="logo logo-dark" src="/assets/images/ExMarkets White Transparent logo.png" alt="exMarkets" /><span class="sr-only">exMarkets</span></a><button class="site-nav__toggle btn btn--ghost btn--small" type="button" data-nav-toggle aria-expanded="false" aria-controls="site-navigation" aria-label="Open menu">☰</button><ul class="site-nav__links" id="site-navigation" data-nav-menu>' + createSubmenu('submenu-insights', 'Insights', insights) + createSubmenu('submenu-resources', 'Resources', resources) + createSubmenu('submenu-trading', 'Trading', trading) + '<li><a class="site-nav__link" href="/companies.html">Companies</a></li><li><a class="site-nav__link" href="/blog.html">Blog</a></li>' + createSubmenu('submenu-about', 'About', about) + '<li class="site-nav__mobile-divider"></li><li class="site-nav__mobile-utility"><button class="btn btn--ghost btn--small" type="button" aria-label="Search">⌕</button></li><li class="site-nav__mobile-utility"><a class="btn btn--primary btn--small" href="/#newsletter">Subscribe</a></li><li class="site-nav__mobile-utility"><button class="btn btn--ghost btn--small theme-toggle" type="button" data-theme-toggle aria-pressed="false" aria-label="Switch to dark theme"><span class="theme-toggle__label">Dark theme</span></button></li></ul><div class="site-nav__actions"><button class="btn btn--ghost btn--small theme-toggle" type="button" data-theme-toggle aria-pressed="false" aria-label="Switch to dark theme"><span class="theme-toggle__label">Dark theme</span></button><button class="btn btn--ghost btn--small" type="button" aria-label="Search">⌕</button><a class="btn btn--primary btn--small" href="/#newsletter">Subscribe</a></div></div>';
+
+    const currentPath = window.location.pathname.replace(/index\.html$/, '');
+    header.querySelectorAll('.site-nav__link[href]').forEach(function (link) {
+      const linkPath = new URL(link.href, window.location.origin).pathname.replace(/index\.html$/, '');
+      if (linkPath !== '/' && currentPath === linkPath) {
+        link.setAttribute('aria-current', 'page');
+        const parent = link.closest('.has-submenu');
+        if (parent) {
+          parent.querySelector(':scope > .site-nav__parent .site-nav__link').setAttribute('aria-current', 'page');
+        }
+      }
+    });
+  }
+
+  renderCanonicalNavigation();
+
   const navToggle = document.querySelector('[data-nav-toggle]');
   const navMenu = document.querySelector('[data-nav-menu]');
   const navInner = document.querySelector('.site-nav__inner');

@@ -1,0 +1,192 @@
+.fed-hero {
+  max-width: 58rem;
+}
+
+.fed-source-line,
+.fed-data-note,
+.fed-disclaimer {
+  color: var(--color-text-muted);
+  font-size: var(--text-sm);
+}
+
+.fed-policy-grid,
+.fed-indicator-grid,
+.fed-market-grid,
+.fed-framework-grid,
+.fed-reference-grid,
+.fed-trading-grid {
+  display: grid;
+  gap: var(--space-4);
+}
+
+.fed-policy-grid {
+  grid-template-columns: repeat(5, 1fr);
+}
+
+.fed-data-card,
+.fed-indicator,
+.fed-market-card,
+.fed-unavailable-state,
+.fed-chart-empty {
+  display: grid;
+  align-content: start;
+  gap: var(--space-2);
+  padding: var(--space-4);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-sm);
+  background: var(--card-background);
+}
+
+.fed-data-card span,
+.fed-indicator span,
+.fed-market-card span {
+  color: var(--color-text-muted);
+  font-size: var(--text-sm);
+}
+
+.fed-data-card strong,
+.fed-indicator strong,
+.fed-market-card strong {
+  color: var(--color-text);
+  font-size: var(--text-lg);
+}
+
+.fed-data-card small,
+.fed-indicator small,
+.fed-market-card small,
+.fed-unavailable-state span {
+  color: var(--color-text-subtle);
+  font-size: var(--text-xs);
+}
+
+.fed-two-column {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(18rem, 0.8fr);
+  align-items: stretch;
+  gap: var(--space-6);
+}
+
+.fed-two-column h2 {
+  margin-top: 0;
+}
+
+.fed-unavailable-state {
+  align-content: center;
+}
+
+.fed-unavailable-state strong {
+  color: var(--color-text);
+}
+
+.fed-unavailable-state a,
+.fed-framework-grid a,
+.fed-reference-grid a,
+.fed-sources a {
+  color: var(--color-primary-strong);
+  font-size: var(--text-sm);
+  font-weight: var(--weight-semibold);
+}
+
+.fed-chart-empty {
+  min-height: 14rem;
+  place-items: center;
+  text-align: center;
+  color: var(--color-text-muted);
+}
+
+.fed-indicator-grid {
+  grid-template-columns: repeat(4, 1fr);
+}
+
+.fed-framework-grid {
+  grid-template-columns: repeat(4, 1fr);
+}
+
+.fed-framework-grid article,
+.fed-reference-grid article {
+  display: grid;
+  align-content: start;
+  gap: var(--space-3);
+  padding-top: var(--space-4);
+  border-top: 1px solid var(--color-border);
+}
+
+.fed-framework-grid h3,
+.fed-reference-grid h2,
+.fed-trading-grid h3 {
+  margin: 0;
+  color: var(--color-text);
+}
+
+.fed-framework-grid p,
+.fed-reference-grid p,
+.fed-trading-grid p {
+  margin: 0;
+  color: var(--color-text-muted);
+}
+
+.fed-bias-scale {
+  display: grid;
+  grid-template-columns: auto 1fr auto;
+  align-items: center;
+  gap: var(--space-3);
+  margin: var(--space-5) 0;
+  color: var(--color-text-muted);
+  font-size: var(--text-sm);
+  font-weight: var(--weight-semibold);
+}
+
+.fed-bias-scale i {
+  height: 2px;
+  background: linear-gradient(90deg, var(--color-accent), var(--color-border), var(--color-accent));
+}
+
+.fed-reference-grid {
+  grid-template-columns: repeat(2, 1fr);
+}
+
+.fed-trading-grid {
+  grid-template-columns: repeat(3, 1fr);
+  margin: var(--space-5) 0;
+}
+
+.fed-sources {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-3) var(--space-5);
+  align-items: center;
+}
+
+.fed-sources span {
+  color: var(--color-text-muted);
+  font-size: var(--text-sm);
+}
+
+@media (max-width: 64rem) {
+  .fed-policy-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  .fed-indicator-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  .fed-framework-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 48rem) {
+  .fed-policy-grid,
+  .fed-indicator-grid,
+  .fed-framework-grid,
+  .fed-reference-grid,
+  .fed-trading-grid,
+  .fed-two-column {
+    grid-template-columns: 1fr;
+  }
+
+  .fed-bias-scale {
+    gap: var(--space-2);
+  }
+}

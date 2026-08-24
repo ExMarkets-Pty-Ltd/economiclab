@@ -64,12 +64,11 @@
       { label: 'Technology', href: '/technology.html' },
       { label: 'Economy', href: '/economy.html' }
     ];
-    const resources = [
-      { label: 'Economic Calendar', href: '/calendars/economics/' },
+    const calendar = [
+      { label: 'Economics', href: '/calendars/economics/' },
       { label: 'Earnings', href: '/calendars/earnings/' },
       { label: 'Dividends', href: '/calendars/dividends/' },
-      { label: 'Charts', href: '/tradingview.html' },
-      { label: 'Broker Comparison', href: '/trading/broker-comparison/' }
+      { label: 'IPOs', href: '/calendars/ipos/' }
     ];
     const trading = [
       { label: 'Trading Overview', href: '/trading/overview/' },
@@ -89,16 +88,18 @@
       { label: 'Contact', href: '/contact.html' }
     ];
 
-    header.innerHTML = '<div class="site-nav__inner"><a class="site-nav__brand" href="/" aria-label="exMarkets home"><img class="logo logo-light" src="/assets/images/ExMarkets Premium Transparent Black logo.png" alt="exMarkets" /><img class="logo logo-dark" src="/assets/images/ExMarkets White Transparent logo.png" alt="exMarkets" /><span class="sr-only">exMarkets</span></a><button class="site-nav__toggle btn btn--ghost btn--small" type="button" data-nav-toggle aria-expanded="false" aria-controls="site-navigation" aria-label="Open menu">☰</button><ul class="site-nav__links" id="site-navigation" data-nav-menu>' + createSubmenu('submenu-insights', 'Insights', insights) + createSubmenu('submenu-resources', 'Resources', resources) + createSubmenu('submenu-trading', 'Trading', trading) + '<li><a class="site-nav__link" href="/companies.html">Companies</a></li><li><a class="site-nav__link" href="/blog.html">Blog</a></li>' + createSubmenu('submenu-about', 'About', about) + '<li class="site-nav__mobile-divider"></li><li class="site-nav__mobile-utility"><button class="btn btn--ghost btn--small" type="button" aria-label="Search">⌕</button></li><li class="site-nav__mobile-utility"><a class="btn btn--primary btn--small" href="/#newsletter">Subscribe</a></li><li class="site-nav__mobile-utility"><button class="btn btn--ghost btn--small theme-toggle" type="button" data-theme-toggle aria-pressed="false" aria-label="Switch to dark theme"><span class="theme-toggle__label">Dark theme</span></button></li></ul><div class="site-nav__actions"><button class="btn btn--ghost btn--small theme-toggle" type="button" data-theme-toggle aria-pressed="false" aria-label="Switch to dark theme"><span class="theme-toggle__label">Dark theme</span></button><button class="btn btn--ghost btn--small" type="button" aria-label="Search">⌕</button><a class="btn btn--primary btn--small" href="/#newsletter">Subscribe</a></div></div>';
+    const resourcesMarkup = '<li class="has-submenu"><div class="site-nav__parent"><a class="site-nav__link" href="/resources.html">Resources</a><button class="site-nav__dropdown-btn" type="button" aria-expanded="false" aria-haspopup="true" aria-controls="submenu-resources" aria-label="Toggle Resources submenu"></button></div><ul class="submenu" id="submenu-resources">' + createSubmenu('submenu-calendar', 'Economic Calendar', calendar) + '<li><a class="site-nav__link" href="/tradingview.html">Charts</a></li><li><a class="site-nav__link" href="/trading/broker-comparison/">Broker Comparison</a></li></ul></li>';
+    header.innerHTML = '<div class="site-nav__inner"><a class="site-nav__brand" href="/" aria-label="exMarkets home"><img class="logo logo-light" src="/assets/images/ExMarkets Premium Transparent Black logo.png" alt="exMarkets" /><img class="logo logo-dark" src="/assets/images/ExMarkets White Transparent logo.png" alt="exMarkets" /><span class="sr-only">exMarkets</span></a><button class="site-nav__toggle btn btn--ghost btn--small" type="button" data-nav-toggle aria-expanded="false" aria-controls="site-navigation" aria-label="Open menu">☰</button><ul class="site-nav__links" id="site-navigation" data-nav-menu>' + createSubmenu('submenu-insights', 'Insights', insights) + resourcesMarkup + createSubmenu('submenu-trading', 'Trading', trading) + '<li><a class="site-nav__link" href="/companies.html">Companies</a></li><li><a class="site-nav__link" href="/blog.html">Blog</a></li>' + createSubmenu('submenu-about', 'About', about) + '<li class="site-nav__mobile-divider"></li><li class="site-nav__mobile-utility"><button class="btn btn--ghost btn--small" type="button" aria-label="Search">⌕</button></li><li class="site-nav__mobile-utility"><a class="btn btn--primary btn--small" href="/#newsletter">Subscribe</a></li><li class="site-nav__mobile-utility"><button class="btn btn--ghost btn--small theme-toggle" type="button" data-theme-toggle aria-pressed="false" aria-label="Switch to dark theme"><span class="theme-toggle__label">Dark theme</span></button></li></ul><div class="site-nav__actions"><button class="btn btn--ghost btn--small theme-toggle" type="button" data-theme-toggle aria-pressed="false" aria-label="Switch to dark theme"><span class="theme-toggle__label">Dark theme</span></button><button class="btn btn--ghost btn--small" type="button" aria-label="Search">⌕</button><a class="btn btn--primary btn--small" href="/#newsletter">Subscribe</a></div></div>';
 
     const currentPath = window.location.pathname.replace(/index\.html$/, '');
     header.querySelectorAll('.site-nav__link[href]').forEach(function (link) {
       const linkPath = new URL(link.href, window.location.origin).pathname.replace(/index\.html$/, '');
       if (linkPath !== '/' && currentPath === linkPath) {
         link.setAttribute('aria-current', 'page');
-        const parent = link.closest('.has-submenu');
-        if (parent) {
+        let parent = link.closest('.has-submenu');
+        while (parent) {
           parent.querySelector(':scope > .site-nav__parent .site-nav__link').setAttribute('aria-current', 'page');
+          parent = parent.parentElement.closest('.has-submenu');
         }
       }
     });
@@ -112,8 +113,12 @@
   const themeToggles = document.querySelectorAll('[data-theme-toggle]');
 
   document.querySelectorAll('a').forEach(function (link) {
-    if (link.textContent.trim() === 'Dividends' && link.getAttribute('href') === '/calendars/economics/') {
+    const label = link.textContent.trim();
+    if (label === 'Dividends' && link.getAttribute('href') === '/calendars/economics/') {
       link.setAttribute('href', '/calendars/dividends/');
+    }
+    if (label === 'IPOs' && link.getAttribute('href') !== '/calendars/ipos/') {
+      link.setAttribute('href', '/calendars/ipos/');
     }
   });
 

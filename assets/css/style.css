@@ -2297,12 +2297,19 @@ html[data-theme="dark"] .broker-directory-card__logo .logo-dark { display: block
     inset: 0;
     width: 100vw;
     height: 100vh;
+    height: 100dvh;
     max-width: 100vw;
+    max-height: 100vh;
+    max-height: 100dvh;
     z-index: 1000;
     overflow-y: auto;
     overflow-x: hidden;
+    -webkit-overflow-scrolling: touch;
+    overscroll-behavior: contain;
     flex-direction: column;
-    padding: 5.25rem 1.25rem 1.5rem;
+    flex-wrap: nowrap;
+    align-items: stretch;
+    padding: calc(5.25rem + env(safe-area-inset-top)) 1.25rem calc(1.5rem + env(safe-area-inset-bottom));
     margin: 0;
     box-sizing: border-box;
     background: #111111;
@@ -2319,6 +2326,7 @@ html[data-theme="dark"] .broker-directory-card__logo .logo-dark { display: block
     margin: 0;
     padding: 0;
     width: 100%;
+    flex: 0 0 auto;
   }
 
   .site-nav__links .has-submenu {
@@ -2456,7 +2464,7 @@ html[data-theme="dark"] .broker-directory-card__logo .logo-dark { display: block
   }
 
   .site-nav__links .has-submenu .submenu .has-submenu > .site-nav__parent {
-    border-bottom: 1px solid var(--color-border);
+    border-bottom: none;
   }
 
   .site-nav__links .has-submenu .submenu .submenu {
@@ -2476,11 +2484,9 @@ html[data-theme="dark"] .broker-directory-card__logo .logo-dark { display: block
     color: var(--color-text-muted);
     font-size: 0.95rem;
     line-height: 1.4;
-    border-bottom: 1px solid var(--color-border);
-  }
-
-  .site-nav__links .has-submenu .submenu li:last-child a {
     border-bottom: none;
+    max-width: 100%;
+    overflow-wrap: anywhere;
   }
 
   .site-nav__mobile-divider {

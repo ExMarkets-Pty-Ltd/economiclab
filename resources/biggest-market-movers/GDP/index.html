@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <script src="/assets/js/theme-init.js"></script>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>US GDP | U.S. Economic Growth & GDP Data | exMarkets</title>
+    <meta name="description" content="Track U.S. GDP growth, economic output, consumer spending, investment, trade, GDP revisions and the economic data shaping financial markets with exMarkets." />
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="US GDP | U.S. Economic Growth & GDP Data | exMarkets" />
+    <meta property="og:description" content="Track U.S. GDP growth, economic output, consumer spending, investment, trade, GDP revisions and the economic data shaping financial markets with exMarkets." />
+    <meta property="og:url" content="https://exmarkets.co.za/resources/biggest-market-movers/GDP" />
+    <meta property="og:site_name" content="exMarkets" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <link rel="canonical" href="https://exmarkets.co.za/resources/biggest-market-movers/GDP" />
+    <link rel="stylesheet" href="/assets/css/style.css" />
+    <link rel="stylesheet" href="/resources/biggest-market-movers/bmm.css" />
+    <link rel="stylesheet" href="/resources/biggest-market-movers/GDP/gdp.css" />
+    <link rel="icon" href="/favicon.ico" sizes="any" />
+    <base href="/" />
+  </head>
+  <body>
+    <header class="site-nav" role="banner"><div class="site-nav__inner"></div></header>
+    <main id="content">
+      <div class="container section"><a class="back-navigation" href="/resources/biggest-market-movers/">← Back to Biggest Market Movers</a></div>
+
+      <section class="container section gdp-hero" aria-labelledby="gdp-title">
+        <p class="text-uppercase">Biggest Market Movers</p>
+        <h1 id="gdp-title">US GDP</h1>
+        <p class="lead">Track U.S. economic growth, GDP revisions, consumer spending, business investment, government spending, trade and the economic forces influencing Federal Reserve policy and global financial markets.</p>
+        <p class="gdp-source-line">Real GDP and component data are retrieved from official U.S. Bureau of Economic Analysis (BEA) series and public FRED releases.</p>
+      </section>
+
+      <section class="container section" aria-labelledby="snapshot-title">
+        <div class="section__heading"><p class="text-uppercase">Latest available data</p><h2 id="snapshot-title">U.S. GDP Snapshot</h2></div>
+        <div class="gdp-snapshot-grid">
+          <article class="gdp-data-card"><span>Real GDP Growth</span><strong data-gdp="real-growth">Loading...</strong><small>Latest estimate</small></article>
+          <article class="gdp-data-card"><span>Previous GDP Growth</span><strong data-gdp="previous-growth">Data currently unavailable</strong><small>Prior quarter</small></article>
+          <article class="gdp-data-card"><span>GDP Estimate</span><strong data-gdp="estimate-type">Loading...</strong><small>Current estimate</small></article>
+          <article class="gdp-data-card"><span>GDP Revision</span><strong data-gdp="revision">Data currently unavailable</strong><small>Quarterly change</small></article>
+          <article class="gdp-data-card"><span>GDP Price Index</span><strong data-gdp="price-index">Data currently unavailable</strong><small>Latest reading</small></article>
+          <article class="gdp-data-card"><span>Consumer Spending</span><strong data-gdp="consumption">Data currently unavailable</strong><small>Contribution / level</small></article>
+          <article class="gdp-data-card"><span>Real GDP</span><strong data-gdp="real-gdp">Data currently unavailable</strong><small>Level</small></article>
+          <article class="gdp-data-card"><span>Latest Release</span><strong data-gdp="release-label">Data currently unavailable</strong><small>Official release</small></article>
+        </div>
+        <p class="gdp-status" data-gdp-status>Loading GDP data...</p>
+      </section>
+
+      <section class="container section" aria-labelledby="next-title">
+        <div class="gdp-two-column">
+          <div>
+            <p class="text-uppercase">Release schedule</p>
+            <h2 id="next-title">Next GDP Release</h2>
+            <p class="text-muted">The next BEA GDP release is determined from the official release schedule and updates automatically as the calendar changes.</p>
+          </div>
+          <div class="gdp-release-card">
+            <div class="gdp-release-meta">
+              <span>Release type</span><strong data-gdp="next-release-type">Loading...</strong>
+            </div>
+            <div class="gdp-release-meta">
+              <span>Reference quarter</span><strong data-gdp="next-quarter">Loading...</strong>
+            </div>
+            <div class="gdp-release-meta">
+              <span>Date</span><strong data-gdp="next-date">Loading...</strong>
+            </div>
+            <div class="gdp-release-meta">
+              <span>Time</span><strong data-gdp="next-time">Loading...</strong>
+            </div>
+            <div class="gdp-countdown" data-gdp="countdown">Loading countdown...</div>
+          </div>
+        </div>
+      </section>
+
+      <section class="container section" aria-labelledby="growth-title">
+        <div class="section__heading"><p class="text-uppercase">Historical GDP</p><h2 id="growth-title">US GDP Growth</h2></div>
+        <div class="gdp-chart-toolbar" role="group" aria-label="GDP chart timeframe">
+          <button class="btn btn--secondary is-active" data-gdp-range="1Y">1Y</button>
+          <button class="btn btn--secondary" data-gdp-range="3Y">3Y</button>
+          <button class="btn btn--secondary" data-gdp-range="5Y">5Y</button>
+          <button class="btn btn--secondary" data-gdp-range="10Y">10Y</button>
+          <button class="btn btn--secondary" data-gdp-range="20Y">20Y</button>
+          <button class="btn btn--secondary" data-gdp-range="all">All</button>
+        </div>
+        <div class="gdp-chart-wrap"><div id="gdp-growth-chart" class="gdp-chart" role="img" aria-label="Real GDP growth chart">Loading GDP data...</div></div>
+      </section>
+
+      <section class="container section" aria-labelledby="history-title">
+        <div class="section__heading"><p class="text-uppercase">Estimate comparisons</p><h2 id="history-title">GDP Estimate History</h2></div>
+        <div class="table-responsive">
+          <table class="table gdp-history-table">
+            <thead>
+              <tr>
+                <th scope="col">Quarter</th>
+                <th scope="col">Advance</th>
+                <th scope="col">Second</th>
+                <th scope="col">Third</th>
+                <th scope="col">Latest</th>
+              </tr>
+            </thead>
+            <tbody id="gdp-history-body"><tr><td colspan="5">Loading GDP estimate history...</td></tr></tbody>
+          </table>
+        </div>
+      </section>
+
+      <section class="container section" aria-labelledby="latest-title">
+        <div class="gdp-two-column">
+          <div>
+            <p class="text-uppercase">Latest release</p>
+            <h2 id="latest-title">Latest GDP Release</h2>
+            <p class="text-muted">The latest available BEA estimate and key expenditure components are shown below.</p>
+          </div>
+          <div class="gdp-release-summary">
+            <div><span>Reference quarter</span><strong data-gdp="latest-quarter">Data currently unavailable</strong></div>
+            <div><span>Estimate type</span><strong data-gdp="latest-estimate">Data currently unavailable</strong></div>
+            <div><span>Release date</span><strong data-gdp="latest-date">Data currently unavailable</strong></div>
+            <div><span>Real GDP growth</span><strong data-gdp="latest-growth">Data currently unavailable</strong></div>
+            <div><span>Previous estimate</span><strong data-gdp="previous-estimate">Data currently unavailable</strong></div>
+            <div><span>Revision</span><strong data-gdp="latest-revision">Data currently unavailable</strong></div>
+            <div><span>GDP price index</span><strong data-gdp="latest-price-index">Data currently unavailable</strong></div>
+            <div><span>Consumer spending</span><strong data-gdp="latest-consumption">Data currently unavailable</strong></div>
+            <div><span>Investment</span><strong data-gdp="latest-investment">Data currently unavailable</strong></div>
+            <div><span>Government spending</span><strong data-gdp="latest-government">Data currently unavailable</strong></div>
+            <div><span>Exports</span><strong data-gdp="latest-exports">Data currently unavailable</strong></div>
+            <div><span>Imports</span><strong data-gdp="latest-imports">Data currently unavailable</strong></div>
+            <div><span>Inventories</span><strong data-gdp="latest-inventories">Data currently unavailable</strong></div>
+          </div>
+        </div>
+        <div class="section__action"><a class="btn btn--primary" href="https://www.bea.gov/data/gdp/gross-domestic-product" target="_blank" rel="noopener noreferrer">READ FULL BEA RELEASE</a></div>
+      </section>
+
+      <section class="container section" aria-labelledby="drivers-title">
+        <div class="section__heading"><p class="text-uppercase">GDP drivers</p><h2 id="drivers-title">What Drove GDP Growth?</h2></div>
+        <div class="gdp-contributions-grid">
+          <div class="gdp-indicator"><span>Consumer Spending</span><strong data-gdp="component-consumption">Data currently unavailable</strong><small data-gdp="component-consumption-dir">Direction unavailable</small></div>
+          <div class="gdp-indicator"><span>Business Investment</span><strong data-gdp="component-investment">Data currently unavailable</strong><small data-gdp="component-investment-dir">Direction unavailable</small></div>
+          <div class="gdp-indicator"><span>Residential Investment</span><strong data-gdp="component-residential">Data currently unavailable</strong><small data-gdp="component-residential-dir">Direction unavailable</small></div>
+          <div class="gdp-indicator"><span>Government Spending</span><strong data-gdp="component-government">Data currently unavailable</strong><small data-gdp="component-government-dir">Direction unavailable</small></div>
+          <div class="gdp-indicator"><span>Exports</span><strong data-gdp="component-exports">Data currently unavailable</strong><small data-gdp="component-exports-dir">Direction unavailable</small></div>
+          <div class="gdp-indicator"><span>Imports</span><strong data-gdp="component-imports">Data currently unavailable</strong><small data-gdp="component-imports-dir">Direction unavailable</small></div>
+          <div class="gdp-indicator"><span>Inventories</span><strong data-gdp="component-inventories">Data currently unavailable</strong><small data-gdp="component-inventories-dir">Direction unavailable</small></div>
+        </div>
+      </section>
+
+      <section class="container section" aria-labelledby="components-title">
+        <div class="section__heading"><p class="text-uppercase">Expenditure approach</p><h2 id="components-title">GDP Component Dashboard</h2></div>
+        <div class="gdp-dashboard-grid">
+          <div class="gdp-indicator"><span>Consumer Spending</span><strong data-gdp="dash-consumption">Data currently unavailable</strong><small>BEA / FRED</small></div>
+          <div class="gdp-indicator"><span>Business Investment</span><strong data-gdp="dash-investment">Data currently unavailable</strong><small>BEA / FRED</small></div>
+          <div class="gdp-indicator"><span>Residential Investment</span><strong data-gdp="dash-residential">Data currently unavailable</strong><small>BEA / FRED</small></div>
+          <div class="gdp-indicator"><span>Government Spending</span><strong data-gdp="dash-government">Data currently unavailable</strong><small>BEA / FRED</small></div>
+          <div class="gdp-indicator"><span>Exports</span><strong data-gdp="dash-exports">Data currently unavailable</strong><small>BEA / FRED</small></div>
+          <div class="gdp-indicator"><span>Imports</span><strong data-gdp="dash-imports">Data currently unavailable</strong><small>BEA / FRED</small></div>
+          <div class="gdp-indicator"><span>Net Exports</span><strong data-gdp="dash-net-exports">Data currently unavailable</strong><small>BEA / FRED</small></div>
+          <div class="gdp-indicator"><span>Inventories</span><strong data-gdp="dash-inventories">Data currently unavailable</strong><small>BEA / FRED</small></div>
+        </div>
+      </section>
+
+      <section class="container section" aria-labelledby="real-vs-nominal-title">
+        <div class="section__heading"><p class="text-uppercase">Price-adjusted output</p><h2 id="real-vs-nominal-title">Real GDP vs Nominal GDP</h2></div>
+        <div class="gdp-chart-wrap"><div id="gdp-level-chart" class="gdp-chart" role="img" aria-label="Real GDP versus nominal GDP chart">Loading GDP level data...</div></div>
+        <p class="text-muted">Real GDP measures output after adjusting for price changes. Nominal GDP measures output at current prices and reflects inflation as well as volume changes.</p>
+      </section>
+
+      <section class="container section" aria-labelledby="price-index-title">
+        <div class="section__heading"><p class="text-uppercase">Price metric</p><h2 id="price-index-title">GDP Price Index</h2></div>
+        <div class="gdp-price-grid">
+          <div class="gdp-indicator"><span>Latest change</span><strong data-gdp="price-latest">Data currently unavailable</strong><small>Quarterly change</small></div>
+          <div class="gdp-indicator"><span>Previous change</span><strong data-gdp="price-previous">Data currently unavailable</strong><small>Prior period</small></div>
+          <div class="gdp-indicator"><span>Latest level</span><strong data-gdp="price-level">Data currently unavailable</strong><small>Index level</small></div>
+        </div>
+        <p class="text-muted">The GDP price index is a broad measure of inflation across the domestic economy. It differs from CPI and PCE, which track consumer prices and are not identical to the economy-wide GDP deflator.</p>
+      </section>
+
+      <section class="container section" aria-labelledby="comparison-title">
+        <div class="section__heading"><p class="text-uppercase">Macro definitions</p><h2 id="comparison-title">GDP vs PCE and CPI</h2></div>
+        <div class="table-responsive">
+          <table class="table gdp-comparison-table">
+            <thead><tr><th scope="col">Metric</th><th scope="col">GDP</th><th scope="col">PCE</th><th scope="col">CPI</th></tr></thead>
+            <tbody>
+              <tr><th scope="row">What it measures</th><td>Domestic output and production</td><td>Consumer spending and prices</td><td>Consumer price basket</td></tr>
+              <tr><th scope="row">Published by</th><td>BEA</td><td>BEA / BLS</td><td>BLS</td></tr>
+              <tr><th scope="row">Frequency</th><td>Quarterly</td><td>Monthly and quarterly</td><td>Monthly</td></tr>
+              <tr><th scope="row">Used for</th><td>Growth and production trends</td><td>Inflation and spending</td><td>Consumer inflation</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <div class="cluster"><a class="btn btn--secondary" href="/resources/biggest-market-movers/PCE">Visit the US PCE Inflation page</a><a class="btn btn--secondary" href="/resources/biggest-market-movers/CPI">Visit the US CPI page</a><a class="btn btn--secondary" href="/resources/biggest-market-movers/NFP">Visit the NFP page</a></div>
+      </section>
+
+      <section class="container section" aria-labelledby="fed-title">
+        <div class="card card--feature"><p class="card__eyebrow">Fed context</p><h2 id="fed-title">Why GDP Matters to the Federal Reserve</h2><p>Real GDP growth helps frame the pace of economic expansion, while inflation, labor-market strength and financial conditions inform the policy backdrop. Stronger-than-expected growth can influence expectations for monetary policy, particularly when it coincides with persistent inflation or tight financial conditions.</p></div>
+      </section>
+
+      <section class="container section" aria-labelledby="labor-title">
+        <div class="section__heading"><p class="text-uppercase">National accounts</p><h2 id="labor-title">GDP and the Labor Market</h2></div>
+        <div class="gdp-labor-grid">
+          <div class="gdp-indicator"><span>GDP Growth</span><strong data-gdp="labor-growth">Data currently unavailable</strong><small>Quarterly rate</small></div>
+          <div class="gdp-indicator"><span>NFP Growth</span><strong>Data currently unavailable</strong><small>Source: BLS</small></div>
+          <div class="gdp-indicator"><span>Unemployment Rate</span><strong>Data currently unavailable</strong><small>Source: BLS</small></div>
+        </div>
+        <p class="text-muted">GDP and labor-market data provide different perspectives on the economy. Output growth shows production, while employment data captures labour-market conditions and demand for workers.</p>
+      </section>
+
+      <section class="container section" aria-labelledby="analysis-title">
+        <div class="card card--feature"><p class="card__eyebrow">exMarkets Analysis</p><h2 id="analysis-title">GDP Growth and Inflation</h2><p>Real GDP growth and inflation are related through demand, labor-market conditions, and the supply side of the economy, but they do not move in lockstep. Higher production can coexist with moderate inflation, while slower growth may still coincide with elevated prices depending on the underlying mix of spending, investment and supply constraints.</p><div class="gdp-analysis-grid"><div><span>Real GDP Growth</span><strong data-gdp="analysis-growth">Data currently unavailable</strong></div><div><span>PCE Inflation</span><strong data-gdp="analysis-pce">Data currently unavailable</strong></div><div><span>Core PCE Inflation</span><strong data-gdp="analysis-core-pce">Data currently unavailable</strong></div></div></div>
+      </section>
+
+      <section class="container section" aria-labelledby="markets-title">
+        <div class="section__heading"><p class="text-uppercase">Market transmission</p><h2 id="markets-title">How GDP Can Move Financial Markets</h2></div>
+        <div class="grid grid--4">
+          <article class="card"><h3 class="card__title">US Dollar</h3><p class="text-muted">A GDP surprise can change expectations around growth, inflation and monetary policy, which may alter the dollar.</p></article>
+          <article class="card"><h3 class="card__title">Treasury Yields</h3><p class="text-muted">Growth and inflation expectations often influence yields across the curve depending on the policy backdrop.</p></article>
+          <article class="card"><h3 class="card__title">Gold</h3><p class="text-muted">Gold may respond to real yields, dollar strength and changing growth expectations.</p></article>
+          <article class="card"><h3 class="card__title">Equities &amp; Bitcoin</h3><p class="text-muted">Risk assets can react to changes in growth and policy expectations, though reactions are not guaranteed.</p></article>
+        </div>
+      </section>
+
+      <section class="container section" aria-labelledby="schedule-title">
+        <div class="section__heading"><p class="text-uppercase">Official release calendar</p><h2 id="schedule-title">GDP Release Calendar</h2></div>
+        <div class="table-responsive">
+          <table class="table gdp-calendar-table">
+            <thead><tr><th scope="col">Release type</th><th scope="col">Quarter</th><th scope="col">Date</th><th scope="col">Time</th></tr></thead>
+            <tbody id="gdp-calendar-body"><tr><td colspan="4">Loading official GDP release schedule...</td></tr></tbody>
+          </table>
+        </div>
+      </section>
+
+      <section class="container section" aria-labelledby="revisions-title">
+        <div class="section__heading"><p class="text-uppercase">Data revisions</p><h2 id="revisions-title">GDP Revisions</h2></div>
+        <p class="text-muted">BEA revises GDP as more complete source data become available. Historical values reflect the latest available BEA estimates where vintage data are not separately provided.</p>
+        <div class="table-responsive"><table class="table gdp-revisions-table"><thead><tr><th scope="col">Quarter</th><th scope="col">Initial release</th><th scope="col">Latest estimate</th><th scope="col">Revision</th></tr></thead><tbody id="gdp-revision-body"><tr><td colspan="4">Loading GDP revision history...</td></tr></tbody></table></div>
+      </section>
+
+      <section class="container section" aria-labelledby="sources-title">
+        <div class="section__heading"><p class="text-uppercase">Traceability</p><h2 id="sources-title">Data Sources</h2></div>
+        <div class="gdp-sources"><a href="https://www.bea.gov/data/gdp/gross-domestic-product" target="_blank" rel="noopener noreferrer">BEA GDP data ↗</a><a href="https://www.bea.gov/news" target="_blank" rel="noopener noreferrer">BEA GDP release ↗</a><a href="https://www.bea.gov/news/schedule" target="_blank" rel="noopener noreferrer">BEA release schedule ↗</a><a href="https://fred.stlouisfed.org/" target="_blank" rel="noopener noreferrer">FRED ↗</a></div>
+      </section>
+    </main>
+    <footer class="footer"><div class="container footer__grid footer__desktop"><div class="footer__row footer__row--branding"><div class="footer__brand-section"><a class="site-nav__brand" href="/" aria-label="exMarkets home"><img class="logo logo-light" src="/assets/images/ExMarkets Black Transparent Logo.png" alt="exMarkets" /><img class="logo logo-dark" src="/assets/images/ExMarkets White Transparent logo.png" alt="exMarkets" /><span class="sr-only">exMarkets</span></a><div class="text-muted footer__description"><p>exMarkets is a Financial Markets Research &amp; Insights platform providing market information, economic data, financial-market research, analysis, commentary and educational content relating to global financial markets.</p></div></div></div></div></footer>
+    <script src="/assets/js/main.js" defer></script>
+    <script src="/resources/biggest-market-movers/GDP/gdp.js" defer></script>
+  </body>
+</html>

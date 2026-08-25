@@ -1,0 +1,150 @@
+.gdp-hero { min-height: 24rem; }
+.gdp-source-line, .gdp-status { color: var(--color-text-muted); font-size: var(--text-sm); }
+.gdp-snapshot-grid,
+.gdp-contributions-grid,
+.gdp-dashboard-grid,
+.gdp-price-grid,
+.gdp-labor-grid,
+.gdp-analysis-grid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: var(--space-4);
+}
+.gdp-data-card,
+.gdp-indicator,
+.gdp-release-card,
+.gdp-release-summary {
+  display: grid;
+  gap: var(--space-2);
+  padding: var(--space-5);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-sm);
+  background: var(--card-background);
+  box-shadow: var(--shadow-sm);
+}
+.gdp-data-card span,
+.gdp-indicator span,
+.gdp-release-meta span,
+.gdp-release-summary span,
+.gdp-analysis-grid span {
+  color: var(--color-text-muted);
+  font-size: var(--text-sm);
+}
+.gdp-data-card strong,
+.gdp-indicator strong,
+.gdp-release-meta strong,
+.gdp-release-summary strong,
+.gdp-analysis-grid strong {
+  color: var(--color-text);
+  font-size: clamp(1.1rem, 2vw, 1.5rem);
+  line-height: 1.2;
+}
+.gdp-data-card small,
+.gdp-indicator small,
+.gdp-release-summary small {
+  color: var(--color-text-subtle);
+  font-size: var(--text-xs);
+}
+.gdp-two-column {
+  display: grid;
+  grid-template-columns: 1.1fr 1.9fr;
+  gap: var(--space-6);
+  align-items: center;
+}
+.gdp-release-card { gap: var(--space-4); }
+.gdp-release-meta { display: flex; justify-content: space-between; gap: var(--space-4); }
+.gdp-countdown {
+  padding-top: var(--space-3);
+  border-top: 1px solid var(--color-border);
+  color: var(--color-accent);
+  font-family: var(--font-mono);
+  font-size: var(--text-base);
+  font-weight: var(--weight-semibold);
+}
+.gdp-chart-toolbar {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-2);
+  margin-bottom: var(--space-5);
+}
+.gdp-chart-wrap {
+  width: 100%;
+  overflow: hidden;
+  padding: var(--space-4);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-sm);
+  background: var(--card-background);
+}
+.gdp-chart {
+  min-height: 18rem;
+}
+.gdp-chart svg {
+  display: block;
+  width: 100%;
+  height: 18rem;
+}
+.gdp-chart .grid-line {
+  stroke: rgba(148, 163, 184, 0.4);
+  stroke-width: 1;
+}
+.gdp-chart .gdp-line {
+  fill: none;
+  stroke: var(--color-accent);
+  stroke-width: 2.5;
+}
+.gdp-chart .gdp-fill {
+  fill: rgba(0, 232, 246, 0.12);
+}
+.gdp-chart .gdp-axis-label {
+  fill: var(--color-text-muted);
+  font-size: 11px;
+}
+.gdp-chart .gdp-point {
+  fill: var(--color-accent);
+}
+.gdp-unavailable {
+  color: var(--color-text-muted);
+  font-size: var(--text-sm);
+}
+.gdp-history-table,
+.gdp-calendar-table,
+.gdp-revisions-table,
+.gdp-comparison-table {
+  width: 100%;
+}
+.gdp-release-summary {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+.gdp-release-summary div { display: grid; gap: var(--space-1); }
+.section__action { margin-top: var(--space-5); }
+.gdp-sources {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-4);
+}
+.gdp-sources a {
+  color: var(--color-accent);
+}
+@media (max-width: 64rem) {
+  .gdp-snapshot-grid,
+  .gdp-contributions-grid,
+  .gdp-dashboard-grid,
+  .gdp-price-grid,
+  .gdp-labor-grid,
+  .gdp-analysis-grid,
+  .gdp-release-summary {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+  .gdp-two-column { grid-template-columns: 1fr; }
+}
+@media (max-width: 48rem) {
+  .gdp-snapshot-grid,
+  .gdp-contributions-grid,
+  .gdp-dashboard-grid,
+  .gdp-price-grid,
+  .gdp-labor-grid,
+  .gdp-analysis-grid,
+  .gdp-release-summary { grid-template-columns: 1fr; }
+  .gdp-chart-wrap { padding: var(--space-3); }
+  .gdp-release-meta { flex-direction: column; }
+}

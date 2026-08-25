@@ -64,6 +64,12 @@
       { label: 'Technology', href: '/technology.html' },
       { label: 'Economy', href: '/economy.html' }
     ];
+    const calendars = [
+      { label: 'Economics', href: '/resources/calendars/economics/' },
+      { label: 'Earnings', href: '/resources/calendars/earnings/' },
+      { label: 'Dividends', href: '/resources/calendars/dividends/' },
+      { label: 'IPOs', href: '/resources/calendars/ipos/' }
+    ];
     const trading = [
       { label: 'Trading Overview', href: '/trading/overview/' },
       { label: 'Forex', href: '/trading/forex/' },
@@ -82,7 +88,7 @@
       { label: 'Contact', href: '/contact.html' }
     ];
 
-    const resourcesMarkup = '<li class="has-submenu"><div class="site-nav__parent"><a class="site-nav__link" href="">Resources</a><button class="site-nav__dropdown-btn" type="button" aria-expanded="false" aria-haspopup="true" aria-controls="submenu-resources" aria-label="Toggle Resources submenu"></button></div><ul class="submenu" id="submenu-resources"><li><a class="site-nav__link" href="/resources/calendars/">Calendars</a></li><li><a class="site-nav__link" href="/resources/biggest-market-movers/">Biggest Market Movers</a></li><li><a class="site-nav__link" href="/tradingview.html">Charts</a></li><li><a class="site-nav__link" href="/trading/broker-comparison/">Broker Comparison</a></li></ul></li>';
+    const resourcesMarkup = '<li class="has-submenu"><div class="site-nav__parent"><a class="site-nav__link" href="/resources/">Resources</a><button class="site-nav__dropdown-btn" type="button" aria-expanded="false" aria-haspopup="true" aria-controls="submenu-resources" aria-label="Toggle Resources submenu"></button></div><ul class="submenu" id="submenu-resources">' + createSubmenu('submenu-calendars', 'Calendars', calendars) + '<li><a class="site-nav__link" href="/resources/biggest-market-movers/">Biggest Market Movers</a></li><li><a class="site-nav__link" href="/tradingview.html">Charts</a></li><li><a class="site-nav__link" href="/trading/broker-comparison/">Broker Comparison</a></li></ul></li>';
     header.innerHTML = '<div class="site-nav__inner"><a class="site-nav__brand" href="/" aria-label="exMarkets home"><img class="logo logo-light" src="/assets/images/ExMarkets Premium Transparent Black logo.png" alt="exMarkets" /><img class="logo logo-dark" src="/assets/images/ExMarkets White Transparent logo.png" alt="exMarkets" /><span class="sr-only">exMarkets</span></a><button class="site-nav__toggle btn btn--ghost btn--small" type="button" data-nav-toggle aria-expanded="false" aria-controls="site-navigation" aria-label="Open menu">☰</button><ul class="site-nav__links" id="site-navigation" data-nav-menu>' + createSubmenu('submenu-insights', 'Insights', insights) + resourcesMarkup + createSubmenu('submenu-trading', 'Trading', trading) + '<li><a class="site-nav__link" href="/companies.html">Companies</a></li><li><a class="site-nav__link" href="/blog.html">Blog</a></li>' + createSubmenu('submenu-about', 'About', about) + '<li class="site-nav__mobile-divider"></li><li class="site-nav__mobile-utility"><button class="btn btn--ghost btn--small" type="button" aria-label="Search">⌕</button></li><li class="site-nav__mobile-utility"><a class="btn btn--primary btn--small" href="/#newsletter">Subscribe</a></li><li class="site-nav__mobile-utility"><button class="btn btn--ghost btn--small theme-toggle" type="button" data-theme-toggle aria-pressed="false" aria-label="Switch to dark theme"><span class="theme-toggle__label">Dark theme</span></button></li></ul><div class="site-nav__actions"><button class="btn btn--ghost btn--small theme-toggle" type="button" data-theme-toggle aria-pressed="false" aria-label="Switch to dark theme"><span class="theme-toggle__label">Dark theme</span></button><button class="btn btn--ghost btn--small" type="button" aria-label="Search">⌕</button><a class="btn btn--primary btn--small" href="/#newsletter">Subscribe</a></div></div>';
 
     const currentPath = window.location.pathname.replace(/index\.html$/, '');
@@ -183,8 +189,38 @@
       
       if (submenu && submenu.classList.contains('submenu')) {
         const isOpen = submenu.classList.contains('is-open');
+        const parentItem = this.closest('.has-submenu');
+        const siblingButtons = parentItem && parentItem.parentElement
+          ? parentItem.parentElement.querySelectorAll(':scope > .has-submenu > .site-nav__parent .site-nav__dropdown-btn')
+          : [];
+
+        siblingButtons.forEach(function (siblingBtn) {
+          if (siblingBtn === btn) {
+            return;
+          }
+          siblingBtn.setAttribute('aria-expanded', 'false');
+          const siblingSubmenu = siblingBtn.parentElement.nextElementSibling;
+          if (siblingSubmenu && siblingSubmenu.classList.contains('submenu')) {
+            siblingSubmenu.classList.remove('is-open');
+            siblingSubmenu.querySelectorAll('.submenu.is-open').forEach(function (nestedSubmenu) {
+              nestedSubmenu.classList.remove('is-open');
+            });
+            siblingSubmenu.querySelectorAll('.site-nav__dropdown-btn').forEach(function (nestedBtn) {
+              nestedBtn.setAttribute('aria-expanded', 'false');
+            });
+          }
+        });
+
         this.setAttribute('aria-expanded', String(!isOpen));
         submenu.classList.toggle('is-open', !isOpen);
+        if (isOpen) {
+          submenu.querySelectorAll('.submenu.is-open').forEach(function (nestedSubmenu) {
+            nestedSubmenu.classList.remove('is-open');
+          });
+          submenu.querySelectorAll('.site-nav__dropdown-btn').forEach(function (nestedBtn) {
+            nestedBtn.setAttribute('aria-expanded', 'false');
+          });
+        }
       }
     });
   });

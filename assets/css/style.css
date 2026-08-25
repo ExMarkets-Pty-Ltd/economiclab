@@ -2227,15 +2227,28 @@ html[data-theme="dark"] .broker-directory-card__logo .logo-dark { display: block
     z-index: 30;
   }
 
+  .site-nav__inner.is-menu-open {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 1001;
+    padding: 0.75rem 1rem;
+    background: var(--color-surface);
+    border-bottom: 1px solid var(--color-border);
+  }
+
   .site-nav__inner.is-menu-open .site-nav__brand {
-    display: none;
+    position: relative;
+    z-index: 1002;
+    display: inline-flex;
+    opacity: 1;
+    visibility: visible;
   }
 
   .site-nav__inner.is-menu-open .site-nav__toggle {
-    position: fixed;
-    top: 1rem;
-    right: 1rem;
-    z-index: 1001;
+    position: static;
+    z-index: 1002;
     display: inline-flex;
     min-width: 3rem;
     min-height: 3rem;
@@ -2255,7 +2268,7 @@ html[data-theme="dark"] .broker-directory-card__logo .logo-dark { display: block
 
   .site-nav__brand img.logo {
     flex-shrink: 1;
-    max-height: 0.837216rem;
+    max-height: 2.5rem;
     width: auto;
   }
 
@@ -2289,7 +2302,7 @@ html[data-theme="dark"] .broker-directory-card__logo .logo-dark { display: block
     overflow-y: auto;
     overflow-x: hidden;
     flex-direction: column;
-    padding: 4.5rem 1.25rem 1.5rem;
+    padding: 5.25rem 1.25rem 1.5rem;
     margin: 0;
     box-sizing: border-box;
     background: #111111;
@@ -2306,6 +2319,10 @@ html[data-theme="dark"] .broker-directory-card__logo .logo-dark { display: block
     margin: 0;
     padding: 0;
     width: 100%;
+  }
+
+  .site-nav__links .has-submenu {
+    display: block;
   }
 
   .site-nav__links > li > a {
@@ -2433,13 +2450,18 @@ html[data-theme="dark"] .broker-directory-card__logo .logo-dark { display: block
 
   .site-nav__links .has-submenu .submenu.is-open {
     display: block;
-    background: #1b1b1b;
-    border-top: 1px solid var(--color-border);
-    margin-top: 0.25rem;
+    background: transparent;
+    margin: 0;
+    padding-left: 1rem;
   }
 
-  html[data-theme="light"] .site-nav__links .has-submenu .submenu.is-open {
-    background: #f3f6fa;
+  .site-nav__links .has-submenu .submenu .has-submenu > .site-nav__parent {
+    border-bottom: 1px solid var(--color-border);
+  }
+
+  .site-nav__links .has-submenu .submenu .submenu {
+    padding-left: 1rem;
+    margin: 0;
   }
 
   .site-nav__links .has-submenu .submenu li {

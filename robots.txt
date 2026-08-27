@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://exmarkets.co.za/sitemap.xml
+Sitemap: https://economiclab.co.za/sitemap.xml

@@ -3,6 +3,13 @@
   functions = "netlify/functions"
 
 [[redirects]]
+  from = "/*"
+  to = "https://economiclab.co.za/:splat"
+  status = 301
+  force = true
+  conditions = {Host = ["exmarkets.co.za", "www.exmarkets.co.za"]}
+
+[[redirects]]
   from = "/about/cookies-policy"
   to = "/about/cookies-policy/index.html"
   status = 200

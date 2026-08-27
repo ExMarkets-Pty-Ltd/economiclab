@@ -123,7 +123,7 @@
     body.innerHTML = rows.length ? rows.join('') : '<tr><td colspan="5">No current data available.</td></tr>';
   }
 
-  function renderMarketUnavailable() { queryAll('[data-cpi-symbol]').forEach(function (card) { card.querySelector('strong').textContent = 'Data unavailable'; card.querySelector('small').textContent = 'Existing exMarkets quote provider unavailable'; }); }
+  function renderMarketUnavailable() { queryAll('[data-cpi-symbol]').forEach(function (card) { card.querySelector('strong').textContent = 'Data unavailable'; card.querySelector('small').textContent = 'Existing EconomicLab quote provider unavailable'; }); }
   function loadMarkets() {
     fetch(MARKET_ENDPOINT + '?symbols=USDIndex,XAUUSD,EURUSD,BTCUSD', { headers: { Accept: 'application/json' } }).then(function (response) { if (!response.ok) throw new Error('Market quote request failed'); return response.json(); }).then(function (quotes) { var map = {}; (Array.isArray(quotes) ? quotes : []).forEach(function (quote) { map[quote.id] = quote; }); queryAll('[data-cpi-symbol]').forEach(function (card) { var quote = map[card.getAttribute('data-cpi-symbol')]; if (!quote || quote.price == null) { card.querySelector('strong').textContent = 'Data unavailable'; card.querySelector('small').textContent = 'No verified quote returned'; return; } card.querySelector('strong').textContent = Number(quote.price).toLocaleString(undefined, { maximumFractionDigits: 5 }); card.querySelector('small').textContent = 'Daily change: ' + (quote.changePercent == null ? 'unavailable' : Number(quote.changePercent).toFixed(2) + '%') + ' | Updated: ' + new Date(quote.timestamp).toLocaleString(); }); }).catch(renderMarketUnavailable);
   }

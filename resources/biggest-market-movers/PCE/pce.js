@@ -125,7 +125,7 @@
       var strong = card.querySelector('strong');
       var small = card.querySelector('small');
       if (strong) strong.textContent = 'Data unavailable';
-      if (small) small.textContent = 'Existing exMarkets quote provider unavailable';
+      if (small) small.textContent = 'Existing EconomicLab quote provider unavailable';
     });
   }
 

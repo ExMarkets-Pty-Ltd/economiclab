@@ -1,4 +1,4 @@
-/* ExMarkets market-data client module
+/* EconomicLab market-data client module
  - Expects a secure serverless proxy endpoint that returns a normalized JSON array of market objects.
  - DOES NOT contain any private API key. Deploy a serverless proxy to call the chosen provider.
 
@@ -226,7 +226,7 @@
 
     // update disclosure timestamp
     if (disclosure){
-      disclosure.textContent = (disclosure.textContent.split('·')[0] || 'Market data provided via ExMarkets') + ' · Market data updated: ' + new Date(lastSuccessfulFetchAt).toUTCString().replace('GMT','UTC');
+      disclosure.textContent = (disclosure.textContent.split('·')[0] || 'Market data provided via EconomicLab') + ' · Market data updated: ' + new Date(lastSuccessfulFetchAt).toUTCString().replace('GMT','UTC');
     }
 
     renderForexTable(map);
@@ -363,7 +363,7 @@
       scheduleRefreshWithBackoff();
     }
     if (disclosure){
-      disclosure.textContent = 'Market data provided via ExMarkets · Market data temporarily unavailable';
+      disclosure.textContent = 'Market data provided via EconomicLab · Market data temporarily unavailable';
     }
     // If we have previously displayed successful data, do not overwrite all panels with an error.
     // Only show global error state; keep existing cards intact so one failed request doesn't blank the UI.

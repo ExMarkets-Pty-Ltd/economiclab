@@ -1,4 +1,4 @@
-# AUD/USD Hero Card Implementation Summary
+# EconomicLab AUD/USD Hero Card Implementation Summary
 
 ## Overview
 Successfully upgraded the hero market card from static EUR/USD to dynamic, real-time AUD/USD data with live price updates and an interactive line chart visualization.

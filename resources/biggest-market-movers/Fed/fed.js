@@ -19,7 +19,7 @@
   function renderUnavailable() {
     cards.forEach(function (card) {
       card.querySelector('strong').textContent = 'Data unavailable';
-      card.querySelector('small').textContent = 'Existing exMarkets quote provider unavailable';
+      card.querySelector('small').textContent = 'Existing EconomicLab quote provider unavailable';
     });
   }
 

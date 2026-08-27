@@ -1,8 +1,8 @@
-ExMarkets — Serverless Market-Data Proxy
+EconomicLab — Serverless Market-Data Proxy
 
 Purpose
 
-This document explains how to deploy a secure serverless proxy that the ExMarkets frontend can call to obtain normalized market data for the homepage market cards. The proxy holds any provider API key in server-side environment variables so that no secret is exposed in the browser or repository.
+This document explains how to deploy a secure serverless proxy that the EconomicLab frontend can call to obtain normalized market data for the homepage market cards. The proxy holds any provider API key in server-side environment variables so that no secret is exposed in the browser or repository.
 
 Goals
 

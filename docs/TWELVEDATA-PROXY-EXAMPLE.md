@@ -1,4 +1,4 @@
-Twelve Data — Serverless Proxy Example for ExMarkets
+Twelve Data — Serverless Proxy Example for EconomicLab
 
 This document provides a ready-to-adapt serverless proxy implementation for Twelve Data. It keeps the API key server-side and returns a normalized array the frontend expects.
 

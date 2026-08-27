@@ -1,6 +1,6 @@
-# ExMarkets Design System
+# EconomicLab Design System
 
-This document defines the ExMarkets visual language, components, and layout foundations. Use `style.css` as the central stylesheet for tokens, utilities, and component styles.
+This document defines the EconomicLab visual language, components, and layout foundations. Use `style.css` as the central stylesheet for tokens, utilities, and component styles.
 
 ## 1. Color Palette
 
@@ -154,7 +154,7 @@ Icons are treated as compact interface indicators.
 
 ```html
 <nav class="nav">
-  <div class="nav__brand">ExMarkets</div>
+  <div class="nav__brand">EconomicLab</div>
   <ul class="nav__links">
     <li><a href="#" class="nav__link">News</a></li>
     <li><a href="#" class="nav__link">Markets</a></li>

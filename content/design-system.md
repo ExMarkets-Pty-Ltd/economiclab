@@ -1,6 +1,6 @@
-# ExMarkets Design System Style Guide
+# EconomicLab Design System Style Guide
 
-A complete documentation of the ExMarkets visual language, including color palettes, typography scales, component designs, and utility classes.
+A complete documentation of the EconomicLab visual language, including color palettes, typography scales, component designs, and utility classes.
 
 ---
 
@@ -23,7 +23,7 @@ A complete documentation of the ExMarkets visual language, including color palet
 
 ## Brand Identity
 
-### Logo Typography (ExMarkets Text-only logo used in navigation)
+### Logo Typography (EconomicLab Text-only logo used in navigation)
 - **Font:** Inter, sans-serif with uppercase text and tight letter-spacing (`0.16em`)
 - **Weight:** 800 Extra Bold for strong visual presence  
 - **Color:** `var(--color-text)` - Light gray/blue (#e8eef7)
@@ -261,16 +261,16 @@ font-weight: 700;          /* Bold weight ensures clear button text legibility w
   outline-offset: var(--focus-ring-offset-3px);                            /* Offset from edge creates breathing room between outermost ring and actual clickable boundary area defined by border-radius shape rather than sharp corners when element has no visible borders or just subtle background differences compared to surrounding page/content structure context where this focus state is rendered against */
 }
 
-/* Hover states (mouse/touch interactions) - slightly elevated via translateY(-1px) visual cue indicating active/inactive switch without changing underlying DOM content/behavior only affecting rendering layer temporarily until interaction ends causing revert back to original rest state specified above before hover conditions were satisfied initially triggering animation start defined within transition properties listed alongside other CSS custom property variable references found throughout this style guide under various component sections including buttons cards tables charts etcetera mentioned earlier in different contexts unrelated specifically here but following consistent design patterns across entire ExMarkets UI framework documentation currently being compiled into single markdown file format for easy reference purposes by developers designing new features or modifying existing ones */
+/* Hover states (mouse/touch interactions) - slightly elevated via translateY(-1px) visual cue indicating active/inactive switch without changing underlying DOM content/behavior only affecting rendering layer temporarily until interaction ends causing revert back to original rest state specified above before hover conditions were satisfied initially triggering animation start defined within transition properties listed alongside other CSS custom property variable references found throughout this style guide under various component sections including buttons cards tables charts etcetera mentioned earlier in different contexts unrelated specifically here but following consistent design patterns across entire EconomicLab UI framework documentation currently being compiled into single markdown file format for easy reference purposes by developers designing new features or modifying existing ones */
 .btn:hover, .btn:focus-visible { transform: translateY(-1px); } /* Lift effect on hover - subtle vertical translation of up to 2-4 pixels depending on original element size before transformation applied reduces perceived distance from base container/surface beneath it creating depth perception cues for users indicating clickable state rather than passive decoration purpose */
 ```
 
 ### Button Variants (Background Colors & Themes)
 
-#### Primary Action Buttons (Main Calls-to-Action - Highest Prominence, Most Visible Style Variation Across UI Pages Throughout ExMarkets Platform Including Trading Dashboard Account Settings Market Analysis Reports etcetera Where Users Perform Critical Business Operations Like Opening New Positions Closing Orders Viewing Detailed Charts And Statistics Related To Their Financial Activities Within The Application Interface Defined By Our Design System Specifications Currently Documented Above)
+#### Primary Action Buttons (Main Calls-to-Action - Highest Prominence, Most Visible Style Variation Across UI Pages Throughout EconomicLab Platform Including Trading Dashboard Account Settings Market Analysis Reports etcetera Where Users Perform Critical Business Operations Like Opening New Positions Closing Orders Viewing Detailed Charts And Statistics Related To Their Financial Activities Within The Application Interface Defined By Our Design System Specifications Currently Documented Above)
 ```css
 .btn--primary {
   background: linear-gradient(135deg, var(--color-primary), var(--color-primary-2)); /* Gradient starting at blue (#4f8cff primary color on darker shades toward cyan/lighter #2faaff end point */
   
-  box-shadow: var(--shadow-xs);   /* Minimal lift for subtle depth effect across entire platform consistency rather than overemphasizing individual element presence too aggressively given dark theme background palette defined in other sections earlier here within same style guide document structure outlined previously this section under buttons category currently being written progressively with help from AI assistance tool invoked to generate comprehensive documentation covering multiple components together instead of scattered throughout separate markdown files which would be harder to maintain and reference efficiently for design team members working on frontend or backend features requiring knowledge about overall visual language applied across ExMarkets product suite */
+  box-shadow: var(--shadow-xs);   /* Minimal lift for subtle depth effect across entire platform consistency rather than overemphasizing individual element presence too aggressively given dark theme background palette defined in other sections earlier here within same style guide document structure outlined previously this section under buttons category currently being written progressively with help from AI assistance tool invoked to generate comprehensive documentation covering multiple components together instead of scattered throughout separate markdown files which would be harder to maintain and reference efficiently for design team members working on frontend or backend features requiring knowledge about overall visual language applied across EconomicLab product suite */
   

@@ -1,6 +1,6 @@
-# ExMarkets
+# EconomicLab
 
-This project contains the initial folder structure for the ExMarkets website.
+This project contains the initial folder structure for the EconomicLab website.
 
 ## Structure
 

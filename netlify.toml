@@ -59,4 +59,4 @@
 
 [dev]
   framework = "#static"
-  targetPort = 8000
+  staticServerPort = 5500

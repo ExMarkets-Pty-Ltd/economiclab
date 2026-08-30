@@ -287,8 +287,8 @@
   function renderMarketStatus(map){
     var categories = {
       'status-forex': ['EURUSD','GBPUSD','AUDUSD','NZDUSD','USDJPY','USDCHF','USDCAD'],
-      'status-us': ['NDX'],
-      'status-commodities': ['XAUUSD','OIL'],
+      'status-us': ['USDIndex'],
+      'status-commodities': ['XAUUSD','USOIL'],
       'status-crypto': ['BTCUSD']
     };
 

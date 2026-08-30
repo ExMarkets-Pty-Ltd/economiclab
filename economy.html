@@ -118,15 +118,15 @@
           <div class="news-feature__media" role="img" aria-label="U.S. GDP release"></div>
           <div class="news-feature__content">
             <p class="card__eyebrow">Economy</p>
-            <h2 id="featured-economy-title">U.S. GDP growth slowed to a 1.5% annualized pace in Q2 2026, according to BEA</h2>
-            <p class="lead">
-              The second estimate from the U.S. Bureau of Economic Analysis showed growth easing from the prior quarter as consumer spending, exports and investment remained positive while government spending declined.
+            <h2 id="featured-economy-title" data-economy-feature-title>Latest official U.S. GDP release</h2>
+            <p class="lead" data-economy-feature-summary>
+              Loading the most recent GDP release from the U.S. Bureau of Economic Analysis and FRED.
             </p>
             <div class="cluster article-meta-row">
-              <span class="article__meta">Source: U.S. Bureau of Economic Analysis</span>
-              <span class="article__meta">Released: 26 Aug 2026</span>
+              <span class="article__meta" data-economy-feature-source>Source: U.S. Bureau of Economic Analysis</span>
+              <span class="article__meta" data-economy-feature-date>Released: latest official estimate</span>
             </div>
-            <a class="btn btn--primary" href="https://www.bea.gov/news/2026/gdp-second-estimate-and-corporate-profits-2nd-quarter-2026" target="_blank" rel="noopener noreferrer">Read Source</a>
+            <a class="btn btn--primary" href="https://www.bea.gov/news" target="_blank" rel="noopener noreferrer">Read Source</a>
           </div>
         </div>
       </section>
@@ -142,61 +142,61 @@
           <article class="market-card">
             <div class="market-card__top">
               <span class="market-card__name">GDP Growth</span>
-              <span class="market-card__chip market-card__chip--positive">▲ +1.5%</span>
+              <span class="market-card__chip market-card__chip--positive" data-economy-chip="gdp-growth">Loading…</span>
             </div>
             <p class="market-card__symbol">U.S. real GDP</p>
-            <p class="market-card__price">1.5%</p>
-            <p class="market-card__meta">Q2 2026 annualized rate, BEA second estimate</p>
+            <p class="market-card__price" data-economy-value="gdp-growth">Loading…</p>
+            <p class="market-card__meta" data-economy-meta="gdp-growth">Latest official estimate from BEA / FRED</p>
           </article>
 
           <article class="market-card">
             <div class="market-card__top">
               <span class="market-card__name">Inflation</span>
-              <span class="market-card__chip market-card__chip--negative">▲ +3.4%</span>
+              <span class="market-card__chip market-card__chip--negative" data-economy-chip="inflation">Loading…</span>
             </div>
             <p class="market-card__symbol">U.S. CPI</p>
-            <p class="market-card__price">3.4%</p>
-            <p class="market-card__meta">YoY, July 2026, BLS</p>
+            <p class="market-card__price" data-economy-value="inflation">Loading…</p>
+            <p class="market-card__meta" data-economy-meta="inflation">Latest official BLS reading</p>
           </article>
 
           <article class="market-card">
             <div class="market-card__top">
               <span class="market-card__name">Core Inflation</span>
-              <span class="market-card__chip market-card__chip--neutral">▲ +2.5%</span>
+              <span class="market-card__chip market-card__chip--neutral" data-economy-chip="core-inflation">Loading…</span>
             </div>
             <p class="market-card__symbol">U.S. CPI ex-food &amp; energy</p>
-            <p class="market-card__price">2.5%</p>
-            <p class="market-card__meta">YoY, July 2026, BLS</p>
+            <p class="market-card__price" data-economy-value="core-inflation">Loading…</p>
+            <p class="market-card__meta" data-economy-meta="core-inflation">Latest official BLS reading</p>
           </article>
 
           <article class="market-card">
             <div class="market-card__top">
               <span class="market-card__name">Fed Funds</span>
-              <span class="market-card__chip market-card__chip--neutral">• 4.25–4.50%</span>
+              <span class="market-card__chip market-card__chip--neutral" data-economy-chip="fed-funds">Official range</span>
             </div>
             <p class="market-card__symbol">Target range</p>
-            <p class="market-card__price">4.25–4.50%</p>
-            <p class="market-card__meta">Current range, Federal Reserve, Jul 2026</p>
+            <p class="market-card__price" data-economy-value="fed-funds">Latest official range</p>
+            <p class="market-card__meta" data-economy-meta="fed-funds">Federal Reserve policy target, updated by FOMC release</p>
           </article>
 
           <article class="market-card">
             <div class="market-card__top">
               <span class="market-card__name">ECB Deposit Rate</span>
-              <span class="market-card__chip market-card__chip--neutral">• 2.25%</span>
+              <span class="market-card__chip market-card__chip--neutral" data-economy-chip="ecb-deposit">Official rate</span>
             </div>
             <p class="market-card__symbol">Euro area</p>
-            <p class="market-card__price">2.25%</p>
-            <p class="market-card__meta">Latest official rate, ECB</p>
+            <p class="market-card__price" data-economy-value="ecb-deposit">Latest official rate</p>
+            <p class="market-card__meta" data-economy-meta="ecb-deposit">European Central Bank policy rate</p>
           </article>
 
           <article class="market-card">
             <div class="market-card__top">
               <span class="market-card__name">ECB Main Rate</span>
-              <span class="market-card__chip market-card__chip--neutral">• 2.40%</span>
+              <span class="market-card__chip market-card__chip--neutral" data-economy-chip="ecb-main">Official rate</span>
             </div>
             <p class="market-card__symbol">Euro area</p>
-            <p class="market-card__price">2.40%</p>
-            <p class="market-card__meta">Latest official rate, ECB</p>
+            <p class="market-card__price" data-economy-value="ecb-main">Latest official rate</p>
+            <p class="market-card__meta" data-economy-meta="ecb-main">European Central Bank policy rate</p>
           </article>
         </div>
       </section>
@@ -502,6 +502,105 @@
         </div>
       </section>
     </main>
+
+    <script>
+      (function () {
+        'use strict';
+
+        var ENDPOINT = '/.netlify/functions/economy-data';
+
+        function updateText(selector, text) {
+          var node = document.querySelector(selector);
+          if (node) node.textContent = text;
+        }
+
+        function formatSigned(value, digits) {
+          if (!Number.isFinite(value)) return 'Data unavailable';
+          var prefix = value >= 0 ? '+' : '';
+          return prefix + Number(value).toFixed(digits) + '%';
+        }
+
+        function formatQuarterLabel(date) {
+          if (!date) return 'Latest official estimate';
+          var d = new Date(date + 'T00:00:00');
+          if (Number.isNaN(d.getTime())) return 'Latest official estimate';
+          return d.toLocaleDateString('en-US', { year: 'numeric', month: 'short', day: 'numeric' });
+        }
+
+        function updateFeature(meta) {
+          if (!meta) return;
+          if (meta.gdp && meta.gdp.latest) {
+            updateText('[data-economy-feature-title]', 'U.S. GDP ' + meta.gdp.latest.label + ' ' + formatSigned(meta.gdp.latest.value, 1) + ' annualized');
+            updateText('[data-economy-feature-summary]', 'The latest official GDP release from the U.S. Bureau of Economic Analysis shows ' + formatSigned(meta.gdp.latest.value, 1) + ' growth for the reference period.');
+            updateText('[data-economy-feature-source]', 'Source: ' + meta.gdp.latest.source);
+            updateText('[data-economy-feature-date]', 'Released: ' + formatQuarterLabel(meta.gdp.latest.date));
+          }
+        }
+
+        function updateOverview(payload) {
+          var data = payload && payload.data ? payload.data : {};
+
+          if (data.gdp && data.gdp.latest && Number.isFinite(data.gdp.latest.value)) {
+            updateText('[data-economy-value="gdp-growth"]', formatSigned(data.gdp.latest.value, 1));
+            updateText('[data-economy-chip="gdp-growth"]', data.gdp.latest.value >= 0 ? '▲ ' + formatSigned(data.gdp.latest.value, 1) : '▼ ' + formatSigned(data.gdp.latest.value, 1));
+            updateText('[data-economy-meta="gdp-growth"]', data.gdp.latest.period + ', ' + data.gdp.latest.source);
+          }
+
+          if (data.cpi && data.cpi.headline) {
+            updateText('[data-economy-value="inflation"]', formatSigned(data.cpi.headline.yoy, 1));
+            updateText('[data-economy-chip="inflation"]', data.cpi.headline.yoy >= 0 ? '▲ ' + formatSigned(data.cpi.headline.yoy, 1) : '▼ ' + formatSigned(data.cpi.headline.yoy, 1));
+            updateText('[data-economy-meta="inflation"]', 'YoY, ' + data.cpi.headline.period + ', BLS');
+          }
+
+          if (data.cpi && data.cpi.core) {
+            updateText('[data-economy-value="core-inflation"]', formatSigned(data.cpi.core.yoy, 1));
+            updateText('[data-economy-chip="core-inflation"]', data.cpi.core.yoy >= 0 ? '▲ ' + formatSigned(data.cpi.core.yoy, 1) : '▼ ' + formatSigned(data.cpi.core.yoy, 1));
+            updateText('[data-economy-meta="core-inflation"]', 'YoY, ' + data.cpi.core.period + ', BLS');
+          }
+
+          if (data.rates && data.rates.fed) {
+            updateText('[data-economy-value="fed-funds"]', data.rates.fed.value || 'Latest official range');
+            updateText('[data-economy-chip="fed-funds"]', data.rates.fed.chip || 'Official range');
+            updateText('[data-economy-meta="fed-funds"]', data.rates.fed.meta || 'Federal Reserve policy target, updated by FOMC release');
+          }
+
+          if (data.rates && data.rates.ecbDeposit) {
+            updateText('[data-economy-value="ecb-deposit"]', data.rates.ecbDeposit.value || 'Latest official rate');
+            updateText('[data-economy-chip="ecb-deposit"]', data.rates.ecbDeposit.chip || 'Official rate');
+            updateText('[data-economy-meta="ecb-deposit"]', data.rates.ecbDeposit.meta || 'European Central Bank policy rate');
+          }
+
+          if (data.rates && data.rates.ecbMain) {
+            updateText('[data-economy-value="ecb-main"]', data.rates.ecbMain.value || 'Latest official rate');
+            updateText('[data-economy-chip="ecb-main"]', data.rates.ecbMain.chip || 'Official rate');
+            updateText('[data-economy-meta="ecb-main"]', data.rates.ecbMain.meta || 'European Central Bank policy rate');
+          }
+
+          if (payload && payload.message) {
+            updateText('[data-economy-feature-summary]', payload.message);
+          }
+        }
+
+        fetch(ENDPOINT, { headers: { Accept: 'application/json' } })
+          .then(function (response) {
+            if (!response.ok) throw new Error('Economy data request failed');
+            return response.json();
+          })
+          .then(function (payload) {
+            updateFeature(payload && payload.data ? payload.data : null);
+            updateOverview(payload || {});
+          })
+          .catch(function () {
+            updateText('[data-economy-feature-title]', 'Official macro data unavailable');
+            updateText('[data-economy-feature-summary]', 'The official data source is temporarily unavailable. Please refer to the source links below for the latest BEA and BLS releases.');
+            updateText('[data-economy-feature-source]', 'Source: U.S. Bureau of Economic Analysis / BLS');
+            updateText('[data-economy-feature-date]', 'Released: latest official estimate');
+            updateText('[data-economy-value="gdp-growth"]', 'Data unavailable');
+            updateText('[data-economy-value="inflation"]', 'Data unavailable');
+            updateText('[data-economy-value="core-inflation"]', 'Data unavailable');
+          });
+      })();
+    </script>
 
     <footer class="footer">
             <div class="container footer__grid footer__desktop">

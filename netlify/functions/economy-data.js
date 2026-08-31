@@ -108,6 +108,155 @@ async function fetchOfficialData() {
         }
       }
     },
+    content: {
+      centralBanks: [
+        {
+          id: 'fed',
+          eyebrow: 'Federal Reserve',
+          title: 'Policy focus',
+          meta: 'Target range: 4.25%–4.50%.',
+          summary: 'The Federal Reserve’s latest policy decision was set against inflation persistence, the labor market and broader economic growth. Source: FOMC.',
+          href: 'https://www.federalreserve.gov/monetarypolicy/fomc.htm'
+        },
+        {
+          id: 'ecb',
+          eyebrow: 'European Central Bank',
+          title: 'Policy focus',
+          meta: 'Deposit facility 2.25%; main refinancing 2.40%; marginal lending 2.65%.',
+          summary: 'The ECB’s published key rates show the euro-area policy stance as of its most recent official rate update. Source: ECB.',
+          href: 'https://www.ecb.europa.eu/stats/policy_and_exchange_rates/key_ecb_interest_rates/html/index.en.html'
+        },
+        {
+          id: 'boe',
+          eyebrow: 'Bank of England',
+          title: 'Policy focus',
+          meta: 'Official policy decisions are updated by the Bank of England MPC.',
+          summary: 'The Bank continues to assess inflation, wage growth and the balance between price stability and UK growth. Source: Bank of England.',
+          href: 'https://www.bankofengland.co.uk/monetary-policy-summary-and-minutes'
+        },
+        {
+          id: 'boj',
+          eyebrow: 'Bank of Japan',
+          title: 'Policy focus',
+          meta: 'Official BOJ policy and inflation guidance remain central to Japan’s macro outlook.',
+          summary: 'The BOJ’s published materials are the relevant source for current policy and inflation context. Source: BOJ.',
+          href: 'https://www.boj.or.jp/en/mopo/outline/outline.htm/'
+        },
+        {
+          id: 'sarb',
+          eyebrow: 'South African Reserve Bank',
+          title: 'Policy focus',
+          meta: 'SARB policy continues to weigh inflation, domestic demand and exchange-rate conditions.',
+          summary: 'The SARB’s official releases remain the authoritative reference for South African monetary policy. Source: SARB.',
+          href: 'https://www.resbank.co.za/en/home'
+        }
+      ],
+      regions: [
+        {
+          id: 'north-america',
+          eyebrow: 'North America',
+          title: 'Regional update',
+          meta: 'The U.S. economy expanded at a 1.5% annualized pace in Q2 2026, with BEA highlighting consumer spending, exports and investment.',
+          summary: 'Growth softened from Q1, while inflation and policy remained important for the next phase of the cycle.',
+          href: 'https://www.bea.gov/news/2026/gdp-second-estimate-and-corporate-profits-2nd-quarter-2026'
+        },
+        {
+          id: 'europe',
+          eyebrow: 'Europe',
+          title: 'Regional update',
+          meta: 'The ECB’s key rates were published at 2.25% deposit, 2.40% refinancing and 2.65% marginal lending in the latest official table.',
+          summary: 'The euro area remains focused on balancing inflation control with growth conditions.',
+          href: 'https://www.ecb.europa.eu/stats/policy_and_exchange_rates/key_ecb_interest_rates/html/index.en.html'
+        },
+        {
+          id: 'uk',
+          eyebrow: 'United Kingdom',
+          title: 'Regional update',
+          meta: 'The Bank of England continues to assess inflation, wages and economic activity in its MPC communication.',
+          summary: 'The UK macro outlook remains shaped by services inflation, labor-market conditions and growth momentum.',
+          href: 'https://www.bankofengland.co.uk/monetary-policy-summary-and-minutes'
+        },
+        {
+          id: 'japan',
+          eyebrow: 'Japan',
+          title: 'Regional update',
+          meta: 'The Bank of Japan’s official policy framework remains tied to inflation, wages and broader financial conditions.',
+          summary: 'Japan’s policy tone continues to be shaped by inflation and the path of domestic demand.',
+          href: 'https://www.boj.or.jp/en/mopo/outline/outline.htm/'
+        },
+        {
+          id: 'south-africa',
+          eyebrow: 'South Africa',
+          title: 'Regional update',
+          meta: 'The SARB’s official statements continue to focus on inflation control, domestic demand and exchange-rate sensitivity.',
+          summary: 'South Africa’s macro environment remains shaped by inflation, rates and the broader emerging-market backdrop.',
+          href: 'https://www.resbank.co.za/en/home'
+        }
+      ],
+      briefings: [
+        {
+          id: 'inflation',
+          eyebrow: 'Inflation',
+          title: 'U.S. CPI rose 3.4% year over year in July 2026',
+          summary: 'The BLS reported that the all-items CPI increased 0.1% month over month and 3.4% over the last 12 months, while the all-items less food and energy index rose 2.5% over the year.',
+          meta: 'Source: BLS · latest official release',
+          href: 'https://www.bls.gov/news.release/cpi.nr0.htm'
+        },
+        {
+          id: 'rates',
+          eyebrow: 'Interest Rates',
+          title: 'The Federal Reserve kept the target range at 4.25% to 4.50%',
+          summary: 'The latest FOMC decision maintained the policy range as policymakers weighed inflation, labor-market conditions and the broader growth backdrop.',
+          meta: 'Source: Federal Reserve · latest official decision',
+          href: 'https://www.federalreserve.gov/newsevents/pressreleases/monetary20260729a.htm'
+        },
+        {
+          id: 'ecb-rates',
+          eyebrow: 'Monetary Policy',
+          title: 'The ECB published key rates of 2.25%, 2.40% and 2.65%',
+          summary: 'The European Central Bank’s official rate table lists the deposit facility, main refinancing operations and marginal lending facilities for the euro area.',
+          meta: 'Source: ECB · latest official rate table',
+          href: 'https://www.ecb.europa.eu/stats/policy_and_exchange_rates/key_ecb_interest_rates/html/index.en.html'
+        },
+        {
+          id: 'gdp',
+          eyebrow: 'Growth',
+          title: 'Real GDP increased at a 1.5% annualized rate in Q2 2026',
+          summary: 'The BEA’s second estimate showed slower growth than Q1, with consumer spending and exports offset partly by weaker government spending.',
+          meta: 'Source: BEA · latest official estimate',
+          href: 'https://www.bea.gov/news/2026/gdp-second-estimate-and-corporate-profits-2nd-quarter-2026'
+        }
+      ],
+      calendar: [
+        { date: '26 Aug 2026', event: 'GDP second estimate', region: 'United States', source: 'BEA', result: '+1.5% annualized' },
+        { date: '12 Aug 2026', event: 'CPI', region: 'United States', source: 'BLS', result: '+3.4% YoY' },
+        { date: '29 Jul 2026', event: 'FOMC rate decision', region: 'United States', source: 'Federal Reserve', result: '4.25%–4.50%' },
+        { date: '17 Jun 2026', event: 'ECB key rates', region: 'Euro area', source: 'ECB', result: '2.25% / 2.40% / 2.65%' }
+      ],
+      analysis: [
+        {
+          id: 'bea-analysis',
+          eyebrow: 'Source note',
+          title: 'BEA’s second estimate shows U.S. GDP moderated to a 1.5% annualized pace in Q2 2026.',
+          meta: 'Source: U.S. BEA · latest official release',
+          href: 'https://www.bea.gov/news/2026/gdp-second-estimate-and-corporate-profits-2nd-quarter-2026'
+        },
+        {
+          id: 'bls-analysis',
+          eyebrow: 'Source note',
+          title: 'BLS CPI data showed U.S. inflation at 3.4% year over year in the latest official release.',
+          meta: 'Source: U.S. BLS · latest official release',
+          href: 'https://www.bls.gov/news.release/cpi.nr0.htm'
+        },
+        {
+          id: 'fed-analysis',
+          eyebrow: 'Source note',
+          title: 'The Federal Reserve maintained a 4.25%–4.50% target range in its latest decision.',
+          meta: 'Source: Federal Reserve · latest official policy release',
+          href: 'https://www.federalreserve.gov/newsevents/pressreleases/monetary20260729a.htm'
+        }
+      ]
+    },
     source: 'Official BEA, BLS, FOMC and ECB data',
     updatedAt: new Date().toISOString()
   };

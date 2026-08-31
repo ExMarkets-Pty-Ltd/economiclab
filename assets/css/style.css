@@ -381,8 +381,17 @@ p {
 
 /* Buttons */
 .theme-toggle {
-  min-width: 7.25rem;
+  width: 2.5rem;
+  min-width: 2.5rem;
+  padding-inline: 0;
   justify-content: center;
+}
+
+.theme-toggle__icon {
+  display: inline-block;
+  font-size: 1rem;
+  line-height: 1;
+  transform: translateY(-1px);
 }
 
 .btn {

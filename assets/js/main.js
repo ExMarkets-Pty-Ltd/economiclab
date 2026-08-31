@@ -89,7 +89,7 @@
     ];
 
     const resourcesMarkup = '<li class="has-submenu"><div class="site-nav__parent"><a class="site-nav__link" href="/data/">Data</a><button class="site-nav__dropdown-btn" type="button" aria-expanded="false" aria-haspopup="true" aria-controls="submenu-resources" aria-label="Toggle Data submenu"></button></div><ul class="submenu" id="submenu-resources">' + createSubmenu('submenu-calendars', 'Calendars', calendars) + '<li><a class="site-nav__link" href="/data/biggest-market-movers/">Biggest Market Movers</a></li><li><a class="site-nav__link" href="/tradingview.html">Charts</a></li><li><a class="site-nav__link" href="/markets/broker-comparison/">Broker Comparison</a></li></ul></li>';
-    header.innerHTML = '<div class="site-nav__inner"><a class="site-nav__brand" href="/" aria-label="EconomicLab home"><img class="logo logo-light" src="/assets/images/ExMarkets Premium Transparent Black logo.png" alt="EconomicLab" /><img class="logo logo-dark" src="/assets/images/ExMarkets White Transparent logo.png" alt="EconomicLab" /><span class="sr-only">EconomicLab</span></a><button class="site-nav__toggle btn btn--ghost btn--small" type="button" data-nav-toggle aria-expanded="false" aria-controls="site-navigation" aria-label="Open menu">☰</button><ul class="site-nav__links" id="site-navigation" data-nav-menu>' + createSubmenu('submenu-trading', 'Markets', trading) + resourcesMarkup + '<li><a class="site-nav__link" href="/solutions/">Solutions</a></li>' + createSubmenu('submenu-insights', 'Insights', insights) + '<li><a class="site-nav__link" href="/">Education</a></li>' + '<li class="site-nav__mobile-divider"></li><li class="site-nav__mobile-utility"><button class="btn btn--ghost btn--small" type="button" aria-label="Search">⌕</button></li><li class="site-nav__mobile-utility"><a class="btn btn--primary btn--small" href="/#newsletter">Subscribe</a></li><li class="site-nav__mobile-utility"><button class="btn btn--ghost btn--small theme-toggle" type="button" data-theme-toggle aria-pressed="false" aria-label="Switch to dark theme"><span class="theme-toggle__label">Dark theme</span></button></li></ul><div class="site-nav__actions"><button class="btn btn--ghost btn--small theme-toggle" type="button" data-theme-toggle aria-pressed="false" aria-label="Switch to dark theme"><span class="theme-toggle__label">Dark theme</span></button><button class="btn btn--ghost btn--small" type="button" aria-label="Search">⌕</button><a class="btn btn--primary btn--small" href="/#newsletter">Subscribe</a></div></div>';
+    header.innerHTML = '<div class="site-nav__inner"><a class="site-nav__brand" href="/" aria-label="EconomicLab home"><img class="logo logo-light" src="/assets/images/ExMarkets Premium Transparent Black logo.png" alt="EconomicLab" /><img class="logo logo-dark" src="/assets/images/ExMarkets White Transparent logo.png" alt="EconomicLab" /><span class="sr-only">EconomicLab</span></a><button class="site-nav__toggle btn btn--ghost btn--small" type="button" data-nav-toggle aria-expanded="false" aria-controls="site-navigation" aria-label="Open menu">☰</button><ul class="site-nav__links" id="site-navigation" data-nav-menu>' + createSubmenu('submenu-trading', 'Markets', trading) + resourcesMarkup + '<li><a class="site-nav__link" href="/solutions/">Solutions</a></li>' + createSubmenu('submenu-insights', 'Insights', insights) + '<li><a class="site-nav__link" href="/">Education</a></li>' + '<li class="site-nav__mobile-divider"></li><li class="site-nav__mobile-utility"><button class="btn btn--ghost btn--small" type="button" aria-label="Search">⌕</button></li><li class="site-nav__mobile-utility"><a class="btn btn--primary btn--small" href="/#newsletter">Subscribe</a></li><li class="site-nav__mobile-utility"><button class="btn btn--ghost btn--small theme-toggle" type="button" data-theme-toggle aria-pressed="false" aria-label="Switch to dark mode"><span class="theme-toggle__icon" aria-hidden="true">☀</span></button></li></ul><div class="site-nav__actions"><button class="btn btn--ghost btn--small theme-toggle" type="button" data-theme-toggle aria-pressed="false" aria-label="Switch to dark mode"><span class="theme-toggle__icon" aria-hidden="true">☀</span></button><button class="btn btn--ghost btn--small" type="button" aria-label="Search">⌕</button><a class="btn btn--primary btn--small" href="/#newsletter">Subscribe</a></div></div>';
 
     const currentPath = window.location.pathname.replace(/index\.html$/, '');
     header.querySelectorAll('.site-nav__link[href]').forEach(function (link) {
@@ -148,12 +148,19 @@
 
     themeToggles.forEach(function (toggle) {
       const isLight = themeName === 'light';
+      const icon = toggle.querySelector('.theme-toggle__icon') || document.createElement('span');
+      icon.className = 'theme-toggle__icon';
+      icon.setAttribute('aria-hidden', 'true');
+      icon.textContent = isLight ? '☀' : '☾';
       toggle.setAttribute('aria-pressed', String(isLight));
-      toggle.setAttribute('aria-label', isLight ? 'Switch to dark theme' : 'Switch to light theme');
-
-      const label = toggle.querySelector('.theme-toggle__label');
-      if (label) {
-        label.textContent = isLight ? 'Light theme' : 'Dark theme';
+      toggle.setAttribute('aria-label', isLight ? 'Switch to dark mode' : 'Switch to light mode');
+      toggle.setAttribute('title', isLight ? 'Switch to dark mode' : 'Switch to light mode');
+      toggle.querySelectorAll('.theme-toggle__label').forEach(function (label) {
+        label.remove();
+      });
+      if (!toggle.contains(icon)) {
+        toggle.innerHTML = '';
+        toggle.appendChild(icon);
       }
     });
   }

@@ -65,30 +65,30 @@
       { label: 'Economy', href: '/economy.html' }
     ];
     const calendars = [
-      { label: 'Economics', href: '/resources/calendars/economics/' },
-      { label: 'Earnings', href: '/resources/calendars/earnings/' },
-      { label: 'Dividends', href: '/resources/calendars/dividends/' },
-      { label: 'IPOs', href: '/resources/calendars/ipos/' }
+      { label: 'Economics', href: '/data/calendars/economics/' },
+      { label: 'Earnings', href: '/data/calendars/earnings/' },
+      { label: 'Dividends', href: '/data/calendars/dividends/' },
+      { label: 'IPOs', href: '/data/calendars/ipos/' }
     ];
     const trading = [
-      { label: 'Trading Overview', href: '/trading/overview/' },
-      { label: 'Forex', href: '/trading/forex/' },
-      { label: 'Gold & Commodities', href: '/trading/gold-commodities/' },
-      { label: 'Indices', href: '/trading/indices/' },
-      { label: 'Stocks', href: '/trading/stocks/' },
-      { label: 'Cryptocurrencies', href: '/trading/cryptocurrencies/' },
-      { label: 'Brokers', href: '/trading/brokers/' },
-      { label: 'Broker Comparison', href: '/trading/broker-comparison/' },
-      { label: 'Platforms', href: '/trading/platforms/' },
-      { label: 'Strategies', href: '/trading/strategies/' },
-      { label: 'Risk Management', href: '/trading/risk-management/' }
+      { label: 'Markets Overview', href: '/markets/overview/' },
+      { label: 'Forex', href: '/markets/forex/' },
+      { label: 'Gold & Commodities', href: '/markets/gold-commodities/' },
+      { label: 'Indices', href: '/markets/indices/' },
+      { label: 'Stocks', href: '/markets/stocks/' },
+      { label: 'Cryptocurrencies', href: '/markets/cryptocurrencies/' },
+      { label: 'Brokers', href: '/markets/brokers/' },
+      { label: 'Broker Comparison', href: '/markets/broker-comparison/' },
+      { label: 'Platforms', href: '/markets/platforms/' },
+      { label: 'Strategies', href: '/markets/strategies/' },
+      { label: 'Risk Management', href: '/markets/risk-management/' }
     ];
     const about = [
       { label: 'Who We Are', href: '/about.html' },
       { label: 'Contact', href: '/contact.html' }
     ];
 
-    const resourcesMarkup = '<li class="has-submenu"><div class="site-nav__parent"><a class="site-nav__link" href="/resources/">Data</a><button class="site-nav__dropdown-btn" type="button" aria-expanded="false" aria-haspopup="true" aria-controls="submenu-resources" aria-label="Toggle Resources submenu"></button></div><ul class="submenu" id="submenu-resources">' + createSubmenu('submenu-calendars', 'Calendars', calendars) + '<li><a class="site-nav__link" href="/resources/biggest-market-movers/">Biggest Market Movers</a></li><li><a class="site-nav__link" href="/tradingview.html">Charts</a></li><li><a class="site-nav__link" href="/trading/broker-comparison/">Broker Comparison</a></li></ul></li>';
+    const resourcesMarkup = '<li class="has-submenu"><div class="site-nav__parent"><a class="site-nav__link" href="/data/">Data</a><button class="site-nav__dropdown-btn" type="button" aria-expanded="false" aria-haspopup="true" aria-controls="submenu-resources" aria-label="Toggle Data submenu"></button></div><ul class="submenu" id="submenu-resources">' + createSubmenu('submenu-calendars', 'Calendars', calendars) + '<li><a class="site-nav__link" href="/data/biggest-market-movers/">Biggest Market Movers</a></li><li><a class="site-nav__link" href="/tradingview.html">Charts</a></li><li><a class="site-nav__link" href="/markets/broker-comparison/">Broker Comparison</a></li></ul></li>';
     header.innerHTML = '<div class="site-nav__inner"><a class="site-nav__brand" href="/" aria-label="EconomicLab home"><img class="logo logo-light" src="/assets/images/ExMarkets Premium Transparent Black logo.png" alt="EconomicLab" /><img class="logo logo-dark" src="/assets/images/ExMarkets White Transparent logo.png" alt="EconomicLab" /><span class="sr-only">EconomicLab</span></a><button class="site-nav__toggle btn btn--ghost btn--small" type="button" data-nav-toggle aria-expanded="false" aria-controls="site-navigation" aria-label="Open menu">☰</button><ul class="site-nav__links" id="site-navigation" data-nav-menu>' + createSubmenu('submenu-insights', 'Insights', insights) + resourcesMarkup + createSubmenu('submenu-trading', 'Markets', trading) + '<li><a class="site-nav__link" href="/companies.html">Companies</a></li><li><a class="site-nav__link" href="/blog.html">Blog</a></li>' + createSubmenu('submenu-about', 'About', about) + '<li class="site-nav__mobile-divider"></li><li class="site-nav__mobile-utility"><button class="btn btn--ghost btn--small" type="button" aria-label="Search">⌕</button></li><li class="site-nav__mobile-utility"><a class="btn btn--primary btn--small" href="/#newsletter">Subscribe</a></li><li class="site-nav__mobile-utility"><button class="btn btn--ghost btn--small theme-toggle" type="button" data-theme-toggle aria-pressed="false" aria-label="Switch to dark theme"><span class="theme-toggle__label">Dark theme</span></button></li></ul><div class="site-nav__actions"><button class="btn btn--ghost btn--small theme-toggle" type="button" data-theme-toggle aria-pressed="false" aria-label="Switch to dark theme"><span class="theme-toggle__label">Dark theme</span></button><button class="btn btn--ghost btn--small" type="button" aria-label="Search">⌕</button><a class="btn btn--primary btn--small" href="/#newsletter">Subscribe</a></div></div>';
 
     const currentPath = window.location.pathname.replace(/index\.html$/, '');
@@ -114,11 +114,11 @@
 
   document.querySelectorAll('a').forEach(function (link) {
     const label = link.textContent.trim();
-    if (label === 'Dividends' && link.getAttribute('href') === '/resources/calendars/economics/') {
-      link.setAttribute('href', '/resources/calendars/dividends/');
+    if (label === 'Dividends' && link.getAttribute('href') === '/data/calendars/economics/') {
+      link.setAttribute('href', '/data/calendars/dividends/');
     }
-    if (label === 'IPOs' && link.getAttribute('href') !== '/resources/calendars/ipos/') {
-      link.setAttribute('href', '/resources/calendars/ipos/');
+    if (label === 'IPOs' && link.getAttribute('href') !== '/data/calendars/ipos/') {
+      link.setAttribute('href', '/data/calendars/ipos/');
     }
   });
 

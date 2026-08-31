@@ -10,6 +10,42 @@
   conditions = {Host = ["exmarkets.co.za", "www.exmarkets.co.za"]}
 
 [[redirects]]
+  from = "/trading"
+  to = "/markets"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/markets/"
+  to = "/markets/"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/markets/*"
+  to = "/markets/:splat"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/resources"
+  to = "/data"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/data/"
+  to = "/data/"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/data/*"
+  to = "/data/:splat"
+  status = 301
+  force = true
+
+[[redirects]]
   from = "/about/cookies-policy"
   to = "/about/cookies-policy/index.html"
   status = 200

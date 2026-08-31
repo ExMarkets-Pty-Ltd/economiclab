@@ -29,13 +29,25 @@
 
 [[redirects]]
   from = "/resources"
-  to = "/data"
+  to = "/data.html"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/resources.html"
+  to = "/data.html"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/data"
+  to = "/data.html"
   status = 301
   force = true
 
 [[redirects]]
   from = "/data/"
-  to = "/data/"
+  to = "/data.html"
   status = 301
   force = true
 

@@ -2382,15 +2382,15 @@ html[data-theme="dark"] .broker-directory-card__logo .logo-dark { display: block
     align-items: center;
     justify-content: space-between;
     gap: 0.45rem;
-    min-height: 3.7rem;
+    min-height: 3.52rem;
     width: 100%;
     max-width: none;
-    padding: 0.42rem 0.68rem;
+    padding: 0.36rem 0.64rem;
     box-sizing: border-box;
     flex-wrap: nowrap;
     position: relative;
     z-index: 30;
-    background: rgba(249, 249, 247, 0.96);
+    background: rgba(248, 248, 246, 0.96);
     border: 1px solid rgba(15, 23, 42, 0.08);
     border-radius: 0.9rem;
     box-shadow: 0 1px 0 rgba(15, 23, 42, 0.02);
@@ -2399,24 +2399,47 @@ html[data-theme="dark"] .broker-directory-card__logo .logo-dark { display: block
   .site-nav__inner.is-menu-open {
     position: relative;
     z-index: 1001;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 0.55rem;
     padding: 0.52rem 0.68rem 0.38rem;
     background: rgba(249, 249, 247, 0.96);
     border: 1px solid rgba(15, 23, 42, 0.08);
     border-radius: 0.9rem;
     box-shadow: 0 1px 0 rgba(15, 23, 42, 0.02);
+    min-height: 3.7rem;
   }
 
   .site-nav__inner.is-menu-open .site-nav__brand {
-    position: relative;
-    z-index: 1002;
+    position: static;
+    z-index: auto;
     display: inline-flex;
     opacity: 1;
     visibility: visible;
+    margin: 0 0 0 auto;
+    order: 2;
+  }
+
+  .site-nav__inner.is-menu-open .site-nav__mobile-actions--header {
+    position: static;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    gap: 0.4rem;
+    margin: 0;
+    order: 1;
+  }
+
+  .site-nav__inner.is-menu-open .site-nav__mobile-actions--header .theme-toggle,
+  .site-nav__inner.is-menu-open .site-nav__mobile-actions--header .site-nav__search-btn {
+    display: none;
   }
 
   .site-nav__inner.is-menu-open .site-nav__toggle {
     position: static;
-    z-index: 1002;
+    z-index: auto;
     display: inline-flex;
     min-width: 2.2rem;
     min-height: 2.2rem;
@@ -2431,22 +2454,37 @@ html[data-theme="dark"] .broker-directory-card__logo .logo-dark { display: block
     line-height: 1;
     border-radius: 0;
     font-weight: 300;
+    margin: 0;
+    order: 1;
   }
 
-  .site-nav__inner.is-menu-open .site-nav__mobile-actions--header {
-    display: none;
+  .site-nav__links.is-open {
+    order: 3;
+    position: static;
+    width: 100%;
+    left: auto;
+    right: auto;
+    top: auto;
+    margin-top: 0.15rem;
+  }
+
+  .site-nav__mobile-actions--menu.is-open,
+  .site-nav__links.is-open ~ .site-nav__mobile-actions--menu {
+    order: 4;
+    width: 100%;
+    margin-top: 0.2rem;
   }
 
   .site-nav__brand {
     flex-shrink: 1;
     min-width: 0;
     width: auto;
-    margin-right: 0.4rem;
+    margin-right: 0.3rem;
   }
 
   .site-nav__brand img.logo {
     flex-shrink: 1;
-    max-height: 2.3rem;
+    max-height: 2.05rem;
     width: auto;
   }
 
@@ -2458,8 +2496,8 @@ html[data-theme="dark"] .broker-directory-card__logo .logo-dark { display: block
     padding: 0;
     font-size: 1.05rem;
     flex-shrink: 0;
-    background: rgba(35, 207, 255, 0.12);
-    border: 1px solid rgba(35, 207, 255, 0.2);
+    background: rgba(255, 255, 255, 0.7);
+    border: 1px solid rgba(15, 23, 42, 0.12);
     border-radius: 999px;
     color: #0f172a;
     box-shadow: none;
@@ -2534,12 +2572,12 @@ html[data-theme="dark"] .broker-directory-card__logo .logo-dark { display: block
     flex-direction: column;
     flex-wrap: nowrap;
     align-items: stretch;
-    padding: 0.35rem 0.9rem 0.8rem;
+    padding: 0.2rem 0.9rem 0.9rem;
     margin: 0;
     box-sizing: border-box;
     background: rgba(246, 246, 243, 0.98);
     border: 1px solid rgba(15, 23, 42, 0.08);
-    box-shadow: 0 12px 28px rgba(15, 23, 42, 0.08);
+    box-shadow: 0 10px 18px rgba(15, 23, 42, 0.06);
     border-radius: 1rem;
   }
 
@@ -2560,12 +2598,12 @@ html[data-theme="dark"] .broker-directory-card__logo .logo-dark { display: block
 
   .site-nav__links > li > a {
     display: block;
-    padding: 0.95rem 0.2rem 0.95rem 0;
+    padding: 0.8rem 0.2rem 0.8rem 0;
     border-bottom: 1px solid rgba(15, 23, 42, 0.08);
-    font-size: 1.02rem;
+    font-size: 1.12rem;
     line-height: 1.2;
     color: var(--color-text);
-    font-weight: 600;
+    font-weight: 700;
     border-radius: 0;
   }
 
@@ -2575,7 +2613,7 @@ html[data-theme="dark"] .broker-directory-card__logo .logo-dark { display: block
     justify-content: space-between;
     align-items: center;
     gap: 0;
-    padding: 0.1rem 0;
+    padding: 0.12rem 0;
     border-bottom: 1px solid rgba(15, 23, 42, 0.08);
     border-radius: 0;
   }
@@ -2596,16 +2634,16 @@ html[data-theme="dark"] .broker-directory-card__logo .logo-dark { display: block
   }
 
   .site-nav__parent a {
-    padding: 0.82rem 0.2rem 0.8rem 0;
+    padding: 0.8rem 0.2rem 0.78rem 0;
     border-bottom: none;
     display: flex;
     align-items: center;
     flex: 1 1 auto;
     text-align: left;
-    font-size: 1.02rem;
+    font-size: 1.12rem;
     line-height: 1.25;
     color: var(--color-text);
-    font-weight: 600;
+    font-weight: 700;
   }
 
   .site-nav__parent .site-nav__dropdown-btn {
@@ -2613,8 +2651,8 @@ html[data-theme="dark"] .broker-directory-card__logo .logo-dark { display: block
     border: none;
     background: transparent;
     border-radius: 0;
-    width: 1.1rem;
-    height: 1.1rem;
+    width: 1.05rem;
+    height: 1.05rem;
     color: var(--color-text);
     padding: 0;
     display: inline-flex;
@@ -2731,7 +2769,7 @@ html[data-theme="dark"] .broker-directory-card__logo .logo-dark { display: block
   .site-nav__mobile-actions--header {
     display: flex;
     align-items: center;
-    gap: 0.7rem;
+    gap: 0.55rem;
     margin-left: auto;
     order: 2;
     width: auto;
@@ -2739,10 +2777,10 @@ html[data-theme="dark"] .broker-directory-card__logo .logo-dark { display: block
 
   .site-nav__mobile-actions--header .btn,
   .site-nav__mobile-actions--header .theme-toggle {
-    width: 2.45rem;
-    min-width: 2.45rem;
-    height: 2.45rem;
-    min-height: 2.45rem;
+    width: 2.2rem;
+    min-width: 2.2rem;
+    height: 2.2rem;
+    min-height: 2.2rem;
     padding: 0;
     border-radius: 999px;
     background: rgba(255, 255, 255, 0.65);
@@ -2763,6 +2801,10 @@ html[data-theme="dark"] .broker-directory-card__logo .logo-dark { display: block
   .site-nav__mobile-actions--menu {
     display: none;
     grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+    grid-template-areas:
+      "signin signin"
+      "primary primary"
+      "theme search";
     gap: 0.7rem;
     align-items: center;
     margin-top: 0.7rem;
@@ -2775,34 +2817,36 @@ html[data-theme="dark"] .broker-directory-card__logo .logo-dark { display: block
   }
 
   .site-nav__mobile-actions--menu .site-nav__action-btn--signin {
-    grid-column: 1;
+    grid-area: signin;
+    width: 100%;
   }
 
   .site-nav__mobile-actions--menu .site-nav__action-btn--primary {
-    grid-column: 2;
+    grid-area: primary;
+    width: 100%;
   }
 
   .site-nav__mobile-actions--menu .theme-toggle {
-    grid-column: 1;
+    grid-area: theme;
     justify-self: center;
   }
 
   .site-nav__mobile-actions--menu .site-nav__search-btn {
-    grid-column: 2;
+    grid-area: search;
     justify-self: center;
   }
 
   .site-nav__action-btn {
-    min-height: 2.95rem;
-    border-radius: 1.05rem;
+    min-height: 2.9rem;
+    border-radius: 1rem;
     font-weight: 700;
     font-size: 1rem;
     letter-spacing: -0.02em;
   }
 
   .site-nav__action-btn--signin {
-    background: rgba(255, 255, 255, 0.08);
-    border: 1px solid rgba(15, 23, 42, 0.8);
+    background: rgba(255, 255, 255, 0.06);
+    border: 1px solid rgba(15, 23, 42, 0.85);
     color: #111827;
   }
 

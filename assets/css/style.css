@@ -2814,7 +2814,7 @@ html[data-theme="dark"] .broker-directory-card__logo .logo-dark { display: block
     grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
     grid-template-areas:
       "signin primary"
-      "theme search";
+      "icons icons";
     justify-content: center;
     column-gap: 0.55rem;
     row-gap: 0.5rem;
@@ -2852,14 +2852,18 @@ html[data-theme="dark"] .broker-directory-card__logo .logo-dark { display: block
     padding: 0.78rem 1rem;
   }
 
-  .site-nav__mobile-actions--menu .theme-toggle {
-    grid-area: theme;
-    justify-self: center;
+  .site-nav__mobile-actions--icons {
+    grid-area: icons;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 0.5rem;
+    width: 100%;
   }
 
+  .site-nav__mobile-actions--menu .theme-toggle,
   .site-nav__mobile-actions--menu .site-nav__search-btn {
-    grid-area: search;
-    justify-self: center;
+    margin: 0;
   }
 
   .site-nav__action-btn {

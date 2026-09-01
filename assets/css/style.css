@@ -656,8 +656,12 @@ html[data-theme="dark"] .site-nav__links > li > .site-nav__parent {
 }
 
 html[data-theme="dark"] .site-nav__links .has-submenu .submenu {
-  background: rgba(255, 255, 255, 0.02);
+  background: #000000;
   border-color: rgba(255, 255, 255, 0.08);
+}
+
+html[data-theme="dark"] .site-nav__links .has-submenu .submenu li a {
+  color: rgba(255, 255, 255, 0.92);
 }
 
 html[data-theme="dark"] .site-nav__mobile-divider {
@@ -927,11 +931,21 @@ html[data-theme="dark"] .site-nav__brand img.logo-dark {
   z-index: 30;
 }
 
+html[data-theme="dark"] .site-nav__links .submenu {
+  background: #000000;
+  border-color: rgba(255, 255, 255, 0.08);
+  box-shadow: none;
+}
+
 .site-nav__links .submenu li a {
   display: block;
   padding: 0.6rem 1rem;
   color: #2d3748;
   font-size: 0.92rem;
+}
+
+html[data-theme="dark"] .site-nav__links .submenu li a {
+  color: rgba(255, 255, 255, 0.92);
 }
 
 .site-nav__links .has-submenu:hover > .submenu,

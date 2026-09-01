@@ -2418,8 +2418,8 @@ html[data-theme="dark"] .broker-directory-card__logo .logo-dark { display: block
     display: inline-flex;
     opacity: 1;
     visibility: visible;
-    margin: 0 0 0 auto;
-    order: 2;
+    margin: 0;
+    order: 1;
   }
 
   .site-nav__inner.is-menu-open .site-nav__mobile-actions--header {
@@ -2428,8 +2428,8 @@ html[data-theme="dark"] .broker-directory-card__logo .logo-dark { display: block
     align-items: center;
     justify-content: flex-start;
     gap: 0.4rem;
-    margin: 0;
-    order: 1;
+    margin: 0 0 0 auto;
+    order: 2;
   }
 
   .site-nav__inner.is-menu-open .site-nav__mobile-actions--header .theme-toggle,
@@ -2802,10 +2802,11 @@ html[data-theme="dark"] .broker-directory-card__logo .logo-dark { display: block
     display: none;
     grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
     grid-template-areas:
-      "signin signin"
-      "primary primary"
+      "signin primary"
       "theme search";
-    gap: 0.7rem;
+    justify-content: center;
+    column-gap: 0.55rem;
+    row-gap: 0.7rem;
     align-items: center;
     margin-top: 0.7rem;
     width: 100%;

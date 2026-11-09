@@ -4,43 +4,46 @@
     <loc>https://economiclab.co.za/</loc>
   </url>
   <url>
-    <loc>https://economiclab.co.za/markets.html</loc>
+    <loc>https://economiclab.co.za/about</loc>
   </url>
   <url>
-    <loc>https://economiclab.co.za/news.html</loc>
+    <loc>https://economiclab.co.za/about/cookies-policy/</loc>
   </url>
   <url>
-    <loc>https://economiclab.co.za/companies.html</loc>
+    <loc>https://economiclab.co.za/about/disclaimer/</loc>
   </url>
   <url>
-    <loc>https://economiclab.co.za/economy.html</loc>
+    <loc>https://economiclab.co.za/about/privacy-policy/</loc>
   </url>
   <url>
-    <loc>https://economiclab.co.za/technology.html</loc>
+    <loc>https://economiclab.co.za/about/terms-of-use/</loc>
   </url>
   <url>
-    <loc>https://economiclab.co.za/about.html</loc>
+    <loc>https://economiclab.co.za/articles/article-template</loc>
   </url>
   <url>
-    <loc>https://economiclab.co.za/contact.html</loc>
+    <loc>https://economiclab.co.za/blog</loc>
   </url>
   <url>
-    <loc>https://economiclab.co.za/articles/article-template.html</loc>
+    <loc>https://economiclab.co.za/companies</loc>
   </url>
   <url>
-    <loc>https://economiclab.co.za/data/calendars/earnings/</loc>
+    <loc>https://economiclab.co.za/contact</loc>
   </url>
   <url>
-    <loc>https://economiclab.co.za/data/calendars/</loc>
+    <loc>https://economiclab.co.za/data</loc>
   </url>
   <url>
     <loc>https://economiclab.co.za/data/biggest-market-movers/</loc>
   </url>
   <url>
+    <loc>https://economiclab.co.za/data/biggest-market-movers/CPI</loc>
+  </url>
+  <url>
     <loc>https://economiclab.co.za/data/biggest-market-movers/Fed</loc>
   </url>
   <url>
-    <loc>https://economiclab.co.za/data/biggest-market-movers/CPI</loc>
+    <loc>https://economiclab.co.za/data/biggest-market-movers/GDP</loc>
   </url>
   <url>
     <loc>https://economiclab.co.za/data/biggest-market-movers/NFP</loc>
@@ -49,15 +52,57 @@
     <loc>https://economiclab.co.za/data/biggest-market-movers/PCE</loc>
   </url>
   <url>
-    <loc>https://economiclab.co.za/data/calendars/economics/</loc>
+    <loc>https://economiclab.co.za/data/calendars/</loc>
   </url>
   <url>
     <loc>https://economiclab.co.za/data/calendars/dividends/</loc>
   </url>
   <url>
+    <loc>https://economiclab.co.za/data/calendars/earnings/</loc>
+  </url>
+  <url>
+    <loc>https://economiclab.co.za/data/calendars/economics/</loc>
+  </url>
+  <url>
     <loc>https://economiclab.co.za/data/calendars/ipos/</loc>
   </url>
   <url>
+    <loc>https://economiclab.co.za/economy</loc>
+  </url>
+  <url>
+    <loc>https://economiclab.co.za/education</loc>
+  </url>
+  <url>
+    <loc>https://economiclab.co.za/insights</loc>
+  </url>
+  <url>
+    <loc>https://economiclab.co.za/markets</loc>
+  </url>
+  <url>
+    <loc>https://economiclab.co.za/markets/broker-comparison/</loc>
+  </url>
+  <url>
+    <loc>https://economiclab.co.za/markets/brokers/</loc>
+  </url>
+  <url>
     <loc>https://economiclab.co.za/markets/overview/</loc>
+  </url>
+  <url>
+    <loc>https://economiclab.co.za/markets/risk-management/</loc>
+  </url>
+  <url>
+    <loc>https://economiclab.co.za/markets/strategies/</loc>
+  </url>
+  <url>
+    <loc>https://economiclab.co.za/solutions</loc>
+  </url>
+  <url>
+    <loc>https://economiclab.co.za/subscription/pricing/</loc>
+  </url>
+  <url>
+    <loc>https://economiclab.co.za/technology</loc>
+  </url>
+  <url>
+    <loc>https://economiclab.co.za/tradingview</loc>
   </url>
 </urlset>

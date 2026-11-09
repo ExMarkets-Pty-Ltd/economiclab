@@ -43,8 +43,8 @@
   }
   window.setTimeout(closePreloader, 9000);
 
-  function createSubmenu(id, label, items) {
-    return '<li class="has-submenu"><div class="site-nav__parent"><a class="site-nav__link" href="">' + label + '</a><button class="site-nav__dropdown-btn" type="button" aria-expanded="false" aria-haspopup="true" aria-controls="' + id + '" aria-label="Toggle ' + label + ' submenu"></button></div><ul class="submenu" id="' + id + '">' + items.map(function (item) {
+  function createSubmenu(id, label, items, href) {
+    return '<li class="has-submenu"><div class="site-nav__parent"><a class="site-nav__link" href="' + href + '">' + label + '</a><button class="site-nav__dropdown-btn" type="button" aria-expanded="false" aria-haspopup="true" aria-controls="' + id + '" aria-label="Toggle ' + label + ' submenu"></button></div><ul class="submenu" id="' + id + '">' + items.map(function (item) {
       return '<li><a class="site-nav__link" href="' + item.href + '">' + item.label + '</a></li>';
     }).join('') + '</ul></li>';
   }
@@ -64,10 +64,10 @@
     }
 
     const insights = [
-      { label: 'Markets', href: '/markets.html' },
-      { label: 'Business', href: '/companies.html' },
-      { label: 'Technology', href: '/technology.html' },
-      { label: 'Economy', href: '/economy.html' }
+      { label: 'Markets', href: '/markets' },
+      { label: 'Business', href: '/companies' },
+      { label: 'Technology', href: '/technology' },
+      { label: 'Economy', href: '/economy' }
     ];
     const calendars = [
       { label: 'Economics', href: '/data/calendars/economics/' },
@@ -89,11 +89,11 @@
       { label: 'Risk Management', href: '/markets/risk-management/' }
     ];
 
-    const resourcesMarkup = '<li class="has-submenu"><div class="site-nav__parent"><a class="site-nav__link" href="/data/">Data</a><button class="site-nav__dropdown-btn" type="button" aria-expanded="false" aria-haspopup="true" aria-controls="submenu-resources" aria-label="Toggle Data submenu"></button></div><ul class="submenu" id="submenu-resources">' + createSubmenu('submenu-calendars', 'Calendars', calendars) + '<li><a class="site-nav__link" href="/data/biggest-market-movers/">Biggest Market Movers</a></li><li><a class="site-nav__link" href="/tradingview.html">Charts</a></li><li><a class="site-nav__link" href="/markets/broker-comparison/">Broker Comparison</a></li></ul></li>';
+    const resourcesMarkup = '<li class="has-submenu"><div class="site-nav__parent"><a class="site-nav__link" href="/data">Data</a><button class="site-nav__dropdown-btn" type="button" aria-expanded="false" aria-haspopup="true" aria-controls="submenu-resources" aria-label="Toggle Data submenu"></button></div><ul class="submenu" id="submenu-resources">' + createSubmenu('submenu-calendars', 'Calendars', calendars, '/data/calendars') + '<li><a class="site-nav__link" href="/data/biggest-market-movers/">Biggest Market Movers</a></li><li><a class="site-nav__link" href="/tradingview">Charts</a></li><li><a class="site-nav__link" href="/markets/broker-comparison/">Broker Comparison</a></li></ul></li>';
     const mobileHeaderActions = '<div class="site-nav__mobile-actions site-nav__mobile-actions--header"><button class="btn btn--ghost btn--small theme-toggle" type="button" data-theme-toggle aria-pressed="false" aria-label="Switch to dark mode"><span class="theme-toggle__icon" aria-hidden="true"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="4"></circle><path d="M12 2.5V5M12 19v2.5M4.93 4.93l1.77 1.77M17.3 17.3l1.77 1.77M2.5 12H5M19 12h2.5M4.93 19.07l1.77-1.77M17.3 6.7l1.77-1.77"></path></svg></span></button><button class="btn btn--ghost btn--small site-nav__search-btn" type="button" aria-label="Search"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="11" cy="11" r="5.5"></circle><path d="M16 16L21 21"></path></svg></button><button class="site-nav__toggle btn btn--ghost btn--small" type="button" data-nav-toggle aria-expanded="false" aria-controls="site-navigation" aria-label="Open menu">☰</button></div>';
     const desktopActions = '<div class="site-nav__actions"><button class="btn btn--ghost btn--small theme-toggle" type="button" data-theme-toggle aria-pressed="false" aria-label="Switch to dark mode"><span class="theme-toggle__icon" aria-hidden="true"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="4"></circle><path d="M12 2.5V5M12 19v2.5M4.93 4.93l1.77 1.77M17.3 17.3l1.77 1.77M2.5 12H5M19 12h2.5M4.93 19.07l1.77-1.77M17.3 6.7l1.77-1.77"></path></svg></span></button><button class="btn btn--ghost btn--small site-nav__search-btn" type="button" aria-label="Search"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="11" cy="11" r="5.5"></circle><path d="M16 16L21 21"></path></svg></button><button class="btn btn--ghost btn--small site-nav__action-btn site-nav__action-btn--signin" type="button">Sign In</button><button class="btn btn--primary btn--small site-nav__action-btn site-nav__action-btn--primary" type="button">Get Started</button></div>';
     const mobileMenuActions = '<div class="site-nav__mobile-actions site-nav__mobile-actions--menu"><button class="btn btn--ghost btn--small site-nav__action-btn site-nav__action-btn--signin" type="button">Sign In</button><button class="btn btn--primary btn--small site-nav__action-btn site-nav__action-btn--primary" type="button">Get Started</button><div class="site-nav__mobile-actions--icons"><button class="btn btn--ghost btn--small theme-toggle" type="button" data-theme-toggle aria-pressed="false" aria-label="Switch to dark mode"><span class="theme-toggle__icon" aria-hidden="true"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="4"></circle><path d="M12 2.5V5M12 19v2.5M4.93 4.93l1.77 1.77M17.3 17.3l1.77 1.77M2.5 12H5M19 12h2.5M4.93 19.07l-1.77 1.77M17.3 6.7l-1.77-1.77"></path></svg></span></button><button class="btn btn--ghost btn--small site-nav__search-btn" type="button" aria-label="Search"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="11" cy="11" r="5.5"></circle><path d="M16 16L21 21"></path></svg></button></div></div>';
-    header.innerHTML = '<div class="site-nav__inner"><a class="site-nav__brand" href="/" aria-label="EconomicLab home"><img class="logo logo-light" src="/assets/images/ExMarkets Premium Transparent Black logo.png" alt="EconomicLab" /><img class="logo logo-dark" src="/assets/images/ExMarkets White Transparent logo.png" alt="EconomicLab" /><span class="sr-only">EconomicLab</span></a>' + mobileHeaderActions + '<ul class="site-nav__links" id="site-navigation" data-nav-menu>' + createSubmenu('submenu-trading', 'Markets', trading) + resourcesMarkup + '<li><a class="site-nav__link" href="/solutions/">Solutions</a></li>' + createSubmenu('submenu-insights', 'Insights', insights) + '<li><a class="site-nav__link" href="/">Education</a></li>' + '</ul>' + mobileMenuActions + desktopActions + '</div>';
+    header.innerHTML = '<div class="site-nav__inner"><a class="site-nav__brand" href="/" aria-label="EconomicLab home"><img class="logo logo-light" src="/assets/images/ExMarkets Premium Transparent Black logo.png" alt="EconomicLab" /><img class="logo logo-dark" src="/assets/images/ExMarkets White Transparent logo.png" alt="EconomicLab" /><span class="sr-only">EconomicLab</span></a>' + mobileHeaderActions + '<ul class="site-nav__links" id="site-navigation" data-nav-menu>' + createSubmenu('submenu-trading', 'Markets', trading, '/markets') + resourcesMarkup + '<li><a class="site-nav__link" href="/solutions">Solutions</a></li>' + createSubmenu('submenu-insights', 'Insights', insights, '/insights') + '<li><a class="site-nav__link" href="/education">Education</a></li>' + '</ul>' + mobileMenuActions + desktopActions + '</div>';
 
     const currentPath = window.location.pathname.replace(/index\.html$/, '');
     header.querySelectorAll('.site-nav__link[href]').forEach(function (link) {
@@ -110,6 +110,126 @@
   }
 
   renderCanonicalNavigation();
+  document.querySelectorAll('.site-nav__action-btn--primary').forEach(function (button) {
+    const link = document.createElement('a');
+    link.className = button.className;
+    link.href = '/subscription/pricing/';
+    link.textContent = button.textContent;
+    button.replaceWith(link);
+  });
+  document.querySelectorAll('.site-nav__action-btn--signin').forEach(function (button) {
+    button.setAttribute('aria-disabled', 'true');
+    button.title = 'Sign-in is not available yet';
+  });
+
+  const searchDialog = document.createElement('dialog');
+  searchDialog.className = 'site-search-dialog';
+  searchDialog.setAttribute('aria-labelledby', 'site-search-title');
+  searchDialog.innerHTML = '<div class="site-search-dialog__form"><div class="site-search-dialog__heading"><label id="site-search-title" for="site-search-input">Search EconomicLab</label><button class="btn btn--ghost btn--small" type="button" data-search-close aria-label="Close search">×</button></div><input id="site-search-input" type="search" autocomplete="off" placeholder="Search pages" /><p class="site-search-dialog__status" role="status">Type to search EconomicLab pages.</p><ul class="site-search-dialog__results"></ul></div>';
+  document.body.appendChild(searchDialog);
+  const searchInput = searchDialog.querySelector('#site-search-input');
+  const searchStatus = searchDialog.querySelector('.site-search-dialog__status');
+  const searchResults = searchDialog.querySelector('.site-search-dialog__results');
+  let searchIndex = null;
+  let searchIndexRequest = null;
+
+  function getPageLabel(path) {
+    const fixedLabels = {
+      '/': 'Home',
+      '/markets': 'Markets',
+      '/data': 'Data',
+      '/insights': 'Insights',
+      '/solutions': 'Solutions',
+      '/education': 'Education'
+    };
+    if (fixedLabels[path]) {
+      return fixedLabels[path];
+    }
+
+    return path.split('/').filter(Boolean).pop()
+      .replace(/\.html$/, '')
+      .split('-')
+      .map(function (part) {
+        return part.toUpperCase() === part ? part : part.charAt(0).toUpperCase() + part.slice(1);
+      })
+      .join(' ');
+  }
+
+  function loadSearchIndex() {
+    if (searchIndex) {
+      return Promise.resolve(searchIndex);
+    }
+    if (!searchIndexRequest) {
+      searchIndexRequest = fetch('/sitemap.xml').then(function (response) {
+        if (!response.ok) {
+          throw new Error('Search index request failed with HTTP ' + response.status);
+        }
+        return response.text();
+      }).then(function (xml) {
+        const sitemap = new DOMParser().parseFromString(xml, 'application/xml');
+        if (sitemap.querySelector('parsererror')) {
+          throw new Error('Search index sitemap is invalid XML');
+        }
+        searchIndex = Array.from(sitemap.querySelectorAll('loc')).map(function (location) {
+          const url = new URL(location.textContent, window.location.origin);
+          if (
+            url.hostname !== window.location.hostname &&
+            url.hostname !== 'economiclab.co.za' &&
+            url.hostname !== 'www.economiclab.co.za'
+          ) {
+            return null;
+          }
+          return { href: url.pathname, label: getPageLabel(url.pathname) };
+        }).filter(Boolean);
+        return searchIndex;
+      }).catch(function (error) {
+        searchIndexRequest = null;
+        throw error;
+      });
+    }
+    return searchIndexRequest;
+  }
+
+  function renderSearchResults(query) {
+    searchResults.replaceChildren();
+    const normalizedQuery = query.trim().toLowerCase();
+    if (!normalizedQuery) {
+      searchStatus.textContent = 'Type to search EconomicLab pages.';
+      return;
+    }
+    loadSearchIndex().then(function (pages) {
+      const matches = pages.filter(function (page) {
+        return (page.label + ' ' + page.href).toLowerCase().includes(normalizedQuery);
+      }).slice(0, 10);
+      searchResults.replaceChildren();
+      matches.forEach(function (page) {
+        const item = document.createElement('li');
+        const link = document.createElement('a');
+        link.href = page.href;
+        link.textContent = page.label;
+        item.appendChild(link);
+        searchResults.appendChild(item);
+      });
+      searchStatus.textContent = matches.length ? matches.length + ' matching pages' : 'No matching pages found.';
+    }).catch(function (error) {
+      console.error('Unable to load site search index', error);
+      searchStatus.textContent = 'Search is temporarily unavailable. Please try again.';
+    });
+  }
+
+  document.querySelectorAll('.site-nav__search-btn').forEach(function (button) {
+    button.addEventListener('click', function () {
+      searchDialog.showModal();
+      searchInput.focus();
+      renderSearchResults(searchInput.value);
+    });
+  });
+  searchDialog.querySelector('[data-search-close]').addEventListener('click', function () {
+    searchDialog.close();
+  });
+  searchInput.addEventListener('input', function () {
+    renderSearchResults(this.value);
+  });
 
   navToggle = document.querySelector('[data-nav-toggle]');
   navMenu = document.querySelector('[data-nav-menu]');
@@ -127,26 +247,6 @@
     }
   });
 
-  const socialLinks = [
-    { label: 'Facebook', href: 'https://www.facebook.com/economiclab', icon: '<path d="M13.5 8.5h-2V7.2c0-.6.4-.9 1-.9h1V3.9l-1.7-.1c-2 0-3.3 1.2-3.3 3.4v1.3H7v2.6h1.5v5h3v-5h2l.4-2.6Z"/>' },
-    { label: 'Instagram', href: 'https://www.instagram.com/theeconomiclab', icon: '<rect x="4" y="4" width="12" height="12" rx="3"/><circle cx="10" cy="10" r="3"/><circle cx="14.5" cy="5.7" r=".8" fill="currentColor" stroke="none"/>' },
-    { label: 'X', href: 'https://x.com/theeconomiclab', icon: '<path d="m4 4 4.7 6.3L4.3 16h2.2l3.2-3.8 2.8 3.8H16l-4.9-6.6L15.6 4h-2.2l-3 3.6L7.8 4H4Zm3.6 1.6h.9l4.2 8.8h-.9L7.6 5.6Z"/>' },
-    { label: 'YouTube', href: 'https://youtube.com/@economiclabofficial', icon: '<path d="M16.8 6.2a2 2 0 0 0-1.4-1.4C14.2 4.5 10 4.5 10 4.5s-4.2 0-5.4.3a2 2 0 0 0-1.4 1.4C3 7.4 3 10 3 10s0 2.6.2 3.8a2 2 0 0 0 1.4 1.4c1.2.3 5.4.3 5.4.3s4.2 0 5.4-.3a2 2 0 0 0 1.4-1.4C17 12.6 17 10 17 10s0-2.6-.2-3.8ZM8.8 12.7V7.3l4.5 2.7-4.5 2.7Z"/>' },
-    { label: 'TikTok', href: 'https://www.tiktok.com/@theeconomiclab', icon: '<path d="M12.5 3h2.1c.2 1.4 1 2.4 2.4 2.8v2.1a6.3 6.3 0 0 1-2.4-.7v4.4a4.4 4.4 0 1 1-3.8-4.4v2.2a2.2 2.2 0 1 0 1.7 2.2V3Z"/>' }
-  ];
-
-  document.querySelectorAll('.footer').forEach(function (footer) {
-    const desktop = footer.querySelector('.footer__desktop');
-    const socialMarkup = '<div class="footer__social container"><p class="footer__social-title">Feel connected anytime, anywhere.</p><div class="footer__social-links">' + socialLinks.map(function (social) {
-      return '<a class="footer__social-link" href="' + social.href + '" target="_blank" rel="noopener noreferrer" aria-label="' + social.label + '"><svg viewBox="0 0 20 20" aria-hidden="true" focusable="false">' + social.icon + '</svg></a>';
-    }).join('') + '</div></div>';
-
-    if (desktop && !footer.querySelector('.footer__social')) {
-      footer.insertAdjacentHTML('afterbegin', socialMarkup);
-      desktop.insertAdjacentHTML('beforeend', '<nav class="footer__legal" aria-label="Legal links"><a href="/about/privacy-policy/">Privacy Policy</a><a href="/about/cookies-policy/">Cookie Policy</a><a href="/about/terms-of-use/">Terms of Use</a><a href="/about/disclaimer/">Disclaimer</a></nav>');
-    }
-  });
-
   function applyTheme(themeName) {
     root.setAttribute('data-theme', themeName);
     localStorage.setItem(STORAGE_KEY, themeName);
@@ -156,7 +256,9 @@
       const icon = toggle.querySelector('.theme-toggle__icon') || document.createElement('span');
       icon.className = 'theme-toggle__icon';
       icon.setAttribute('aria-hidden', 'true');
-      icon.textContent = isLight ? '☀' : '☾';
+      icon.innerHTML = isLight
+        ? '<svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="4"></circle><path d="M12 2v2m0 16v2m7.07-17.07-1.42 1.42M6.35 17.65l-1.42 1.42M22 12h-2M4 12H2m17.07 7.07-1.42-1.42M6.35 6.35 4.93 4.93"></path></svg>'
+        : '<svg viewBox="0 0 24 24"><path d="M20.985 12.486A9 9 0 1 1 11.514 3.015a7 7 0 0 0 9.471 9.471Z"></path></svg>';
       toggle.setAttribute('aria-pressed', String(isLight));
       toggle.setAttribute('aria-label', isLight ? 'Switch to dark mode' : 'Switch to light mode');
       toggle.setAttribute('title', isLight ? 'Switch to dark mode' : 'Switch to light mode');
@@ -298,25 +400,4 @@
     });
   });
 
-  // Footer accordion functionality
-  document.querySelectorAll('.footer__accordion-button').forEach(function (button) {
-    button.addEventListener('click', function () {
-      const isExpanded = this.getAttribute('aria-expanded') === 'true';
-      const nextExpanded = !isExpanded;
-      
-      this.setAttribute('aria-expanded', String(nextExpanded));
-      
-      const contentId = this.getAttribute('aria-controls');
-      const content = document.getElementById(contentId);
-      
-      if (content) {
-        if (nextExpanded) {
-          // Calculate height for smooth animation
-          content.style.maxHeight = content.scrollHeight + 'px';
-        } else {
-          content.style.maxHeight = '0px';
-        }
-      }
-    });
-  });
 })();

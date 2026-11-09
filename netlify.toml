@@ -10,51 +10,111 @@
   conditions = {Host = ["exmarkets.co.za", "www.exmarkets.co.za"]}
 
 [[redirects]]
-  from = "/trading"
-  to = "/markets"
-  status = 301
+  from = "/markets"
+  to = "/markets.html"
+  status = 200
   force = true
 
 [[redirects]]
   from = "/markets/"
-  to = "/markets/"
-  status = 301
-  force = true
-
-[[redirects]]
-  from = "/markets/*"
-  to = "/markets/:splat"
-  status = 301
-  force = true
-
-[[redirects]]
-  from = "/resources"
-  to = "/data.html"
-  status = 301
-  force = true
-
-[[redirects]]
-  from = "/resources.html"
-  to = "/data.html"
-  status = 301
+  to = "/markets.html"
+  status = 200
   force = true
 
 [[redirects]]
   from = "/data"
   to = "/data.html"
-  status = 301
+  status = 200
   force = true
 
 [[redirects]]
   from = "/data/"
   to = "/data.html"
-  status = 301
+  status = 200
   force = true
 
 [[redirects]]
-  from = "/data/*"
-  to = "/data/:splat"
-  status = 301
+  from = "/education"
+  to = "/education.html"
+  status = 200
+  force = true
+
+[[redirects]]
+  from = "/education/"
+  to = "/education.html"
+  status = 200
+  force = true
+
+[[redirects]]
+  from = "/insights"
+  to = "/news.html"
+  status = 200
+  force = true
+
+[[redirects]]
+  from = "/insights/"
+  to = "/news.html"
+  status = 200
+  force = true
+
+[[redirects]]
+  from = "/about"
+  to = "/about.html"
+  status = 200
+  force = true
+
+[[redirects]]
+  from = "/blog"
+  to = "/blog.html"
+  status = 200
+  force = true
+
+[[redirects]]
+  from = "/companies"
+  to = "/companies.html"
+  status = 200
+  force = true
+
+[[redirects]]
+  from = "/contact"
+  to = "/contact.html"
+  status = 200
+  force = true
+
+[[redirects]]
+  from = "/economy"
+  to = "/economy.html"
+  status = 200
+  force = true
+
+[[redirects]]
+  from = "/technology"
+  to = "/technology.html"
+  status = 200
+  force = true
+
+[[redirects]]
+  from = "/tradingview"
+  to = "/tradingview.html"
+  status = 200
+  force = true
+
+[[redirects]]
+  from = "/solutions"
+  to = "/solutions/index.html"
+  status = 200
+  force = true
+
+[[redirects]]
+  from = "/solutions/"
+  to = "/solutions/index.html"
+  status = 200
+  force = true
+
+[[redirects]]
+  from = "/articles/article-template"
+  to = "/articles/article-template.html"
+  status = 200
   force = true
 
 [[redirects]]

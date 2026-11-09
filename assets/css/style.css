@@ -114,7 +114,7 @@ body {
 }
 
 html[data-theme="light"] body {
-  background: #F0F0F0;
+  background: var(--color-background);
 }
 
 html[data-theme="dark"] body {
@@ -124,7 +124,7 @@ html[data-theme="dark"] body {
 
 html[data-theme="light"] {
   color-scheme: light;
-  --color-background: #F0F0F0;
+  --color-background: #F3F6FA;
   --color-surface: #FFFFFF;
   --color-surface-2: #F3F6FA;
   --color-surface-3: #EAF3FA;
@@ -422,10 +422,23 @@ p {
 }
 
 .theme-toggle__icon {
-  display: inline-block;
-  font-size: 1rem;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 1.15rem;
+  height: 1.15rem;
   line-height: 1;
-  transform: translateY(-1px);
+}
+
+.theme-toggle__icon svg {
+  display: block;
+  width: 100%;
+  height: 100%;
+  stroke: currentColor;
+  fill: none;
+  stroke-width: 1.8;
+  stroke-linecap: round;
+  stroke-linejoin: round;
 }
 
 .btn {
@@ -825,6 +838,79 @@ html[data-theme="dark"] .site-nav__brand img.logo-dark {
   display: none;
 }
 
+.site-search-dialog {
+  width: min(38rem, calc(100vw - 2rem));
+  max-height: min(80vh, 40rem);
+  padding: 0;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  background: var(--color-surface);
+  color: var(--color-text);
+  box-shadow: var(--shadow-lg);
+}
+
+.site-search-dialog::backdrop {
+  background: rgba(16, 24, 40, 0.48);
+}
+
+.site-search-dialog__form {
+  display: grid;
+  gap: var(--space-3);
+  padding: var(--space-5);
+}
+
+.site-search-dialog__heading {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-3);
+}
+
+.site-search-dialog__heading label {
+  font-size: var(--text-lg);
+  font-weight: var(--weight-semibold);
+}
+
+.site-search-dialog__form input {
+  width: 100%;
+  min-height: 2.8rem;
+  padding: 0.65rem 0.85rem;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-sm);
+  background: var(--color-surface);
+  color: var(--color-text);
+  font: inherit;
+}
+
+.site-search-dialog__status {
+  margin: 0;
+  color: var(--color-text-muted);
+  font-size: var(--text-sm);
+}
+
+.site-search-dialog__results {
+  display: grid;
+  gap: var(--space-2);
+  max-height: 50vh;
+  overflow: auto;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.site-search-dialog__results a {
+  display: block;
+  padding: 0.55rem 0.7rem;
+  border-radius: var(--radius-sm);
+  color: var(--color-text);
+}
+
+.site-search-dialog__results a:hover,
+.site-search-dialog__results a:focus-visible {
+  background: var(--color-surface-2);
+  color: var(--color-text);
+}
+
 .site-nav__actions .btn,
 .site-nav__actions .theme-toggle,
 .site-nav__mobile-actions .btn,
@@ -863,6 +949,39 @@ html[data-theme="dark"] .site-nav {
   min-width: 2.65rem;
   height: 2.65rem;
   min-height: 2.65rem;
+}
+
+.site-nav__actions .theme-toggle,
+.site-nav__actions .site-nav__search-btn,
+.site-nav__mobile-actions--menu .theme-toggle,
+.site-nav__mobile-actions--menu .site-nav__search-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 2.7rem;
+  min-width: 2.7rem;
+  height: 2.7rem;
+  min-height: 2.7rem;
+  padding: 0;
+  border: 1px solid var(--color-border);
+  border-radius: 0.8rem;
+  background: var(--color-surface);
+  color: var(--color-text);
+  box-shadow: none;
+}
+
+.site-nav__actions .theme-toggle svg,
+.site-nav__actions .site-nav__search-btn svg,
+.site-nav__mobile-actions--menu .theme-toggle svg,
+.site-nav__mobile-actions--menu .site-nav__search-btn svg {
+  display: block;
+  width: 1.15rem;
+  height: 1.15rem;
+  stroke: currentColor;
+  fill: none;
+  stroke-width: 1.8;
+  stroke-linecap: round;
+  stroke-linejoin: round;
 }
 
 .site-nav__action-btn {
@@ -1415,7 +1534,7 @@ html[data-theme="dark"] .site-nav__links .submenu li a {
 }
 
 html[data-theme="light"] .footer {
-  background: #F3F6FA;
+  background: #F0F0F0;
   border-top-color: var(--color-border);
 }
 
@@ -3189,7 +3308,7 @@ html[data-theme="dark"] .broker-directory-card__logo .logo-dark { display: block
     min-height: 2.7rem;
     height: 2.7rem;
     padding: 0;
-    border-radius: 999px;
+    border-radius: 0.8rem;
     background: var(--color-surface);
     border: 1px solid var(--color-border);
     color: var(--color-text);

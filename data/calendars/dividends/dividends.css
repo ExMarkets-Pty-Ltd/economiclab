@@ -1,7 +1,7 @@
 .dividends-page .dividends-hero { padding-bottom: var(--space-4); }
 .dividends-page .dividends-hero .section__heading { max-width: 52rem; }
 .dividends-page .dividends-preview-note { display: flex; align-items: center; gap: .5rem; margin: 0; color: var(--color-text-muted); font-size: var(--text-xs); }
-.dividends-page .dividends-status-dot { width: .45rem; height: .45rem; border-radius: 50%; background: var(--color-primary-strong); box-shadow: 0 0 0 .2rem rgba(0,232,246,.12); }
+.dividends-page .dividends-status-dot { width: .45rem; height: .45rem; border-radius: 50%; background: var(--color-primary-strong); box-shadow: 0 0 0 .2rem rgba(5,238,252,.12); }
 .dividends-page .dividends-workspace { padding-top: var(--space-4); }
 .dividends-page .dividends-toolbar { display: grid; gap: var(--space-4); margin-bottom: var(--space-6); }
 .dividends-page .dividends-filters { display: grid; grid-template-columns: minmax(14rem, 1.5fr) repeat(3, minmax(9rem, 1fr)) auto; align-items: end; gap: var(--space-3); }
@@ -22,7 +22,7 @@
 .dividends-page .dividends-table th { color: var(--color-text-muted); font-size: var(--text-xs); letter-spacing: .06em; text-transform: uppercase; }
 .dividends-page .dividends-table td { color: var(--color-text-muted); font-size: var(--text-sm); }
 .dividends-page .dividends-table tbody tr:last-child td { border-bottom: 0; }
-.dividends-page .dividends-table tbody tr:hover { background: rgba(0,232,246,.035); }
+.dividends-page .dividends-table tbody tr:hover { background: rgba(5,238,252,.035); }
 .dividends-page .dividend-ticker { display: inline-block; padding: .2rem .45rem; border: 1px solid var(--color-border); border-radius: var(--radius-sm); color: var(--color-text); font-family: var(--font-mono); font-size: .72rem; }
 .dividends-page .dividends-empty { margin-top: var(--space-4); padding: var(--space-6); border: 1px dashed var(--color-border); border-radius: var(--radius-lg); text-align: center; }
 .dividends-page .dividends-empty h3,

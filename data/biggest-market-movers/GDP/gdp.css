@@ -93,7 +93,7 @@
   stroke-width: 2.5;
 }
 .gdp-chart .gdp-fill {
-  fill: rgba(0, 232, 246, 0.12);
+  fill: rgba(5, 238, 252, 0.12);
 }
 .gdp-chart .gdp-axis-label {
   fill: var(--color-text-muted);

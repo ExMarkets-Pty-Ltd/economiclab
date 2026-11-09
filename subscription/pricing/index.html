@@ -22,18 +22,18 @@
       .pricing-hero .lead { max-width: 700px; }
       .pricing-grid { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: var(--space-4); align-items: stretch; }
       .pricing-card { position: relative; display: flex; flex-direction: column; min-width: 0; padding: var(--space-5); border: 1px solid var(--color-border); border-radius: var(--radius-medium); background: var(--color-surface); box-shadow: var(--shadow-sm); }
-      .pricing-card--featured { border-color: #00e8f6; box-shadow: 0 14px 34px rgba(0, 232, 246, 0.14); transform: translateY(-8px); }
-      .pricing-card__badge { display: inline-block; align-self: flex-start; margin-bottom: var(--space-3); padding: 0.28rem 0.65rem; border: 1px solid #00e8f6; border-radius: var(--radius-pill); color: var(--color-text); font-size: var(--text-xs); font-weight: var(--weight-semibold); letter-spacing: 0.1em; text-transform: uppercase; }
+      .pricing-card--featured { border-color: #05EEFC; box-shadow: 0 14px 34px rgba(5, 238, 252, 0.14); transform: translateY(-8px); }
+      .pricing-card__badge { display: inline-block; align-self: flex-start; margin-bottom: var(--space-3); padding: 0.28rem 0.65rem; border: 1px solid #05EEFC; border-radius: var(--radius-pill); color: var(--color-text); font-size: var(--text-xs); font-weight: var(--weight-semibold); letter-spacing: 0.1em; text-transform: uppercase; }
       .pricing-card h2 { margin-bottom: var(--space-3); font-size: clamp(1.25rem, 1.4vw, 1.65rem); }
       .pricing-card__price { min-height: 3.4rem; margin-bottom: var(--space-4); color: var(--color-text); font-size: clamp(1.55rem, 2vw, 2rem); font-weight: var(--weight-bold); line-height: 1.15; }
       .pricing-card__description { min-height: 7.2rem; margin-bottom: var(--space-4); font-size: var(--text-sm); }
       .pricing-card ul { display: grid; gap: 0.65rem; margin: 0 0 var(--space-6); padding: 0; list-style: none; }
       .pricing-card li { position: relative; padding-left: 1.25rem; color: var(--color-text-muted); font-size: var(--text-sm); line-height: 1.45; }
-      .pricing-card li::before { position: absolute; left: 0; color: #00e8f6; content: "✓"; font-weight: var(--weight-bold); }
+      .pricing-card li::before { position: absolute; left: 0; color: #05EEFC; content: "✓"; font-weight: var(--weight-bold); }
       .pricing-card .btn { width: 100%; margin-top: auto; }
       .pricing-notes { display: grid; grid-template-columns: minmax(0, 1.25fr) minmax(0, 0.75fr); gap: var(--space-6); align-items: start; }
       .pricing-levels { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: var(--space-4); }
-      .pricing-level { padding: var(--space-4); border-left: 2px solid #00e8f6; background: var(--color-surface); }
+      .pricing-level { padding: var(--space-4); border-left: 2px solid #05EEFC; background: var(--color-surface); }
       .pricing-level h3 { margin-bottom: var(--space-2); font-size: var(--text-lg); }
       .pricing-level p { margin-bottom: 0; font-size: var(--text-sm); }
       .pricing-risk { padding: var(--space-5); border: 1px solid var(--color-border); border-radius: var(--radius-medium); background: var(--color-surface-alt); }
@@ -44,7 +44,7 @@
       .pricing-faq details:last-child { border-bottom: 1px solid var(--color-border); }
       .pricing-faq summary { padding: var(--space-4) 0; color: var(--color-text); cursor: pointer; font-weight: var(--weight-semibold); list-style: none; }
       .pricing-faq summary::-webkit-details-marker { display: none; }
-      .pricing-faq summary::after { float: right; color: #00e8f6; content: "+"; font-size: 1.3rem; }
+      .pricing-faq summary::after { float: right; color: #05EEFC; content: "+"; font-size: 1.3rem; }
       .pricing-faq details[open] summary::after { content: "−"; }
       .pricing-faq details p { max-width: 75ch; padding: 0 2rem var(--space-4) 0; margin: 0; font-size: var(--text-sm); }
       @media (max-width: 1050px) { .pricing-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); } .pricing-card--featured { transform: none; } }
@@ -87,4 +87,3 @@
     <script src="/assets/js/main.js" defer></script>
   </body>
 </html>
-

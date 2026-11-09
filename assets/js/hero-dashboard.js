@@ -96,17 +96,17 @@
     var height = rect.height;
 
     // Get theme-aware colors
-    var bgColor = window.getComputedStyle(document.documentElement).getPropertyValue('--color-bg').trim();
+    var bgColor = window.getComputedStyle(document.documentElement).getPropertyValue('--color-surface-2').trim();
     var primaryColor = window.getComputedStyle(document.documentElement).getPropertyValue('--color-primary').trim();
     var textMutedColor = window.getComputedStyle(document.documentElement).getPropertyValue('--color-text-muted').trim();
 
     // Clear canvas with background color
-    ctx.fillStyle = bgColor || '#0b1324';
+    ctx.fillStyle = bgColor || '#F3F6FA';
     ctx.fillRect(0, 0, width, height);
 
     if (!chartData.length) {
       // No data yet
-      ctx.fillStyle = textMutedColor || '#8ba3c8';
+      ctx.fillStyle = textMutedColor || '#667085';
       ctx.font = '14px sans-serif';
       ctx.textAlign = 'center';
       ctx.fillText(hasReceivedMarketData ? 'Intraday chart data unavailable' : 'Waiting for market data...', width / 2, height / 2);
@@ -134,7 +134,7 @@
     });
 
     // Draw line chart
-    ctx.strokeStyle = primaryColor || '#4f8cff';
+    ctx.strokeStyle = primaryColor || '#05EEFC';
     ctx.lineWidth = 2;
     ctx.lineCap = 'round';
     ctx.lineJoin = 'round';
@@ -151,11 +151,11 @@
     if (points.length) {
       ctx.lineTo(points[points.length - 1].x, chartHeight + startY);
       ctx.lineTo(points[0].x, chartHeight + startY);
-      ctx.fillStyle = 'rgba(79, 140, 255, 0.1)';
+      ctx.fillStyle = 'rgba(5, 238, 252, 0.1)';
       ctx.fill();
 
       // Draw data points
-      ctx.fillStyle = primaryColor || '#4f8cff';
+      ctx.fillStyle = primaryColor || '#05EEFC';
       for (var i = 0; i < points.length; i++) {
         ctx.beginPath();
         ctx.arc(points[i].x, points[i].y, 3, 0, Math.PI * 2);

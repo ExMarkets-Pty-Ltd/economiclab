@@ -2,7 +2,7 @@
   'use strict';
 
   var FRED_ENDPOINT = '/.netlify/functions/pce-data';
-  var MARKET_ENDPOINT = 'https://exmarkets.netlify.app/.netlify/functions/market-data';
+  var MARKET_ENDPOINT = '/.netlify/functions/market-data';
   var data = {};
   var range = 1;
   var tableRange = 1;

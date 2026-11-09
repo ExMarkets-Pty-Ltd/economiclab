@@ -1,10 +1,9 @@
 // Netlify Function: market-data
 // Uses Twelve Data via server-side environment variable TWELVEDATA_API_KEY.
-// Resolves provider symbols via symbol_search and caches mappings.
+// Uses verified provider symbols directly to avoid charging symbol-search credits on every cold start.
 
 const fetchFn = globalThis.fetch ? globalThis.fetch.bind(globalThis) : null;
 
-const SYMBOL_SEARCH_URL = process.env.TWELVEDATA_API_URL_SYMBOL_SEARCH || 'https://api.twelvedata.com/symbol_search';
 const QUOTE_URL = process.env.TWELVEDATA_API_URL_QUOTE || 'https://api.twelvedata.com/quote';
 const PRICE_URL = process.env.TWELVEDATA_API_URL_PRICE || 'https://api.twelvedata.com/price';
 const EXCHANGE_RATE_URL = process.env.TWELVEDATA_API_URL_EXCHANGE_RATE || 'https://api.twelvedata.com/exchange_rate';
@@ -20,11 +19,10 @@ const SYMBOL_MAP_PREF = {
   USDZAR: ['USD/ZAR', 'USDZAR'],
   XAUUSD: ['XAU/USD', 'XAUUSD'],
   USOIL: ['CL', 'WTI', 'OIL', 'USOIL'],
-  USDIndex: ['DXY', 'USD', 'USDINDEX'],
+  USDIndex: ['USDINDEX', 'DXY', 'USD'],
   BTCUSD: ['BTC/USD', 'BTCUSD']
 };
 
-const symbolCache = { value: {}, ttl: 24 * 3600 * 1000 };
 const quoteCache = { value: {}, ttl: 20 * 1000 };
 function now() { return Date.now(); }
 
@@ -36,38 +34,15 @@ function jsonHeaders(extra = {}) {
   };
 }
 
-async function resolveProviderSymbol(id, apiKey) {
-  const key = id.toUpperCase();
-  const cached = symbolCache.value[key];
-  if (cached && (now() - cached.ts) < symbolCache.ttl) return cached.sym;
+function resolveProviderSymbol(id) {
+  const candidates = SYMBOL_MAP_PREF[id] || [id];
+  return candidates[0] || '';
+}
 
-  const candidates = SYMBOL_MAP_PREF[key] || [key];
-  for (const q of candidates) {
-    const url = `${SYMBOL_SEARCH_URL}?symbol=${encodeURIComponent(q)}&apikey=${encodeURIComponent(apiKey)}`;
-    try {
-      const res = await fetchFn(url, { headers: { Accept: 'application/json' } });
-      if (!res.ok) continue;
-      const json = await res.json();
-      const list = Array.isArray(json) ? json : (json.data || json.symbols || []);
-      if (Array.isArray(list) && list.length) {
-        const sym = list[0].symbol || list[0].symbol_code || list[0].symbol_name;
-        if (sym) {
-          symbolCache.value[key] = { sym, ts: now() };
-          return sym;
-        }
-      }
-      if (json && json.symbol) {
-        symbolCache.value[key] = { sym: json.symbol, ts: now() };
-        return json.symbol;
-      }
-    } catch (e) {
-      console.warn('symbol_search error', e);
-    }
-  }
-
-  const fallback = candidates[0];
-  symbolCache.value[key] = { sym: fallback, ts: now() };
-  return fallback;
+function successHeaders() {
+  return jsonHeaders({
+    'Cache-Control': 'public, max-age=20, s-maxage=60, stale-while-revalidate=30'
+  });
 }
 
 function normalizeMarketId(value) {
@@ -99,6 +74,23 @@ function prettyName(id) {
     case 'BTCUSD': return 'Bitcoin';
     default: return id;
   }
+}
+
+function normalizeTimestamp(record) {
+  const value = record && (record.datetime != null ? record.datetime : record.timestamp);
+  if (value == null || value === '') return null;
+
+  const text = String(value).trim();
+  if (/^\d{4}-\d{2}-\d{2}$/.test(text)) return text;
+  if (/^\d{10,13}$/.test(text)) {
+    const numeric = Number(text);
+    const milliseconds = text.length === 10 ? numeric * 1000 : numeric;
+    const date = new Date(milliseconds);
+    return Number.isNaN(date.getTime()) ? null : date.toISOString();
+  }
+
+  const date = new Date(text);
+  return Number.isNaN(date.getTime()) ? null : date.toISOString();
 }
 
 function getCurrentPriceFromRecord(r) {
@@ -139,7 +131,7 @@ function normalizeQuoteRecord(id, providerSym, r) {
     change: isNaN(change) ? null : change,
     changePercent: isNaN(changePercent) ? null : changePercent,
     marketStatus: (r && (r.status || (r.is_market_open ? (r.is_market_open ? 'OPEN' : 'CLOSED') : null))) || 'N/A',
-    timestamp: r && (r.datetime || r.timestamp) ? (r.datetime || new Date(parseInt(r.timestamp, 10) * 1000).toISOString()) : new Date().toISOString()
+    timestamp: normalizeTimestamp(r)
   };
 }
 
@@ -251,7 +243,7 @@ exports.handler = async function(event) {
 
   if (isDirectQuoteRequest) {
     const id = normalizeMarketId(directSymbol) || directSymbol.toUpperCase();
-    const providerSym = directSymbol.includes('/') ? directSymbol : await resolveProviderSymbol(id, apiKey);
+    const providerSym = directSymbol.includes('/') ? directSymbol : resolveProviderSymbol(id);
 
     try {
       const raw = await fetchQuoteWithForexFallback(apiKey, providerSym);
@@ -264,7 +256,7 @@ exports.handler = async function(event) {
       }
 
       const normalized = [normalizeQuoteRecord(id, providerSym, raw)];
-      return { statusCode: 200, headers: jsonHeaders(), body: JSON.stringify(normalized) };
+      return { statusCode: 200, headers: successHeaders(), body: JSON.stringify(normalized) };
     } catch (e) {
       console.error('market-data direct quote error', e);
       return {
@@ -281,7 +273,7 @@ exports.handler = async function(event) {
   const providerSymbols = [];
   const idToProvider = {};
   for (const id of ids) {
-    const providerSym = await resolveProviderSymbol(id, apiKey);
+    const providerSym = resolveProviderSymbol(id);
     if (providerSym) {
       providerSymbols.push(providerSym);
       idToProvider[id] = providerSym;
@@ -292,7 +284,7 @@ exports.handler = async function(event) {
   const qcached = quoteCache.value[cacheKey];
   if (qcached && (now() - qcached.ts) < quoteCache.ttl) {
     const normalized = ids.map(id => normalizeQuoteRecord(id, idToProvider[id], qcached.data[idToProvider[id]] || qcached.data[id]));
-    return { statusCode: 200, headers: { 'Content-Type': 'application/json', 'Access-Control-Allow-Origin': '*' }, body: JSON.stringify(normalized) };
+    return { statusCode: 200, headers: successHeaders(), body: JSON.stringify(normalized) };
   }
 
   try {
@@ -317,7 +309,7 @@ exports.handler = async function(event) {
 
     quoteCache.value[cacheKey] = { data: rawMap, ts: now() };
     const normalized = ids.map(id => normalizeQuoteRecord(id, idToProvider[id], rawMap[idToProvider[id]] || rawMap[id]));
-    return { statusCode: 200, headers: { 'Content-Type': 'application/json', 'Access-Control-Allow-Origin': '*' }, body: JSON.stringify(normalized) };
+    return { statusCode: 200, headers: successHeaders(), body: JSON.stringify(normalized) };
   } catch (e) {
     console.error('market-data error', e);
     return {

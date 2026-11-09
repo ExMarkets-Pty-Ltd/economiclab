@@ -1,16 +1,8 @@
-/* Hero Dashboard - AUD/USD Live Market Data with Chart
-   Uses Alpha Vantage API for real forex data (free tier, 5 calls/min)
-*/
+/* Hero dashboard consumes the shared EconomicLab market-data response. */
 (function () {
   'use strict';
 
-  // Configuration
-  var PROXY_ENDPOINT = 'https://exmarkets.netlify.app/.netlify/functions/market-data';
-  var FALLBACK_API_KEY = 'demo'; // Alpha Vantage free tier key
-  var FALLBACK_API_BASE = 'https://www.alphavantage.co/query';
-  var UPDATE_INTERVAL = 60000; // 60 seconds
   var MAX_CHART_POINTS = 50;
-  var useProxyEndpoint = true;
 
   // DOM elements
   var priceEl = document.getElementById('hero-price');
@@ -22,8 +14,10 @@
   var ctx = canvas ? canvas.getContext('2d') : null;
   var chartData = []; // Array of {price, time}
   var currentPrice = null;
-  var previousPrice = null;
-  var updateTimer = null;
+  var currentChangePercent = null;
+  var currentTimestampKnown = false;
+  var currentDataIsStale = false;
+  var hasReceivedMarketData = false;
 
   // Setup canvas
   if (canvas) {
@@ -63,15 +57,13 @@
 
     // Update change pill
     if (changeEl) {
-      if (previousPrice !== null && currentPrice !== null) {
-        var change = currentPrice - previousPrice;
-        var changePercent = (change / previousPrice) * 100;
-        var sign = change > 0 ? '+' : (change < 0 ? '−' : '');
-        changeEl.textContent = sign + changePercent.toFixed(2) + '%';
+      if (currentChangePercent !== null) {
+        var sign = currentChangePercent > 0 ? '+' : (currentChangePercent < 0 ? '−' : '');
+        changeEl.textContent = sign + Math.abs(currentChangePercent).toFixed(2) + '%';
         changeEl.classList.remove('hero-dashboard__pill--positive', 'hero-dashboard__pill--negative');
-        if (change > 0) {
+        if (currentChangePercent > 0) {
           changeEl.classList.add('hero-dashboard__pill--positive');
-        } else if (change < 0) {
+        } else if (currentChangePercent < 0) {
           changeEl.classList.add('hero-dashboard__pill--negative');
         }
       } else {
@@ -79,13 +71,13 @@
       }
     }
 
-    setStatus('DATA AVAILABLE');
+    setStatus(currentDataIsStale ? 'LAST KNOWN DATA' : (currentTimestampKnown ? 'DATA AVAILABLE' : 'TIMESTAMP UNAVAILABLE'));
   }
 
-  function addChartPoint(price) {
+  function addChartPoint(price, timestamp) {
     chartData.push({
       price: price,
-      time: new Date().toLocaleTimeString()
+      time: new Date(timestamp).toLocaleTimeString()
     });
 
     // Keep only last MAX_CHART_POINTS
@@ -117,7 +109,7 @@
       ctx.fillStyle = textMutedColor || '#8ba3c8';
       ctx.font = '14px sans-serif';
       ctx.textAlign = 'center';
-      ctx.fillText('Waiting for market data...', width / 2, height / 2);
+      ctx.fillText(hasReceivedMarketData ? 'Intraday chart data unavailable' : 'Waiting for market data...', width / 2, height / 2);
       return;
     }
 
@@ -172,128 +164,41 @@
     }
   }
 
-  function fetchAUDUSD() {
-    if (!priceEl) return;
+  function handleMarketData(event) {
+    var markets = Array.isArray(event.detail) ? event.detail : [];
+    var quote = markets.find(function (market) { return market && market.id === 'AUDUSD'; });
+    var price = quote && Number(quote.price);
+    if (!Number.isFinite(price)) return;
 
-    setStatus('UPDATING');
-
-    if (useProxyEndpoint) {
-      // Try existing proxy endpoint first
-      var proxyUrl = PROXY_ENDPOINT + '?symbols=AUDUSD';
-      fetch(proxyUrl, { headers: { 'Accept': 'application/json' } })
-        .then(function (res) {
-          if (!res.ok) throw new Error('Proxy returned ' + res.status);
-          return res.json();
-        })
-        .then(function (json) {
-          if (Array.isArray(json) && json.length) {
-            var data = json[0];
-            if (data.price && !isNaN(parseFloat(data.price))) {
-              handlePriceUpdate(parseFloat(data.price));
-            } else {
-              throw new Error('Invalid price in proxy response');
-            }
-          } else {
-            throw new Error('Empty response from proxy');
-          }
-        })
-        .catch(function (err) {
-          console.warn('Proxy endpoint failed, falling back to Alpha Vantage:', err);
-          useProxyEndpoint = false;
-          fetchWithAlphaVantage();
-        });
-    } else {
-      fetchWithAlphaVantage();
-    }
-  }
-
-  function fetchWithAlphaVantage() {
-    // Use Open Exchange Rates API (free tier, no auth required)
-    // Or fallback to exchangerate-api.com
-    var url = 'https://open.er-api.com/v6/latest/AUD';
-
-    fetch(url, { headers: { 'Accept': 'application/json' } })
-      .then(function (res) {
-        if (!res.ok) throw new Error('HTTP ' + res.status);
-        return res.json();
-      })
-      .then(function (json) {
-        if (json.rates && json.rates.USD) {
-          var price = parseFloat(json.rates.USD);
-          if (!isNaN(price)) {
-            handlePriceUpdate(price);
-          } else {
-            throw new Error('Invalid price data');
-          }
-        } else {
-          throw new Error('No USD rate in response');
-        }
-      })
-      .catch(function (err) {
-        console.error('Open ER API failed, trying fallback:', err);
-        // Fallback to another API
-        fetchFromExchangeRate();
-      });
-  }
-
-  function fetchFromExchangeRate() {
-    // Fallback to exchangerate-api.com (limited free tier)
-    var url = 'https://v6.exchangerate-api.com/v6/latest/AUD';
-
-    fetch(url)
-      .then(function (res) {
-        if (!res.ok) throw new Error('HTTP ' + res.status);
-        return res.json();
-      })
-      .then(function (json) {
-        if (json.conversion_rates && json.conversion_rates.USD) {
-          var price = parseFloat(json.conversion_rates.USD);
-          if (!isNaN(price)) {
-            handlePriceUpdate(price);
-          } else {
-            throw new Error('Invalid price data');
-          }
-        } else {
-          throw new Error('No USD rate in response');
-        }
-      })
-      .catch(function (err) {
-        handleFetchError(err);
-      });
-  }
-
-  function handlePriceUpdate(price) {
-    if (currentPrice !== null) {
-      previousPrice = currentPrice;
-    }
     currentPrice = price;
-    addChartPoint(price);
+    currentChangePercent = quote.changePercent != null && Number.isFinite(Number(quote.changePercent))
+      ? Number(quote.changePercent)
+      : null;
+    hasReceivedMarketData = true;
+    currentTimestampKnown = !!quote.timestamp && Number.isFinite(Date.parse(quote.timestamp));
+    currentDataIsStale = currentTimestampKnown && Date.now() - Date.parse(quote.timestamp) > 24 * 60 * 60 * 1000;
+    if (currentTimestampKnown && !currentDataIsStale && /[T ]\d{2}:\d{2}/.test(String(quote.timestamp))){
+      addChartPoint(price, quote.timestamp);
+    } else {
+      redrawChart();
+    }
     updateDisplay();
   }
 
-  function handleFetchError(err) {
-    console.error('Hero dashboard fetch error:', err);
+  function handleFetchError() {
     if (currentPrice === null) {
-      // First fetch failed - show error
       priceEl.textContent = 'Unavailable';
       setStatus('DATA UNAVAILABLE');
     } else {
-      // We have data from before, just update status
-      setStatus('DATA AVAILABLE');
+      setStatus('LAST KNOWN DATA');
     }
-  }
-
-  function scheduleUpdate() {
-    if (updateTimer) clearTimeout(updateTimer);
-    updateTimer = setTimeout(function () {
-      fetchAUDUSD();
-      scheduleUpdate();
-    }, UPDATE_INTERVAL);
   }
 
   // Initialize
   function init() {
     if (!priceEl) return; // Hero dashboard not on this page
+    document.addEventListener('economiclab:market-data-updated', handleMarketData);
+    document.addEventListener('economiclab:market-data-error', handleFetchError);
 
     // Handle theme changes
     document.addEventListener('change', function (e) {
@@ -316,8 +221,6 @@
       attributeFilter: ['data-theme']
     });
 
-    fetchAUDUSD();
-    scheduleUpdate();
   }
 
   // Start when DOM is ready
@@ -327,8 +230,4 @@
     init();
   }
 
-  // Cleanup on page unload
-  window.addEventListener('beforeunload', function () {
-    if (updateTimer) clearTimeout(updateTimer);
-  });
 })();

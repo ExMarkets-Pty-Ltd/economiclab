@@ -1,5 +1,9 @@
 # EconomicLab AUD/USD Hero Card Implementation Summary
 
+## Current market-data behavior
+
+The hero subscribes to the same market response used by the homepage cards and currency table. Those components call the same-origin Netlify function at `/.netlify/functions/market-data`, which retrieves quotes from Twelve Data using the server-side `TWELVEDATA_API_KEY`. The client requests up to eight symbols at once, waits a minute before the next group, refreshes every five minutes, and backs off after failures. No provider key or alternate public quote source is used in browser code. The implementation notes below describe the original hero implementation and are retained as historical detail.
+
 ## Overview
 Successfully upgraded the hero market card from static EUR/USD to dynamic, real-time AUD/USD data with live price updates and an interactive line chart visualization.
 
@@ -250,8 +254,8 @@ All modern browsers with Canvas 2D API support are compatible.
 To modify the hero card behavior, edit the configuration at the top of `assets/js/hero-dashboard.js`:
 
 ```javascript
-var PROXY_ENDPOINT = 'https://exmarkets.netlify.app/.netlify/functions/market-data';
-var UPDATE_INTERVAL = 60000; // milliseconds
+var MARKET_DATA_ENDPOINT = '/.netlify/functions/market-data';
+var MARKET_REFRESH_INTERVAL = 300000; // milliseconds
 var MAX_CHART_POINTS = 50;
 ```
 

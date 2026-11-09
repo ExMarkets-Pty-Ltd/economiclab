@@ -25,7 +25,10 @@
 
   // Configuration
   var MARKET_REFRESH_INTERVAL = 5 * 60 * 1000; // 5 minutes
-  var MARKET_DATA_ENDPOINT = 'https://exmarkets.netlify.app/.netlify/functions/market-data'; // serverless proxy endpoint
+  var PROVIDER_SYMBOL_BATCH_SIZE = 8; // Twelve Data Basic tier: 8 API credits per minute
+  var PROVIDER_BATCH_DELAY = 60 * 1000;
+  var MARKET_DATA_ENDPOINT = '/.netlify/functions/market-data';
+  var MARKET_DISCLOSURE = 'Market data provided via EconomicLab. Prices may be delayed depending on the source and licensing.';
 
   // Internal market list (internal IDs only). Provider symbol mapping happens server-side.
   var MARKETS = [
@@ -51,6 +54,7 @@
   var lastSuccessfulFetchAt = null;
   var refreshTimer = null;
   var backoffMultiplier = 1;
+  var requestInProgress = false;
 
   function formatNumberForInstrument(id, value){
     if (value === null || value === undefined || isNaN(value)) return '-';
@@ -163,13 +167,14 @@
       try{
         var d = new Date(market.timestamp);
         if (!isNaN(d)){
-          tsText = 'Updated ' + d.toUTCString().replace('GMT','UTC');
-        }
+            var freshness = isStaleMarketData(market) ? 'Last known · ' : '';
+            tsText = freshness + (/^\d{4}-\d{2}-\d{2}$/.test(String(market.timestamp))
+              ? 'Provider date ' + market.timestamp
+              : 'Updated ' + d.toUTCString().replace('GMT','UTC'));
+          }
       }catch(e){ /* ignore */ }
     }
-    if (!tsText && lastSuccessfulFetchAt){
-      tsText = 'Updated ' + new Date(lastSuccessfulFetchAt).toUTCString().replace('GMT','UTC');
-    }
+    if (!tsText) tsText = 'Provider timestamp unavailable';
 
     meta.textContent = (market.marketStatus ? (market.marketStatus + ' · ') : '') + (tsText || '');
     container.appendChild(meta);
@@ -198,6 +203,12 @@
     return String(value).toUpperCase().replace(/[^A-Z0-9]/g, '');
   }
 
+  function isStaleMarketData(market){
+    if (!market || !market.timestamp) return false;
+    var timestamp = Date.parse(market.timestamp);
+    return !isFinite(timestamp) || Date.now() - timestamp > 24 * 60 * 60 * 1000;
+  }
+
   function applyData(markets){
     // markets: array of normalized objects
     lastSuccessfulFetchAt = Date.now();
@@ -206,6 +217,10 @@
       var key = normalizeMarketKey((m && (m.id || m.symbol)) || '');
       if (key) map[key] = m;
     });
+    var missingIds = SUPPORTED_IDS.filter(function(id){
+      var market = map[normalizeMarketKey(id)];
+      return !market || market.price == null || !isFinite(Number(market.price));
+    });
 
     var panels = grid.querySelectorAll('.market-panel');
     panels.forEach(function(p){
@@ -213,7 +228,7 @@
       var normalizedId = normalizeMarketKey(id);
       var market = map[normalizedId];
       var cfg = MARKETS.find(function(m){ return m.id === id; });
-      if (market){
+      if (market && market.price != null && isFinite(Number(market.price))){
         // preserve the normalized backend payload while filling any missing client-side fields
         market.id = market.id || id;
         market.symbol = market.symbol || id;
@@ -224,14 +239,20 @@
       }
     });
 
-    // update disclosure timestamp
     if (disclosure){
-      disclosure.textContent = (disclosure.textContent.split('·')[0] || 'Market data provided via EconomicLab') + ' · Market data updated: ' + new Date(lastSuccessfulFetchAt).toUTCString().replace('GMT','UTC');
+      disclosure.textContent = missingIds.length
+        ? MARKET_DISCLOSURE + ' · ' + missingIds.length + ' instrument(s) unavailable; retry scheduled'
+        : MARKET_DISCLOSURE + ' · Last checked: ' + new Date(lastSuccessfulFetchAt).toUTCString().replace('GMT','UTC');
     }
 
     renderForexTable(map);
     renderMarketMovers(map);
     renderMarketStatus(map);
+    document.dispatchEvent(new CustomEvent('economiclab:market-data-updated', { detail: markets }));
+    if (missingIds.length){
+      console.warn('Market data response missing usable prices', missingIds);
+    }
+    return missingIds.length === 0;
   }
 
   function renderForexTable(map){
@@ -245,12 +266,13 @@
       var row = document.createElement('tr');
       var pair = document.createElement('td'); pair.textContent = market ? market.name || id : id.replace(/USD$/, '/USD');
       var price = document.createElement('td');
-      price.textContent = market ? formatNumberForInstrument(id, market.price) : '-';
+      var hasPrice = market && market.price != null && isFinite(Number(market.price));
+      price.textContent = hasPrice ? formatNumberForInstrument(id, market.price) : '-';
       var change = document.createElement('td');
       var changePercent = document.createElement('td');
       var status = document.createElement('td');
 
-      if (market){
+      if (hasPrice){
         var delta = market.change;
         var deltaPct = market.changePercent;
         if ((delta === undefined || delta === null) && market.price != null && market.previousClose != null){
@@ -268,11 +290,11 @@
         changePercent.classList.toggle('market-panel__stat--positive', deltaPct > 0);
         changePercent.classList.toggle('market-panel__stat--negative', deltaPct < 0);
 
-        status.textContent = market.marketStatus || 'N/A';
+        status.textContent = isStaleMarketData(market) ? 'LAST KNOWN' : (market.marketStatus || 'N/A');
       } else {
         change.textContent = '-';
         changePercent.textContent = '-';
-        status.textContent = 'N/A';
+        status.textContent = 'UNAVAILABLE';
       }
 
       row.appendChild(pair);
@@ -295,7 +317,9 @@
     Object.keys(categories).forEach(function(sectionId){
       var element = document.getElementById(sectionId);
       if (!element) return;
-      var markets = categories[sectionId].map(function(id){ return map[id]; }).filter(Boolean);
+      var markets = categories[sectionId].map(function(id){ return map[id]; }).filter(function(m){
+        return m && m.price != null && isFinite(Number(m.price));
+      });
       if (!markets.length){
         element.textContent = 'DATA UNAVAILABLE';
         return;
@@ -358,18 +382,17 @@
 
   function handleFetchError(err, status){
     console.error('Market data fetch error', err, status);
-    if (status === 429){
-      backoffMultiplier = Math.min(backoffMultiplier * 2, 16);
-      scheduleRefreshWithBackoff();
-    }
+    backoffMultiplier = Math.min(backoffMultiplier * 2, 16);
     if (disclosure){
-      disclosure.textContent = 'Market data provided via EconomicLab · Market data temporarily unavailable';
+      disclosure.textContent = lastSuccessfulFetchAt
+        ? MARKET_DISCLOSURE + ' · Refresh failed; showing last-known prices'
+        : MARKET_DISCLOSURE + ' · Market data temporarily unavailable';
     }
-    // If we have previously displayed successful data, do not overwrite all panels with an error.
-    // Only show global error state; keep existing cards intact so one failed request doesn't blank the UI.
     if (!lastSuccessfulFetchAt){
       renderAllErrors();
     }
+    document.dispatchEvent(new CustomEvent('economiclab:market-data-error', { detail: { status: status || null } }));
+    scheduleRefreshWithBackoff();
   }
 
   function scheduleRefreshWithBackoff(){
@@ -380,37 +403,66 @@
 
   function fetchAndRender(){
     if (!MARKET_DATA_ENDPOINT){
-      // no endpoint configured
       renderAllErrors();
       return;
     }
+    if (requestInProgress) return;
+    if (refreshTimer) clearTimeout(refreshTimer);
+    refreshTimer = null;
+    requestInProgress = true;
 
-    renderAllLoading();
+    if (!lastSuccessfulFetchAt) renderAllLoading();
 
-    // Build query: send comma separated list of supported ids (avoid unsupported symbols that trigger provider failures)
-    var ids = (Array.isArray(SUPPORTED_IDS) && SUPPORTED_IDS.length) ? SUPPORTED_IDS.join(',') : MARKETS.map(function(m){ return m.id; }).join(',');
-    var url = MARKET_DATA_ENDPOINT + (MARKET_DATA_ENDPOINT.indexOf('?') === -1 ? '?' : '&') + 'symbols=' + encodeURIComponent(ids);
+    var ids = (Array.isArray(SUPPORTED_IDS) && SUPPORTED_IDS.length)
+      ? SUPPORTED_IDS
+      : MARKETS.map(function(m){ return m.id; });
+    var batches = [];
+    for (var i = 0; i < ids.length; i += PROVIDER_SYMBOL_BATCH_SIZE){
+      batches.push(ids.slice(i, i + PROVIDER_SYMBOL_BATCH_SIZE));
+    }
+    var receivedMarkets = [];
 
-    fetch(url, {headers: {'Accept': 'application/json'}}).then(function(res){
-      if (!res.ok){
-        handleFetchError(new Error('HTTP ' + res.status), res.status);
-        throw new Error('fail');
-      }
-      return res.json();
-    }).then(function(json){
-      // Expect json to be an array of normalized market objects
-      if (!Array.isArray(json)){
-        handleFetchError(new Error('Invalid response format')); return;
-      }
-      backoffMultiplier = 1;
-      applyData(json);
+    function fetchBatch(index){
+      var url = MARKET_DATA_ENDPOINT + (MARKET_DATA_ENDPOINT.indexOf('?') === -1 ? '?' : '&') +
+        'symbols=' + encodeURIComponent(batches[index].join(','));
+      fetch(url, {headers: {'Accept': 'application/json'}}).then(function(res){
+        if (!res.ok){
+          var error = new Error('HTTP ' + res.status);
+          error.status = res.status;
+          throw error;
+        }
+        return res.json();
+      }).then(function(json){
+        if (!Array.isArray(json)) throw new Error('Invalid market data response format');
+        receivedMarkets = receivedMarkets.concat(json);
+        var complete = applyData(receivedMarkets);
 
-      // schedule next
-      if (refreshTimer) clearTimeout(refreshTimer);
-      refreshTimer = setTimeout(fetchAndRender, MARKET_REFRESH_INTERVAL);
-    }).catch(function(err){
-      if (err.message !== 'fail') handleFetchError(err);
-    });
+        if (index + 1 < batches.length){
+          requestInProgress = false;
+          refreshTimer = setTimeout(function(){
+            refreshTimer = null;
+            if (document.hidden) return;
+            requestInProgress = true;
+            fetchBatch(index + 1);
+          }, PROVIDER_BATCH_DELAY);
+          return;
+        }
+
+        requestInProgress = false;
+        if (complete){
+          backoffMultiplier = 1;
+          refreshTimer = setTimeout(fetchAndRender, MARKET_REFRESH_INTERVAL);
+        } else {
+          backoffMultiplier = Math.min(backoffMultiplier * 2, 16);
+          scheduleRefreshWithBackoff();
+        }
+      }).catch(function(error){
+        requestInProgress = false;
+        handleFetchError(error, error.status || null);
+      });
+    }
+
+    fetchBatch(0);
   }
 
   function init(){

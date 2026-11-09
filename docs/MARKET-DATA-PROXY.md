@@ -4,6 +4,12 @@ Purpose
 
 This document explains how to deploy a secure serverless proxy that the EconomicLab frontend can call to obtain normalized market data for the homepage market cards. The proxy holds any provider API key in server-side environment variables so that no secret is exposed in the browser or repository.
 
+Production uses the Netlify Function at `/.netlify/functions/market-data` with Twelve Data. Frontend requests use this same-origin path so they follow the active EconomicLab deployment; do not hardcode a Netlify site hostname. The function reads `TWELVEDATA_API_KEY` from Netlify's function environment. The homepage, market overview, and market-news quote widgets use this proxy; the homepage hero consumes the shared market-data response rather than making a separate provider request.
+
+The homepage requests quotes in groups of up to eight, with a one-minute gap before the next group, to stay within Twelve Data Basic's published eight-API-credit-per-minute allowance. Successful responses are cacheable for up to 60 seconds at the CDN. Normal refresh is every five minutes; failed or incomplete refreshes back off. The function uses server-side `SYMBOL_MAP_PREF` values directly to avoid symbol-search API calls on cold starts. Verify an instrument's symbol and subscription access with Twelve Data before adding or changing its mapping.
+
+The function currently requests quote snapshots, not historical time series. The homepage mini-chart only plots observations with provider-supplied intraday timestamps and shows an unavailable state otherwise; do not generate or label client-polled snapshots as historical provider data.
+
 Goals
 
 - Provide a single batch endpoint the client can call (no provider key in browser).
@@ -229,4 +235,3 @@ If you tell me which provider you'd like (Twelve Data, Finnhub, Alpha Vantage, e
 - Provide a concrete, fully working serverless function implementation for that provider.
 - Provide exact `SYMBOL_MAP` entries based on the provider's documented symbols.
 - Give deployment instructions tailored to Netlify/Vercel/Cloudflare with commands and env var names.
-

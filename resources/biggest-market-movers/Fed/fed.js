@@ -1,7 +1,7 @@
 (function () {
   'use strict';
 
-  var endpoint = 'https://exmarkets.netlify.app/.netlify/functions/market-data';
+  var endpoint = '/.netlify/functions/market-data';
   var cards = document.querySelectorAll('[data-fed-symbol]');
   var symbols = Array.prototype.map.call(cards, function (card) { return card.getAttribute('data-fed-symbol'); });
 

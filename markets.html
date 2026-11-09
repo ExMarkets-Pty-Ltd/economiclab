@@ -116,8 +116,8 @@
       <section class="container section" aria-labelledby="overview-title">
         <div class="section__heading">
           <p class="text-uppercase">Market Overview</p>
-          <h2 id="overview-title">Live market snapshot</h2>
-          <p class="text-muted">Market values below are pulled from EconomicLab live market data via a secure proxy.</p>
+          <h2 id="overview-title">Latest market snapshot</h2>
+          <p class="text-muted">Market values are retrieved through EconomicLab's secure provider proxy. Provider timestamps indicate the latest available values; prices may be delayed.</p>
         </div>
 
         <div class="market-grid" id="live-market-grid">
@@ -130,7 +130,7 @@
           <article class="market-panel" data-id="BTCUSD"></article>
         </div>
 
-        <p class="text-muted" id="market-disclosure">Market data is loading from the live EconomicLab data source. No sample or placeholder market values are displayed.</p>
+        <p class="text-muted" id="market-disclosure">Market data provided via EconomicLab. Provider timestamps indicate the latest available values; prices may be delayed.</p>
 
         <script src="assets/js/market-data.js" defer></script>
       </section>
@@ -297,7 +297,7 @@
           <p class="card__eyebrow">Status</p>
           <h2 id="disclaimer-title">Live market data status</h2>
           <p class="lead">
-            This page displays only provider-fed market values. When the live feed is unavailable, it shows an honest unavailable state instead of sample values.
+            This page displays only provider-fed market values. When provider data is unavailable, it shows an honest unavailable state instead of sample values.
           </p>
         </div>
       </section>
@@ -542,4 +542,3 @@
     <script src="assets/js/main.js" defer></script>
   </body>
 </html>
-

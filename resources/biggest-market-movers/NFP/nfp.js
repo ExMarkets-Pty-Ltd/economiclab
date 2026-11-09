@@ -2,7 +2,7 @@
   'use strict';
 
   var BLS_ENDPOINT = '/.netlify/functions/cpi-data';
-  var MARKET_ENDPOINT = 'https://exmarkets.netlify.app/.netlify/functions/market-data';
+  var MARKET_ENDPOINT = '/.netlify/functions/market-data';
   var SERIES = {
     payrolls: 'CES0000000001',
     privatePayrolls: 'CES0500000001',
